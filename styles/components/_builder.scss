@@ -1,6 +1,8 @@
 @import "../variables";
+@import "../mixins";
 
 .builder {
+  margin-top: $spacing-lg;
   margin-bottom: $spacing-lg;
 
   &__title {
@@ -22,6 +24,7 @@
   &__status {
     display: flex;
     align-items: center;
+
     margin-right: $spacing-md;
     margin-bottom: $spacing-xs;
     font-family: $font-family;
@@ -29,7 +32,6 @@
     font-weight: $font-weight-regular;
     color: $color-text-secondary;
   }
-
   &__status-icon {
     width: $spacing-md;
     height: $spacing-md;
@@ -38,7 +40,7 @@
     display: inline-block; /* Чтобы можно было задавать размеры */
 
     &--selected {
-      background-color: $color-primary; /* Цвет для "Выбрано" */
+      border: 2px solid $color-primary; /* Цвет для "Выбрано" */
     }
 
     &--available {
@@ -55,20 +57,22 @@
   }
 
   &__container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: $spacing-md; /* Отступы между логотипами */
+    @include flex(row, flex-start, center, $spacing-xs);
   }
 
   &__logo-link {
     display: block; /* Чтобы ссылка занимала всю площадь логотипа */
   }
   &__logo {
-    width: 4.125rem;
-    height: 1.5rem;
+    height: $spacing-lg;
+    max-width: 5.625rem;
+    padding: $spacing-sm;
     object-fit: contain;
     background-color: $color-bg;
     border-radius: $border-radius;
-    padding: $border-radius;
+  }
+
+  .active {
+    border: 2px solid $color-primary;
   }
 }

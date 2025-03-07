@@ -55,8 +55,8 @@
 .header__filter-button .button__icon {
   width: 20px;
   height: 20px;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 .header__filter-button .button__indicator {
   width: 20px;
@@ -89,7 +89,7 @@
   -webkit-appearance: none; /* Для Safari */
   -moz-appearance: none; /* Для Firefox */
   width: 100%;
-  padding: 0.5rem 2.25rem; /* Добавляем отступы для текста */
+  padding: 0.5rem 2rem; /* Добавляем отступы для текста */
   border: 1px solid #b7b8c3; /* Пример границы */
   border-radius: 8px; /* Пример скругления */
   background-color: #fff;
@@ -141,7 +141,8 @@
 }
 
 .builder {
-  margin-bottom: 1.5rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
 }
 .builder__title {
   font-family: "Inter", sans-serif;
@@ -175,7 +176,7 @@
   display: inline-block; /* Чтобы можно было задавать размеры */
 }
 .builder__status-icon--selected {
-  background-color: #6f77fe; /* Цвет для "Выбрано" */
+  border: 2px solid #6f77fe; /* Цвет для "Выбрано" */
 }
 .builder__status-icon--available {
   background-color: #25a25f; /* Цвет для "Доступно" */
@@ -188,20 +189,26 @@
 }
 .builder__container {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  gap: 1rem; /* Отступы между логотипами */
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
 }
 .builder__logo-link {
   display: block; /* Чтобы ссылка занимала всю площадь логотипа */
 }
 .builder__logo {
-  width: 4.125rem;
-  height: 1.5rem;
+  height: 1.25rem;
+  max-width: 5.625rem;
+  padding: 0.75rem;
   -o-object-fit: contain;
      object-fit: contain;
   background-color: #fff;
   border-radius: 8px;
-  padding: 8px;
+}
+.builder .active {
+  border: 2px solid #6f77fe;
 }
 
 * {
