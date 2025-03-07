@@ -101,6 +101,72 @@
   height: 20px;
 }
 
+.builder {
+  margin-bottom: 16px;
+}
+.builder__title {
+  font-family: "Inter", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e1e24;
+  line-height: 129%;
+  margin-bottom: 8px;
+}
+.builder__statuses {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 8px 0;
+  display: flex;
+  flex-wrap: wrap; /* Чтобы элементы переносились на новую строку */
+}
+.builder__status {
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+  margin-bottom: 8px; /* Добавляем отступ снизу */
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 129%;
+  color: #777777;
+}
+.builder__status-icon {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
+  display: inline-block; /* Чтобы можно было задавать размеры */
+}
+.builder__status-icon--selected {
+  background-color: #6f77fe; /* Цвет для "Выбрано" */
+}
+.builder__status-icon--available {
+  background-color: #25a25f; /* Цвет для "Доступно" */
+}
+.builder__status-icon--not-unique {
+  background-color: #f25a50; /* Цвет для "Не уникальный клиент" */
+}
+.builder__status-icon--no-objects {
+  background-color: #b7b8c3; /* Цвет для "Нет объектов" */
+}
+.builder__container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px; /* Отступы между логотипами */
+}
+.builder__logo-link {
+  display: block; /* Чтобы ссылка занимала всю площадь логотипа */
+}
+.builder__logo {
+  width: 4.125rem;
+  height: 1.5rem;
+  -o-object-fit: contain;
+     object-fit: contain;
+  background-color: #fff;
+  border-radius: 8px; /* Скругление углов */
+  padding: 8px;
+}
+
 * {
   margin: 0;
   padding: 0;

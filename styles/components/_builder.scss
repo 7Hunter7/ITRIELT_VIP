@@ -1,0 +1,76 @@
+@import "../variables";
+
+.builder {
+  margin-bottom: $spacing-lg;
+
+  &__title {
+    font-family: $font-family;
+    font-size: $font-size-title;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    line-height: $line-height;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__statuses {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 $spacing-md 0;
+    display: flex;
+    flex-wrap: wrap; /* Чтобы элементы переносились на новую строку */
+  }
+
+  &__status {
+    display: flex;
+    align-items: center;
+    margin-right: $spacing-md;
+    margin-bottom: $spacing-xs;
+    font-family: $font-family;
+    font-size: $font-size-item;
+    font-weight: $font-weight-regular;
+    line-height: $line-height;
+    color: $color-text-secondary;
+  }
+
+  &__status-icon {
+    width: $spacing-md;
+    height: $spacing-md;
+    border-radius: $border-radius-circle;
+    margin-right: $spacing-xs;
+    display: inline-block; /* Чтобы можно было задавать размеры */
+
+    &--selected {
+      background-color: $color-primary; /* Цвет для "Выбрано" */
+    }
+
+    &--available {
+      background-color: $color-green; /* Цвет для "Доступно" */
+    }
+
+    &--not-unique {
+      background-color: $color-red; /* Цвет для "Не уникальный клиент" */
+    }
+
+    &--no-objects {
+      background-color: $color-grey; /* Цвет для "Нет объектов" */
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-md; /* Отступы между логотипами */
+  }
+
+  &__logo-link {
+    display: block; /* Чтобы ссылка занимала всю площадь логотипа */
+  }
+  &__logo {
+    width: 4.125rem;
+    height: 1.5rem;
+    object-fit: contain;
+    background-color: $color-bg;
+    border-radius: $border-radius;
+    padding: $border-radius;
+  }
+}
