@@ -7,6 +7,32 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="status-bar">
+      <div class="status-bar__time">9:41</div>
+      <div class="status-bar__icons">
+        <img
+          class="status-bar__signal"
+          src="signal.svg"
+          alt="Уровень сигнала"
+          aria-hidden="true"
+        />
+        <img
+          class="status-bar__wifi"
+          src="wifi.svg"
+          alt="Wi-Fi"
+          aria-hidden="true"
+        />
+        <div class="status-bar__battery">
+          <div
+            class="status-bar__battery-level"
+            style="width: 75%"
+            aria-valuenow="75"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          ></div>
+        </div>
+      </div>
+    </div>
     <header class="header">
       <div class="header__top">
         <h1 class="header__title">Каталог объектов</h1>
@@ -77,5 +103,6 @@
         </div>
       </div>
     </header>
+    <script src="index.js"></script>
   </body>
 </html>
