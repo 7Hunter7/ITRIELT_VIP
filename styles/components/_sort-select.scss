@@ -1,8 +1,9 @@
 @import "../variables";
+@import "../mixins";
 
 .sort {
   position: relative; // Для позиционирования select__icon и select__chevron
-  width: 100%;
+  width: 90%;
   margin-top: $spacing-md;
   margin-bottom: $spacing-md;
 }
@@ -13,7 +14,6 @@
   -moz-appearance: none; /* Для Firefox */
 
   width: 100%;
-  margin-left: $spacing-xs;
   padding: $spacing-xs $spacing-xxl; /* Добавляем отступы для текста */
   border: 1px solid $color-grey; /* Пример границы */
   border-radius: $border-radius; /* Пример скругления */
@@ -30,7 +30,7 @@
 .sort__label {
   position: absolute;
   top: 50%;
-  left: $spacing-sm;
+  left: $spacing-xxs;
   color: $color-secondary;
   transition: all 0.3s ease;
   pointer-events: none;
@@ -51,8 +51,7 @@
   transform: translateY(-50%);
   pointer-events: none; /* Чтобы иконка не мешала кликам */
   img {
-    width: 20px;
-    height: 20px;
+    @include icon();
   }
 }
 
@@ -63,7 +62,6 @@
   transform: translateY(-50%);
   pointer-events: none; /* Чтобы иконка не мешала кликам */
   img {
-    width: 20px;
-    height: 20px;
+    @include icon();
   }
 }

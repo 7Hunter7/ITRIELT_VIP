@@ -79,7 +79,7 @@
 
 .sort {
   position: relative;
-  width: 100%;
+  width: 90%;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
@@ -89,7 +89,6 @@
   -webkit-appearance: none; /* Для Safari */
   -moz-appearance: none; /* Для Firefox */
   width: 100%;
-  margin-left: 0.5rem;
   padding: 0.5rem 2.25rem; /* Добавляем отступы для текста */
   border: 1px solid #b7b8c3; /* Пример границы */
   border-radius: 8px; /* Пример скругления */
@@ -105,7 +104,7 @@
 .sort__label {
   position: absolute;
   top: 50%;
-  left: 0.75rem;
+  left: 0.25rem;
   color: #9596a7;
   transition: all 0.3s ease;
   pointer-events: none;
