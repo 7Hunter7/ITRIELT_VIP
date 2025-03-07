@@ -3,8 +3,79 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ITRIELT</title>
+    <title>ITRIELT VIP</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body></body>
+  <body>
+    <header class="header">
+      <div class="header__top">
+        <h1 class="header__title">Каталог объектов</h1>
+        <button class="button header__filter-button">
+          <img class="button__icon" src="icon-filter.svg" alt="Фильтр" />
+          <div class="button__indicator">
+            <div class="button__indicator-value">4</div>
+          </div>
+        </button>
+      </div>
+
+      <div class="header__sort">
+        <div class="select">
+          <div class="select__inner">
+            <img class="select__icon" src="icon-sort.svg" alt="Сортировка" />
+            <span class="select__text">Сначала с большей площадью</span>
+            <img
+              class="select__chevron"
+              src="icon-expand-more.svg"
+              alt="Развернуть"
+            />
+          </div>
+        </div>
+      </div>
+
+      <form class="search">
+        <h2 class="search__title">Проверка уникальности</h2>
+        <label class="search__label"
+          >Имя <span class="search__label_span">*</span></label
+        >
+        <input class="search__input" type="text" placeholder="Игорь" />
+        <label class="search__label"
+          >Телефон<span class="search__label_span">*</span></label
+        >
+        <input
+          class="search__input"
+          type="phone"
+          placeholder="+7(900)000-00-00"
+        />
+        <button class="search__button">Проверить</button>
+      </form>
+
+      <div class="builder">
+        <h2 class="builder__title">Застройщики</h2>
+        <span class="builder__check"
+          ><img src="" alt="Выбрано" />Выбрано: 1<img
+            src=""
+            alt="Доступно"
+          />Доступно: 5</span
+        >
+        <span class="builder__check"
+          ><img src="" alt="Не уникальный" />Не уникальный клиент: 1</span
+        >
+        <span class="builder__check"
+          ><img src="" alt="Нет объектов" />Нет объектов: 3</span
+        >
+        <div class="builder__container">
+          <img class="builder__img" src="" alt="AFI" />
+          <img class="builder__img" src="" alt="AVA" />
+          <img class="builder__img" src="" alt="Ambassadori Island" />
+          <img class="builder__img" src="" alt="АГОЙ-ПАРК" />
+          <img class="builder__img" src="" alt="АСИ групп" />
+          <img class="builder__img" src="" alt="КОНТИНЕНТ" />
+          <img class="builder__img" src="" alt="СЕМЬЯ" />
+          <img class="builder__img" src="" alt="ТОЧНО" />
+          <img class="builder__img" src="" alt="ФЛАГМАН" />
+          <img class="builder__img" src="" alt="Юг-Инжиниринг" />
+        </div>
+      </div>
+    </header>
+  </body>
 </html>
