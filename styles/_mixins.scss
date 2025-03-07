@@ -8,6 +8,12 @@
   gap: $gap;
 }
 
+// Миксин для размеров иконок
+@mixin icon($size: 20px) {
+  width: $size;
+  height: $size;
+}
+
 // Миксин для скрытия элемента
 @mixin visually-hidden() {
   position: absolute;

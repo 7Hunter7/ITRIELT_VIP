@@ -1,24 +1,36 @@
-/* _header.scss */
+@import "../mixins";
 
 .header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  @include flex(row, space-between, center);
 
   &__filter-button {
+    @include flex(row, center, center, 2px);
     padding: $spacing-md;
+    border: none;
+
     .button {
       &__icon {
+        @include icon();
         width: $spacing-lg; // Увеличить иконку фильтра
         height: $spacing-lg;
       }
       &__indicator {
-        right: -$spacing-xs; //Немного переместить индикатор
+        @include icon();
+        border-radius: $border-radius-circle;
+        background: $color-primary;
+      }
+      &__indicator-value {
+        font-family: var(--font-family);
+        font-weight: $font-weight-medium;
+        font-size: 0.75rem;
+        line-height: 117%;
+        color: $color-white;
       }
     }
   }
 
   &__title {
-    font-size: $font-size-title; //1.125rem; // Немного уменьшить шрифт заголовка, если нужно
+    font-weight: $font-weight-semibold;
+    font-size: $font-size-subtitle;
   }
 }

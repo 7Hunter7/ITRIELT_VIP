@@ -35,21 +35,40 @@
   transition: width 0.3s ease; /* Плавное изменение уровня */
 }
 
-/* _header.scss */
 .header {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
+  gap: 0;
 }
 .header__filter-button {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
   padding: 1rem;
+  border: none;
 }
 .header__filter-button .button__icon {
   width: 1.5rem;
   height: 1.5rem;
 }
 .header__filter-button .button__indicator {
-  right: -0.5rem;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  background: #6f77fe;
+}
+.header__filter-button .button.__indicator-value {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 117%;
+  color: #fff;
 }
 .header__title {
   font-size: 1.25rem;
@@ -198,6 +217,7 @@ body {
   color: #1e1e24;
   background-color: #fff;
   box-sizing: border-box;
+  letter-spacing: 0em;
 }
 
 a {
