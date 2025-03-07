@@ -1,0 +1,55 @@
+$font-family: "Inter", sans-serif;
+$font-size-base: 16px; // Высота строки
+
+// Размеры заголовков
+$font-size-title: 1.25rem; // 20px
+$font-size-subtitle: 1.0625rem; // 17px
+$font-size-item: 0.875rem; // 14px
+
+// Толщина шрифта
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$line-height: 129%;
+
+// Основные цвета
+$color-primary: #6f77fe;
+$color-secondary: #9596a7;
+$color-white: #fff;
+$color-black: #000;
+$color-green: #25a25f;
+$color-red: #f25a50;
+$color-grey: #b7b8c3;
+$color-accent: #3c3d48; // Цвет акцента
+
+// Цвета фона
+$color-bg: #fff;
+
+// Цвета текста
+$color-text-primary: #1e1e24;
+$color-text-secondary: #777777;
+$color-text-link: $color-primary; // Цвет ссылок
+$color-text-link-hover: darken(
+  $color-primary,
+  10%
+); // Цвет ссылок при наведении
+
+// Скругления
+$border-radius: 8px;
+$border-radius-medium: 16px;
+$border-radius-circle: 50%;
+
+// Тени
+$box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+
+// Недоступное состояние
+$disabled: opacity 0.4;
+
+// Медиа-запросы (Breakpoints)
+$breakpoint-xs: 320px;
+$breakpoint-sm: 744px;
+$breakpoint-md: 1024px;
+$breakpoint-lg: 1336px;
+$breakpoint-xl: 1536px;
+$breakpoint-xxl: 1920px;
+$breakpoint-xxxl: 2560px;
