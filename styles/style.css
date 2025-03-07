@@ -50,28 +50,31 @@
   align-items: center;
   justify-content: center;
   gap: 2px;
-  padding: 1rem;
   border: none;
 }
 .header__filter-button .button__icon {
+  width: 20px;
+  height: 20px;
   width: 1.5rem;
   height: 1.5rem;
 }
 .header__filter-button .button__indicator {
-  border-radius: 50%;
   width: 20px;
   height: 20px;
+  border-radius: 50%;
   background: #6f77fe;
 }
-.header__filter-button .button.__indicator-value {
+.header__filter-button .button__indicator-value {
+  padding: 3px 2px;
   font-family: var(--font-family);
   font-weight: 500;
-  font-size: 12px;
+  font-size: 0.75rem;
   line-height: 117%;
   color: #fff;
 }
 .header__title {
-  font-size: 1.25rem;
+  font-weight: 600;
+  font-size: 1.0625rem;
 }
 
 .sort {
@@ -146,7 +149,6 @@
   font-size: 1.25rem;
   font-weight: 600;
   color: #1e1e24;
-  line-height: 129%;
   margin-bottom: 0.75rem;
 }
 .builder__statuses {
@@ -164,7 +166,6 @@
   font-family: "Inter", sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
-  line-height: 129%;
   color: #777777;
 }
 .builder__status-icon {
@@ -213,13 +214,19 @@ body {
   font-family: "Inter", sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
+  line-height: 129%;
+  letter-spacing: 0em;
   text-align: center;
   color: #1e1e24;
   background-color: #fff;
   box-sizing: border-box;
-  letter-spacing: 0em;
 }
 
 a {
   text-decoration: none;
+}
+
+.container {
+  margin-left: 1rem;
+  margin-right: 1rem;
 }/*# sourceMappingURL=style.css.map */

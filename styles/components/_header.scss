@@ -5,7 +5,6 @@
 
   &__filter-button {
     @include flex(row, center, center, 2px);
-    padding: $spacing-md;
     border: none;
 
     .button {
@@ -20,6 +19,7 @@
         background: $color-primary;
       }
       &__indicator-value {
+        padding: 3px 2px;
         font-family: var(--font-family);
         font-weight: $font-weight-medium;
         font-size: 0.75rem;
