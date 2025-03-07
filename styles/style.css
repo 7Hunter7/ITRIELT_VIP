@@ -35,9 +35,31 @@
   transition: width 0.3s ease; /* Плавное изменение уровня */
 }
 
+/* _header.scss */
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.header__filter-button {
+  padding: 1rem;
+}
+.header__filter-button .button__icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.header__filter-button .button__indicator {
+  right: -0.5rem;
+}
+.header__title {
+  font-size: 1.25rem;
+}
+
 .sort {
   position: relative;
   width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .select {
@@ -45,42 +67,38 @@
   -webkit-appearance: none; /* Для Safari */
   -moz-appearance: none; /* Для Firefox */
   width: 100%;
-  padding: 10px 30px 10px 10px; /* Добавляем отступы для текста */
-  font-size: 16px;
-  border: 1px solid #ccc; /* Пример границы */
-  border-radius: 5px; /* Пример скругления */
+  margin-left: 0.5rem;
+  padding: 0.5rem 2.25rem; /* Добавляем отступы для текста */
+  border: 1px solid #b7b8c3; /* Пример границы */
+  border-radius: 8px; /* Пример скругления */
   background-color: #fff;
-  color: #333;
+  color: #1e1e24;
+  cursor: pointer;
 }
 .select:focus {
   outline: none; /* Убираем рамку при фокусе */
-  border-color: blue; /* Меняем цвет границы при фокусе */
+  border-color: #6f77fe; /* Меняем цвет границы при фокусе */
 }
 
 .sort__label {
   position: absolute;
   top: 50%;
-  left: 10px;
-  transform: translateY(-50%);
-  pointer-events: none;
-  color: #777;
+  left: 0.75rem;
+  color: #9596a7;
   transition: all 0.3s ease;
+  pointer-events: none;
+  transform: translateY(-50%);
 }
-
-.select:focus + .sort__label,
-.select:valid + .sort__label {
+.select:focus + .sort__label, .select:valid + .sort__label {
   top: 0;
-  font-size: 12px;
-  color: blue;
-  background-color: white;
-  padding: 0 5px;
-  left: 5px;
+  padding: 0 0.25rem;
+  left: 0.25rem;
 }
 
 .select__icon {
   position: absolute;
   top: 50%;
-  left: 10px;
+  left: 0.75rem;
   transform: translateY(-50%);
   pointer-events: none; /* Чтобы иконка не мешала кликам */
 }
@@ -92,7 +110,7 @@
 .select__chevron {
   position: absolute;
   top: 50%;
-  right: 10px;
+  right: 0.75rem;
   transform: translateY(-50%);
   pointer-events: none; /* Чтобы иконка не мешала кликам */
 }
@@ -102,7 +120,7 @@
 }
 
 .builder {
-  margin-bottom: 16px;
+  margin-bottom: 1.5rem;
 }
 .builder__title {
   font-family: "Inter", sans-serif;
@@ -110,20 +128,20 @@
   font-weight: 600;
   color: #1e1e24;
   line-height: 129%;
-  margin-bottom: 8px;
+  margin-bottom: 0.75rem;
 }
 .builder__statuses {
   list-style: none;
   padding: 0;
-  margin: 0 0 8px 0;
+  margin: 0 0 1rem 0;
   display: flex;
   flex-wrap: wrap; /* Чтобы элементы переносились на новую строку */
 }
 .builder__status {
   display: flex;
   align-items: center;
-  margin-right: 16px;
-  margin-bottom: 8px; /* Добавляем отступ снизу */
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
   font-family: "Inter", sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -131,10 +149,10 @@
   color: #777777;
 }
 .builder__status-icon {
-  width: 8px;
-  height: 8px;
+  width: 1rem;
+  height: 1rem;
   border-radius: 50%;
-  margin-right: 8px;
+  margin-right: 0.5rem;
   display: inline-block; /* Чтобы можно было задавать размеры */
 }
 .builder__status-icon--selected {
@@ -152,7 +170,7 @@
 .builder__container {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px; /* Отступы между логотипами */
+  gap: 1rem; /* Отступы между логотипами */
 }
 .builder__logo-link {
   display: block; /* Чтобы ссылка занимала всю площадь логотипа */
@@ -163,7 +181,7 @@
   -o-object-fit: contain;
      object-fit: contain;
   background-color: #fff;
-  border-radius: 8px; /* Скругление углов */
+  border-radius: 8px;
   padding: 8px;
 }
 
@@ -174,7 +192,11 @@
 
 body {
   font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
   text-align: center;
+  color: #1e1e24;
+  background-color: #fff;
   box-sizing: border-box;
 }
 

@@ -1,6 +1,10 @@
+@import "../variables";
+
 .sort {
   position: relative; // Для позиционирования select__icon и select__chevron
   width: 100%;
+  margin-top: $spacing-md;
+  margin-bottom: $spacing-md;
 }
 
 .select {
@@ -9,43 +13,41 @@
   -moz-appearance: none; /* Для Firefox */
 
   width: 100%;
-  padding: 10px 30px 10px 10px; /* Добавляем отступы для текста */
-  font-size: 16px;
-  border: 1px solid #ccc; /* Пример границы */
-  border-radius: 5px; /* Пример скругления */
-  background-color: #fff;
-  color: #333;
+  margin-left: $spacing-xs;
+  padding: $spacing-xs $spacing-xxl; /* Добавляем отступы для текста */
+  border: 1px solid $color-grey; /* Пример границы */
+  border-radius: $border-radius; /* Пример скругления */
+  background-color: $color-white;
+  color: $color-text-primary;
+  cursor: pointer; // Добавляем курсор
 
   &:focus {
     outline: none; /* Убираем рамку при фокусе */
-    border-color: blue; /* Меняем цвет границы при фокусе */
+    border-color: $color-primary; /* Меняем цвет границы при фокусе */
   }
 }
 
 .sort__label {
   position: absolute;
   top: 50%;
-  left: 10px;
-  transform: translateY(-50%);
-  pointer-events: none;
-  color: #777;
+  left: $spacing-sm;
+  color: $color-secondary;
   transition: all 0.3s ease;
-}
+  pointer-events: none;
+  transform: translateY(-50%);
 
-.select:focus + .sort__label,
-.select:valid + .sort__label {
-  top: 0;
-  font-size: 12px;
-  color: blue;
-  background-color: white;
-  padding: 0 5px;
-  left: 5px;
+  .select:focus + &,
+  .select:valid + & {
+    top: 0;
+    padding: 0 $spacing-xxs;
+    left: $spacing-xxs;
+  }
 }
 
 .select__icon {
   position: absolute;
   top: 50%;
-  left: 10px;
+  left: $spacing-sm;
   transform: translateY(-50%);
   pointer-events: none; /* Чтобы иконка не мешала кликам */
   img {
@@ -57,7 +59,7 @@
 .select__chevron {
   position: absolute;
   top: 50%;
-  right: 10px;
+  right: $spacing-sm;
   transform: translateY(-50%);
   pointer-events: none; /* Чтобы иконка не мешала кликам */
   img {
