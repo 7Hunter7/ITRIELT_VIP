@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
 
-@import "/styles/variables";
-@import "/styles/components/statusbar";
+@import "./variables";
+@import "./components/statusbar";
+@import "./components/sort-select";
 
 * {
   margin: 0;
