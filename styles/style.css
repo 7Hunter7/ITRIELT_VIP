@@ -457,6 +457,13 @@
 .objects__card-favorite:hover {
   background-color: #565ffe;
 }
+.objects__card-favorite--active {
+  fill: #6f77fe;
+}
+.objects__card-favorite .objects__card-favorite svg {
+  width: 3rem;
+  height: 3rem;
+}
 .objects__card-pagination {
   display: flex;
   flex-direction: row;

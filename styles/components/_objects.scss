@@ -133,6 +133,12 @@
     &:hover {
       background-color: darken($color-primary, 5%); // Затемнение при наведении
     }
+    &--active {
+      fill: $color-primary;
+    }
+    .objects__card-favorite svg {
+      @include icon(3rem);
+    }
   }
   &__card-pagination {
     @include flex(row, center, center);
