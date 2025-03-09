@@ -5,6 +5,7 @@ $font-size-base: 16px; // Высота строки
 $font-size-title: 1.25rem; // 20px
 $font-size-subtitle: 1.0625rem; // 17px
 $font-size-item: 0.875rem; // 14px
+$font-size-tag: 0.75rem; // 12px
 
 // Толщина шрифта
 $font-weight-regular: 400;
@@ -34,7 +35,8 @@ $color-text-link-hover: darken(
 ); // Цвет ссылок при наведении
 
 // Универсальные отступы
-$spacing-xxs: 0.25rem; // 4px
+$spacing-xxxs: 0.25rem; // 4px
+$spacing-xxs: 0.375rem; // 6px
 $spacing-xs: 0.5rem; // 8px
 $spacing-sm: 0.75rem; // 12px
 $spacing-md: 1rem; // 16px
@@ -44,6 +46,7 @@ $spacing-xxl: 2rem; // 32px
 $spacing-xxxl: 2.25rem; // 36px
 
 // Скругления
+$border-radius-small: 6px;
 $border-radius: 8px;
 $border-radius-medium: 16px;
 $border-radius-circle: 50%;

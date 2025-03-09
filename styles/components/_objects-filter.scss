@@ -1,0 +1,54 @@
+@import "../variables";
+@import "../mixins";
+
+.objects-filter {
+  padding: $spacing-md;
+
+  &__count {
+    font-size: $font-size-title;
+    font-weight: $font-weight-semibold;
+    line-height: 120%;
+    margin-bottom: $spacing-xs;
+    text-align: left;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-xxxs; // Отступы между фильтрами
+    text-align: left;
+  }
+
+  &__tag {
+    background-color: $color-white;
+    color: $color-accent;
+    font-size: $font-size-tag;
+    font-weight: $font-weight-medium;
+    line-height: 117%;
+    border: 0.5px solid #dddde3;
+    border-radius: $border-radius-small;
+    padding: $spacing-xxs;
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-xxs;
+    cursor: pointer;
+    &:focus {
+      border-color: $color-primary; // Цвет рамки при фокусе
+    }
+
+    &::placeholder {
+      // Стили для placeholder
+      color: $color-grey;
+    }
+  }
+
+  &__tag-close {
+    width: 0.625rem; // 10px
+    height: 0.625rem; // 10px
+    cursor: pointer;
+
+    &:hover {
+      fill: darken($color-grey, 20%);
+    }
+  }
+}

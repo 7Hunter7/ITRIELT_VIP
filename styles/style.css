@@ -113,7 +113,7 @@
 .sort__label {
   position: absolute;
   top: 50%;
-  left: 0.25rem;
+  left: 0.375rem;
   color: #9596a7;
   transition: all 0.3s ease;
   pointer-events: none;
@@ -121,8 +121,8 @@
 }
 .select:focus + .sort__label, .select:valid + .sort__label {
   top: 0;
-  padding: 0 0.25rem;
-  left: 0.25rem;
+  padding: 0 0.375rem;
+  left: 0.375rem;
 }
 
 .select__icon {
@@ -280,6 +280,54 @@
 }
 .builder .active {
   border: 2px solid #6f77fe;
+}
+
+.objects-filter {
+  padding: 1rem;
+}
+.objects-filter__count {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 120%;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+.objects-filter__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  text-align: left;
+}
+.objects-filter__tag {
+  background-color: #fff;
+  color: #3c3d48;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 117%;
+  border: 0.5px solid #dddde3;
+  border-radius: 6px;
+  padding: 0.375rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  cursor: pointer;
+}
+.objects-filter__tag:focus {
+  border-color: #6f77fe;
+}
+.objects-filter__tag::-moz-placeholder {
+  color: #b7b8c3;
+}
+.objects-filter__tag::placeholder {
+  color: #b7b8c3;
+}
+.objects-filter__tag-close {
+  width: 0.625rem;
+  height: 0.625rem;
+  cursor: pointer;
+}
+.objects-filter__tag-close:hover {
+  fill: #7f8195;
 }
 
 * {
