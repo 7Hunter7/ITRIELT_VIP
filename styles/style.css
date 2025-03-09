@@ -294,7 +294,9 @@
 }
 .objects-filter__tags {
   display: flex;
-  flex-wrap: wrap;
+  flex-grow: 1; /* Текст занимает все доступное место */
+  overflow: hidden; /* Скрываем лишний текст */
+  white-space: nowrap; /* Запрещаем перенос строки */
   gap: 0.25rem;
   text-align: left;
 }
