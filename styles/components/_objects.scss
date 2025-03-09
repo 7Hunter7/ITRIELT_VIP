@@ -1,0 +1,157 @@
+@import "../variables";
+@import "../mixins";
+
+.objects {
+  // Общие стили для секции objects
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 колонка по умолчанию */
+    gap: $spacing-md;
+
+    @media (min-width: $breakpoint-sm) {
+      /* 744px */
+      grid-template-columns: repeat(2, 1fr); /* 2 колонки */
+    }
+
+    @media (min-width: $breakpoint-md) {
+      /* 1024px */
+      grid-template-columns: repeat(3, 1fr); /* 3 колонки */
+    }
+
+    @media (min-width: $breakpoint-xxxl) {
+      /* 2560px */
+      grid-template-columns: repeat(7, 1fr); /* 7 колонок */
+    }
+  }
+
+  &__card {
+    border-radius: 0.75rem; // 12px
+    padding: $spacing-xs $spacing-md $spacing-xl $spacing-md;
+    box-shadow: $box-shadow;
+    background-color: $color-white;
+    position: relative; // Для позиционирования кнопки "избранное"
+
+    &:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); // Усиление тени при наведении
+      transition: box-shadow 0.3s ease; // Плавный переход тени
+    }
+  }
+
+  &__card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: $spacing-sm;
+  }
+
+  &__card-info {
+    text-align: left;
+  }
+
+  &__card-square {
+    font-size: $font-size-item;
+    font-weight: $font-weight-medium;
+    color: $color-accent;
+  }
+
+  &__card-number {
+    font-size: $font-size-item;
+    color: $color-grey;
+  }
+
+  &__card-options {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0; // Убираем дефолтные отступы кнопки
+    margin: 0;
+    display: flex; //Чтобы svg центровался
+    align-items: center; //Чтобы svg центровался
+  }
+
+  &__card-image {
+    // Стили для изображения (заглушки)
+    img {
+      width: 100%;
+      display: block;
+      border-radius: $border-radius $border-radius 0 0; // Скругляем только верхние углы
+      object-fit: cover; //  Чтобы изображение не растягивалось
+      aspect-ratio: 1 / 1; // Сохраняем пропорции 1:1
+    }
+  }
+
+  &__card-content {
+    padding: $spacing-sm;
+    text-align: left;
+  }
+
+  &__card-price {
+    font-size: $font-size-subtitle;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    margin-bottom: $spacing-xxs;
+  }
+
+  &__card-price-per-meter {
+    font-size: $font-size-item;
+    color: $color-text-secondary;
+    margin-bottom: $spacing-md;
+  }
+
+  &__card-address {
+    font-size: $font-size-item;
+    color: $color-text-secondary;
+    margin-bottom: $spacing-md;
+    line-height: 1.3; // Улучшаем читаемость
+  }
+
+  &__card-developer {
+    position: relative;
+    img {
+      width: 50px;
+      height: auto;
+    }
+  }
+
+  &__card-favorite {
+    position: absolute;
+    bottom: $spacing-sm;
+    right: $spacing-sm;
+    transform: translate(-50%);
+    @include flex(row, center, center);
+    @include icon(3rem);
+    border-radius: $border-radius-circle;
+    background-color: $color-primary;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Небольшая тень
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: darken($color-primary, 5%); // Затемнение при наведении
+    }
+  }
+  &__card-pagination {
+    @include flex(row, center, center);
+    gap: $spacing-xxs;
+    margin-top: $spacing-sm;
+  }
+
+  &__card-pagination-dot {
+    @include icon(0.5rem);
+    border-radius: $border-radius-circle;
+    background-color: $color-grey;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &--active {
+      opacity: 1;
+      background-color: $color-primary;
+    }
+  }
+}
