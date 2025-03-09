@@ -13,8 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
     updateBatteryLevel(randomLevel);
   }, 60000); // Обновляем раз в минуту
 
-  // Функция, которая генерирует карточки объектов с минимальными вариациями
   const quantityObjects = 12; // Количество карточек
+
   const builderLogos = [
     "public/builders/AFI.svg",
     "public/builders/AGOY-PARK.svg",
@@ -42,27 +42,30 @@ document.addEventListener("DOMContentLoaded", () => {
     "public/objects/object_11.svg",
     "public/objects/object_12.svg",
   ];
+  let imageIndex = 0; // Индекс для перебора objectImages
 
   const generateRandomNumber = (min, max) =>
     Math.floor(Math.random() * (max - min + 1)) + min;
   const generateRandomPrice = () => generateRandomNumber(3000000, 15000000);
 
+  // Функция, которая генерирует карточки объектов с минимальными вариациями
   const cardData = Array.from({ length: quantityObjects }, (_, i) => {
     const rooms = generateRandomNumber(1, 4);
     const square = generateRandomNumber(40, 150);
     const number = `№ ${generateRandomNumber(1000, 9999)}`;
-    const pagination = generateRandomNumber(1, 5);
+    const pagination = i === 0 ? 0 : 3;
     const price = generateRandomPrice();
     const pricePerMeter = (price / square).toFixed(0); // Расчет стоимости за м²
     const floor = generateRandomNumber(1, 25);
     const totalFloors = generateRandomNumber(1, 25);
     const randomLogoIndex = generateRandomNumber(0, builderLogos.length - 1);
-    const randomImageIndex = generateRandomNumber(0, objectImages.length - 1);
+    const currentImage = objectImages[imageIndex]; // Изображения по порядку
+    imageIndex = (imageIndex + 1) % objectImages.length; // Циклический перебор
 
     return {
       square: `${rooms}-к, ${square.toFixed(2)} м²`,
       number: number,
-      image: objectImages[randomImageIndex],
+      image: currentImage,
       pagination: pagination,
       price: `${price.toLocaleString("ru-RU")} ₽`,
       pricePerMeter: `${pricePerMeter.toLocaleString("ru-RU")} ₽/м²`,
@@ -81,13 +84,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Функция генерации HTML
   function createCard(data) {
-    const paginationDots = Array.from(
-      { length: data.pagination },
-      (_, i) =>
-        `<span class="objects__card-pagination-dot ${
-          i === 0 ? "objects__card-pagination-dot--active" : ""
-        }"></span>`
-    ).join("");
+    const paginationHTML =
+      data.pagination > 0
+        ? Array.from(
+            { length: data.pagination },
+            (_, i) =>
+              `<span class="objects__card-pagination-dot ${
+                i === 0 ? "objects__card-pagination-dot--active" : ""
+              }"></span>`
+          ).join("")
+        : ""; // Условие для пагинации
 
     return `
       <div class="objects__card">
@@ -103,11 +109,14 @@ document.addEventListener("DOMContentLoaded", () => {
           </button>
         </div>
         <div class="objects__card-image">
-          <img src="${data.image}" alt="Планировка квартиры" onerror="this.onerror=null; this.src='/public/objects/placeholder.svg';">
-          <div class="objects__card-pagination">
-            ${paginationDots}
-          </div>
-        </div>
+          <img src="${
+            data.image
+          }" alt="Планировка квартиры" onerror="this.onerror=null; this.src='/public/objects/placeholder.svg';">
+          ${
+            data.pagination > 0
+              ? `<div class="objects__card-pagination">${paginationHTML}</div>`
+              : ""
+          }  </div>
         <div class="objects__card-content">
           <div class="objects__card-price">${data.price}</div>
           <div class="objects__card-price-per-meter">${data.pricePerMeter}</div>
