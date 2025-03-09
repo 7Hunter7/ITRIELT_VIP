@@ -70,10 +70,13 @@
   }
 
   &__card-image {
-    // Стили для изображения (заглушки)
+    place-items: center;
+
     img {
-      width: 100%;
       display: block;
+      width: auto;
+      height: 9.4375rem; // 151px
+      padding: $spacing-xs;
       border-radius: $border-radius $border-radius 0 0; // Скругляем только верхние углы
       object-fit: cover; //  Чтобы изображение не растягивалось
       aspect-ratio: 1 / 1; // Сохраняем пропорции 1:1

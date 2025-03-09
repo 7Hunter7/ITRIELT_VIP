@@ -393,9 +393,14 @@
   display: flex;
   align-items: center;
 }
+.objects__card-image {
+  place-items: center;
+}
 .objects__card-image img {
-  width: 100%;
   display: block;
+  width: auto;
+  height: 9.4375rem;
+  padding: 0.5rem;
   border-radius: 8px 8px 0 0;
   -o-object-fit: cover;
      object-fit: cover;
