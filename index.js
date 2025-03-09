@@ -1,65 +1,68 @@
-const batteryLevel = document.querySelector(".status-bar__battery-level");
+document.addEventListener("DOMContentLoaded", () => {
+  const batteryLevel = document.querySelector(".status-bar__battery-level");
 
-function updateBatteryLevel(level) {
-  batteryLevel.style.width = `${level}%`;
-  // Дополнительно можно менять цвет в зависимости от уровня (зеленый, желтый, красный)
-}
+  function updateBatteryLevel(level) {
+    batteryLevel.style.width = `${level}%`;
+    // Дополнительно можно менять цвет в зависимости от уровня (зеленый, желтый, красный)
+  }
 
-// Пример вызова функции (например, раз в минуту):
-updateBatteryLevel(50);
-setInterval(() => {
-  const randomLevel = Math.floor(Math.random() * 101); // Случайное значение от 0 до 100
-  updateBatteryLevel(randomLevel);
-}, 60000); // Обновляем раз в минуту
+  // Пример вызова функции (например, раз в минуту):
+  updateBatteryLevel(50);
+  setInterval(() => {
+    const randomLevel = Math.floor(Math.random() * 101); // Случайное значение от 0 до 100
+    updateBatteryLevel(randomLevel);
+  }, 60000); // Обновляем раз в минуту
 
-// Функция генерирует карточки (12+12+12) с минимальными вариациями
-const generateRandomNumber = (min, max) =>
-  Math.floor(Math.random() * (max - min + 1)) + min;
+  // Функция генерирует карточки объектов с минимальными вариациями
+  const quantityObjects = 12; // Количество карточек
 
-const generateRandomPrice = () =>
-  generateRandomNumber(3000000, 15000000).toLocaleString("ru-RU");
+  const generateRandomNumber = (min, max) =>
+    Math.floor(Math.random() * (max - min + 1)) + min;
 
-const cardData = Array.from({ length: 36 }, (_, i) => {
-  const rooms = generateRandomNumber(1, 4);
-  const square = generateRandomNumber(40, 150).toFixed(2);
-  const number = `№ ${generateRandomNumber(1000, 9999)}`;
-  const pagination = generateRandomNumber(1, 5);
-  const price = generateRandomPrice();
-  const pricePerMeter = generateRandomNumber(100000, 500000).toLocaleString(
-    "ru-RU"
-  );
-  const floor = generateRandomNumber(1, 25);
-  const totalFloors = generateRandomNumber(1, 25);
+  const generateRandomPrice = () =>
+    generateRandomNumber(3000000, 15000000).toLocaleString("ru-RU");
 
-  return {
-    square: `${rooms}-к, ${square} м²`,
-    number: number,
-    image: `/path/to/image${i + 1}.jpg`, // Замените на реальные пути к изображениям
-    pagination: pagination,
-    price: `${price} ₽`,
-    pricePerMeter: `${pricePerMeter} ₽/м²`,
-    address: `Краснодар · ЖК «ITRIELT» · Литер ${generateRandomNumber(
-      1,
-      5
-    )} · Подъезд ${generateRandomNumber(
-      1,
-      4
-    )} · Этаж ${floor} из ${totalFloors} · Жилая площадь ${square} м²`,
-    developerLogo: `//public/builders/${generateRandomNumber(1, 3)}.png`, // Замените на реальные пути к изображениям логотипов
-  };
-});
+  const cardData = Array.from({ length: quantityObjects }, (_, i) => {
+    const rooms = generateRandomNumber(1, 4);
+    const square = generateRandomNumber(40, 150); // Площадь без toFixed, чтобы использовать в расчетах
+    const number = `№ ${generateRandomNumber(1000, 9999)}`;
+    const pagination = generateRandomNumber(1, 5);
+    const price = generateRandomPrice();
+    const pricePerMeter = (price / square).toFixed(0); // Расчет стоимости за м²
+    const floor = generateRandomNumber(1, 25);
+    const totalFloors = generateRandomNumber(1, 25);
 
-// Функция генерации HTML
-function createCard(data) {
-  const paginationDots = Array.from(
-    { length: data.pagination },
-    (_, i) =>
-      `<span class="objects__card-pagination-dot ${
-        i === 0 ? "objects__card-pagination-dot--active" : ""
-      }"></span>`
-  ).join("");
+    return {
+      square: `${rooms}-к, ${square.toFixed(2)} м²`,
+      number: number,
+      image: `/path/to/image${i + 1}.jpg`,
+      pagination: pagination,
+      price: `${price.toLocaleString("ru-RU")} ₽`,
+      pricePerMeter: `${pricePerMeter.toLocaleString("ru-RU")} ₽/м²`,
+      address: `Краснодар · ЖК «ITRIELT» · Литер ${generateRandomNumber(
+        1,
+        5
+      )} · Подъезд ${generateRandomNumber(
+        1,
+        4
+      )} · Этаж ${floor} из ${totalFloors} · Жилая площадь ${square.toFixed(
+        2
+      )} м²`,
+      developerLogo: `/path/to/logo${generateRandomNumber(1, 3)}.png`,
+    };
+  });
 
-  return `
+  // Функция генерации HTML
+  function createCard(data) {
+    const paginationDots = Array.from(
+      { length: data.pagination },
+      (_, i) =>
+        `<span class="objects__card-pagination-dot ${
+          i === 0 ? "objects__card-pagination-dot--active" : ""
+        }"></span>`
+    ).join("");
+
+    return `
     <div class="objects__card">
       <div class="objects__card-header">
         <div class="objects__card-info">
@@ -93,14 +96,13 @@ function createCard(data) {
       </button>
     </div>
   `;
-}
+  }
 
-const objectsGrid = document.querySelector(".objects__grid");
-const cardsHTML = cardData.map(createCard).join("");
-objectsGrid.innerHTML = cardsHTML;
+  const objectsGrid = document.querySelector(".objects__grid");
+  const cardsHTML = cardData.map(createCard).join("");
+  objectsGrid.innerHTML = cardsHTML;
 
-// Обработчики событий для options и favorite
-document.addEventListener("DOMContentLoaded", () => {
+  // Обработчики событий для options и favorite
   const cards = document.querySelectorAll(".objects__card");
   cards.forEach((card) => {
     card
