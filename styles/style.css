@@ -2,36 +2,45 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
 .status-bar {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
+  gap: 0;
   padding: 1.25rem 2rem;
 }
 .status-bar__time {
   margin-left: 1.25rem;
   font-size: 1.25rem;
+  font-weight: 600;
   color: #3c3d48;
 }
 .status-bar__icons {
   display: flex;
   align-items: center;
+  gap: 0.3125rem;
 }
 .status-bar__signal, .status-bar__wifi, .status-bar__battery {
-  width: 100%;
+  width: auto;
   height: 0.8125rem;
-  margin-right: 0.3125;
 }
 .status-bar__battery {
+  width: 1.8125rem;
+  height: 0.8125rem;
   background-image: url("/public/icons/battery.svg");
   background-repeat: no-repeat;
+  background-size: contain;
   position: relative;
+  overflow: hidden;
 }
 .status-bar__battery-level {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
+  padding: 2.3px 4.5px 2.3px 2.1px;
   background-color: #3c3d48; /* цвета заряда */
-  border-radius: 1px; /* Чтобы не вылезал за рамки */
+  border-radius: 2px; /* Чтобы не вылезал за рамки */
   transition: width 0.3s ease; /* Плавное изменение уровня */
 }
 

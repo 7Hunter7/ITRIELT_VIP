@@ -6,6 +6,7 @@ function updateBatteryLevel(level) {
 }
 
 // Пример вызова функции (например, раз в минуту):
+updateBatteryLevel(50);
 setInterval(() => {
   const randomLevel = Math.floor(Math.random() * 101); // Случайное значение от 0 до 100
   updateBatteryLevel(randomLevel);

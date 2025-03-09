@@ -1,32 +1,37 @@
+@import "../mixins";
+
 .status-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flex(row, space-between, center);
   padding: 1.25rem 2rem;
 
   &__time {
     margin-left: 1.25rem;
     font-size: $font-size-title;
+    font-weight: $font-weight-semibold;
     color: $color-accent;
   }
 
   &__icons {
     display: flex;
     align-items: center;
+    gap: 0.3125rem; // 5px
   }
 
   &__signal,
   &__wifi,
   &__battery {
-    width: 100%;
+    width: auto; // позволяет им сохранять свои пропорции
     height: 0.8125rem; // 13px
-    margin-right: 0.3125; // 5px
   }
 
   &__battery {
+    width: 1.8125rem; // 29px
+    height: 0.8125rem; // 13px
     background-image: url("/public/icons/battery.svg");
     background-repeat: no-repeat;
+    background-size: contain;
     position: relative;
+    overflow: hidden;
   }
 
   &__battery-level {
@@ -34,8 +39,9 @@
     top: 0;
     left: 0;
     height: 100%;
+    padding: 2.3px 4.5px 2.3px 2.1px;
     background-color: $color-accent; /* цвета заряда */
-    border-radius: 1px; /* Чтобы не вылезал за рамки */
+    border-radius: 2px; /* Чтобы не вылезал за рамки */
     transition: width 0.3s ease; /* Плавное изменение уровня */
   }
 }
