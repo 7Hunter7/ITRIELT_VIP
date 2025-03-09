@@ -18,13 +18,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const generateRandomNumber = (min, max) =>
     Math.floor(Math.random() * (max - min + 1)) + min;
-
-  const generateRandomPrice = () =>
-    generateRandomNumber(3000000, 15000000).toLocaleString("ru-RU");
+  const generateRandomPrice = () => generateRandomNumber(3000000, 15000000);
 
   const cardData = Array.from({ length: quantityObjects }, (_, i) => {
     const rooms = generateRandomNumber(1, 4);
-    const square = generateRandomNumber(40, 150); // Площадь без toFixed, чтобы использовать в расчетах
+    const square = generateRandomNumber(40, 150);
     const number = `№ ${generateRandomNumber(1000, 9999)}`;
     const pagination = generateRandomNumber(1, 5);
     const price = generateRandomPrice();
