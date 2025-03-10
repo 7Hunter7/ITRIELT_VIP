@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateBatteryLevel(randomLevel);
   }, 60000); // Обновляем раз в минуту
 
+  /*
   const quantityObjects = 12; // Количество карточек
 
   const builderLogos = [
@@ -149,6 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const objectsGrid = document.querySelector(".objects__grid");
   const cardsHTML = cardData.map(createCard).join("");
   objectsGrid.innerHTML = cardsHTML;
+*/
 
   // Обработчики событий для options и favorite
   const cards = document.querySelectorAll(".objects__card");
@@ -166,13 +168,35 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  cards.forEach((card) => {
-    card
-      .querySelector(".objects__card-options")
-      .addEventListener("click", () => {
-        // Здесь логика для Action Sheet
-        alert("Action Sheet!");
+  // Логика для отображения и скрытия Action Sheet
+  const cardWrappers = document.querySelectorAll(".objects__card-wrapper");
+  console.log(cardWrappers);
+  const actionSheets = document.querySelectorAll(".action-sheet");
+  console.log(actionSheets);
+
+  cardWrappers.forEach((cardWrapper, index) => {
+    const optionsButton = cardWrapper.querySelector(".objects__card-options");
+    console.log(optionsButton);
+    const actionSheet = cardWrapper.querySelector(".action-sheet");
+    const cancelButton = actionSheet.querySelector(".action-sheet__cancel");
+
+    optionsButton.addEventListener("click", (event) => {
+      event.stopPropagation(); // Предотвращаем всплытие события
+      actionSheet.classList.add("action-sheet--active");
+    });
+
+    cancelButton.addEventListener("click", () => {
+      actionSheet.classList.remove("action-sheet--active");
+    });
+
+    cardWrapper.addEventListener("click", () => {
+      actionSheets.forEach((sheet) => {
+        sheet.classList.remove("action-sheet--active");
       });
+    });
+  });
+
+  cards.forEach((card) => {
     card
       .querySelector(".objects__card-favorite")
       .addEventListener("click", () => {
