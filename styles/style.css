@@ -435,6 +435,7 @@
   height: auto;
 }
 .objects__card-favorite {
+  display: none;
   position: absolute;
   bottom: 0.75rem;
   right: 0.75rem;
@@ -456,9 +457,6 @@
 }
 .objects__card-favorite:hover {
   background-color: #565ffe;
-}
-.objects__card-favorite--active {
-  fill: #6f77fe;
 }
 .objects__card-favorite .objects__card-favorite svg {
   width: 3rem;

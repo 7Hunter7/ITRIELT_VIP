@@ -16,33 +16,36 @@ document.addEventListener("DOMContentLoaded", () => {
   const quantityObjects = 12; // Количество карточек
 
   const builderLogos = [
-    "public/builders/AFI.svg",
-    "public/builders/AGOY-PARK.svg",
-    "public/builders/Ambassadori_Island.svg",
-    "public/builders/ASI_Group.svg",
-    "public/builders/AVA.svg",
-    "public/builders/CONTINENT.svg",
-    "public/builders/FAMILY.svg",
-    "public/builders/FLAGMAN.svg",
-    "public/builders/REALLY.svg",
-    "public/builders/Yug-Engineering.svg",
+    "public/builders/builder_logos/logo_1.svg",
+    "public/builders/builder_logos/logo_2.svg",
+    "public/builders/builder_logos/logo_3.svg",
+    "public/builders/builder_logos/logo_4.svg",
+    "public/builders/builder_logos/logo_5.svg",
+    "public/builders/builder_logos/logo_6.svg",
+    "public/builders/builder_logos/logo_7.svg",
+    "public/builders/builder_logos/logo_8.svg",
+    "public/builders/builder_logos/logo_9.svg",
+    "public/builders/builder_logos/logo_10.svg",
+    "public/builders/builder_logos/logo_11.svg",
+    "public/builders/builder_logos/logo_12.svg",
   ];
+  let logoIndex = 0; // Индекс для перебора builderLogos
 
-  const objectImages = [
-    "public/objects/object_1.svg",
-    "public/objects/object_2.svg",
-    "public/objects/object_3.svg",
-    "public/objects/object_4.svg",
-    "public/objects/object_5.svg",
-    "public/objects/object_6.svg",
-    "public/objects/object_7.svg",
-    "public/objects/object_8.svg",
-    "public/objects/object_9.svg",
-    "public/objects/object_10.svg",
-    "public/objects/object_11.svg",
-    "public/objects/object_12.svg",
+  const objectPlans = [
+    "public/objects/object_plans/plan_1.svg",
+    "public/objects/object_plans/plan_2.svg",
+    "public/objects/object_plans/plan_3.svg",
+    "public/objects/object_plans/plan_4.svg",
+    "public/objects/object_plans/plan_5.svg",
+    "public/objects/object_plans/plan_6.svg",
+    "public/objects/object_plans/plan_7.svg",
+    "public/objects/object_plans/plan_8.svg",
+    "public/objects/object_plans/plan_9.svg",
+    "public/objects/object_plans/plan_10.svg",
+    "public/objects/object_plans/plan_11.svg",
+    "public/objects/object_plans/plan_12.svg",
   ];
-  let imageIndex = 0; // Индекс для перебора objectImages
+  let planIndex = 0;
 
   const generateRandomNumber = (min, max) =>
     Math.floor(Math.random() * (max - min + 1)) + min;
@@ -58,15 +61,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const pricePerMeter = (price / square).toFixed(0); // Расчет стоимости за м²
     const floor = generateRandomNumber(1, 25);
     const totalFloors = generateRandomNumber(1, 25);
-    const randomLogoIndex = generateRandomNumber(0, builderLogos.length - 1);
-    const currentImage = objectImages[imageIndex]; // Изображения по порядку
-    imageIndex = (imageIndex + 1) % objectImages.length; // Циклический перебор
+    const currentLogo = builderLogos[logoIndex]; // Изображения по порядку
+    logoIndex = (logoIndex + 1) % builderLogos.length; // Циклический перебор
+    const currentPlan = objectPlans[planIndex];
+    planIndex = (planIndex + 1) % objectPlans.length;
 
     return {
       isFavorite: false,
       square: `${rooms}-к, ${square.toFixed(2)} м²`,
       number: number,
-      image: currentImage,
+      plan: currentPlan,
       pagination: pagination,
       price: `${price.toLocaleString("ru-RU")} ₽`,
       pricePerMeter: `${pricePerMeter.toLocaleString("ru-RU")} ₽/м²`,
@@ -79,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
       )} · Этаж ${floor} из ${totalFloors} · Жилая площадь ${square.toFixed(
         2
       )} м²`,
-      developerLogo: builderLogos[randomLogoIndex],
+      developerLogo: currentLogo,
     };
   });
 
@@ -91,18 +95,17 @@ document.addEventListener("DOMContentLoaded", () => {
             { length: data.pagination },
             (_, i) =>
               `<span class="objects__card-pagination-dot ${
-                i === 0 ? "objects__card-pagination-dot--active" : ""
+                i === 0 ? "active" : ""
               }"></span>`
           ).join("")
         : ""; // Условие для пагинации
 
     const favoriteIcon = `
-        <div class="objects__card-favorite ${
-          data.isFavorite ? "objects__card-favorite--active" : ""
+        <div class="objects__card-favorite style.display=${
+          data.isFavorite ? "block" : "none"
         }" >
-          <svg width="24" height="25" viewBox="0 0 24 25" fill="${
-            data.isFavorite ? "red" : "white"
-          }" xmlns="http://www.w3.org/2000/svg">
+          <svg width="24" height="25" viewBox="0 0 24 25" fill="#6f77fe"
+            xmlns="http://www.w3.org/2000/svg">
             <path d="M10.55 18.6456L15.725 12.4456H11.725L12.45 6.77064L7.82497 13.4456H11.3L10.55 18.6456ZM8.99997 15.4456H5.89997C5.49997 15.4456 5.20414 15.2665 5.01247 14.9081C4.8208 14.5498 4.84164 14.204 5.07497 13.8706L12.55 3.12064C12.7166 2.88731 12.9333 2.72481 13.2 2.63314C13.4666 2.54148 13.7416 2.54564 14.025 2.64564C14.3083 2.74564 14.5166 2.92064 14.65 3.17064C14.7833 3.42064 14.8333 3.68731 14.8 3.97064L14 10.4456H17.875C18.3083 10.4456 18.6125 10.6373 18.7875 11.0206C18.9625 11.404 18.9083 11.7623 18.625 12.0956L10.4 21.9456C10.2166 22.1623 9.99164 22.304 9.72497 22.3706C9.4583 22.4373 9.19997 22.4123 8.94997 22.2956C8.69997 22.179 8.50414 21.9998 8.36247 21.7581C8.2208 21.5165 8.16664 21.254 8.19997 20.9706L8.99997 15.4456Z"/>
           </svg>
         </div>
@@ -123,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
         <div class="objects__card-image">
           <img src="${
-            data.image
+            data.plan
           }" alt="Планировка квартиры" onerror="this.onerror=null; this.src='/public/objects/placeholder.svg';">
           ${
             data.pagination > 0
