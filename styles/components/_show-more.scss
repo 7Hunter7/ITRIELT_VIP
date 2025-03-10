@@ -3,6 +3,7 @@
 
 .show-more {
   padding: $spacing-md;
+  padding-bottom: 6.5rem;
   @include flex(row, center, center);
 
   &__button {

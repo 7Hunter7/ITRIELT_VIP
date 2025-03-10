@@ -2,35 +2,102 @@
 @import "../mixins";
 
 .header {
-  @include flex(row, space-between, center);
+  display: flex;
+  flex-direction: column;
 
-  &__filter-button {
-    @include flex(row, center, center, 2px);
-    border: none;
-    background: none;
-
-    .button {
-      &__icon {
-        @include icon();
-      }
-      &__indicator {
-        @include icon();
-        border-radius: $border-radius-circle;
-        background-color: $color-primary;
-      }
-      &__indicator-value {
-        padding: 3px 2px;
-        text-align: center;
-        font-weight: $font-weight-medium;
-        font-size: $font-size-tag;
-        line-height: 117%;
-        color: $color-white;
-      }
+  &__top {
+    @include flex(row, space-between, center, 0);
+    padding: $spacing-sm 0;
+    &__title {
+      font-weight: $font-weight-semibold;
+      font-size: $font-size-subtitle;
+    }
+    &__filter-button {
+      padding: $spacing-xs $spacing-sm;
+      @include flex(row, center, center, 2px);
+      flex-wrap: nowrap;
+      border: none;
+      background: none;
+    }
+    &_icon {
+      @include icon();
+    }
+    &_indicator {
+      @include icon();
+      border-radius: $border-radius-circle;
+      background-color: $color-primary;
+    }
+    &_indicator-value {
+      padding: 3px 2px;
+      text-align: center;
+      font-weight: $font-weight-medium;
+      font-size: $font-size-tag;
+      line-height: 117%;
+      color: $color-white;
     }
   }
 
-  &__title {
-    font-weight: $font-weight-semibold;
-    font-size: $font-size-subtitle;
+  &__sort {
+    @include flex(row, center, center);
+    flex-wrap: nowrap;
+    width: 100%;
+    position: relative; // Для позиционирования select__icon и select__chevron
+
+    &_label {
+      position: absolute;
+      top: 50%;
+      left: $spacing-xxs;
+      color: $color-secondary;
+      transition: all 0.3s ease;
+      pointer-events: none;
+      transform: translateY(-50%);
+    }
+    &:focus + &,
+    &:valid + & {
+      top: 0;
+      padding: 0 $spacing-xxs;
+      left: $spacing-xxs;
+    }
+
+    &_select {
+      margin: $spacing-xxs 0;
+      appearance: none; /* Убираем стандартные стили select */
+      -webkit-appearance: none; /* Для Safari */
+      -moz-appearance: none; /* Для Firefox */
+
+      width: 100%;
+      padding: $spacing-xs $spacing-xxxl;
+      border: 0.5px solid #dddde3;
+      border-radius: $border-radius;
+      background-color: $color-white;
+      color: $color-text-primary;
+      cursor: pointer;
+      &:focus {
+        outline: none; /* Убираем рамку при фокусе */
+        border-color: $color-primary; /* Меняем цвет границы при фокусе */
+      }
+    }
+
+    &_icon {
+      position: absolute;
+      top: 50%;
+      left: $spacing-xs;
+      transform: translateY(-50%);
+      pointer-events: none; /* Чтобы иконка не мешала кликам */
+      img {
+        @include icon();
+      }
+    }
+
+    &_chevron {
+      position: absolute;
+      top: 50%;
+      right: $spacing-sm;
+      transform: translateY(-50%);
+      pointer-events: none; /* Чтобы иконка не мешала кликам */
+      img {
+        @include icon();
+      }
+    }
   }
 }

@@ -28,36 +28,42 @@
       </div>
     </div>
 
-    <header class="container header">
-      <h1 class="header__title">Каталог объектов</h1>
-      <button class="button header__filter-button">
-        <img class="button__icon" src="/public/icons/filtr.svg" alt="Фильтр" />
-        <div class="button__indicator">
-          <p class="button__indicator-value">4</p>
-        </div>
-      </button>
-    </header>
+    <header class="header container">
+      <div class="header__top">
+        <h1 class="header__top__title">Каталог объектов</h1>
+        <button class="header__top__filter-button">
+          <img
+            class="header__top_icon"
+            src="/public/icons/filtr.svg"
+            alt="Фильтр"
+          />
+          <div class="header__top_indicator">
+            <p class="header__top_indicator-value">4</p>
+          </div>
+        </button>
+      </div>
 
-    <div class="container sort">
-      <label for="sort-select" class="sort__label">
+      <div class="header__sort">
+        <label for="sort-select" class="header__sort_label">
+          <img
+            class="header__sort_icon"
+            src="/public/icons/sort.svg"
+            alt="Сортировка"
+          />
+        </label>
+        <select class="header__sort_select" id="sort-select">
+          <option value="price-asc">Сначала дешевле</option>
+          <option value="price-desc">Сначала дороже</option>
+          <option value="area-desc" selected>Сначала с большей площадью</option>
+          <option value="area-asc">Сначала с меньшей площадью</option>
+        </select>
         <img
-          class="select__icon"
-          src="/public/icons/sort.svg"
-          alt="Сортировка"
+          class="header__sort_chevron"
+          src="/public/icons/sort_vector.svg"
+          alt="Развернуть"
         />
-      </label>
-      <select class="select" id="sort-select">
-        <option value="price-asc">Сначала дешевле</option>
-        <option value="price-desc">Сначала дороже</option>
-        <option value="area-desc" selected>Сначала с большей площадью</option>
-        <option value="area-asc">Сначала с меньшей площадью</option>
-      </select>
-      <img
-        class="select__chevron"
-        src="/public/icons/sort_vector.svg"
-        alt="Развернуть"
-      />
-    </div>
+      </div>
+    </header>
 
     <form class="container search">
       <legend class="search__title">Проверка уникальности</legend>
