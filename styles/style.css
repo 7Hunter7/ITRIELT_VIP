@@ -235,53 +235,59 @@
 }
 
 .builder {
-  margin-top: 1.25rem;
-  margin-bottom: 1.25rem;
+  margin-top: 1.5rem;
 }
 .builder__title {
-  font-family: "Inter", sans-serif;
-  font-size: 1.25rem;
+  padding: 0 0.75rem;
+  text-align: left;
   font-weight: 600;
+  font-size: 1.0625rem;
   color: #1e1e24;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
 }
 .builder__statuses {
-  list-style: none;
-  padding: 0;
+  padding: 0 0.75rem;
   margin: 0 0 1rem 0;
+  list-style: none;
   display: flex;
   flex-wrap: wrap; /* Чтобы элементы переносились на новую строку */
 }
 .builder__status {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: flex-start;
+  gap: 0.375rem;
+  font-weight: 500;
+  font-size: 0.75rem;
+  line-height: 117%;
   margin-right: 1rem;
-  margin-bottom: 0.5rem;
-  font-family: "Inter", sans-serif;
-  font-size: 0.875rem;
-  font-weight: 400;
-  color: #777777;
+  margin-bottom: 0.75rem;
 }
 .builder__status-icon {
-  width: 1rem;
-  height: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
   border-radius: 50%;
-  margin-right: 0.5rem;
+  box-sizing: border-box;
+  cursor: pointer;
   display: inline-block; /* Чтобы можно было задавать размеры */
 }
-.builder__status-icon--selected {
+.builder__status-icon svg--selected {
   border: 2px solid #6f77fe; /* Цвет для "Выбрано" */
 }
-.builder__status-icon--available {
-  background-color: #25a25f; /* Цвет для "Доступно" */
+.builder__status-icon svg--available {
+  fill: #25a25f; /* Цвет для "Доступно" */
 }
-.builder__status-icon--not-unique {
-  background-color: #f25a50; /* Цвет для "Не уникальный клиент" */
+.builder__status-icon svg--not-unique {
+  fill: #f25a50; /* Цвет для "Не уникальный клиент" */
 }
-.builder__status-icon--no-objects {
-  background-color: #b7b8c3; /* Цвет для "Нет объектов" */
+.builder__status-icon svg--no-objects {
+  fill: #b7b8c3; /* Цвет для "Нет объектов" */
 }
 .builder__container {
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -293,13 +299,19 @@
   display: block; /* Чтобы ссылка занимала всю площадь логотипа */
 }
 .builder__logo {
-  height: 1.25rem;
-  max-width: 5.625rem;
+  max-height: 3rem;
+  min-width: 5.625rem;
   padding: 0.75rem;
   -o-object-fit: contain;
      object-fit: contain;
   background-color: #fff;
+  box-sizing: border-box;
   border-radius: 8px;
+  border: 2px solid #fff;
+}
+.builder__logo svg {
+  height: 1.5rem;
+  width: auto;
 }
 .builder .active {
   border: 2px solid #6f77fe;
