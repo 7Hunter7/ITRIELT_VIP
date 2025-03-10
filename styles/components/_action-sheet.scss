@@ -1,14 +1,16 @@
 @import "../variables";
 @import "../mixins";
+@import "./status-bar";
 
 .action-sheet {
   position: fixed;
   right: 0;
   bottom: 0;
   width: 100%;
-  background-color: rgba(23, 23, 28, 0.4); /* Фон */
+  height: 100%;
+  background-color: rgba(23, 23, 28, 0.6); /* Фон */
   z-index: 10;
-  @include flex(column, center, center);
+  @include flex(column, flex-end, center);
   visibility: hidden; // Скрываем Action Sheet по умолчанию
   opacity: 0;
   transition: visibility 0s linear 0.3s, opacity 0.3s; // Задержка скрытия
@@ -32,20 +34,23 @@
   &__item {
     @include flex(row, flex-start, center, $spacing-md);
     padding: 0.875rem $spacing-md;
-    text-align: left;
     border: none;
     background-color: transparent;
-    font-weight: 500;
-    font-size: $font-size-bas;
+    font-weight: $font-weight-medium;
+    font-size: $font-size-base;
     line-height: 125%;
     font-size: $font-size-item;
     color: $color-text-primary;
     cursor: pointer;
-
     &:hover {
       color: $color-primary;
     }
-    & > svg :hover {
+
+    svg {
+      fill: $color-primary; // Цвет иконки
+    }
+
+    & svg :hover {
       fill: $color-primary;
     }
   }

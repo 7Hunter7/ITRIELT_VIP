@@ -2,6 +2,7 @@
 @import "../mixins";
 
 .status-bar {
+  z-index: 11;
   @include flex(row, space-between, center);
   padding: 1.25rem 2rem;
 
@@ -37,12 +38,69 @@
 
   &__battery-level {
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    padding: 2.3px 4.5px 2.3px 2.1px;
+    overflow: hidden;
+    bottom: 1px;
+    left: 1px;
+    height: 90%;
+    width: 90%;
+    margin: 2.3px 4.5px 2.3px 2.1px;
     background-color: $color-accent; /* цвета заряда */
     border-radius: 2px; /* Чтобы не вылезал за рамки */
     transition: width 0.3s ease; /* Плавное изменение уровня */
+  }
+}
+
+// Изменения для status-bar
+.status-bar {
+  &__time,
+  &__signal,
+  &__wifi,
+  &__battery {
+    color: initial; /* Возвращаем к исходному цвету */
+  }
+
+  &__signal,
+  &__wifi {
+    img svg {
+      fill: initial;
+    }
+  }
+
+  &__battery {
+    img svg {
+      color: initial;
+    }
+  }
+
+  &__battery-level {
+    background-color: initial;
+  }
+}
+
+.action-sheet--active {
+  .status-bar {
+    &__time,
+    &__signal,
+    &__wifi,
+    &__battery {
+      color: $color-white; /* Меняем цвет на белый */
+    }
+
+    &__signal,
+    &__wifi {
+      img svg {
+        fill: $color-white;
+      }
+    }
+
+    &__battery {
+      img {
+        color: $color-white;
+      }
+    }
+
+    &__battery-level {
+      background-color: $color-white;
+    }
   }
 }
