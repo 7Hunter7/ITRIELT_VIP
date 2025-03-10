@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
     updateBatteryLevel(randomLevel);
   }, 60000); // Обновляем раз в минуту
 
-  /*
   const quantityObjects = 12; // Количество карточек
 
   const builderLogos = [
@@ -150,7 +149,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const objectsGrid = document.querySelector(".objects__grid");
   const cardsHTML = cardData.map(createCard).join("");
   objectsGrid.innerHTML = cardsHTML;
-*/
 
   // Обработчики событий для options и favorite
   const cards = document.querySelectorAll(".objects__card");
