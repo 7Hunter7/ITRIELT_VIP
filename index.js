@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="objects__card-favorite style.display=${
           data.isFavorite ? "block" : "none"
         }" >
-          <svg width="24" height="25" viewBox="0 0 24 25" fill="#6f77fe"
+          <svg width="24" height="25" viewBox="0 0 24 25" fill="white"
             xmlns="http://www.w3.org/2000/svg">
             <path d="M10.55 18.6456L15.725 12.4456H11.725L12.45 6.77064L7.82497 13.4456H11.3L10.55 18.6456ZM8.99997 15.4456H5.89997C5.49997 15.4456 5.20414 15.2665 5.01247 14.9081C4.8208 14.5498 4.84164 14.204 5.07497 13.8706L12.55 3.12064C12.7166 2.88731 12.9333 2.72481 13.2 2.63314C13.4666 2.54148 13.7416 2.54564 14.025 2.64564C14.3083 2.74564 14.5166 2.92064 14.65 3.17064C14.7833 3.42064 14.8333 3.68731 14.8 3.97064L14 10.4456H17.875C18.3083 10.4456 18.6125 10.6373 18.7875 11.0206C18.9625 11.404 18.9083 11.7623 18.625 12.0956L10.4 21.9456C10.2166 22.1623 9.99164 22.304 9.72497 22.3706C9.4583 22.4373 9.19997 22.4123 8.94997 22.2956C8.69997 22.179 8.50414 21.9998 8.36247 21.7581C8.2208 21.5165 8.16664 21.254 8.19997 20.9706L8.99997 15.4456Z"/>
           </svg>
@@ -156,13 +156,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // Обработчик событий для isFavorite
   cards.forEach((card, index) => {
     const favoriteElement = card.querySelector(".objects__card-favorite");
-    favoriteElement.addEventListener("click", () => {
+    card.addEventListener("click", () => {
       cardData[index].isFavorite = !cardData[index].isFavorite;
       favoriteElement.classList.toggle("objects__card-favorite--active");
       favoriteElement.querySelector("svg").style.fill = cardData[index]
         .isFavorite
-        ? "#6f77fe"
-        : "white";
+        ? "true"
+        : "false";
     });
   });
 
