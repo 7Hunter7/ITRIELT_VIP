@@ -62,6 +62,7 @@
     @include icon(3rem); // 48px
     @include flex(row, center, center);
     border: none;
+    background: none;
     cursor: pointer;
   }
 
