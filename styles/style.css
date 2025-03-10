@@ -1,6 +1,11 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
 .status-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
   z-index: 11;
   display: flex;
   flex-direction: row;
@@ -524,6 +529,11 @@
 }
 
 .status-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
   z-index: 11;
   display: flex;
   flex-direction: row;

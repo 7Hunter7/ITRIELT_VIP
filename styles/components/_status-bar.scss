@@ -2,6 +2,12 @@
 @import "../mixins";
 
 .status-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: $color-white;
+
   z-index: 11;
   @include flex(row, space-between, center);
   padding: 1.25rem 2rem;
