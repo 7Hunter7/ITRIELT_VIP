@@ -45,8 +45,7 @@
   }
 
   &__tag-close {
-    width: 0.625rem; // 10px
-    height: 0.625rem; // 10px
+    @include icon(0.625rem); // 10*10px
     cursor: pointer;
 
     &:hover {

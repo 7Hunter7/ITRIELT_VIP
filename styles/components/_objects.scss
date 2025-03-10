@@ -26,22 +26,21 @@
 
   &__card {
     border-radius: 0.75rem; // 12px
-    padding: $spacing-xs $spacing-md $spacing-xl $spacing-md;
-    box-shadow: $box-shadow;
+    padding: $spacing-xs $spacing-md $spacing-sm $spacing-md;
     background-color: $color-white;
+    box-shadow: 0 0 8px 0 rgba(30, 30, 36, 0.1);
     position: relative; // Для позиционирования кнопки "избранное"
 
     &:hover {
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); // Усиление тени при наведении
+      box-shadow: 0 8px 16px 0 rgba(23, 23, 28, 0.05); // Усиление тени при наведении
       transition: box-shadow 0.3s ease; // Плавный переход тени
     }
   }
 
   &__card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: $spacing-sm;
+    @include flex(row, space-between, flex-start);
+    margin-top: $spacing-sm;
+    margin-left: $spacing-md;
   }
 
   &__card-info {
@@ -49,24 +48,21 @@
   }
 
   &__card-square {
-    font-size: $font-size-item;
-    font-weight: $font-weight-medium;
-    color: $color-accent;
+    font-weight: $font-weight-semibold;
+    font-size: $font-size-title;
+    line-height: 120%;
   }
 
   &__card-number {
-    font-size: $font-size-item;
-    color: $color-grey;
+    margin-top: $spacing-xxxs;
+    color: $color-secondary;
   }
 
   &__card-options {
-    background: none;
+    @include icon(3rem); // 48px
+    @include flex(row, center, center);
     border: none;
     cursor: pointer;
-    padding: 0; // Убираем дефолтные отступы кнопки
-    margin: 0;
-    display: flex; //Чтобы svg центровался
-    align-items: center; //Чтобы svg центровался
   }
 
   &__card-image {
@@ -84,64 +80,51 @@
   }
 
   &__card-content {
-    padding: $spacing-sm;
+    padding: $spacing-xl $spacing-md $spacing-sm $spacing-md;
     text-align: left;
   }
 
   &__card-price {
-    font-size: $font-size-subtitle;
     font-weight: $font-weight-semibold;
-    color: $color-text-primary;
-    margin-bottom: $spacing-xxs;
+    font-size: $font-size-largetitle;
+    line-height: 117%;
   }
 
   &__card-price-per-meter {
-    font-size: $font-size-item;
-    color: $color-text-secondary;
-    margin-bottom: $spacing-md;
+    margin-top: $spacing-xxxs;
+    color: $color-secondary;
   }
 
   &__card-address {
-    font-size: $font-size-item;
-    color: $color-text-secondary;
-    margin-bottom: $spacing-md;
-    line-height: 1.3; // Улучшаем читаемость
+    margin-top: $spacing-sm;
+    color: $color-text-primary;
   }
 
   &__card-developer {
-    position: relative;
+    margin-top: $spacing-lg;
     img {
-      width: 50px;
-      height: auto;
+      height: 3rem;
+      width: auto;
     }
   }
 
   &__card-favorite {
     display: none;
     position: absolute;
-    bottom: $spacing-sm;
-    right: $spacing-sm;
-    transform: translate(-50%);
+    right: $spacing-md;
+    bottom: $spacing-xl;
     @include flex(row, center, center);
     @include icon(3rem);
     border-radius: $border-radius-circle;
     background-color: $color-primary;
     border: none;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Небольшая тень
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      background-color: darken($color-primary, 5%); // Затемнение при наведении
-    }
-    .objects__card-favorite svg {
-      @include icon(3rem);
+    &svg {
+      @include icon(1.5rem); // 24px
     }
   }
   &__card-pagination {
-    @include flex(row, center, center);
-    gap: $spacing-xxs;
-    margin-top: $spacing-sm;
+    @include flex(row, center, center, $spacing-xs);
+    margin-top: $spacing-md;
   }
 
   &__card-pagination-dot {
@@ -152,12 +135,15 @@
     cursor: pointer;
     transition: opacity 0.3s ease;
 
+    &--active {
+      opacity: 1;
+      background-color: $color-primary;
+    }
+
     &:hover {
       opacity: 1;
     }
-
-    &--active {
-      opacity: 1;
+    &:active {
       background-color: $color-primary;
     }
   }
