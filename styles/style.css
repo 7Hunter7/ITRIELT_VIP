@@ -76,22 +76,21 @@
   justify-content: center;
   gap: 2px;
   border: none;
+  background: none;
 }
 .header__filter-button .button__icon {
   width: 20px;
   height: 20px;
-  width: 1.25rem;
-  height: 1.25rem;
 }
 .header__filter-button .button__indicator {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #6f77fe;
+  background-color: #6f77fe;
 }
 .header__filter-button .button__indicator-value {
   padding: 3px 2px;
-  font-family: var(--font-family);
+  text-align: center;
   font-weight: 500;
   font-size: 0.75rem;
   line-height: 117%;
@@ -745,6 +744,10 @@ h3,
 h4,
 p,
 button,
+select,
+option,
+input,
+label,
 a {
   font-family: "Inter", sans-serif;
 }

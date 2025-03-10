@@ -7,23 +7,22 @@
   &__filter-button {
     @include flex(row, center, center, 2px);
     border: none;
+    background: none;
 
     .button {
       &__icon {
         @include icon();
-        width: $spacing-lg; // Увеличить иконку фильтра
-        height: $spacing-lg;
       }
       &__indicator {
         @include icon();
         border-radius: $border-radius-circle;
-        background: $color-primary;
+        background-color: $color-primary;
       }
       &__indicator-value {
         padding: 3px 2px;
-        font-family: var(--font-family);
+        text-align: center;
         font-weight: $font-weight-medium;
-        font-size: 0.75rem;
+        font-size: $font-size-tag;
         line-height: 117%;
         color: $color-white;
       }
