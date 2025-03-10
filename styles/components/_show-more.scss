@@ -1,0 +1,20 @@
+@import "../variables";
+@import "../mixins";
+
+.show-more {
+  padding: $spacing-md;
+  @include flex(row, center, center);
+
+  &__button {
+    display: flex;
+    font-weight: $font-weight-medium;
+    font-size: $font-size-base;
+    line-height: 125%;
+    text-align: center;
+    color: $color-white;
+    padding: $spacing-sm $spacing-lg;
+    border: none;
+    border-radius: $border-radius;
+    background-color: $color-primary;
+  }
+}

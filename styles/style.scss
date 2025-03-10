@@ -11,6 +11,7 @@
 @import "./components/objects-filter";
 @import "./components/objects";
 @import "./components/action-sheet";
+@import "./components/show-more";
 
 * {
   margin: 0;
@@ -26,6 +27,16 @@ body {
   color: $color-text-primary;
   background-color: $color-white;
   box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+button,
+a {
+  font-family: $font-family;
 }
 a {
   text-decoration: none;
