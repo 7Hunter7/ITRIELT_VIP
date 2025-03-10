@@ -1,0 +1,58 @@
+@import "../variables";
+@import "../mixins";
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0;
+  background-color: $color-white;
+  text-align: center;
+
+  &__nav {
+    padding: 0 $spacing-md;
+  }
+
+  &__list {
+    list-style: none;
+    @include flex(row, space-around, center, 0);
+  }
+
+  &__item {
+    flex: 1;
+  }
+
+  &__link {
+    @include flex(column, center, center, 0);
+    font-weight: $font-weight-medium;
+    font-size: $font-size-link;
+    line-height: 120%;
+    color: $color-secondary;
+
+    &--active {
+      color: $color-primary;
+    }
+  }
+
+  &__icon {
+    @include icon(1.75rem); // 28px
+    display: block;
+    margin: auto;
+    margin-bottom: 0.125rem;
+  }
+  .profile-icon {
+    border-radius: $border-radius-circle;
+    object-fit: contain;
+  }
+
+  &__line {
+    width: 8.5rem; // 136px
+    height: 0.3125rem; // 5px
+    border-radius: 0.125rem;
+    margin: auto;
+    margin-top: $spacing-xl;
+    margin-bottom: $spacing-xs;
+    background: $color-accent;
+  }
+}
