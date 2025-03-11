@@ -1,9 +1,8 @@
-// _search.scss (Этот файл импортируется в style.scss)
 @import "../variables";
 @import "../mixins";
 
 .search {
-  padding: $spacing-md; // Увеличен отступ
+  padding: $spacing-md $spacing-xs;
 
   &__title {
     margin-top: 0;
@@ -28,10 +27,9 @@
 
   &__input {
     width: 100%;
-    padding: $spacing-sm;
-    border: 1px solid $color-grey;
+    padding: $spacing-xxs $spacing-sm;
+    border: 0.5px solid #dddde3;
     border-radius: $border-radius;
-    font-size: $font-size-item;
     color: $color-text-primary;
     box-sizing: border-box; // Чтобы padding не увеличивал общую ширину
     outline: none; // Убираем дефолтное обведение при фокусе
@@ -43,19 +41,19 @@
 
     &::placeholder {
       // Стили для placeholder
-      color: $color-grey;
+      color: $color-secondary;
     }
   }
 
   &__button {
-    margin-top: $spacing-xs;
+    margin-top: $spacing-sm;
     display: block; // Кнопка на всю ширину
     width: 100%;
-    padding: $spacing-xs;
+    padding: 9px;
     background-color: $color-primary;
     color: $color-white;
-    font-size: $font-size-item;
-    font-weight: $font-weight-medium;
+    font-weight: $font-weight-semibold;
+    letter-spacing: 0.01em;
     border: none;
     border-radius: $border-radius;
     cursor: pointer;
@@ -69,5 +67,12 @@
       // Добавим небольшое "утапливание" при клике
       transform: translateY(1px);
     }
+  }
+}
+
+// Медиа-запросы
+@media (min-width: $breakpoint-md) {
+  /* 744px */
+  .search {
   }
 }

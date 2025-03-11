@@ -19,12 +19,12 @@
 }
 body {
   font-family: $font-family;
-  font-size: $font-size-item;
-  font-weight: $font-weight-regular;
+  font-size: $font-size-item; // 14px
+  font-weight: $font-weight-regular; // 400
   line-height: 129%;
   letter-spacing: 0em;
   text-align: center;
-  color: $color-text-primary;
+  color: $color-text-primary; // #1e1e24;
   background-color: $color-white;
   box-sizing: border-box;
 }
