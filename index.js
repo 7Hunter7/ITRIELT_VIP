@@ -14,7 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 60000); // Обновляем раз в минуту
 
   const quantityObjects = 12; // Количество карточек
-  const timerGenerateCardData = 10 * 60 * 1000; // 10 минут в миллисекундах
+  const maxQuantityObjects = 37; // Максимальное количество карточек
+
+  const timerGenerateCardData = 5 * 60 * 1000; // 5 минут в миллисекундах
 
   const builderLogos = [
     "public/builders/builder_logos/logo_1.svg",
@@ -48,6 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
   let planIndex = 0;
 
+  const favorites = [false, true]; // Для генерации случайного значения
+
   const generateRandomNumber = (min, max) =>
     Math.floor(Math.random() * (max - min + 1)) + min;
   const generateRandomPrice = () => generateRandomNumber(3000000, 15000000);
@@ -67,9 +71,10 @@ document.addEventListener("DOMContentLoaded", () => {
     logoIndex = (logoIndex + 1) % builderLogos.length; // Циклический перебор
     const currentPlan = objectPlans[planIndex];
     planIndex = (planIndex + 1) % objectPlans.length;
+    const isFavorite = favorites[generateRandomNumber(0, 1)];
 
     return {
-      isFavorite: false,
+      isFavorite: isFavorite,
       square: `${rooms}-к, ${square.toFixed(2)} м²`,
       number: number,
       plan: currentPlan,
@@ -249,7 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function generateAndRenderCards() {
     const lastUpdateTimestamp = localStorage.getItem("lastUpdateTimestamp");
     const objectsGrid = document.querySelector(".objects__grid");
-
+    let cardData;
     if (lastUpdateTimestamp) {
       const now = new Date().getTime();
       const timeSinceLastUpdate = now - parseInt(lastUpdateTimestamp);
@@ -258,20 +263,32 @@ document.addEventListener("DOMContentLoaded", () => {
         // Если прошло меньше 5 минут, используем данные из localStorage
         const storedCardData = localStorage.getItem("cardData");
         if (storedCardData) {
-          const cardData = JSON.parse(storedCardData);
+          cardData = JSON.parse(storedCardData);
           // Отрисовываем карточки
           const cardsHTML = cardData.map(createCardHTML).join("");
           objectsGrid.innerHTML = cardsHTML;
           console.log("Используем данные из localStorage:", cardData);
-          return; // Прерываем выполнение функции, чтобы не генерировать новые данные
         }
+      } else {
+        // Если прошло больше 5 минут или нет данных в localStorage, генерируем новые данные
+        cardData = Array.from({ length: quantityObjects }, (_, i) =>
+          generateCardData(i)
+        );
+        // Отрисовываем карточки на странице
+        const cardsHTML = cardData.map(createCardHTML).join("");
+        objectsGrid.innerHTML = cardsHTML;
+        console.log("Сгенерировали новые данные:", cardData);
       }
+    } else {
+      // Если прошло больше 5 минут или нет данных в localStorage, генерируем новые данные
+      cardData = Array.from({ length: quantityObjects }, (_, i) =>
+        generateCardData(i)
+      );
+      // Отрисовываем карточки на странице
+      const cardsHTML = cardData.map(createCardHTML).join("");
+      objectsGrid.innerHTML = cardsHTML;
+      console.log("Сгенерировали новые данные:", cardData);
     }
-
-    // Если прошло больше 5 минут или нет данных в localStorage, генерируем новые данные
-    const cardData = Array.from({ length: quantityObjects }, (_, i) =>
-      generateCardData(i)
-    );
 
     // Сохраняем данные в localStorage
     localStorage.setItem("cardData", JSON.stringify(cardData));
@@ -280,72 +297,66 @@ document.addEventListener("DOMContentLoaded", () => {
       new Date().getTime().toString()
     );
 
-    // Отрисовываем карточки на странице
-    const cardsHTML = cardData.map(createCardHTML).join("");
-    objectsGrid.innerHTML = cardsHTML;
-    console.log("Сгенерировали новые данные:", cardData);
-  }
+    // ------------------  Логика "Показать ещё"  ------------------
+    const showMoreButton = document.querySelector(".show-more__button");
+    const initialCardsToShow = Math.min(12, maxQuantityObjects); // Показывать не больше, чем есть
+    let displayedCards = cardData.length; // Счетчик отображенных карточек
 
+    // Функция генерации данных для указанного количества карточек, начиная с определенного индекса
+    function getCardDataForDisplay(startIndex, quantity) {
+      return cardData.slice(startIndex, startIndex + quantity); // Срез массива
+    }
+
+    // Функция для отрисовки карточек (добавляет карточки в objectsGrid)
+    function renderCards(cards) {
+      const cardsHTML = cards.map(createCardHTML).join("");
+      objectsGrid.insertAdjacentHTML("beforeend", cardsHTML); // Добавляем в конец
+    }
+
+    // Отображаем начальные карточки при загрузке
+    renderCards(getCardDataForDisplay(displayedCards, initialCardsToShow));
+    displayedCards += initialCardsToShow;
+
+    // Обновляем текст кнопки
+    showMoreButton.textContent = `Показать ещё ${Math.max(
+      0,
+      cardData.length - displayedCards
+    )} из ${cardData.length}`;
+
+    // Скрываем кнопку, если показаны все карточки
+    if (displayedCards >= cardData.length) {
+      showMoreButton.style.display = "none";
+    }
+
+    // Обработчик клика на кнопку "Показать ещё"
+    showMoreButton.addEventListener("click", () => {
+      const cardsToShow = Math.min(12, cardData.length - displayedCards); // Не больше, чем осталось
+
+      if (cardsToShow > 0) {
+        const newCards = getCardDataForDisplay(displayedCards, cardsToShow);
+        renderCards(newCards);
+        displayedCards += cardsToShow;
+
+        // Обновляем текст кнопки
+        showMoreButton.textContent = `Показать ещё ${Math.max(
+          0,
+          cardData.length - displayedCards
+        )} из ${cardData.length}`;
+
+        // Скрываем кнопку, если показаны все карточки
+        if (displayedCards >= cardData.length) {
+          showMoreButton.style.display = "none";
+        }
+      } else {
+        // Если больше карточек нет, скрыть кнопку
+        showMoreButton.style.display = "none";
+      }
+    });
+  }
   // Запускаем генерацию карточек сразу после загрузки страницы
   generateAndRenderCards();
 
-  // ------------------  Логика "Показать ещё"  ------------------
-  const objectsGrid = document.querySelector(".objects__grid");
-  const showMoreButton = document.querySelector(".show-more__button");
-  const initialCardsToShow = Math.min(12, cardData.length); // Показывать не больше, чем есть
-  let displayedCards = 0; // Счетчик отображенных карточек
-
-  // Функция генерации данных для указанного количества карточек, начиная с определенного индекса
-  function getCardDataForDisplay(startIndex, quantity) {
-    return cardData.slice(startIndex, startIndex + quantity); // Срез массива
-  }
-
-  // Функция для отрисовки карточек (добавляет карточки в objectsGrid)
-  function renderCards(cards) {
-    const cardsHTML = cards.map(createCardHTML).join("");
-    objectsGrid.insertAdjacentHTML("beforeend", cardsHTML); // Добавляем в конец
-  }
-
-  // Отображаем начальные карточки при загрузке
-  renderCards(getCardDataForDisplay(displayedCards, initialCardsToShow));
-  displayedCards += initialCardsToShow;
-
-  // Обновляем текст кнопки
-  showMoreButton.textContent = `Показать ещё ${Math.max(
-    0,
-    cardData.length - displayedCards
-  )} из ${cardData.length}`;
-
-  // Скрываем кнопку, если показаны все карточки
-  if (displayedCards >= cardData.length) {
-    showMoreButton.style.display = "none";
-  }
-
-  // Обработчик клика на кнопку "Показать ещё"
-  showMoreButton.addEventListener("click", () => {
-    const cardsToShow = Math.min(12, cardData.length - displayedCards); // Не больше, чем осталось
-
-    if (cardsToShow > 0) {
-      const newCards = getCardDataForDisplay(displayedCards, cardsToShow);
-      renderCards(newCards);
-      displayedCards += cardsToShow;
-
-      // Обновляем текст кнопки
-      showMoreButton.textContent = `Показать ещё ${Math.max(
-        0,
-        cardData.length - displayedCards
-      )} из ${cardData.length}`;
-
-      // Скрываем кнопку, если показаны все карточки
-      if (displayedCards >= cardData.length) {
-        showMoreButton.style.display = "none";
-      }
-    } else {
-      // Если больше карточек нет, скрыть кнопку
-      showMoreButton.style.display = "none";
-    }
-  });
-
+  // ------------------  Обработчики событий  ------------------
   // Обработчики событий для options и favorite
   const cards = document.querySelectorAll(".objects__card");
 
@@ -360,13 +371,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Логика для отображения и скрытия Action Sheet
   const cardWrappers = document.querySelectorAll(".objects__card-wrapper");
-  console.log(cardWrappers);
+
   const actionSheets = document.querySelectorAll(".action-sheet");
-  console.log(actionSheets);
 
   cardWrappers.forEach((cardWrapper, index) => {
     const optionsButton = cardWrapper.querySelector(".objects__card-options");
-    console.log(optionsButton);
+
     const actionSheet = cardWrapper.querySelector(".action-sheet");
     const cancelButton = actionSheet.querySelector(".action-sheet__cancel");
 
