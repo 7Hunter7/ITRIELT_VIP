@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 60000); // Обновляем раз в минуту
 
   const quantityObjects = 12; // Количество карточек
+  const timerGenerateCardData = 10 * 60 * 1000; // 10 минут в миллисекундах
 
   const builderLogos = [
     "public/builders/builder_logos/logo_1.svg",
