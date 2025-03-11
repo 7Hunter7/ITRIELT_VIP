@@ -2,23 +2,21 @@
 @import "../mixins";
 
 .builder {
-  margin-top: $spacing-xl;
+  margin-top: $spacing-xxl;
 
   &__title {
-    padding: 0 $spacing-sm;
+    padding: 0 $spacing-xs;
     text-align: left;
     font-weight: $font-weight-semibold;
     font-size: $font-size-subtitle;
-    color: $color-text-primary;
-    margin-bottom: $spacing-lg;
   }
 
   &__statuses {
-    padding: 0 $spacing-sm;
-    margin: 0 0 $spacing-md 0;
+    margin: $spacing-md 0 $spacing-md 0;
     list-style: none;
     display: flex;
     flex-wrap: wrap; /* Чтобы элементы переносились на новую строку */
+    gap: $spacing-xxxs;
   }
 
   &__status {
@@ -26,8 +24,10 @@
     font-weight: $font-weight-medium;
     font-size: $font-size-tag;
     line-height: 117%;
-    margin-right: $spacing-md;
-    margin-bottom: $spacing-sm;
+    letter-spacing: 0em;
+    border: 0.5px solid #dddde3;
+    border-radius: $border-radius-small;
+    padding: $spacing-xxxs $spacing-xs;
   }
   &__status-icon {
     @include icon(1.25rem); // 20*20px
@@ -35,22 +35,20 @@
     box-sizing: border-box;
     cursor: pointer;
     display: inline-block; /* Чтобы можно было задавать размеры */
-    svg {
-      &--selected {
-        border: 2px solid $color-primary; /* Цвет для "Выбрано" */
-      }
+    &--selected {
+      border: 2px solid $color-primary; /* Цвет для "Выбрано" */
+    }
 
-      &--available {
-        fill: $color-green; /* Цвет для "Доступно" */
-      }
+    &--available {
+      background-color: $color-green; /* Цвет для "Доступно" */
+    }
 
-      &--not-unique {
-        fill: $color-red; /* Цвет для "Не уникальный клиент" */
-      }
+    &--not-unique {
+      background-color: $color-red; /* Цвет для "Не уникальный клиент" */
+    }
 
-      &--no-objects {
-        fill: $color-grey; /* Цвет для "Нет объектов" */
-      }
+    &--no-objects {
+      background-color: $color-grey; /* Цвет для "Нет объектов" */
     }
   }
   &__container {
@@ -63,17 +61,27 @@
     display: block; /* Чтобы ссылка занимала всю площадь логотипа */
   }
   &__logo {
-    max-height: 3rem;
-    min-width: 5.625rem;
+    max-height: 3rem; // 48px
+    min-width: 5.625rem; // 90px
     padding: $spacing-sm;
     object-fit: contain;
-    background-color: $color-white;
     box-sizing: border-box;
-    border-radius: $border-radius;
     border: 2px solid $color-white;
+    border-radius: $border-radius;
+    background-color: $color-white;
+    box-shadow: 0 0 8px 0 rgba(30, 30, 36, 0.1);
     svg {
       height: 1.5rem;
       width: auto;
+    }
+
+    &:hover {
+      border: 2px solid #dddde3;
+      box-shadow: 0 8px 16px 0 rgba(23, 23, 28, 0.05);
+    }
+    &:active {
+      border: 2px solid $color-primary;
+      box-shadow: 0 8px 16px 0 rgba(23, 23, 28, 0.05);
     }
   }
 

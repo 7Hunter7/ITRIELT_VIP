@@ -315,22 +315,20 @@
   /* 744px */
 }
 .builder {
-  margin-top: 1.5rem;
+  margin-top: 2rem;
 }
 .builder__title {
-  padding: 0 0.75rem;
+  padding: 0 0.5rem;
   text-align: left;
   font-weight: 600;
   font-size: 1.0625rem;
-  color: #1e1e24;
-  margin-bottom: 1.25rem;
 }
 .builder__statuses {
-  padding: 0 0.75rem;
-  margin: 0 0 1rem 0;
+  margin: 1rem 0 1rem 0;
   list-style: none;
   display: flex;
   flex-wrap: wrap; /* Чтобы элементы переносились на новую строку */
+  gap: 0.25rem;
 }
 .builder__status {
   display: flex;
@@ -342,8 +340,10 @@
   font-weight: 500;
   font-size: 0.75rem;
   line-height: 117%;
-  margin-right: 1rem;
-  margin-bottom: 0.75rem;
+  letter-spacing: 0em;
+  border: 0.5px solid #dddde3;
+  border-radius: 6px;
+  padding: 0.25rem 0.5rem;
 }
 .builder__status-icon {
   width: 1.25rem;
@@ -353,17 +353,17 @@
   cursor: pointer;
   display: inline-block; /* Чтобы можно было задавать размеры */
 }
-.builder__status-icon svg--selected {
+.builder__status-icon--selected {
   border: 2px solid #6f77fe; /* Цвет для "Выбрано" */
 }
-.builder__status-icon svg--available {
-  fill: #25a25f; /* Цвет для "Доступно" */
+.builder__status-icon--available {
+  background-color: #25a25f; /* Цвет для "Доступно" */
 }
-.builder__status-icon svg--not-unique {
-  fill: #f25a50; /* Цвет для "Не уникальный клиент" */
+.builder__status-icon--not-unique {
+  background-color: #f25a50; /* Цвет для "Не уникальный клиент" */
 }
-.builder__status-icon svg--no-objects {
-  fill: #b7b8c3; /* Цвет для "Нет объектов" */
+.builder__status-icon--no-objects {
+  background-color: #b7b8c3; /* Цвет для "Нет объектов" */
 }
 .builder__container {
   padding: 0;
@@ -384,14 +384,23 @@
   padding: 0.75rem;
   -o-object-fit: contain;
      object-fit: contain;
-  background-color: #fff;
   box-sizing: border-box;
-  border-radius: 8px;
   border: 2px solid #fff;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 0 8px 0 rgba(30, 30, 36, 0.1);
 }
 .builder__logo svg {
   height: 1.5rem;
   width: auto;
+}
+.builder__logo:hover {
+  border: 2px solid #dddde3;
+  box-shadow: 0 8px 16px 0 rgba(23, 23, 28, 0.05);
+}
+.builder__logo:active {
+  border: 2px solid #6f77fe;
+  box-shadow: 0 8px 16px 0 rgba(23, 23, 28, 0.05);
 }
 .builder .active {
   border: 2px solid #6f77fe;
