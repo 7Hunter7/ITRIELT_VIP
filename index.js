@@ -264,38 +264,35 @@ document.addEventListener("DOMContentLoaded", () => {
         const storedCardData = localStorage.getItem("cardData");
         if (storedCardData) {
           cardData = JSON.parse(storedCardData);
-          // Отрисовываем карточки
-          const cardsHTML = cardData.map(createCardHTML).join("");
-          objectsGrid.innerHTML = cardsHTML;
           console.log("Используем данные из localStorage:", cardData);
+        } else {
+          // Если в localStorage нет данных, генерируем новые
+          cardData = Array.from({ length: maxQuantityObjects }, (_, i) =>
+            generateCardData(i)
+          );
         }
       } else {
         // Если прошло больше 5 минут или нет данных в localStorage, генерируем новые данные
-        cardData = Array.from({ length: quantityObjects }, (_, i) =>
+        cardData = Array.from({ length: maxQuantityObjects }, (_, i) =>
           generateCardData(i)
         );
-        // Отрисовываем карточки на странице
-        const cardsHTML = cardData.map(createCardHTML).join("");
-        objectsGrid.innerHTML = cardsHTML;
         console.log("Сгенерировали новые данные:", cardData);
       }
     } else {
-      // Если прошло больше 5 минут или нет данных в localStorage, генерируем новые данные
-      cardData = Array.from({ length: quantityObjects }, (_, i) =>
+      // Если нет данных в localStorage, генерируем новые данные
+      cardData = Array.from({ length: maxQuantityObjects }, (_, i) =>
         generateCardData(i)
       );
-      // Отрисовываем карточки на странице
-      const cardsHTML = cardData.map(createCardHTML).join("");
-      objectsGrid.innerHTML = cardsHTML;
       console.log("Сгенерировали новые данные:", cardData);
     }
 
-    // Сохраняем данные в localStorage
+    // Сохраняем данные в localStorage (сохраняем все сгенерированные карточки
     localStorage.setItem("cardData", JSON.stringify(cardData));
     localStorage.setItem(
       "lastUpdateTimestamp",
       new Date().getTime().toString()
     );
+
     return cardData;
   }
 
