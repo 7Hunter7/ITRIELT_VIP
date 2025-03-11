@@ -300,8 +300,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let cardData = generateAndRenderCards();
   const objectsGrid = document.querySelector(".objects__grid");
   const showMoreButton = document.querySelector(".show-more__button");
-  const initialCardsToShow = Math.min(12, quantityObjects); // Показывать не больше, чем есть
-
+  const initialCardsToShow = Math.min(quantityObjects, cardData.length); // Сколько карточек показать изначально (не больше, чем доступно)
   let displayedCards = 0; // Счетчик отображенных карточек
 
   // Функция генерации данных для указанного количества карточек, начиная с определенного индекса
@@ -315,46 +314,39 @@ document.addEventListener("DOMContentLoaded", () => {
     objectsGrid.insertAdjacentHTML("beforeend", cardsHTML); // Добавляем в конец
   }
 
-  // Отображаем начальные карточки при загрузке
-  renderCards(getCardDataForDisplay(displayedCards, initialCardsToShow));
+  // Функция для отображения текста на кнопке
+  function updateShowMoreButton() {
+    const remainingCards = cardData.length - displayedCards;
+    showMoreButton.textContent = `Показать ещё ${Math.min(
+      12,
+      remainingCards
+    )} из ${remainingCards}`; // Показываем не более 12 карточек
+
+    // Если больше нечего показывать, скрываем кнопку
+    showMoreButton.style.display = remainingCards > 0 ? "block" : "none";
+  }
+
+  // Отображаем начальные карточки
+  const initialCards = getCardDataForDisplay(
+    displayedCards,
+    initialCardsToShow
+  );
+  renderCards(initialCards);
   displayedCards += initialCardsToShow;
 
-  // Обновляем текст кнопки
-  showMoreButton.textContent = `Показать ещё ${quantityObjects} из ${
-    maxQuantityObjects - displayedCards
-  }`;
+  // Обновляем текст кнопки и скрываем ее, если все карточки отображены
+  updateShowMoreButton();
 
-  // Скрываем кнопку, если показаны все карточки
-  if (displayedCards >= maxQuantityObjects) {
-    showMoreButton.style.display = "none";
-  }
   // Обработчик клика на кнопку "Показать ещё"
   showMoreButton.addEventListener("click", () => {
-    const cardsToShow = Math.min(12, displayedCards); // Не больше, чем осталось
+    const cardsToShow = Math.min(12, cardData.length - displayedCards); // Сколько карточек показать (12 или сколько осталось)
 
-    if (cardsToShow > 0) {
-      const newCards = getCardDataForDisplay(displayedCards, cardsToShow);
-      renderCards(newCards);
-      displayedCards += cardsToShow;
+    const newCards = getCardDataForDisplay(displayedCards, cardsToShow); // Выбираем карточки, которые нужно показать
+    renderCards(newCards); // Добавляем новые карточки на страницу
 
-      // Обновляем текст кнопки
-      if (maxQuantityObjects - displayedCards > displayedCards) {
-        showMoreButton.textContent = `Показать ещё ${quantityObjects} из ${
-          maxQuantityObjects - displayedCards
-        } `;
-      } else {
-        showMoreButton.textContent = `Показать ещё ${
-          maxQuantityObjects - displayedCards
-        } из ${quantityObjects}`;
-      }
-      // Скрываем кнопку, если показаны все карточки
-      if (displayedCards >= maxQuantityObjects) {
-        showMoreButton.style.display = "none";
-      }
-    } else {
-      // Если больше карточек нет, скрыть кнопку
-      showMoreButton.style.display = "none";
-    }
+    displayedCards += cardsToShow; // Увеличиваем количество отображенных карточек
+
+    updateShowMoreButton();
   });
 
   // Запускаем генерацию карточек сразу после загрузки страницы
