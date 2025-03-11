@@ -199,73 +199,57 @@
   width: 20px;
   height: 20px;
 }
+
 @media (min-width: 744px) {
   .header {
     /* 744px */
     margin-top: 2rem;
-    display: flex;
     flex-direction: row;
+    position: relative;
+  }
+  .header__top {
     flex-wrap: nowrap;
+    white-space: nowrap;
+    gap: 0.5rem;
   }
   .header__top__title {
-    order: 0;
     line-height: 120%;
     font-size: 1.25rem;
   }
   .header__top__filter-button {
-    order: 2;
+    position: absolute;
+    right: 0;
   }
   .header__top__filter-button_text {
     display: inline;
-    padding: 0;
+    margin: 0 0.375rem;
     font-weight: 600;
     font-size: 0.875rem;
     letter-spacing: 0.01em;
     color: #6f77fe;
   }
-  .header__top__sort {
-    order: 1;
+  .header__sort {
+    position: absolute;
+    right: 10rem;
     max-width: 16rem;
   }
-  .header__top__sort_select {
-    width: 100%;
+  .header__sort_select {
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; /*  многоточие в конце обрезанного текста */
+    text-overflow: ellipsis; /*  многоточие  */
   }
-  .header__top_label {
-    overflow: hidden;
+  .header_label {
     left: 0.75rem;
+    overflow: hidden;
+    text-overflow: ellipsis; /*  многоточие  */
   }
-  .header__top_chevron {
-    right: 1rem;
+  .header_chevron {
+    right: 0.75rem;
   }
 }
 @media (min-width: 1024px) {
-  .header {
-    /* 1024px */
-  }
-  .header__top {
-    padding: 1.25rem 0;
-  }
-  .header__top__title {
-    font-size: 2.5rem;
-  }
-  .header__sort {
-    max-width: 400px; /* Ограничиваем ширину блока сортировки */
-    margin: 0 auto; /* Центрируем его */
-  }
-  .header__sort_select {
-    padding: 1rem 2.25rem;
-  }
-  .header__sort_label {
-    left: 1rem;
-  }
-  .header__sort_chevron {
-    right: 1.25rem;
-  }
+  /* 1024px */
 }
-
 .search {
   padding: 1rem;
 }
