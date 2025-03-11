@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Дополнительно можно менять цвет в зависимости от уровня (зеленый, желтый, красный)
   }
 
+  /*
   // Пример вызова функции (например, раз в минуту):
   updateBatteryLevel(50);
   setInterval(() => {
@@ -149,6 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const objectsGrid = document.querySelector(".objects__grid");
   const cardsHTML = cardData.map(createCard).join("");
   objectsGrid.innerHTML = cardsHTML;
+*/
 
   // Обработчики событий для options и favorite
   const cards = document.querySelectorAll(".objects__card");

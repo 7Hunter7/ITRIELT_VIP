@@ -2,18 +2,18 @@
 @import "../mixins";
 
 .status-bar {
+  z-index: 10;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  @include flex(row, space-between, center);
+  padding: $spacing-lg $spacing-xxl;
   background-color: $color-white;
 
-  z-index: 11;
-  @include flex(row, space-between, center);
-  padding: 1.25rem 2rem;
-
   &__time {
-    margin-left: 1.25rem;
+    margin-left: $spacing-lg;
+    text-align: left;
     font-size: $font-size-title;
     font-weight: $font-weight-semibold;
     color: $color-accent;
@@ -56,26 +56,38 @@
   }
 }
 
+@media (min-width: $breakpoint-sm) {
+  /* 744px */
+  .status-bar {
+    padding: $spacing-xxs $spacing-md;
+
+    &__time {
+      margin-left: 0;
+      font-size: $font-size-item;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-lg) {
+  /* 1336px */
+  .status-bar {
+    display: none;
+  }
+}
+
 // Изменения для status-bar
 .action-sheet--active {
   .status-bar {
-    &__time,
+    background-color: #9c9c9e; /* Фон */
+    &__time {
+      color: $color-white;
+    }
+
     &__signal,
     &__wifi,
     &__battery {
-      color: $color-white; /* Меняем цвет на белый */
-    }
-
-    &__signal,
-    &__wifi {
-      img svg {
-        fill: $color-white;
-      }
-    }
-
-    &__battery {
-      img {
-        color: $color-white;
+      svg {
+        fill: $color-white !important;
       }
     }
 
