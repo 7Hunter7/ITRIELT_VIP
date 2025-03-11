@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const quantityObjects = 12; // Количество карточек для показа
   const maxQuantityObjects = 37; // Максимальное количество карточек
 
-  const timerGenerateCardData = 5 * 60 * 1000; // 5 минут в миллисекундах
+  const timerGenerateCardData = 5 * 60 * 1000; // 5 минут в миллисекундах (время жизни данных в localStorage)
 
   const builderLogos = [
     "public/builders/builder_logos/logo_1.svg",
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     Math.floor(Math.random() * (max - min + 1)) + min;
   const generateRandomPrice = () => generateRandomNumber(3000000, 15000000);
 
-  // Функция для генерации данных одной карточки
+  // Функция генерации данных одной карточки
   function generateCardData(i) {
     // i - индекс карточки
     const rooms = generateRandomNumber(1, 4);
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  // Функция генерации HTML для одной карточки
+  // Функция генерации HTML одной карточки
   function createCardHTML(data) {
     const paginationHTML =
       data.pagination > 0
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 i === 0 ? "active" : ""
               }"></span>`
           ).join("")
-        : ""; // Условие для пагинации
+        : ""; // Условие пагинации
 
     const favoriteIcon = `
             <button class="objects__card-favorite">
@@ -250,7 +250,7 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   }
 
-  // Функция для генерации и обновления карточек
+  // Функция генерации и обновления карточек
   function generateAndRenderCards() {
     const lastUpdateTimestamp = localStorage.getItem("lastUpdateTimestamp");
     const objectsGrid = document.querySelector(".objects__grid");
@@ -276,17 +276,15 @@ document.addEventListener("DOMContentLoaded", () => {
         cardData = Array.from({ length: maxQuantityObjects }, (_, i) =>
           generateCardData(i)
         );
-        console.log("Сгенерировали новые данные:", cardData);
       }
     } else {
       // Если нет данных в localStorage, генерируем новые данные
       cardData = Array.from({ length: maxQuantityObjects }, (_, i) =>
         generateCardData(i)
       );
-      console.log("Сгенерировали новые данные:", cardData);
     }
 
-    // Сохраняем данные в localStorage (сохраняем все сгенерированные карточки
+    // Сохраняем данные в localStorage
     localStorage.setItem("cardData", JSON.stringify(cardData));
     localStorage.setItem(
       "lastUpdateTimestamp",
@@ -308,19 +306,19 @@ document.addEventListener("DOMContentLoaded", () => {
     return cardData.slice(startIndex, startIndex + quantity); // Срез массива
   }
 
-  // Функция для отрисовки карточек (добавляет карточки в objectsGrid)
+  // Функция отрисовки карточек (добавляет карточки в objectsGrid)
   function renderCards(cards) {
     const cardsHTML = cards.map(createCardHTML).join("");
     objectsGrid.insertAdjacentHTML("beforeend", cardsHTML); // Добавляем в конец
   }
 
-  // Функция для отображения текста на кнопке
+  // Функция отображения текста на кнопке
   function updateShowMoreButton() {
     const remainingCards = cardData.length - displayedCards;
     showMoreButton.textContent = `Показать ещё ${Math.min(
       12,
       remainingCards
-    )} из ${remainingCards}`; // Показываем не более 12 карточек
+    )} из ${remainingCards} объектов`; // не более 12
 
     // Если больше нечего показывать, скрываем кнопку
     showMoreButton.style.display = remainingCards > 0 ? "block" : "none";
@@ -368,12 +366,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Логика для отображения и скрытия Action Sheet
   const cardWrappers = document.querySelectorAll(".objects__card-wrapper");
-
   const actionSheets = document.querySelectorAll(".action-sheet");
 
   cardWrappers.forEach((cardWrapper, index) => {
     const optionsButton = cardWrapper.querySelector(".objects__card-options");
-
     const actionSheet = cardWrapper.querySelector(".action-sheet");
     const cancelButton = actionSheet.querySelector(".action-sheet__cancel");
 
