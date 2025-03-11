@@ -292,8 +292,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // ------------------  Логика "Показать ещё"  ------------------
   const objectsGrid = document.querySelector(".objects__grid");
   const showMoreButton = document.querySelector(".show-more__button");
-  const initialCardsToShow = 12; // Сколько карточек показать изначально
-  let displayedCards = initialCardsToShow; // Счетчик отображенных карточек
+  const initialCardsToShow = Math.min(12, cardData.length); // Показывать не больше, чем есть
+  let displayedCards = 0; // Счетчик отображенных карточек
 
   // Функция генерации данных для указанного количества карточек, начиная с определенного индекса
   function getCardDataForDisplay(startIndex, quantity) {
@@ -307,25 +307,38 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Отображаем начальные карточки при загрузке
-  renderCards(getCardDataForDisplay(0, initialCardsToShow));
+  renderCards(getCardDataForDisplay(displayedCards, initialCardsToShow));
+  displayedCards += initialCardsToShow;
+
+  // Обновляем текст кнопки
+  showMoreButton.textContent = `Показать ещё ${Math.max(
+    0,
+    cardData.length - displayedCards
+  )} из ${cardData.length}`;
+
+  // Скрываем кнопку, если показаны все карточки
+  if (displayedCards >= cardData.length) {
+    showMoreButton.style.display = "none";
+  }
 
   // Обработчик клика на кнопку "Показать ещё"
   showMoreButton.addEventListener("click", () => {
-    const cardsToShow = 12; // Добавляем при клике 12 карточек
-    const newCards = getCardDataForDisplay(displayedCards, cardsToShow);
+    const cardsToShow = Math.min(12, cardData.length - displayedCards); // Не больше, чем осталось
 
-    if (newCards.length > 0) {
+    if (cardsToShow > 0) {
+      const newCards = getCardDataForDisplay(displayedCards, cardsToShow);
       renderCards(newCards);
       displayedCards += cardsToShow;
 
-      // Обновляем текст кнопки (опционально)
-      showMoreButton.textContent = `Показать ещё ${
-        quantityObjects - displayedCards > 0
-          ? quantityObjects - displayedCards
-          : 0
-      }`;
-      if (quantityObjects - displayedCards <= 0) {
-        showMoreButton.style.display = "none"; // Скрываем кнопку, если все карточки показаны
+      // Обновляем текст кнопки
+      showMoreButton.textContent = `Показать ещё ${Math.max(
+        0,
+        cardData.length - displayedCards
+      )} из ${cardData.length}`;
+
+      // Скрываем кнопку, если показаны все карточки
+      if (displayedCards >= cardData.length) {
+        showMoreButton.style.display = "none";
       }
     } else {
       // Если больше карточек нет, скрыть кнопку
