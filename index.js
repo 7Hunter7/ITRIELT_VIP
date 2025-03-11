@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 60000); // Обновляем раз в минуту
 
   const quantityObjects = 12; // Количество карточек
-  const timerGenerateCardData = 60000 * 5; // Обновляем раз в 5 минут
 
   const builderLogos = [
     "public/builders/builder_logos/logo_1.svg",
@@ -88,49 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
       developerLogo: currentLogo,
     };
   }
-
-  // Функция для генерации и обновления карточек
-  function generateAndRenderCards() {
-    const lastUpdateTimestamp = localStorage.getItem("lastUpdateTimestamp");
-
-    if (lastUpdateTimestamp) {
-      const now = new Date().getTime();
-      const timeSinceLastUpdate = now - parseInt(lastUpdateTimestamp);
-
-      if (timeSinceLastUpdate < timerGenerateCardData) {
-        // Если прошло меньше 5 минут, используем данные из localStorage
-        const storedCardData = localStorage.getItem("cardData");
-        if (storedCardData) {
-          const cardData = JSON.parse(storedCardData);
-          // Отрисовываем карточки
-          createCardHTML(cardData);
-          console.log("Используем данные из localStorage:", cardData);
-          return; // Прерываем выполнение функции, чтобы не генерировать новые данные
-        }
-      }
-    }
-
-    // Если прошло больше 5 минут или нет данных в localStorage, генерируем новые данные
-    const cardData = Array.from({ length: quantityObjects }, (_, i) =>
-      generateCardData(i)
-    );
-
-    // Сохраняем данные в localStorage
-    localStorage.setItem("cardData", JSON.stringify(cardData));
-    localStorage.setItem(
-      "lastUpdateTimestamp",
-      new Date().getTime().toString()
-    );
-
-    // Отрисовываем карточки на странице
-    const objectsGrid = document.querySelector(".objects__grid");
-    const cardsHTML = createCardHTML.map(cardData).join("");
-    objectsGrid.innerHTML = cardsHTML;
-    console.log("Сгенерировали новые данные:", cardData);
-  }
-
-  // Запускаем генерацию карточек сразу после загрузки страницы
-  generateAndRenderCards();
 
   // Функция генерации HTML для одной карточки
   function createCardHTML(data) {
@@ -287,6 +243,50 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     `;
   }
+
+  // Функция для генерации и обновления карточек
+  function generateAndRenderCards() {
+    const lastUpdateTimestamp = localStorage.getItem("lastUpdateTimestamp");
+    const objectsGrid = document.querySelector(".objects__grid");
+
+    if (lastUpdateTimestamp) {
+      const now = new Date().getTime();
+      const timeSinceLastUpdate = now - parseInt(lastUpdateTimestamp);
+
+      if (timeSinceLastUpdate < timerGenerateCardData) {
+        // Если прошло меньше 5 минут, используем данные из localStorage
+        const storedCardData = localStorage.getItem("cardData");
+        if (storedCardData) {
+          const cardData = JSON.parse(storedCardData);
+          // Отрисовываем карточки
+          const cardsHTML = cardData.map(createCardHTML).join("");
+          objectsGrid.innerHTML = cardsHTML;
+          console.log("Используем данные из localStorage:", cardData);
+          return; // Прерываем выполнение функции, чтобы не генерировать новые данные
+        }
+      }
+    }
+
+    // Если прошло больше 5 минут или нет данных в localStorage, генерируем новые данные
+    const cardData = Array.from({ length: quantityObjects }, (_, i) =>
+      generateCardData(i)
+    );
+
+    // Сохраняем данные в localStorage
+    localStorage.setItem("cardData", JSON.stringify(cardData));
+    localStorage.setItem(
+      "lastUpdateTimestamp",
+      new Date().getTime().toString()
+    );
+
+    // Отрисовываем карточки на странице
+    const cardsHTML = cardData.map(createCardHTML).join("");
+    objectsGrid.innerHTML = cardsHTML;
+    console.log("Сгенерировали новые данные:", cardData);
+  }
+
+  // Запускаем генерацию карточек сразу после загрузки страницы
+  generateAndRenderCards();
 
   // Обработчики событий для options и favorite
   const cards = document.querySelectorAll(".objects__card");
