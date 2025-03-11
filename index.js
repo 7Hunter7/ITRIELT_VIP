@@ -289,6 +289,50 @@ document.addEventListener("DOMContentLoaded", () => {
   // Запускаем генерацию карточек сразу после загрузки страницы
   generateAndRenderCards();
 
+  // ------------------  Логика "Показать ещё"  ------------------
+  const objectsGrid = document.querySelector(".objects__grid");
+  const showMoreButton = document.querySelector(".show-more__button");
+  const initialCardsToShow = 12; // Сколько карточек показать изначально
+  let displayedCards = initialCardsToShow; // Счетчик отображенных карточек
+
+  // Функция генерации данных для указанного количества карточек, начиная с определенного индекса
+  function getCardDataForDisplay(startIndex, quantity) {
+    return cardData.slice(startIndex, startIndex + quantity); // Срез массива
+  }
+
+  // Функция для отрисовки карточек (добавляет карточки в objectsGrid)
+  function renderCards(cards) {
+    const cardsHTML = cards.map(createCardHTML).join("");
+    objectsGrid.insertAdjacentHTML("beforeend", cardsHTML); // Добавляем в конец
+  }
+
+  // Отображаем начальные карточки при загрузке
+  renderCards(getCardDataForDisplay(0, initialCardsToShow));
+
+  // Обработчик клика на кнопку "Показать ещё"
+  showMoreButton.addEventListener("click", () => {
+    const cardsToShow = 12; // Добавляем при клике 12 карточек
+    const newCards = getCardDataForDisplay(displayedCards, cardsToShow);
+
+    if (newCards.length > 0) {
+      renderCards(newCards);
+      displayedCards += cardsToShow;
+
+      // Обновляем текст кнопки (опционально)
+      showMoreButton.textContent = `Показать ещё ${
+        quantityObjects - displayedCards > 0
+          ? quantityObjects - displayedCards
+          : 0
+      }`;
+      if (quantityObjects - displayedCards <= 0) {
+        showMoreButton.style.display = "none"; // Скрываем кнопку, если все карточки показаны
+      }
+    } else {
+      // Если больше карточек нет, скрыть кнопку
+      showMoreButton.style.display = "none";
+    }
+  });
+
   // Обработчики событий для options и favorite
   const cards = document.querySelectorAll(".objects__card");
 
