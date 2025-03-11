@@ -106,16 +106,16 @@
       }
     }
   }
-
-  // Медиа-запросы
-  @media (min-width: $breakpoint-sm) {
+}
+// Медиа-запросы
+@media (min-width: $breakpoint-sm) {
+  .header {
     /* 744px */
     margin-top: $spacing-xxl;
-    display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
 
     &__top {
+      flex-wrap: nowrap;
       &__title {
         order: 0;
         line-height: 120%;
@@ -138,7 +138,6 @@
         max-width: 16rem;
 
         &_select {
-          width: 100%;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis; /*  многоточие  */
@@ -156,8 +155,8 @@
       }
     }
   }
+}
 
-  @media (min-width: $breakpoint-md) {
-    /* 1024px */
-  }
+@media (min-width: $breakpoint-md) {
+  /* 1024px */
 }
