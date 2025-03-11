@@ -40,6 +40,7 @@
     overflow: hidden;
 
     &-level {
+      z-index: 20;
       position: absolute;
       overflow: hidden;
       bottom: 0;
@@ -76,7 +77,7 @@
 // Изменения для status-bar
 .action-sheet--active .status-bar {
   background-color: #9c9c9e; /* Фон */
-  z-index: 15;
+
   &__time {
     color: $color-white;
   }

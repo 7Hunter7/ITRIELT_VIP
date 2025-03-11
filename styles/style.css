@@ -41,6 +41,7 @@
   overflow: hidden;
 }
 .status-bar__battery-level {
+  z-index: 20;
   position: absolute;
   overflow: hidden;
   bottom: 0;
@@ -71,7 +72,6 @@
 }
 .action-sheet--active .status-bar {
   background-color: #9c9c9e; /* Фон */
-  z-index: 15;
 }
 .action-sheet--active .status-bar__time {
   color: #fff;
@@ -84,6 +84,7 @@
 }
 
 .header {
+  margin-top: 3.5rem;
   display: flex;
   flex-direction: column;
 }
@@ -111,6 +112,10 @@
   flex-wrap: nowrap;
   border: none;
   background: none;
+  cursor: pointer;
+}
+.header__top__filter-button_text {
+  display: none;
 }
 .header__top_icon {
   width: 20px;
@@ -193,6 +198,72 @@
 .header__sort_chevron img {
   width: 20px;
   height: 20px;
+}
+@media (min-width: 744px) {
+  .header {
+    /* 744px */
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  .header__top__title {
+    order: 0;
+    line-height: 120%;
+    font-size: 1.25rem;
+  }
+  .header__top__filter-button {
+    order: 2;
+  }
+  .header__top__filter-button_text {
+    display: inline;
+    padding: 0;
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.01em;
+    color: #6f77fe;
+  }
+  .header__top__sort {
+    order: 1;
+    max-width: 16rem;
+  }
+  .header__top__sort_select {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /*  многоточие в конце обрезанного текста */
+  }
+  .header__top_label {
+    overflow: hidden;
+    left: 0.75rem;
+  }
+  .header__top_chevron {
+    right: 1rem;
+  }
+}
+@media (min-width: 1024px) {
+  .header {
+    /* 1024px */
+  }
+  .header__top {
+    padding: 1.25rem 0;
+  }
+  .header__top__title {
+    font-size: 2.5rem;
+  }
+  .header__sort {
+    max-width: 400px; /* Ограничиваем ширину блока сортировки */
+    margin: 0 auto; /* Центрируем его */
+  }
+  .header__sort_select {
+    padding: 1rem 2.25rem;
+  }
+  .header__sort_label {
+    left: 1rem;
+  }
+  .header__sort_chevron {
+    right: 1.25rem;
+  }
 }
 
 .search {
@@ -587,6 +658,7 @@
   overflow: hidden;
 }
 .status-bar__battery-level {
+  z-index: 20;
   position: absolute;
   overflow: hidden;
   bottom: 0;
@@ -617,7 +689,6 @@
 }
 .action-sheet--active .status-bar {
   background-color: #9c9c9e; /* Фон */
-  z-index: 15;
 }
 .action-sheet--active .status-bar__time {
   color: #fff;
