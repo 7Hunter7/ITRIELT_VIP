@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateBatteryLevel(randomLevel);
   }, 60000); // Обновляем раз в минуту
 
-  const quantityObjects = 12; // Количество карточек
+  const quantityObjects = 12; // Количество карточек для показа
   const maxQuantityObjects = 37; // Максимальное количество карточек
 
   const timerGenerateCardData = 5 * 60 * 1000; // 5 минут в миллисекундах
@@ -296,63 +296,70 @@ document.addEventListener("DOMContentLoaded", () => {
       "lastUpdateTimestamp",
       new Date().getTime().toString()
     );
+    return cardData;
+  }
 
-    // ------------------  Логика "Показать ещё"  ------------------
-    const showMoreButton = document.querySelector(".show-more__button");
-    const initialCardsToShow = Math.min(12, maxQuantityObjects); // Показывать не больше, чем есть
-    let displayedCards = cardData.length; // Счетчик отображенных карточек
+  // ------------------  Логика "Показать Ещё" и отображение карточек  ------------------
+  let cardData = generateAndRenderCards();
+  const objectsGrid = document.querySelector(".objects__grid");
+  const showMoreButton = document.querySelector(".show-more__button");
+  const initialCardsToShow = Math.min(12, quantityObjects); // Показывать не больше, чем есть
 
-    // Функция генерации данных для указанного количества карточек, начиная с определенного индекса
-    function getCardDataForDisplay(startIndex, quantity) {
-      return cardData.slice(startIndex, startIndex + quantity); // Срез массива
-    }
+  let displayedCards = 0; // Счетчик отображенных карточек
 
-    // Функция для отрисовки карточек (добавляет карточки в objectsGrid)
-    function renderCards(cards) {
-      const cardsHTML = cards.map(createCardHTML).join("");
-      objectsGrid.insertAdjacentHTML("beforeend", cardsHTML); // Добавляем в конец
-    }
+  // Функция генерации данных для указанного количества карточек, начиная с определенного индекса
+  function getCardDataForDisplay(startIndex, quantity) {
+    return cardData.slice(startIndex, startIndex + quantity); // Срез массива
+  }
 
-    // Отображаем начальные карточки при загрузке
-    renderCards(getCardDataForDisplay(displayedCards, initialCardsToShow));
-    displayedCards += initialCardsToShow;
+  // Функция для отрисовки карточек (добавляет карточки в objectsGrid)
+  function renderCards(cards) {
+    const cardsHTML = cards.map(createCardHTML).join("");
+    objectsGrid.insertAdjacentHTML("beforeend", cardsHTML); // Добавляем в конец
+  }
 
-    // Обновляем текст кнопки
-    showMoreButton.textContent = `Показать ещё ${Math.max(
-      0,
-      cardData.length - displayedCards
-    )} из ${cardData.length}`;
+  // Отображаем начальные карточки при загрузке
+  renderCards(getCardDataForDisplay(displayedCards, initialCardsToShow));
+  displayedCards += initialCardsToShow;
 
-    // Скрываем кнопку, если показаны все карточки
-    if (displayedCards >= cardData.length) {
-      showMoreButton.style.display = "none";
-    }
+  // Обновляем текст кнопки
+  showMoreButton.textContent = `Показать ещё ${quantityObjects} из ${
+    maxQuantityObjects - displayedCards
+  }`;
 
-    // Обработчик клика на кнопку "Показать ещё"
-    showMoreButton.addEventListener("click", () => {
-      const cardsToShow = Math.min(12, cardData.length - displayedCards); // Не больше, чем осталось
+  // Скрываем кнопку, если показаны все карточки
+  if (displayedCards >= maxQuantityObjects) {
+    showMoreButton.style.display = "none";
+  }
+  // Обработчик клика на кнопку "Показать ещё"
+  showMoreButton.addEventListener("click", () => {
+    const cardsToShow = Math.min(12, displayedCards); // Не больше, чем осталось
 
-      if (cardsToShow > 0) {
-        const newCards = getCardDataForDisplay(displayedCards, cardsToShow);
-        renderCards(newCards);
-        displayedCards += cardsToShow;
+    if (cardsToShow > 0) {
+      const newCards = getCardDataForDisplay(displayedCards, cardsToShow);
+      renderCards(newCards);
+      displayedCards += cardsToShow;
 
-        // Обновляем текст кнопки
-        showMoreButton.textContent = `Показать ещё ${Math.max(
-          0,
-          cardData.length - displayedCards
-        )} из ${cardData.length}`;
-
-        // Скрываем кнопку, если показаны все карточки
-        if (displayedCards >= cardData.length) {
-          showMoreButton.style.display = "none";
-        }
+      // Обновляем текст кнопки
+      if (maxQuantityObjects - displayedCards > displayedCards) {
+        showMoreButton.textContent = `Показать ещё ${quantityObjects} из ${
+          maxQuantityObjects - displayedCards
+        } `;
       } else {
-        // Если больше карточек нет, скрыть кнопку
+        showMoreButton.textContent = `Показать ещё ${
+          maxQuantityObjects - displayedCards
+        } из ${quantityObjects}`;
+      }
+      // Скрываем кнопку, если показаны все карточки
+      if (displayedCards >= maxQuantityObjects) {
         showMoreButton.style.display = "none";
       }
-    });
-  }
+    } else {
+      // Если больше карточек нет, скрыть кнопку
+      showMoreButton.style.display = "none";
+    }
+  });
+
   // Запускаем генерацию карточек сразу после загрузки страницы
   generateAndRenderCards();
 
@@ -366,6 +373,7 @@ document.addEventListener("DOMContentLoaded", () => {
     card.addEventListener("click", () => {
       cardData[index].isFavorite = !cardData[index].isFavorite;
       favoriteElement.classList.toggle("objects__card-favorite--active");
+      console.log("Избранное!");
     });
   });
 
@@ -394,14 +402,5 @@ document.addEventListener("DOMContentLoaded", () => {
         sheet.classList.remove("action-sheet--active");
       });
     });
-  });
-
-  cards.forEach((card) => {
-    card
-      .querySelector(".objects__card-favorite")
-      .addEventListener("click", () => {
-        // Здесь логика для добавления/удаления из избранного
-        alert("Избранное!");
-      });
   });
 });
