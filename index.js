@@ -54,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Функция для генерации данных одной карточки
   function generateCardData(i) {
+    // i - индекс карточки
     const rooms = generateRandomNumber(1, 4);
     const square = generateRandomNumber(40, 150);
     const number = `№ ${generateRandomNumber(1000, 9999)}`;
@@ -102,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (storedCardData) {
           const cardData = JSON.parse(storedCardData);
           // Отрисовываем карточки
-          generateCardData(cardData);
+          createCardHTML(cardData);
           console.log("Используем данные из localStorage:", cardData);
           return; // Прерываем выполнение функции, чтобы не генерировать новые данные
         }
@@ -121,7 +122,10 @@ document.addEventListener("DOMContentLoaded", () => {
       new Date().getTime().toString()
     );
 
-    // Отрисовываем карточки (замените на вашу реализацию отрисовки)
+    // Отрисовываем карточки на странице
+    const objectsGrid = document.querySelector(".objects__grid");
+    const cardsHTML = createCardHTML.map(cardData).join("");
+    objectsGrid.innerHTML = cardsHTML;
     console.log("Сгенерировали новые данные:", cardData);
   }
 
@@ -129,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
   generateAndRenderCards();
 
   // Функция генерации HTML для одной карточки
-  function generateCardData(data) {
+  function createCardHTML(data) {
     const paginationHTML =
       data.pagination > 0
         ? Array.from(
@@ -283,10 +287,6 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     `;
   }
-
-  const objectsGrid = document.querySelector(".objects__grid");
-  const cardsHTML = cardData.map(generateCardData).join("");
-  objectsGrid.innerHTML = cardsHTML;
 
   // Обработчики событий для options и favorite
   const cards = document.querySelectorAll(".objects__card");
