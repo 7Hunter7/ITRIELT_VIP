@@ -718,14 +718,10 @@
   cursor: pointer;
 }
 .action-sheet__item:hover {
-  font-weight: 600;
   color: #6f77fe;
 }
 .action-sheet__item:active {
-  font-weight: 600;
-  font-size: 0.875rem;
-  line-height: 129%;
-  letter-spacing: 0.01em;
+  color: #3c47fe;
 }
 .action-sheet__item svg {
   transition: opacity 0.2s ease-in-out;
