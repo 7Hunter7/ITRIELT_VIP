@@ -70,12 +70,21 @@
             />
           </label>
           <select class="header__sort_select" id="sort-select">
-            <option value="price-asc">Сначала дешевле</option>
-            <option value="price-desc">Сначала дороже</option>
+            <option value="price-asc">
+              <svg class="header__sort_option-icon"></svg>
+              Сначала дешевле
+            </option>
+            <option value="price-desc">
+              <svg class="header__sort_option-icon"></svg>Сначала дороже
+            </option>
             <option value="area-desc" selected>
+              <svg class="header__sort_option-icon--active"></svg>
               Сначала с большей площадью
             </option>
-            <option value="area-asc">Сначала с меньшей площадью</option>
+            <option value="area-asc">
+              <svg class="header__sort_option-icon"></svg>Сначала с меньшей
+              площадью
+            </option>
           </select>
           <img
             class="header__sort_chevron"

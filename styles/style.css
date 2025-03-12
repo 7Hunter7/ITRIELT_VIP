@@ -167,6 +167,8 @@
   -webkit-appearance: none; /* Для Safari */
   -moz-appearance: none; /* Для Firefox */
   width: 100%;
+  font-size: 16px;
+  line-height: 125%;
   padding: 0.5rem 2.25rem;
   border: 0.5px solid #dddde3;
   border-radius: 8px;
@@ -177,6 +179,34 @@
 .header__sort_select:focus {
   outline: none; /* Убираем рамку при фокусе */
   border-color: #6f77fe; /* Меняем цвет границы при фокусе */
+}
+.header__sort_select option {
+  appearance: none; /* Убираем стандартные стили select */
+  -webkit-appearance: none; /* Для Safari */
+  -moz-appearance: none; /* Для Firefox */
+  position: relative;
+  padding-left: 1rem;
+}
+.header__sort_select option svg {
+  transition: opacity 0.2s ease-in-out;
+}
+.header__sort_select option option:hover {
+  color: #1e1e24;
+}
+.header__sort_select option option:hover::before {
+  background-image: url("/public/icons/multi-select.svg");
+}
+.header__sort_select option option::before {
+  content: "";
+  background-image: url("/public/icons/select.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
 }
 .header__sort_icon {
   position: absolute;

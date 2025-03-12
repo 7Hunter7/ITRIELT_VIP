@@ -70,8 +70,9 @@
       appearance: none; /* Убираем стандартные стили select */
       -webkit-appearance: none; /* Для Safari */
       -moz-appearance: none; /* Для Firefox */
-
       width: 100%;
+      font-size: $font-size-base;
+      line-height: 125%;
       padding: $spacing-xs $spacing-xxxl;
       border: 0.5px solid #dddde3;
       border-radius: $border-radius;
@@ -81,6 +82,27 @@
       &:focus {
         outline: none; /* Убираем рамку при фокусе */
         border-color: $color-primary; /* Меняем цвет границы при фокусе */
+      }
+      option {
+        appearance: none; /* Убираем стандартные стили select */
+        -webkit-appearance: none; /* Для Safari */
+        -moz-appearance: none; /* Для Firefox */
+        position: relative;
+        padding-left: 1rem;
+        svg {
+          transition: opacity 0.2s ease-in-out;
+        }
+        option:hover {
+          color: $color-text-primary;
+          &::before {
+            background-image: url("/public/icons/multi-select.svg");
+          }
+        }
+
+        option::before {
+          content: "";
+          @include action-sheet-icon("/public/icons/select.svg");
+        }
       }
     }
 
