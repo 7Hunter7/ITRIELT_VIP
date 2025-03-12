@@ -711,7 +711,7 @@
   height: 1.5rem;
 }
 .action-sheet__item:hover .action-sheet__item_selections {
-  /* поменять цвет заливки на $color-primary, а плюса внутри на $color-white */
+  background-image: url("/public/icons/multi-select_added.svg");
 }
 .action-sheet__item_additions {
   background-image: url("/public/icons/add_favorite.svg");
@@ -742,7 +742,7 @@
   background-image: url("/public/icons/collection_added.svg");
 }
 .action-sheet__item_fixies {
-  background-image: url("/public/icons/lock.svg");
+  background-image: url("/public/icons/unlock.png");
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
@@ -753,10 +753,10 @@
   height: 1.5rem;
 }
 .action-sheet__item:hover .action-sheet__item_fixies {
-  /* поменять цвет заливки на $color-primary, а точки внутри на $color-white */
+  background-image: url("/public/icons/lock.svg");
 }
 .action-sheet__item_shares {
-  background-image: url("/public/icons/shared.svg");
+  background-image: url("/public/icons/share.png");
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
@@ -767,7 +767,15 @@
   height: 1.5rem;
 }
 .action-sheet__item:hover .action-sheet__item_shares {
-  /* поменять цвет заливки на $color-primary */
+  background-image: url("/public/icons/shared.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
 }
 .action-sheet__cancel {
   height: 0.25rem;

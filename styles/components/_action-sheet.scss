@@ -85,7 +85,7 @@
       @include action-sheet-icon("/public/icons/multi-select.svg");
     }
     &:hover &_selections {
-      /* поменять цвет заливки на $color-primary, а плюса внутри на $color-white */
+      background-image: url("/public/icons/multi-select_added.svg");
     }
 
     // Стили для иконок "Добавить в избранное"
@@ -106,18 +106,18 @@
 
     // Стили для иконок "Зафиксировать"
     &_fixies {
-      @include action-sheet-icon("/public/icons/lock.svg");
+      @include action-sheet-icon("/public/icons/unlock.png");
     }
     &:hover &_fixies {
-      /* поменять цвет заливки на $color-primary, а точки внутри на $color-white */
+      background-image: url("/public/icons/lock.svg");
     }
 
     // Стили для иконок "Поделиться"
     &_shares {
-      @include action-sheet-icon("/public/icons/shared.svg");
+      @include action-sheet-icon("/public/icons/share.png");
     }
     &:hover &_shares {
-      /* поменять цвет заливки на $color-primary */
+      @include action-sheet-icon("/public/icons/shared.svg");
     }
   }
 
