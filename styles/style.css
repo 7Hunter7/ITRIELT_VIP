@@ -700,7 +700,7 @@
   transition: opacity 0.2s ease-in-out;
 }
 .action-sheet__item_selections {
-  background-image: url("/public/icons/multi-select.svg");
+  background-image: url("/public/icons/select.svg");
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
@@ -711,7 +711,7 @@
   height: 1.5rem;
 }
 .action-sheet__item:hover .action-sheet__item_selections {
-  background-image: url("/public/icons/multi-select_added.svg");
+  background-image: url("/public/icons/multi-select.svg");
 }
 .action-sheet__item_additions {
   background-image: url("/public/icons/add_favorite.svg");

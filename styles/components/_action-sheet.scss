@@ -82,10 +82,10 @@
 
     // Стили для иконок "Множественный выбор"
     &_selections {
-      @include action-sheet-icon("/public/icons/multi-select.svg");
+      @include action-sheet-icon("/public/icons/select.svg");
     }
     &:hover &_selections {
-      background-image: url("/public/icons/multi-select_added.svg");
+      background-image: url("/public/icons/multi-select.svg");
     }
 
     // Стили для иконок "Добавить в избранное"
