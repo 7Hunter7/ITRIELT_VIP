@@ -1,6 +1,5 @@
 @import "../variables";
 @import "../mixins";
-@import "./status-bar";
 
 .action-sheet {
   position: fixed;
@@ -24,9 +23,9 @@
 
   &__content {
     @include flex(column, flex-start, flex-start);
+    padding-bottom: $spacing-xs;
     border: 0.5px solid #ecedf0;
     border-radius: $spacing-sm;
-
     box-shadow: 0 0 8px 0 rgba(30, 30, 36, 0.1),
       0 8px 16px 0 rgba(23, 23, 28, 0.05);
     background-color: $color-white;
@@ -54,6 +53,9 @@
   &__item {
     @include flex(row, flex-start, center, $spacing-md);
     padding: 0.875rem $spacing-md;
+    position: relative;
+    padding-left: 3rem;
+    cursor: pointer;
     border: none;
     background-color: transparent;
     font-weight: $font-weight-medium;
@@ -67,22 +69,55 @@
       font-weight: $font-weight-semibold;
       color: $color-primary;
     }
+
     &:active {
       font-weight: $font-weight-semibold;
       font-size: $font-size-item;
       line-height: 129%;
       letter-spacing: 0.01em;
     }
+    svg {
+      transition: opacity 0.2s ease-in-out;
+    }
 
+    // Стили для иконок "Множественный выбор"
     &_selections {
+      @include action-sheet-icon("/public/icons/multi-select.svg");
     }
+    &:hover &_selections {
+      /* поменять цвет заливки на $color-primary, а плюса внутри на $color-white */
+    }
+
+    // Стили для иконок "Добавить в избранное"
     &_additions {
+      @include action-sheet-icon("/public/icons/add_favorite.svg");
     }
+    &:hover &_additions {
+      background-image: url("/public/icons/favorite_added.svg");
+    }
+
+    // Стили для иконок "Добавить в подборки"
     &_collections {
+      @include action-sheet-icon("/public/icons/add_collection.svg");
     }
+    &:hover &_collections {
+      background-image: url("/public/icons/collection_added.svg");
+    }
+
+    // Стили для иконок "Зафиксировать"
     &_fixies {
+      @include action-sheet-icon("/public/icons/lock.svg");
     }
+    &:hover &_fixies {
+      /* поменять цвет заливки на $color-primary, а точки внутри на $color-white */
+    }
+
+    // Стили для иконок "Поделиться"
     &_shares {
+      @include action-sheet-icon("/public/icons/shared.svg");
+    }
+    &:hover &_shares {
+      /* поменять цвет заливки на $color-primary */
     }
   }
 

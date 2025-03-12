@@ -612,89 +612,6 @@
   background-color: #6f77fe;
 }
 
-.status-bar {
-  z-index: 15;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0;
-  padding: 1.25rem 2rem;
-  background-color: #fff;
-}
-.status-bar__time {
-  margin-left: 1.25rem;
-  text-align: left;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #3c3d48;
-}
-.status-bar__icons {
-  display: flex;
-  align-items: center;
-  gap: 0.3125rem;
-}
-.status-bar__icons svg {
-  width: auto;
-  height: 0.8125rem;
-}
-.status-bar__battery {
-  width: 1.8125rem;
-  height: 0.8125rem;
-  background-image: url("/public/icons/battery.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  position: relative;
-  overflow: hidden;
-}
-.status-bar__battery-level {
-  z-index: 20;
-  position: absolute;
-  overflow: hidden;
-  bottom: 0;
-  left: 0;
-  height: 0.5rem;
-  max-width: 1rem;
-  margin: 2.3px 4.5px 2.3px 2.1px;
-  background-color: #3c3d48; /* цвет заряда */
-  border-radius: 2px;
-  transition: width 0.3s ease; /* Плавное изменение уровня */
-}
-
-@media (min-width: 744px) {
-  /* 744px */
-  .status-bar {
-    padding: 0.375rem 1rem;
-  }
-  .status-bar__time {
-    margin-left: 0;
-    font-size: 0.875rem;
-  }
-}
-@media (min-width: 1336px) {
-  /* 1336px */
-  .status-bar {
-    display: none;
-  }
-}
-.action-sheet--active .status-bar {
-  background-color: #9c9c9e; /* Фон */
-}
-.action-sheet--active .status-bar__time {
-  color: #fff;
-}
-.action-sheet--active .status-bar svg {
-  fill: #fff !important;
-}
-.action-sheet--active .status-bar__battery-level {
-  background-color: #fff;
-}
-
 .action-sheet {
   position: fixed;
   top: 0;
@@ -726,6 +643,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   gap: 0;
+  padding-bottom: 0.5rem;
   border: 0.5px solid #ecedf0;
   border-radius: 0.75rem;
   box-shadow: 0 0 8px 0 rgba(30, 30, 36, 0.1), 0 8px 16px 0 rgba(23, 23, 28, 0.05);
@@ -756,6 +674,9 @@
   justify-content: flex-start;
   gap: 1rem;
   padding: 0.875rem 1rem;
+  position: relative;
+  padding-left: 3rem;
+  cursor: pointer;
   border: none;
   background-color: transparent;
   font-weight: 500;
@@ -774,6 +695,79 @@
   font-size: 0.875rem;
   line-height: 129%;
   letter-spacing: 0.01em;
+}
+.action-sheet__item svg {
+  transition: opacity 0.2s ease-in-out;
+}
+.action-sheet__item_selections {
+  background-image: url("/public/icons/multi-select.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.action-sheet__item:hover .action-sheet__item_selections {
+  /* поменять цвет заливки на $color-primary, а плюса внутри на $color-white */
+}
+.action-sheet__item_additions {
+  background-image: url("/public/icons/add_favorite.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.action-sheet__item:hover .action-sheet__item_additions {
+  background-image: url("/public/icons/favorite_added.svg");
+}
+.action-sheet__item_collections {
+  background-image: url("/public/icons/add_collection.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.action-sheet__item:hover .action-sheet__item_collections {
+  background-image: url("/public/icons/collection_added.svg");
+}
+.action-sheet__item_fixies {
+  background-image: url("/public/icons/lock.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.action-sheet__item:hover .action-sheet__item_fixies {
+  /* поменять цвет заливки на $color-primary, а точки внутри на $color-white */
+}
+.action-sheet__item_shares {
+  background-image: url("/public/icons/shared.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.action-sheet__item:hover .action-sheet__item_shares {
+  /* поменять цвет заливки на $color-primary */
 }
 .action-sheet__cancel {
   height: 0.25rem;
