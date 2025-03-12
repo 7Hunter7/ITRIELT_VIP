@@ -769,9 +769,6 @@
   font-weight: 600;
   color: #6f77fe;
 }
-.action-sheet__item:hover svg {
-  fill: #6f77fe;
-}
 .action-sheet__item:active {
   font-weight: 600;
   font-size: 0.875rem;

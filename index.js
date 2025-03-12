@@ -178,6 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
               <button class="action-sheet__item">
                 <svg
+                  class="action-sheet__item_selections"
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
@@ -192,6 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
               </button>
               <button class="action-sheet__item">
                 <svg
+                  class="action-sheet__item_additions"
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
@@ -207,6 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
               </button>
               <button class="action-sheet__item">
                 <svg
+                  class="action-sheet__item_collections"
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
@@ -221,6 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
               </button>
               <button class="action-sheet__item">
                 <svg
+                  class="action-sheet__item_fixies"
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
@@ -235,6 +239,7 @@ document.addEventListener("DOMContentLoaded", () => {
               </button>
               <button class="action-sheet__item">
                 <svg
+                  class="action-sheet__item_shares"
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"

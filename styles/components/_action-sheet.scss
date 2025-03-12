@@ -66,16 +66,23 @@
     &:hover {
       font-weight: $font-weight-semibold;
       color: $color-primary;
-
-      svg {
-        fill: $color-primary;
-      }
     }
     &:active {
       font-weight: $font-weight-semibold;
       font-size: $font-size-item;
       line-height: 129%;
       letter-spacing: 0.01em;
+    }
+
+    &_selections {
+    }
+    &_additions {
+    }
+    &_collections {
+    }
+    &_fixies {
+    }
+    &_shares {
     }
   }
 
