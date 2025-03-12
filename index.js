@@ -1,5 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // 1. Status Bar
   const batteryLevel = document.querySelector(".status-bar__battery-level");
+
+  // Функция часов
+  function updateTime() {
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, "0");
+    const minutes = now.getMinutes().toString().padStart(2, "0");
+    document.querySelector(
+      ".status-bar__time"
+    ).textContent = `${hours}:${minutes}`;
+  }
+  setInterval(updateTime, 60000);
+  updateTime();
 
   function updateBatteryLevel(level) {
     batteryLevel.style.width = `${level}%`;
