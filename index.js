@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. Status Bar
+  // ------------------ 1. Status Bar - Часы ------------------
   const batteryLevel = document.querySelector(".status-bar__battery-level");
 
   // Функция часов
@@ -11,20 +11,48 @@ document.addEventListener("DOMContentLoaded", () => {
       ".status-bar__time"
     ).textContent = `${hours}:${minutes}`;
   }
-  setInterval(updateTime, 60000);
+  setInterval(updateTime, 60000); // Обновляем раз в минуту
   updateTime();
 
+  // ------------------ 2. Status Bar - Батарея ------------------
+  let currentBatteryLevel = 100; // Начальный заряд
+  const batteryDecreaseInterval = 10 * 60 * 1000; // 10 минут
+
+  // Функция обновления уровня заряда и цвета батареи
   function updateBatteryLevel(level) {
     batteryLevel.style.width = `${level}%`;
-    // Дополнительно можно менять цвет в зависимости от уровня (зеленый, желтый, красный)
-  }
+    batteryLevel.style.backgroundColor = "#3c3d48"; //  Цвет по умолчанию
 
-  // Пример вызова функции (например, раз в минуту):
-  updateBatteryLevel(50);
-  setInterval(() => {
-    const randomLevel = Math.floor(Math.random() * 101); // Случайное значение от 0 до 100
-    updateBatteryLevel(randomLevel);
-  }, 60000); // Обновляем раз в минуту
+    // Проверяем диапазоны значений
+    switch (true) {
+      case level === 100:
+        batteryLevel.style.backgroundColor = "#25a25f";
+        break;
+      case level <= 20:
+        batteryLevel.style.backgroundColor = "orange";
+        break;
+      case level <= 5:
+        batteryLevel.style.backgroundColor = "red";
+        break;
+      default: //  Цвет по умолчанию
+        break;
+    }
+  }
+  // Функция разряда батареи
+  function decreaseBattery() {
+    if (currentBatteryLevel > 0) {
+      currentBatteryLevel--;
+      updateBatteryLevel(currentBatteryLevel);
+    } else {
+      //  Если батарея разряжена, начинаем цикл заново
+      currentBatteryLevel = 100;
+      updateBatteryLevel(currentBatteryLevel);
+    }
+  }
+  //  Первое обновление
+  updateBatteryLevel(currentBatteryLevel);
+  //  Запускаем уменьшение заряда
+  const batteryInterval = setInterval(decreaseBattery, batteryDecreaseInterval);
 
   const quantityObjects = 12; // Количество карточек для показа
   const maxQuantityObjects = 37; // Максимальное количество карточек

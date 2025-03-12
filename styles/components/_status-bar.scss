@@ -76,6 +76,7 @@
 
 // Изменения для status-bar
 .action-sheet--active .status-bar {
+  z-index: 10;
   background-color: #9c9c9e; /* Фон */
 
   &__time {

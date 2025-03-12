@@ -71,6 +71,7 @@
   }
 }
 .action-sheet--active .status-bar {
+  z-index: 10;
   background-color: #9c9c9e; /* Фон */
 }
 .action-sheet--active .status-bar__time {
