@@ -30,7 +30,7 @@
 }
 
 // Миксин для стилизации иконок в 'action-sheet'
-@mixin action-sheet-icon($icon-url, $icon-hover-url) {
+@mixin action-sheet-icon($icon-url) {
   background-image: url($icon-url);
   background-repeat: no-repeat;
   background-size: contain;
@@ -39,8 +39,4 @@
   top: 50%;
   transform: translateY(-50%);
   @include icon(1.5rem); // Размер иконки
-
-  &:hover {
-    background-image: url($icon-hover-url);
-  }
 }
