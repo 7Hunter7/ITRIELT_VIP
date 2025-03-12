@@ -172,6 +172,10 @@ document.addEventListener("DOMContentLoaded", () => {
           <!-- Action Sheet (скрыт по умолчанию) -->
           <div class="action-sheet">
             <div class="action-sheet__content">
+              <div class="action-sheet__header">
+              ЖК “Стартап”, ${data.number}, ${data.square}
+                <div class="action-sheet__header_price">${data.price}</div>
+              </div>
               <button class="action-sheet__item">
                 <svg
                   width="24"

@@ -9,7 +9,7 @@
   bottom: 0;
   width: 100%;
   height: 100%;
-  background-color: #9c9c9e; /* Фон */
+  background-color: rgba(23, 23, 28, 0.4);
   z-index: 10;
   @include flex(column, flex-end, center);
   opacity: 0;
@@ -26,10 +26,29 @@
     @include flex(column, flex-start, flex-start);
     border: 0.5px solid #ecedf0;
     border-radius: $spacing-sm;
-    padding: $spacing-xs 0;
+
     box-shadow: 0 0 8px 0 rgba(30, 30, 36, 0.1),
       0 8px 16px 0 rgba(23, 23, 28, 0.05);
     background-color: $color-white;
+  }
+
+  &__header {
+    margin-top: $spacing-xs;
+    padding: 0.875rem $spacing-md;
+    text-align: left;
+    font-weight: $font-weight-semibold;
+    letter-spacing: 0.01em;
+    color: $color-secondary;
+    width: 100%;
+    box-sizing: border-box;
+
+    &_price {
+      margin-top: $spacing-xxxs;
+      font-size: $font-size-tag;
+      line-height: 117%;
+      letter-spacing: 0em;
+      color: $color-grey;
+    }
   }
 
   &__item {

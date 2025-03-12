@@ -702,7 +702,7 @@
   bottom: 0;
   width: 100%;
   height: 100%;
-  background-color: #9c9c9e; /* Фон */
+  background-color: rgba(23, 23, 28, 0.4);
   z-index: 10;
   display: flex;
   flex-direction: column;
@@ -728,9 +728,25 @@
   gap: 0;
   border: 0.5px solid #ecedf0;
   border-radius: 0.75rem;
-  padding: 0.5rem 0;
   box-shadow: 0 0 8px 0 rgba(30, 30, 36, 0.1), 0 8px 16px 0 rgba(23, 23, 28, 0.05);
   background-color: #fff;
+}
+.action-sheet__header {
+  margin-top: 0.5rem;
+  padding: 0.875rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #9596a7;
+  width: 100%;
+  box-sizing: border-box;
+}
+.action-sheet__header_price {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  line-height: 117%;
+  letter-spacing: 0em;
+  color: #b7b8c3;
 }
 .action-sheet__item {
   display: flex;
