@@ -761,18 +761,22 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 125%;
-  font-size: 0.875rem;
   color: #1e1e24;
+  transition: all 0.2s ease-in;
   cursor: pointer;
 }
 .action-sheet__item:hover {
+  font-weight: 600;
   color: #6f77fe;
 }
-.action-sheet__item svg {
+.action-sheet__item:hover svg {
   fill: #6f77fe;
 }
-.action-sheet__item svg :hover {
-  fill: #6f77fe;
+.action-sheet__item:active {
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 129%;
+  letter-spacing: 0.01em;
 }
 .action-sheet__cancel {
   height: 0.25rem;
