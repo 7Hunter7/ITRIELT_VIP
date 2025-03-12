@@ -47,12 +47,12 @@
   }
 
   &__line {
-    width: 8.5rem; // 136px
-    height: 0.3125rem; // 5px
+    height: $spacing-xxxs;
+    width: 8.5rem;
     border-radius: 0.125rem;
     margin: auto;
     margin-top: $spacing-xl;
     margin-bottom: $spacing-xs;
-    background: $color-accent;
+    background-color: $color-accent;
   }
 }

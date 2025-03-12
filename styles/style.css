@@ -779,8 +779,8 @@
 }
 .action-sheet__cancel {
   height: 0.25rem;
-  min-width: 8.75rem;
-  border-radius: 2px;
+  min-width: 8.7rem;
+  border-radius: 0.125rem;
   background-color: #fff;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
@@ -865,13 +865,13 @@
      object-fit: contain;
 }
 .footer__line {
+  height: 0.25rem;
   width: 8.5rem;
-  height: 0.3125rem;
   border-radius: 0.125rem;
   margin: auto;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
-  background: #3c3d48;
+  background-color: #3c3d48;
 }
 
 * {
