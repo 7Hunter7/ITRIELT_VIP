@@ -58,21 +58,9 @@
       pointer-events: none;
       transform: translateY(-50%);
     }
-    &:focus + &,
-    &:valid + & {
-      top: 0;
-      padding: 0 $spacing-xxs;
-      left: $spacing-xxs;
-    }
-
     &_select {
       margin: $spacing-xxs 0;
-      appearance: none; /* Убираем стандартные стили select */
-      -webkit-appearance: none; /* Для Safari */
-      -moz-appearance: none; /* Для Firefox */
       width: 100%;
-      font-size: $font-size-base;
-      line-height: 125%;
       padding: $spacing-xs $spacing-xxxl;
       border: 0.5px solid #dddde3;
       border-radius: $border-radius;
@@ -82,29 +70,6 @@
       &:focus {
         outline: none; /* Убираем рамку при фокусе */
         border-color: $color-primary; /* Меняем цвет границы при фокусе */
-      }
-      &::-ms-expand {
-        // Убираем стандартную стрелку в Internet Explorer
-        display: none;
-      }
-      option {
-        width: 100%;
-        position: relative;
-        padding-left: 1rem;
-        svg {
-          transition: opacity 0.2s ease-in-out;
-        }
-        option:hover {
-          color: $color-text-primary;
-          &::before {
-            background-image: url("/public/icons/multi-select.svg");
-          }
-        }
-
-        option::before {
-          content: "";
-          @include action-sheet-icon("/public/icons/select.svg");
-        }
       }
     }
 
@@ -130,7 +95,58 @@
       }
     }
   }
+
+  /* Кастомный select */
+  .selected-option {
+    overflow: hidden;
+    pointer-events: none;
+    @include flex(row, space-between, center);
+    transition: all 0.3s ease;
+  }
+
+  .options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%; /* Важно! */
+    margin-top: $spacing-xs;
+    border: 0.5px solid #ecedf0;
+    border-top: none;
+    border-radius: 0.75rem; // 12px
+    box-shadow: 0 0 8px 0 rgba(30, 30, 36, 0.1),
+      0 8px 16px 0 rgba(23, 23, 28, 0.05);
+    background-color: $color-white;
+    display: block;
+    z-index: 10;
+
+    &open {
+      display: block;
+    }
+  }
+
+  .option {
+    padding: $spacing-xxxs 0;
+    padding-left: 2.75;
+    overflow: hidden;
+    pointer-events: none;
+    font-size: $font-size-base;
+    line-height: 125%;
+    @include flex(row, center, center);
+    flex-wrap: nowrap;
+    &:hover {
+      color: $color-primary;
+    }
+  }
+  /* Стили для иконок в option */
+  .header__sort_option-icon {
+    @include action-sheet-icon("/public/icons/option.svg");
+  }
+
+  .header__sort_option-icon--active {
+    @include action-sheet-icon("/public/icons/option_selected.svg");
+  }
 }
+
 // Медиа-запросы
 @media (min-width: $breakpoint-sm) {
   .header {
