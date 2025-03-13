@@ -89,7 +89,6 @@
   display: flex;
   flex-direction: column;
   /* Кастомный select */
-  /* Стили для иконок в option */
 }
 .header__top {
   display: flex;
@@ -148,6 +147,7 @@
   flex-wrap: nowrap;
   width: 100%;
   position: relative;
+  /* Стили для иконок в option */
 }
 .header__sort_label {
   position: absolute;
@@ -194,73 +194,65 @@
   width: 20px;
   height: 20px;
 }
+.header__sort_option-icon {
+  margin-top: 1.5rem;
+  background-image: url("/public/icons/option.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  left: 0.75rem;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.header__sort_option-icon--active {
+  margin-top: 1.5rem;
+  background-image: url("/public/icons/option_selected.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  left: 0.75rem;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+}
 .header .selected-option {
   overflow: hidden;
-  pointer-events: none;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0;
+  text-overflow: ellipsis;
   transition: all 0.3s ease;
 }
 .header .options {
   position: absolute;
   top: 100%;
   left: 0;
-  width: 100%; /* Важно! */
-  margin-top: 0.5rem;
-  border: 0.5px solid #ecedf0;
+  padding: 0.75rem 0.25rem;
+  border: 0.5px solid #dddde3;
   border-top: none;
-  border-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+  border-bottom-left-radius: 0.75rem;
   box-shadow: 0 0 8px 0 rgba(30, 30, 36, 0.1), 0 8px 16px 0 rgba(23, 23, 28, 0.05);
   background-color: #fff;
-  display: block;
+  overflow-wrap: break-word;
   z-index: 10;
 }
-.header .optionsopen {
+.header .options.open {
   display: block;
 }
+.header .options.open .header .options__sort_chevron img {
+  transform: rotate(180deg);
+}
 .header .option {
+  width: 12.5rem;
   padding: 0.25rem 0;
-  padding-left: 2.75;
-  overflow: hidden;
-  pointer-events: none;
+  margin-left: 2.75rem;
+  overflow-wrap: break-word;
   font-size: 16px;
   line-height: 125%;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  gap: 0;
-  flex-wrap: nowrap;
 }
 .header .option:hover {
   color: #6f77fe;
-}
-.header .header__sort_option-icon {
-  background-image: url("/public/icons/option.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  position: absolute;
-  left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 1.5rem;
-  height: 1.5rem;
-}
-.header .header__sort_option-icon--active {
-  background-image: url("/public/icons/option_selected.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  position: absolute;
-  left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 1.5rem;
-  height: 1.5rem;
 }
 
 @media (min-width: 744px) {

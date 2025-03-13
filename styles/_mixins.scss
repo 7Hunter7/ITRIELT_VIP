@@ -40,3 +40,14 @@
   transform: translateY(-50%);
   @include icon(1.5rem); // Размер иконки
 }
+
+// Миксин для стилизации иконок в 'header__sort_option-icon'
+@mixin sort-option-icon($icon-url) {
+  background-image: url($icon-url);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  left: $spacing-sm;
+  transform: translateY(-50%);
+  @include icon(1.5rem);
+}

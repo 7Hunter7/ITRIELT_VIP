@@ -62,7 +62,7 @@
       margin: $spacing-xxs 0;
       width: 100%;
       padding: $spacing-xs $spacing-xxxl;
-      border: 0.5px solid #dddde3;
+      border: 0.5px solid $color-border;
       border-radius: $border-radius;
       background-color: $color-white;
       color: $color-text-primary;
@@ -94,13 +94,22 @@
         @include icon();
       }
     }
+
+    /* Стили для иконок в option */
+    &_option-icon {
+      margin-top: $spacing-xl;
+      @include sort-option-icon("/public/icons/option.svg");
+    }
+    &_option-icon--active {
+      margin-top: $spacing-xl;
+      @include sort-option-icon("/public/icons/option_selected.svg");
+    }
   }
 
   /* Кастомный select */
   .selected-option {
     overflow: hidden;
-    pointer-events: none;
-    @include flex(row, space-between, center);
+    text-overflow: ellipsis;
     transition: all 0.3s ease;
   }
 
@@ -108,42 +117,40 @@
     position: absolute;
     top: 100%;
     left: 0;
-    width: 100%; /* Важно! */
-    margin-top: $spacing-xs;
-    border: 0.5px solid #ecedf0;
+    padding: $spacing-sm $spacing-xxxs;
+    border: 0.5px solid $color-border;
     border-top: none;
-    border-radius: 0.75rem; // 12px
+    border-bottom-right-radius: 0.75rem; // 12px
+    border-bottom-left-radius: 0.75rem;
     box-shadow: 0 0 8px 0 rgba(30, 30, 36, 0.1),
       0 8px 16px 0 rgba(23, 23, 28, 0.05);
     background-color: $color-white;
-    display: block;
+    overflow-wrap: break-word;
     z-index: 10;
 
-    &open {
+    &.open {
       display: block;
+    }
+
+    &.open &__sort_chevron {
+      img {
+        transform: rotate(180deg);
+      }
     }
   }
 
   .option {
+    width: 12.5rem;
     padding: $spacing-xxxs 0;
-    padding-left: 2.75;
-    overflow: hidden;
-    pointer-events: none;
+    margin-left: 2.75rem;
+    overflow-wrap: break-word;
     font-size: $font-size-base;
     line-height: 125%;
-    @include flex(row, center, center);
-    flex-wrap: nowrap;
+    display: flex;
+    align-items: center;
     &:hover {
       color: $color-primary;
     }
-  }
-  /* Стили для иконок в option */
-  .header__sort_option-icon {
-    @include action-sheet-icon("/public/icons/option.svg");
-  }
-
-  .header__sort_option-icon--active {
-    @include action-sheet-icon("/public/icons/option_selected.svg");
   }
 }
 
