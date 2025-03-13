@@ -136,6 +136,11 @@
     cursor: pointer;
     transition: opacity 0.3s ease;
 
+    &:first-child {
+      opacity: 1;
+      background-color: $color-primary;
+    }
+
     &--active {
       opacity: 1;
       background-color: $color-primary;

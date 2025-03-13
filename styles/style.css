@@ -663,6 +663,10 @@
   cursor: pointer;
   transition: opacity 0.3s ease;
 }
+.objects__card-pagination-dot:first-child {
+  opacity: 1;
+  background-color: #6f77fe;
+}
 .objects__card-pagination-dot--active {
   opacity: 1;
   background-color: #6f77fe;
