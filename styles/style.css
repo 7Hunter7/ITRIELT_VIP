@@ -168,9 +168,8 @@
   color: #1e1e24;
   cursor: pointer;
 }
-.header__sort_select:focus {
-  outline: none; /* Убираем рамку при фокусе */
-  border-color: #6f77fe; /* Меняем цвет границы при фокусе */
+.header__sort_select:hover {
+  border-color: #6f77fe;
 }
 .header__sort_icon {
   position: absolute;
@@ -189,10 +188,14 @@
   right: 0.75rem;
   transform: translateY(-50%);
   pointer-events: none; /* Чтобы иконка не мешала кликам */
+  transition: transform 0.2s ease;
 }
 .header__sort_chevron img {
   width: 20px;
   height: 20px;
+}
+.header__sort_chevron.rotate {
+  transform: translateY(-50%) rotate(180deg);
 }
 .header__sort_option-icon {
   margin-top: 1.5rem;
@@ -228,9 +231,6 @@
 }
 .header .options.open {
   display: block;
-}
-.header .options.open .header .options__sort_chevron img {
-  transform: rotate(180deg);
 }
 .header .option {
   width: 12.5rem;

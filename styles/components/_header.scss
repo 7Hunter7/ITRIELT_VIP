@@ -67,9 +67,8 @@
       background-color: $color-white;
       color: $color-text-primary;
       cursor: pointer;
-      &:focus {
-        outline: none; /* Убираем рамку при фокусе */
-        border-color: $color-primary; /* Меняем цвет границы при фокусе */
+      &:hover {
+        border-color: $color-primary;
       }
     }
 
@@ -90,8 +89,12 @@
       right: $spacing-sm;
       transform: translateY(-50%);
       pointer-events: none; /* Чтобы иконка не мешала кликам */
+      transition: transform 0.2s ease;
       img {
         @include icon();
+      }
+      &.rotate {
+        transform: translateY(-50%) rotate(180deg); // Вращение иконки
       }
     }
 
@@ -128,12 +131,6 @@
 
     &.open {
       display: block;
-    }
-
-    &.open &__sort_chevron {
-      img {
-        transform: rotate(180deg);
-      }
     }
   }
 

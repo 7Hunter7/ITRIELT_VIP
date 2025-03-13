@@ -391,10 +391,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const selectedOption = document.querySelector(".selected-option");
   const optionsContainer = document.querySelector(".options");
   const options = document.querySelectorAll(".option");
-  const originalSelect = document.getElementById("sort-select"); // ID select
+  const originalSelect = document.getElementById("sort-select");
+  const sortChevron = document.querySelector(".header__sort_chevron");
 
   customSelect.addEventListener("click", () => {
     optionsContainer.classList.toggle("open");
+    sortChevron.classList.toggle("rotate");
   });
 
   // Функция сортировки объектов
@@ -431,6 +433,7 @@ document.addEventListener("DOMContentLoaded", () => {
       originalSelect.value = option.dataset.value; // Обновляем значение оригинального select
       optionIcon.classList.add("active");
       optionsContainer.classList.remove("open");
+      sortChevron.classList.remove("rotate");
 
       // Сортируем и перерисовываем карточки
       sortCards(option.dataset.value);
@@ -454,6 +457,7 @@ document.addEventListener("DOMContentLoaded", () => {
       !selectedOption.contains(event.target)
     ) {
       optionsContainer.classList.remove("open");
+      sortChevron.classList.remove("rotate");
     }
   });
 });
