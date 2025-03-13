@@ -217,6 +217,7 @@
   height: 1.5rem;
 }
 .header .selected-option {
+  text-align: left;
   overflow: hidden;
   text-overflow: ellipsis;
   transition: all 0.3s ease;
@@ -234,6 +235,7 @@
   background-color: #fff;
   overflow-wrap: break-word;
   z-index: 10;
+  display: none;
 }
 .header .options.open {
   display: block;

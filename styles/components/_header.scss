@@ -108,6 +108,7 @@
 
   /* Кастомный select */
   .selected-option {
+    text-align: left;
     overflow: hidden;
     text-overflow: ellipsis;
     transition: all 0.3s ease;
@@ -127,6 +128,7 @@
     background-color: $color-white;
     overflow-wrap: break-word;
     z-index: 10;
+    display: none;
 
     &.open {
       display: block;

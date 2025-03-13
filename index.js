@@ -359,7 +359,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Логика для отображения и скрытия Action Sheet
+  // ------------------ 6. Логика для отображения и скрытия Action Sheet ------------------
   const cardWrappers = document.querySelectorAll(".objects__card-wrapper");
   const actionSheets = document.querySelectorAll(".action-sheet");
 
@@ -382,5 +382,31 @@ document.addEventListener("DOMContentLoaded", () => {
         sheet.classList.remove("action-sheet--active");
       });
     });
+  });
+
+  // ------------------ 7. Логика для отображения и скрытия Custom select ------------------
+  const customSelect = document.querySelector(".header__sort");
+  const selectedOption = document.querySelector(".selected-option");
+  const optionsContainer = document.querySelector(".options");
+  const options = document.querySelectorAll(".option");
+  const originalSelect = document.getElementById("sort-select"); // ID select
+
+  selectedOption.addEventListener("click", () => {
+    optionsContainer.classList.toggle("open");
+  });
+
+  options.forEach((option) => {
+    option.addEventListener("click", () => {
+      selectedOption.textContent = option.textContent;
+      originalSelect.value = option.dataset.value; // Обновляем значение оригинального select
+      optionsContainer.classList.remove("open");
+    });
+  });
+
+  // Закрытие списка опций при клике вне элемента
+  document.addEventListener("click", function (event) {
+    if (!customSelect.contains(event.target)) {
+      optionsContainer.classList.remove("open");
+    }
   });
 });
