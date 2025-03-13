@@ -100,10 +100,6 @@
       margin-top: $spacing-xl;
       @include sort-option-icon("/public/icons/option.svg");
     }
-    &_option-icon--active {
-      margin-top: $spacing-xl;
-      @include sort-option-icon("/public/icons/option_selected.svg");
-    }
   }
 
   /* Кастомный select */
@@ -153,6 +149,11 @@
     &:hover {
       color: $color-primary;
     }
+  }
+
+  .active {
+    margin-top: $spacing-xl;
+    @include sort-option-icon("/public/icons/option_selected.svg");
   }
 }
 

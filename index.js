@@ -396,9 +396,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   options.forEach((option) => {
+    const optionIcon = option.querySelector(".header__sort_option-icon");
+
     option.addEventListener("click", () => {
+      const optionIconActive = document.querySelector(".active");
+      optionIconActive.classList.remove("active");
+
       selectedOption.textContent = option.textContent;
       originalSelect.value = option.dataset.value; // Обновляем значение оригинального select
+      optionIcon.classList.add("active");
       optionsContainer.classList.remove("open");
     });
   });

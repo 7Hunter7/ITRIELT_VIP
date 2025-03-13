@@ -205,17 +205,6 @@
   width: 1.5rem;
   height: 1.5rem;
 }
-.header__sort_option-icon--active {
-  margin-top: 1.5rem;
-  background-image: url("/public/icons/option_selected.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  position: absolute;
-  left: 0.75rem;
-  transform: translateY(-50%);
-  width: 1.5rem;
-  height: 1.5rem;
-}
 .header .selected-option {
   text-align: left;
   overflow: hidden;
@@ -255,6 +244,17 @@
 }
 .header .option:hover {
   color: #6f77fe;
+}
+.header .active {
+  margin-top: 1.5rem;
+  background-image: url("/public/icons/option_selected.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  left: 0.75rem;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 @media (min-width: 744px) {
