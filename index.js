@@ -393,7 +393,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const options = document.querySelectorAll(".option");
   const originalSelect = document.getElementById("sort-select"); // ID select
 
-  selectedOption.addEventListener("click", () => {
+  customSelect.addEventListener("click", () => {
     optionsContainer.classList.toggle("open");
   });
 
@@ -449,7 +449,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Закрытие списка опций при клике вне элемента
   document.addEventListener("click", function (event) {
-    if (!customSelect.contains(event.target)) {
+    if (
+      !customSelect.contains(event.target) ||
+      !selectedOption.contains(event.target)
+    ) {
       optionsContainer.classList.remove("open");
     }
   });
