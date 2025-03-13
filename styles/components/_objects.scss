@@ -68,6 +68,7 @@
 
   &__card-image {
     place-items: center;
+    min-height: 11.9375rem; // 183px
 
     img {
       display: block;

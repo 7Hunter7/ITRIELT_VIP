@@ -589,6 +589,7 @@
 }
 .objects__card-image {
   place-items: center;
+  min-height: 11.9375rem;
 }
 .objects__card-image img {
   display: block;
