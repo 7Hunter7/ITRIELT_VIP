@@ -121,6 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
       number: number,
       plan: currentPlan,
       pagination: pagination,
+      clearPrice: price, // Цена для сортировки
       price: `${price.toLocaleString("ru-RU")} ₽`,
       pricePerMeter: `${pricePerMeter.toLocaleString("ru-RU")} ₽/м²`,
       address: `Краснодар · ЖК «ITRIELT» · Литер ${generateRandomNumber(
@@ -133,6 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
         2
       )} м²`,
       developerLogo: currentLogo,
+      area: square, // Площадь для сортировки
     };
   }
 
@@ -395,17 +397,53 @@ document.addEventListener("DOMContentLoaded", () => {
     optionsContainer.classList.toggle("open");
   });
 
+  // Функция сортировки объектов
+  function sortCards(sortBy) {
+    switch (sortBy) {
+      case "price-asc":
+        cardData.sort((a, b) => a.clearPrice - b.clearPrice);
+        break;
+      case "price-desc":
+        cardData.sort((a, b) => b.clearPrice - a.clearPrice);
+        break;
+      case "area-asc":
+        cardData.sort((a, b) => a.area - b.area);
+        break;
+      case "area-desc":
+        cardData.sort((a, b) => b.area - a.area);
+        break;
+      default:
+        break;
+    }
+  }
+
+  // Обработчик клика на option
   options.forEach((option) => {
     const optionIcon = option.querySelector(".header__sort_option-icon");
 
     option.addEventListener("click", () => {
       const optionIconActive = document.querySelector(".active");
-      optionIconActive.classList.remove("active");
+      if (optionIconActive) {
+        optionIconActive.classList.remove("active");
+      }
 
       selectedOption.textContent = option.textContent;
       originalSelect.value = option.dataset.value; // Обновляем значение оригинального select
       optionIcon.classList.add("active");
       optionsContainer.classList.remove("open");
+
+      // Сортируем и перерисовываем карточки
+      sortCards(option.dataset.value);
+      objectsGrid.innerHTML = ""; // Очищаем контейнер
+      displayedCards = 0; // сбрасываем счетчик
+
+      const initialCards = getCardDataForDisplay(
+        displayedCards,
+        initialCardsToShow
+      );
+      renderCards(initialCards);
+      displayedCards += initialCardsToShow;
+      updateShowMoreButton();
     });
   });
 
