@@ -236,11 +236,16 @@
   width: 12.5rem;
   padding: 0.25rem 0;
   margin-left: 2.75rem;
-  overflow-wrap: break-word;
   font-size: 16px;
   line-height: 125%;
+  white-space: normal;
+  text-align: left;
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: flex-start;
+  gap: 0;
 }
 .header .option:hover {
   color: #6f77fe;

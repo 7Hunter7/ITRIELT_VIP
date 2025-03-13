@@ -138,11 +138,11 @@
     width: 12.5rem;
     padding: $spacing-xxxs 0;
     margin-left: 2.75rem;
-    overflow-wrap: break-word;
     font-size: $font-size-base;
     line-height: 125%;
-    display: flex;
-    align-items: center;
+    white-space: normal;
+    text-align: left;
+    @include flex(row, flex-start, center);
     &:hover {
       color: $color-primary;
     }
