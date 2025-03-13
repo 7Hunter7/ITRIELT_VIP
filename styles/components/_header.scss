@@ -83,10 +83,12 @@
         outline: none; /* Убираем рамку при фокусе */
         border-color: $color-primary; /* Меняем цвет границы при фокусе */
       }
+      &::-ms-expand {
+        // Убираем стандартную стрелку в Internet Explorer
+        display: none;
+      }
       option {
-        appearance: none; /* Убираем стандартные стили select */
-        -webkit-appearance: none; /* Для Safari */
-        -moz-appearance: none; /* Для Firefox */
+        width: 100%;
         position: relative;
         padding-left: 1rem;
         svg {

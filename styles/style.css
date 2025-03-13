@@ -180,10 +180,11 @@
   outline: none; /* Убираем рамку при фокусе */
   border-color: #6f77fe; /* Меняем цвет границы при фокусе */
 }
+.header__sort_select::-ms-expand {
+  display: none;
+}
 .header__sort_select option {
-  appearance: none; /* Убираем стандартные стили select */
-  -webkit-appearance: none; /* Для Safari */
-  -moz-appearance: none; /* Для Firefox */
+  width: 100%;
   position: relative;
   padding-left: 1rem;
 }
