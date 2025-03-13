@@ -69,23 +69,40 @@
               alt="Сортировка"
             />
           </label>
-          <select class="header__sort_select" id="sort-select">
-            <option value="price-asc">
-              <svg class="header__sort_option-icon"></svg>
-              Сначала дешевле
-            </option>
-            <option value="price-desc">
-              <svg class="header__sort_option-icon"></svg>Сначала дороже
-            </option>
-            <option value="area-desc" selected>
-              <svg class="header__sort_option-icon--active"></svg>
+          <div class="header__sort_select">
+            <div class="selected-option">
               Сначала с большей площадью
-            </option>
-            <option value="area-asc">
-              <svg class="header__sort_option-icon"></svg>Сначала с меньшей
-              площадью
-            </option>
-          </select>
+              <!-- Начальное значение -->
+            </div>
+            <div class="options">
+              <div class="option" data-value="price-asc">
+                <svg class="header__sort_option-icon"></svg>
+                Сначала дешевле
+              </div>
+              <div class="option" data-value="price-desc">
+                <svg class="header__sort_option-icon"></svg>
+                Сначала дороже
+              </div>
+              <div class="option" data-value="area-desc">
+                <svg class="header__sort_option-icon--active"></svg>
+                Сначала с большей площадью
+              </div>
+              <div class="option" data-value="area-asc">
+                <svg class="header__sort_option-icon"></svg>
+                Сначала с меньшей площадью
+              </div>
+            </div>
+            <!-- Скрытый оригинальный select для отправки формы -->
+            <select id="sort-select" style="display: none">
+              <option value="price-asc">Сначала дешевле</option>
+              <option value="price-desc">Сначала дороже</option>
+              <option value="area-desc" selected>
+                Сначала с большей площадью
+              </option>
+              <option value="area-asc">Сначала с меньшей площадью</option>
+            </select>
+          </div>
+
           <img
             class="header__sort_chevron"
             src="/public/icons/sort_vector.svg"
