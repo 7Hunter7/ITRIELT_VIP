@@ -12,7 +12,7 @@
   @include flex(column, center, center);
   visibility: hidden;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
   background-color: transparent; // Прозрачный фон (по умолчанию)
   pointer-events: none; /* можно кликать сквозь неактивный action sheet */
 
@@ -26,6 +26,11 @@
     // Стили для мобильного отображения (модальное окно)
     background-color: $background; // Добавляем затемнение
     @include flex(column, flex-end, center);
+  }
+
+  &--active &--mobile {
+    // Перемещаем модальное окно обратно, когда оно активно
+    transform: translateY(0);
   }
 
   &__content {
@@ -128,6 +133,16 @@
   }
 }
 
+/* Анимация для  action-sheet mobile */
+.action-sheet--mobile &__content {
+  transform: translateY(100%); /* Скрываем за нижним краем */
+  transition: transform 0.3s ease;
+}
+.action-sheet--active.action-sheet--mobile &__content {
+  transform: translateY(0); /* Показываем, перемещаем снизу вверх */
+}
+
+// Медиа-запросы
 @media (min-width: $breakpoint-sm) {
   /* 744px */
   .objects__card-options {
