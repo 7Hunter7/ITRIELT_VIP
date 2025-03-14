@@ -4,17 +4,24 @@
 // Медиа-запросы
 @media (min-width: $breakpoint-md) {
   /* 1024px */
-  @include flex(row, space-around, center, $spacing-md);
-  .search {
-    max-width: 22.5rem; // 360px
-    border-radius: $spacing-sm;
-    padding: 0 0 $spacing-xs 0;
+  .main__top {
+    @include flex(row, space-around, center, $spacing-md);
+    flex-wrap: nowrap;
 
-    &__title {
-      padding: 1.125rem $spacing-md 0.625rem 1rem;
-    }
-    &__button {
-      width: 100%;
+    .search {
+      max-width: 22.5rem; // 360px
+      border-radius: $spacing-sm;
+      padding: 0 0 $spacing-xs 0;
+
+      &__title {
+        padding: 1.125rem $spacing-md 0.625rem 1rem;
+      }
+      &__label {
+        min-width: 256px;
+      }
+      &__button {
+        width: 100%;
+      }
     }
   }
 }

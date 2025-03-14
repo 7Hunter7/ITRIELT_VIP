@@ -407,6 +407,9 @@
 
 @media (min-width: 1024px) {
   /* 744px */
+  .search {
+    max-width: 22.5rem;
+  }
 }
 .builder {
   margin-top: 2rem;
@@ -998,6 +1001,32 @@
   background-color: #3c3d48;
 }
 
+@media (min-width: 1024px) {
+  /* 1024px */
+  .main__top {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+    flex-wrap: nowrap;
+  }
+  .main__top .search {
+    max-width: 22.5rem;
+    border-radius: 0.75rem;
+    padding: 0 0 0.5rem 0;
+  }
+  .main__top .search__title {
+    padding: 1.125rem 1rem 0.625rem 1rem;
+  }
+  .main__top .search__label {
+    min-width: 256px;
+  }
+  .main__top .search__button {
+    width: 100%;
+  }
+}
 * {
   margin: 0;
   padding: 0;
