@@ -504,11 +504,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Закрытие списка опций при клике вне элемента
   document.addEventListener("click", function (event) {
-    if (
-      !customSelect.contains(event.target) ||
-      !optionsContainer.contains(event.target) ||
-      !optionsWrapper.contains(event.target)
-    ) {
+    if (!customSelect.contains(event.target)) {
       optionsWrapper.classList.remove("options__wrapper--mobile");
       optionsContainer.classList.remove("open");
       sortChevron.classList.remove("rotate");
