@@ -74,8 +74,8 @@
               Сначала с большей площадью
               <!-- Начальное значение -->
             </div>
-            <div class="options">
-              <div class="options__wrapper">
+            <div class="options__wrapper">
+              <div class="options">
                 <div class="option" data-value="price-asc">
                   <svg class="header__sort_option-icon"></svg>
                   Сначала дешевле
@@ -93,16 +93,18 @@
                   Сначала с меньшей площадью
                 </div>
               </div>
+              <div class="options__wrapper_cancel"></div>
+
+              <!-- Скрытый оригинальный select для отправки формы -->
+              <select id="sort-select" style="display: none">
+                <option value="price-asc">Сначала дешевле</option>
+                <option value="price-desc">Сначала дороже</option>
+                <option value="area-desc" selected>
+                  Сначала с большей площадью
+                </option>
+                <option value="area-asc">Сначала с меньшей площадью</option>
+              </select>
             </div>
-            <!-- Скрытый оригинальный select для отправки формы -->
-            <select id="sort-select" style="display: none">
-              <option value="price-asc">Сначала дешевле</option>
-              <option value="price-desc">Сначала дороже</option>
-              <option value="area-desc" selected>
-                Сначала с большей площадью
-              </option>
-              <option value="area-asc">Сначала с меньшей площадью</option>
-            </select>
           </div>
 
           <img
