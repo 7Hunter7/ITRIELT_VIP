@@ -87,7 +87,6 @@
   display: flex;
   flex-direction: column;
   /* Кастомный select */
-  /* Стили для обертки опций */
 }
 .header__top {
   display: flex;
@@ -204,74 +203,10 @@
   position: absolute;
   left: 0.75rem;
   transform: translateY(-50%);
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.25rem;
+  height: 1.25rem;
 }
-.header .selected-option {
-  text-align: left;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  transition: all 0.3s ease;
-}
-.header .options {
-  position: absolute;
-  top: 100%; /* Располагаем под элементом header__sort */
-  left: 0;
-  width: 100%;
-  padding: 0.75rem 0.25rem;
-  border: 0.5px solid #dddde3;
-  border-radius: 0.75rem;
-  box-shadow: 0 0 8px 0 rgba(30, 30, 36, 0.1), 0 8px 16px 0 rgba(23, 23, 28, 0.05);
-  background-color: #fff;
-  overflow-wrap: break-word;
-  z-index: 10;
-  display: none;
-}
-.header .options.open {
-  display: block;
-}
-.header .options__wrapper {
-  position: static; /* По умолчанию static (для десктопа) */
-  width: auto;
-  height: auto;
-  z-index: auto; /* Сбрасываем z-index */
-}
-.header .options__wrapper.options__wrapper--mobile {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 0;
-  background-color: rgba(23, 23, 28, 0.4); /* Добавляем затемнение */
-  z-index: 20; /* Поверх всего */
-}
-.header .option {
-  width: 12.5rem;
-  padding: 0.25rem 0;
-  margin-left: 2.75rem;
-  font-size: 16px;
-  line-height: 125%;
-  white-space: normal;
-  text-align: left;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 0;
-}
-.header .option:hover {
-  color: #6f77fe;
-}
-.header .active {
+.header__sort .active {
   margin-top: 1.5rem;
   background-image: url("/public/icons/option_selected.svg");
   background-repeat: no-repeat;
@@ -279,29 +214,117 @@
   position: absolute;
   left: 0.75rem;
   transform: translateY(-50%);
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+.header .selected-option {
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.3s ease;
+}
+.header .options__wrapper {
+  z-index: 20;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  transition: opacity 0.3s ease-in-out;
+  background-color: transparent;
+  opacity: 1;
+}
+.header .options__wrapper.open {
+  opacity: 1;
+}
+.header .options__wrapper--mobile {
+  background-color: rgba(23, 23, 28, 0.5);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0;
+}
+.header .options__wrapper--mobile .option {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: 0em;
+  color: #1e1e24;
+}
+.header .options__wrapper .options {
+  position: fixed;
+  bottom: 2.75rem;
+  margin: 0 0.5rem;
+  padding: 0.75rem 0.25rem;
+  border: 0.5px solid #ecedf0;
+  border-radius: 0.75rem;
+  box-shadow: 0 0 8px 0 rgba(30, 30, 36, 0.1), 0 8px 16px 0 rgba(23, 23, 28, 0.05);
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0;
+}
+.header .options__wrapper .options .option {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+  padding: 0.5rem 0.25rem;
+  margin-left: 2.5rem;
+  font-size: 16px;
+  line-height: 125%;
+  text-align: left;
+}
+.header .options__wrapper .options .option:hover {
+  color: #6f77fe;
+}
+.header .options__wrapper .options .option .header__sort_option-icon {
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+}
+.header_cancel {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  height: 0.25rem;
+  min-width: 8.7rem;
+  border-radius: 0.125rem;
+  background-color: #fff;
+  cursor: pointer;
+  display: none;
+}
+.header_cancel:hover {
+  background-color: #f2f2f2;
 }
 
 @media (min-width: 744px) {
   /* 744px */
-  .options__wrapper.options__wrapper--mobile {
-    /* Сбрасываем стили для мобильных устройств на desktop */
-    position: static; /* Возвращаем к исходному */
-    width: auto;
-    height: auto;
-    background-color: transparent; /* Убираем фон */
-    z-index: auto; /* Сбрасываем z-index */
-    border-bottom-right-radius: 0.75rem;
-    border-bottom-left-radius: 0.75rem;
+  .options__wrapper {
+    position: absolute;
+    top: 100%; /* Располагаем под элементом header__sort */
+    left: 0;
+    background-color: #fff;
+  }
+  .options__wrapper .options {
     border-top: none;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0;
-    /* Восстанавливаем исходное выравнивание */
+  }
+  .options__wrapper--mobile {
+    background-color: transparent;
   }
 }
 .search {
@@ -692,11 +715,10 @@
 }
 .action-sheet--active {
   opacity: 1;
-  transition: opacity 0.3s;
   pointer-events: auto; /* возможность кликать по action sheet */
 }
 .action-sheet--mobile {
-  background-color: rgba(23, 23, 28, 0.4);
+  background-color: rgba(23, 23, 28, 0.5);
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;

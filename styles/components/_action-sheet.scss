@@ -17,13 +17,12 @@
 
   &--active {
     opacity: 1;
-    transition: opacity 0.3s;
     pointer-events: auto; /* возможность кликать по action sheet */
   }
 
   &--mobile {
     // Стили для мобильного отображения (модальное окно)
-    background-color: rgba(23, 23, 28, 0.4); // Добавляем затемнение
+    background-color: $background; // Добавляем затемнение
     @include flex(column, flex-end, center);
   }
 
@@ -32,8 +31,7 @@
     padding-bottom: $spacing-xs;
     border: 0.5px solid #ecedf0;
     border-radius: $spacing-sm;
-    box-shadow: 0 0 8px 0 rgba(30, 30, 36, 0.1),
-      0 8px 16px 0 rgba(23, 23, 28, 0.05);
+    box-shadow: $box-shadow;
     background-color: $color-white;
   }
 

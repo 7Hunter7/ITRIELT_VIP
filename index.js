@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Функция для определения, является ли устройство мобильным
+  function isMobileDevice() {
+    return window.innerWidth < 744; // 320-743px: Mobile Device
+  }
   // ------------------ 1. Status Bar - Часы ------------------
   const batteryLevel = document.querySelector(".status-bar__battery-level");
 
@@ -366,11 +370,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const actionSheets = document.querySelectorAll(".action-sheet");
   const statusBar = document.querySelector(".status-bar");
 
-  // Функция для определения, является ли устройство мобильным
-  function isMobileDevice() {
-    return window.innerWidth < 744;
-  }
-
   cardWrappers.forEach((cardWrapper, index) => {
     const optionsButton = cardWrapper.querySelector(".objects__card-options");
     const actionSheet = cardWrapper.querySelector(".action-sheet");
@@ -412,12 +411,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ------------------ 7. Логика для отображения и скрытия Custom select ------------------
   const customSelect = document.querySelector(".header__sort");
-  const selectedOption = document.querySelector(".selected-option");
-  const optionsContainer = document.querySelector(".options");
-  const optionsWrapper = document.querySelector(".options__wrapper");
-  const options = document.querySelectorAll(".option");
+  const selectedOption = customSelect.querySelector(".selected-option");
+  const optionsWrapper = customSelect.querySelector(".options__wrapper");
+  const optionsContainer = customSelect.querySelector(".options");
+  const options = customSelect.querySelectorAll(".option");
   const originalSelect = document.getElementById("sort-select");
-  const sortChevron = document.querySelector(".header__sort_chevron");
+  const sortChevron = customSelect.querySelector(".header__sort_chevron");
+  const closeOptionsButton = optionsWrapper.querySelector(
+    ".options__wrapper_cancel"
+  );
 
   // Обработчик клика на header__sort
   customSelect.addEventListener("click", (event) => {
@@ -426,13 +428,22 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isMobileDevice()) {
       // Мобильное устройство: добавляем класс для модального отображения
       optionsWrapper.classList.add("options__wrapper--mobile"); // Добавляем класс к обертке
-      optionsContainer.classList.add("open"); // Открываем
+      optionsContainer.classList.toggle("open"); // Открываем/закрываем
       sortChevron.classList.toggle("rotate");
+      statusBar.classList.add("status-bar--mobile");
     } else {
       // Немобильное устройство: отображаем как dropdown
       optionsContainer.classList.toggle("open"); // Открываем/закрываем
       sortChevron.classList.toggle("rotate");
     }
+  });
+
+  // Обработчик клика на кнопку отмены (только для мобильных)
+  closeOptionsButton.addEventListener("click", () => {
+    optionsWrapper.classList.remove("options__wrapper--mobile");
+    optionsContainer.classList.remove("open");
+    sortChevron.classList.remove("rotate");
+    statusBar.classList.remove("status-bar--mobile");
   });
 
   // Функция сортировки объектов
@@ -492,8 +503,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Закрытие списка опций при клике вне элемента
   document.addEventListener("click", function (event) {
     if (
-      !customSelect.contains(event.target) &&
-      !optionsContainer.contains(event.target)
+      !customSelect.contains(event.target) ||
+      !optionsContainer.contains(event.target) ||
+      !optionsWrapper.contains(event.target)
     ) {
       optionsWrapper.classList.remove("options__wrapper--mobile");
       optionsContainer.classList.remove("open");
