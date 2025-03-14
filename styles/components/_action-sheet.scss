@@ -26,6 +26,10 @@
     // Стили для мобильного отображения (модальное окно)
     background-color: $background; // Добавляем затемнение
     @include flex(column, flex-end, center);
+
+    .action-sheet__cancel {
+      display: block;
+    }
   }
 
   &__content {
@@ -123,7 +127,7 @@
     }
   }
 
-  &_cancel {
+  &__cancel {
     @include close-options-button();
   }
 }

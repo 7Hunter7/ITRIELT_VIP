@@ -743,6 +743,9 @@
   justify-content: flex-end;
   gap: 0;
 }
+.action-sheet--mobile .action-sheet__cancel {
+  display: block;
+}
 .action-sheet__content {
   display: flex;
   flex-direction: column;
@@ -880,7 +883,7 @@
   width: 1.5rem;
   height: 1.5rem;
 }
-.action-sheet_cancel {
+.action-sheet__cancel {
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
   height: 0.25rem;
@@ -890,7 +893,7 @@
   cursor: pointer;
   display: none;
 }
-.action-sheet_cancel:hover {
+.action-sheet__cancel:hover {
   background-color: #f2f2f2;
 }
 
