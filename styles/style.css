@@ -325,16 +325,17 @@
     position: relative;
   }
   .header__sort .options__wrapper {
+    position: static;
+    background-color: #fff;
+  }
+  .header__sort .options__wrapper .options {
     position: absolute;
     top: 100%; /* Располагаем под элементом header__sort */
     left: 0;
-    background-color: #fff;
-    visibility: visible;
-    opacity: 1;
-    pointer-events: auto;
-  }
-  .header__sort .options__wrapper .options {
-    margin: 36px 0;
+    width: 98%;
+    margin-top: 0.5rem;
+    border-bottom-right-radius: 0.75rem;
+    border-bottom-left-radius: 0.75rem;
     border-top: none;
   }
   .header__sort .options__wrapper--mobile {
