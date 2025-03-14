@@ -163,6 +163,7 @@
       border-radius: 0.75rem;
       box-shadow: $box-shadow;
       background-color: $color-white;
+      overflow: hidden;
       @include flex(column, flex-start, flex-start);
       flex-wrap: nowrap;
 
@@ -194,19 +195,27 @@
 @media (min-width: $breakpoint-sm) {
   /* 744px */
 
-  .options__wrapper {
-    position: absolute;
-    top: 100%; /* Располагаем под элементом header__sort */
-    left: 0;
-    background-color: $color-white;
+  .header__sort {
+    position: relative;
 
-    .options {
-      border-top: none;
-    }
+    .options__wrapper {
+      position: absolute;
+      top: 100%; /* Располагаем под элементом header__sort */
+      left: 0;
+      background-color: $color-white;
+      visibility: visible;
+      opacity: 1;
+      pointer-events: auto;
 
-    &--mobile {
-      // Убираем стили для мобильных устройств на desktop
-      background-color: transparent;
+      .options {
+        margin: 36px 0;
+        border-top: none;
+      }
+
+      &--mobile {
+        // Убираем стили для мобильных устройств на desktop
+        background-color: transparent;
+      }
     }
   }
 }

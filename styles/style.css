@@ -274,6 +274,7 @@
   border-radius: 0.75rem;
   box-shadow: 0 0 8px 0 rgba(30, 30, 36, 0.1), 0 8px 16px 0 rgba(23, 23, 28, 0.05);
   background-color: #fff;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -320,16 +321,23 @@
 
 @media (min-width: 744px) {
   /* 744px */
-  .options__wrapper {
+  .header__sort {
+    position: relative;
+  }
+  .header__sort .options__wrapper {
     position: absolute;
     top: 100%; /* Располагаем под элементом header__sort */
     left: 0;
     background-color: #fff;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
   }
-  .options__wrapper .options {
+  .header__sort .options__wrapper .options {
+    margin: 36px 0;
     border-top: none;
   }
-  .options__wrapper--mobile {
+  .header__sort .options__wrapper--mobile {
     background-color: transparent;
   }
 }
@@ -716,7 +724,7 @@
   gap: 0;
   visibility: hidden;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
   background-color: transparent;
   pointer-events: none; /* можно кликать сквозь неактивный action sheet */
 }
@@ -733,6 +741,9 @@
   align-items: center;
   justify-content: flex-end;
   gap: 0;
+}
+.action-sheet--active .action-sheet--mobile {
+  transform: translateY(0);
 }
 .action-sheet__content {
   display: flex;
@@ -883,6 +894,16 @@
 }
 .action-sheet_cancel:hover {
   background-color: #f2f2f2;
+}
+
+/* Анимация для  action-sheet mobile */
+.action-sheet--mobile-content {
+  transform: translateY(100%); /* Скрываем за нижним краем */
+  transition: transform 0.3s ease;
+}
+
+.action-sheet--active .action-sheet--mobile-content {
+  transform: translateY(0); /* Показываем, перемещаем снизу вверх */
 }
 
 @media (min-width: 744px) {

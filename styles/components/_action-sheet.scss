@@ -134,11 +134,11 @@
 }
 
 /* Анимация для  action-sheet mobile */
-.action-sheet--mobile &__content {
+.action-sheet--mobile-content {
   transform: translateY(100%); /* Скрываем за нижним краем */
   transition: transform 0.3s ease;
 }
-.action-sheet--active.action-sheet--mobile &__content {
+.action-sheet--active .action-sheet--mobile-content {
   transform: translateY(0); /* Показываем, перемещаем снизу вверх */
 }
 
