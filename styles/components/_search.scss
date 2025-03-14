@@ -74,5 +74,6 @@
 @media (min-width: $breakpoint-md) {
   /* 744px */
   .search {
+    max-width: 22.5rem; // 360px
   }
 }

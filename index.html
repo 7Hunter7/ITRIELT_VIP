@@ -116,179 +116,187 @@
       </div>
     </header>
 
-    <form class="container search">
-      <legend class="search__title">Проверка уникальности</legend>
-      <label class="search__label" for="name"
-        >Имя <span class="search__label_span">*</span></label
-      >
-      <input
-        class="search__input"
-        type="text"
-        id="name"
-        placeholder="Игорь"
-        required
-      />
-      <label class="search__label" for="phone"
-        >Телефон <span class="search__label_span">*</span></label
-      >
-      <input
-        class="search__input"
-        type="tel"
-        id="phone"
-        placeholder="+7(900)000-00-00"
-        required
-      />
-      <button class="search__button">Проверить</button>
-    </form>
+    <main>
+      <section class="main__top">
+        <form class="container search">
+          <legend class="search__title">Проверка уникальности</legend>
+          <label class="search__label" for="name"
+            >Имя <span class="search__label_span">*</span></label
+          >
+          <input
+            class="search__input"
+            type="text"
+            id="name"
+            placeholder="Игорь"
+            required
+          />
+          <label class="search__label" for="phone"
+            >Телефон <span class="search__label_span">*</span></label
+          >
+          <input
+            class="search__input"
+            type="tel"
+            id="phone"
+            placeholder="+7(900)000-00-00"
+            required
+          />
+          <button class="search__button">Проверить</button>
+        </form>
 
-    <div class="container builder">
-      <h2 class="builder__title">Застройщики</h2>
-      <ul class="builder__statuses">
-        <li class="builder__status">
-          <span
-            class="builder__status-icon builder__status-icon--selected"
-          ></span>
-          Выбрано: 1
-        </li>
-        <li class="builder__status">
-          <span
-            class="builder__status-icon builder__status-icon--available"
-          ></span>
-          Доступно: 5
-        </li>
-        <li class="builder__status">
-          <span
-            class="builder__status-icon builder__status-icon--not-unique"
-          ></span>
-          Не уникальный клиент: 1
-        </li>
-        <li class="builder__status">
-          <span
-            class="builder__status-icon builder__status-icon--no-objects"
-          ></span>
-          Нет объектов: 3
-        </li>
-      </ul>
+        <div class="container builder">
+          <h2 class="builder__title">Застройщики</h2>
+          <ul class="builder__statuses">
+            <li class="builder__status">
+              <span
+                class="builder__status-icon builder__status-icon--selected"
+              ></span>
+              Выбрано: 1
+            </li>
+            <li class="builder__status">
+              <span
+                class="builder__status-icon builder__status-icon--available"
+              ></span>
+              Доступно: 5
+            </li>
+            <li class="builder__status">
+              <span
+                class="builder__status-icon builder__status-icon--not-unique"
+              ></span>
+              Не уникальный клиент: 1
+            </li>
+            <li class="builder__status">
+              <span
+                class="builder__status-icon builder__status-icon--no-objects"
+              ></span>
+              Нет объектов: 3
+            </li>
+          </ul>
 
-      <div class="builder__container">
-        <a href="#" class="builder__logo-link">
-          <img
-            class="builder__logo active"
-            src="/public/builders/AFI.svg"
-            alt="AFI"
-          />
-        </a>
-        <a href="#" class="builder__logo-link">
-          <img class="builder__logo" src="/public/builders/AVA.svg" alt="AVA" />
-        </a>
-        <a href="#" class="builder__logo-link">
-          <img
-            class="builder__logo"
-            src="/public/builders/Ambassadori_Island.svg"
-            alt="Ambassadori Island"
-          />
-        </a>
-        <a href="#" class="builder__logo-link">
-          <img
-            class="builder__logo"
-            src="/public/builders/AGOY-PARK.svg"
-            alt="АГОЙ-ПАРК"
-          />
-        </a>
-        <a href="#" class="builder__logo-link">
-          <img
-            class="builder__logo"
-            src="/public/builders/ASI_Group.svg"
-            alt="АСИ ГРУПП"
-          />
-        </a>
-        <a href="#" class="builder__logo-link">
-          <img
-            class="builder__logo"
-            src="/public/builders/CONTINENT.svg"
-            alt="КОНТИНЕНТ"
-          />
-        </a>
-        <a href="#" class="builder__logo-link">
-          <img
-            class="builder__logo"
-            src="/public/builders/FAMILY.svg"
-            alt="СЕМЬЯ"
-          />
-        </a>
-        <a href="#" class="builder__logo-link">
-          <img
-            class="builder__logo"
-            src="/public/builders/REALLY.svg"
-            alt="ТОЧНО"
-          />
-        </a>
-        <a href="#" class="builder__logo-link">
-          <img
-            class="builder__logo"
-            src="/public/builders/FLAGMAN.svg"
-            alt="ФЛАГМАН"
-          />
-        </a>
-        <a href="#" class="builder__logo-link">
-          <img
-            class="builder__logo"
-            src="/public/builders/Yug-Engineering.svg"
-            alt="Юг-Инжиниринг"
-          />
-        </a>
-      </div>
-    </div>
-
-    <section class="objects">
-      <!-- Блок фильтров -->
-      <div class="objects-filter">
-        <div class="objects-filter__count">Найдено объектов: 25</div>
-        <div class="objects-filter__tags">
-          <button class="objects-filter__tag">
-            Краснодар
-            <svg
-              id="close-icon"
-              class="objects-filter__tag-close"
-              width="10"
-              height="10"
-              viewBox="0 0 10 10"
-              fill="#B7B8C3"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M5.00003 5.93288L1.73337 9.19954C1.61114 9.32177 1.45559 9.38288 1.2667 9.38288C1.07781 9.38288 0.922255 9.32177 0.800033 9.19954C0.67781 9.07732 0.616699 8.92177 0.616699 8.73288C0.616699 8.54399 0.67781 8.38843 0.800033 8.26621L4.0667 4.99954L0.800033 1.73288C0.67781 1.61066 0.616699 1.4551 0.616699 1.26621C0.616699 1.07732 0.67781 0.921767 0.800033 0.799544C0.922255 0.677322 1.07781 0.616211 1.2667 0.616211C1.45559 0.616211 1.61114 0.677322 1.73337 0.799544L5.00003 4.06621L8.2667 0.799544C8.38892 0.677322 8.54448 0.616211 8.73337 0.616211C8.92226 0.616211 9.07781 0.677322 9.20003 0.799544C9.32226 0.921767 9.38337 1.07732 9.38337 1.26621C9.38337 1.4551 9.32226 1.61066 9.20003 1.73288L5.93337 4.99954L9.20003 8.26621C9.32226 8.38843 9.38337 8.54399 9.38337 8.73288C9.38337 8.92177 9.32226 9.07732 9.20003 9.19954C9.07781 9.32177 8.92226 9.38288 8.73337 9.38288C8.54448 9.38288 8.38892 9.32177 8.2667 9.19954L5.00003 5.93288Z"
+          <div class="builder__container">
+            <a href="#" class="builder__logo-link">
+              <img
+                class="builder__logo active"
+                src="/public/builders/AFI.svg"
+                alt="AFI"
               />
-            </svg>
-          </button>
-          <button class="objects-filter__tag">
-            ЖК «ITRIELT»
-            <svg class="objects-filter__tag-close" width="10" height="10">
-              <use href="#close-icon" />
-            </svg>
-          </button>
-          <button class="objects-filter__tag">
-            Литер 1
-            <svg class="objects-filter__tag-close" width="10" height="10">
-              <use href="#close-icon" />
-            </svg>
-          </button>
-          <button class="objects-filter__tag">
-            Этаж 2
-            <svg class="objects-filter__tag-close" width="10" height="10">
-              <use href="#close-icon" />
-            </svg>
-          </button>
+            </a>
+            <a href="#" class="builder__logo-link">
+              <img
+                class="builder__logo"
+                src="/public/builders/AVA.svg"
+                alt="AVA"
+              />
+            </a>
+            <a href="#" class="builder__logo-link">
+              <img
+                class="builder__logo"
+                src="/public/builders/Ambassadori_Island.svg"
+                alt="Ambassadori Island"
+              />
+            </a>
+            <a href="#" class="builder__logo-link">
+              <img
+                class="builder__logo"
+                src="/public/builders/AGOY-PARK.svg"
+                alt="АГОЙ-ПАРК"
+              />
+            </a>
+            <a href="#" class="builder__logo-link">
+              <img
+                class="builder__logo"
+                src="/public/builders/ASI_Group.svg"
+                alt="АСИ ГРУПП"
+              />
+            </a>
+            <a href="#" class="builder__logo-link">
+              <img
+                class="builder__logo"
+                src="/public/builders/CONTINENT.svg"
+                alt="КОНТИНЕНТ"
+              />
+            </a>
+            <a href="#" class="builder__logo-link">
+              <img
+                class="builder__logo"
+                src="/public/builders/FAMILY.svg"
+                alt="СЕМЬЯ"
+              />
+            </a>
+            <a href="#" class="builder__logo-link">
+              <img
+                class="builder__logo"
+                src="/public/builders/REALLY.svg"
+                alt="ТОЧНО"
+              />
+            </a>
+            <a href="#" class="builder__logo-link">
+              <img
+                class="builder__logo"
+                src="/public/builders/FLAGMAN.svg"
+                alt="ФЛАГМАН"
+              />
+            </a>
+            <a href="#" class="builder__logo-link">
+              <img
+                class="builder__logo"
+                src="/public/builders/Yug-Engineering.svg"
+                alt="Юг-Инжиниринг"
+              />
+            </a>
+          </div>
         </div>
-      </div>
-      <!-- Блок карточек -->
-      <div class="objects__grid">
-        <!-- Карточки генерируются в index.js -->
-      </div>
-      <div class="show-more">
-        <button class="show-more__button">Показать ещё 12</button>
-      </div>
-    </section>
+      </section>
+
+      <section class="objects">
+        <!-- Блок фильтров -->
+        <div class="objects-filter">
+          <div class="objects-filter__count">Найдено объектов: 25</div>
+          <div class="objects-filter__tags">
+            <button class="objects-filter__tag">
+              Краснодар
+              <svg
+                id="close-icon"
+                class="objects-filter__tag-close"
+                width="10"
+                height="10"
+                viewBox="0 0 10 10"
+                fill="#B7B8C3"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.00003 5.93288L1.73337 9.19954C1.61114 9.32177 1.45559 9.38288 1.2667 9.38288C1.07781 9.38288 0.922255 9.32177 0.800033 9.19954C0.67781 9.07732 0.616699 8.92177 0.616699 8.73288C0.616699 8.54399 0.67781 8.38843 0.800033 8.26621L4.0667 4.99954L0.800033 1.73288C0.67781 1.61066 0.616699 1.4551 0.616699 1.26621C0.616699 1.07732 0.67781 0.921767 0.800033 0.799544C0.922255 0.677322 1.07781 0.616211 1.2667 0.616211C1.45559 0.616211 1.61114 0.677322 1.73337 0.799544L5.00003 4.06621L8.2667 0.799544C8.38892 0.677322 8.54448 0.616211 8.73337 0.616211C8.92226 0.616211 9.07781 0.677322 9.20003 0.799544C9.32226 0.921767 9.38337 1.07732 9.38337 1.26621C9.38337 1.4551 9.32226 1.61066 9.20003 1.73288L5.93337 4.99954L9.20003 8.26621C9.32226 8.38843 9.38337 8.54399 9.38337 8.73288C9.38337 8.92177 9.32226 9.07732 9.20003 9.19954C9.07781 9.32177 8.92226 9.38288 8.73337 9.38288C8.54448 9.38288 8.38892 9.32177 8.2667 9.19954L5.00003 5.93288Z"
+                />
+              </svg>
+            </button>
+            <button class="objects-filter__tag">
+              ЖК «ITRIELT»
+              <svg class="objects-filter__tag-close" width="10" height="10">
+                <use href="#close-icon" />
+              </svg>
+            </button>
+            <button class="objects-filter__tag">
+              Литер 1
+              <svg class="objects-filter__tag-close" width="10" height="10">
+                <use href="#close-icon" />
+              </svg>
+            </button>
+            <button class="objects-filter__tag">
+              Этаж 2
+              <svg class="objects-filter__tag-close" width="10" height="10">
+                <use href="#close-icon" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <!-- Блок карточек -->
+        <div class="objects__grid">
+          <!-- Карточки генерируются в index.js -->
+        </div>
+        <div class="show-more">
+          <button class="show-more__button">Показать ещё 12</button>
+        </div>
+      </section>
+    </main>
 
     <footer class="footer">
       <nav class="footer__nav">
