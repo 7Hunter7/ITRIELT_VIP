@@ -49,5 +49,5 @@
   position: absolute;
   left: $spacing-sm;
   transform: translateY(-50%);
-  @include icon(1.5rem);
+  @include icon(1.25rem); // 20px
 }
