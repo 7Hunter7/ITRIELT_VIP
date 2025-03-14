@@ -53,6 +53,19 @@
   border-radius: 2px;
   transition: width 0.3s ease; /* Плавное изменение уровня */
 }
+.status-bar--mobile {
+  background-color: rgba(23, 23, 28, 0.4);
+  z-index: 10;
+}
+.status-bar--mobile .status-bar__time {
+  color: #fff;
+}
+.status-bar--mobile .status-bar svg {
+  fill: #fff !important;
+}
+.status-bar--mobile .status-bar__battery-level {
+  background-color: #fff !important;
+}
 
 @media (min-width: 744px) {
   /* 744px */
@@ -70,20 +83,6 @@
     display: none;
   }
 }
-.action-sheet--active .status-bar {
-  z-index: 10;
-  background-color: #9c9c9e; /* Фон */
-}
-.action-sheet--active .status-bar__time {
-  color: #fff;
-}
-.action-sheet--active .status-bar svg {
-  fill: #fff !important;
-}
-.action-sheet--active .status-bar__battery-level {
-  background-color: #fff;
-}
-
 .header {
   margin-top: 3.5rem;
   display: flex;

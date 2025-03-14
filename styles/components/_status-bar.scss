@@ -53,6 +53,26 @@
       transition: width 0.3s ease; /* Плавное изменение уровня */
     }
   }
+
+  // Стили для мобильного отображения (модальное окно)
+  &--mobile {
+    background-color: rgba(23, 23, 28, 0.4);
+    z-index: 10;
+
+    .status-bar {
+      &__time {
+        color: $color-white;
+      }
+
+      svg {
+        fill: $color-white !important;
+      }
+
+      &__battery-level {
+        background-color: $color-white !important;
+      }
+    }
+  }
 }
 
 @media (min-width: $breakpoint-sm) {
@@ -71,23 +91,5 @@
   /* 1336px */
   .status-bar {
     display: none;
-  }
-}
-
-// Изменения для status-bar
-.action-sheet--active .status-bar {
-  z-index: 10;
-  background-color: #9c9c9e; /* Фон */
-
-  &__time {
-    color: $color-white;
-  }
-
-  svg {
-    fill: $color-white !important;
-  }
-
-  &__battery-level {
-    background-color: $color-white;
   }
 }
