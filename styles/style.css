@@ -237,12 +237,16 @@
   align-items: center;
   justify-content: center;
   gap: 0;
-  transition: opacity 0.3s ease-in-out;
-  background-color: transparent;
+  visibility: hidden;
   opacity: 0;
+  transition: opacity 0.3s ease;
+  background-color: transparent;
+  pointer-events: none;
 }
 .header .options__wrapper.open {
+  visibility: visible;
   opacity: 1;
+  pointer-events: auto;
 }
 .header .options__wrapper--mobile {
   background-color: rgba(23, 23, 28, 0.5);
@@ -710,12 +714,14 @@
   align-items: center;
   justify-content: center;
   gap: 0;
+  visibility: hidden;
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.3s ease;
   background-color: transparent;
   pointer-events: none; /* можно кликать сквозь неактивный action sheet */
 }
 .action-sheet--active {
+  visibility: visible;
   opacity: 1;
   pointer-events: auto; /* возможность кликать по action sheet */
 }

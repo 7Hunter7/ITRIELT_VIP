@@ -10,12 +10,14 @@
   width: 100%;
   height: 100%;
   @include flex(column, center, center);
+  visibility: hidden;
   opacity: 0;
-  transition: opacity 0.3s;
-  background-color: transparent; // По умолчанию прозрачный фон
+  transition: opacity 0.3s ease;
+  background-color: transparent; // Прозрачный фон (по умолчанию)
   pointer-events: none; /* можно кликать сквозь неактивный action sheet */
 
   &--active {
+    visibility: visible;
     opacity: 1;
     pointer-events: auto; /* возможность кликать по action sheet */
   }
