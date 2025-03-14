@@ -725,7 +725,7 @@
   gap: 0;
   visibility: hidden;
   opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.3s ease;
   background-color: transparent;
   pointer-events: none; /* можно кликать сквозь неактивный action sheet */
 }
@@ -742,9 +742,6 @@
   align-items: center;
   justify-content: flex-end;
   gap: 0;
-}
-.action-sheet--active .action-sheet--mobile {
-  transform: translateY(0);
 }
 .action-sheet__content {
   display: flex;
@@ -895,16 +892,6 @@
 }
 .action-sheet_cancel:hover {
   background-color: #f2f2f2;
-}
-
-/* Анимация для  action-sheet mobile */
-.action-sheet--mobile-content {
-  transform: translateY(100%); /* Скрываем за нижним краем */
-  transition: transform 0.3s ease;
-}
-
-.action-sheet--active .action-sheet--mobile-content {
-  transform: translateY(0); /* Показываем, перемещаем снизу вверх */
 }
 
 @media (min-width: 744px) {
