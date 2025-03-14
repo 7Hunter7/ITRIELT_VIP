@@ -239,7 +239,7 @@
   gap: 0;
   transition: opacity 0.3s ease-in-out;
   background-color: transparent;
-  opacity: 1;
+  opacity: 0;
 }
 .header .options__wrapper.open {
   opacity: 1;
@@ -271,20 +271,22 @@
   box-shadow: 0 0 8px 0 rgba(30, 30, 36, 0.1), 0 8px 16px 0 rgba(23, 23, 28, 0.05);
   background-color: #fff;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   gap: 0;
+  flex-wrap: nowrap;
 }
 .header .options__wrapper .options .option {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 0;
-  padding: 0.625rem 0.75rem 0.625rem 0;
+  flex-wrap: nowrap;
+  padding: 0.625rem 0.5rem 0.625rem 0;
   margin-left: 2.75rem;
   font-size: 16px;
   line-height: 125%;

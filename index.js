@@ -428,12 +428,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isMobileDevice()) {
       // Мобильное устройство: добавляем класс для модального отображения
       optionsWrapper.classList.add("options__wrapper--mobile"); // Добавляем класс к обертке
-      optionsContainer.classList.toggle("open"); // Открываем/закрываем
+      optionsWrapper.classList.toggle("open"); // Открываем/закрываем
       sortChevron.classList.toggle("rotate");
       statusBar.classList.add("status-bar--mobile");
     } else {
       // Немобильное устройство: отображаем как dropdown
-      optionsContainer.classList.toggle("open"); // Открываем/закрываем
+      optionsWrapper.classList.toggle("open"); // Открываем/закрываем
       sortChevron.classList.toggle("rotate");
     }
   });
@@ -441,7 +441,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Обработчик клика на кнопку отмены (только для мобильных)
   closeOptionsButton.addEventListener("click", () => {
     optionsWrapper.classList.remove("options__wrapper--mobile");
-    optionsContainer.classList.remove("open");
+    optionsWrapper.classList.remove("open");
     sortChevron.classList.remove("rotate");
     statusBar.classList.remove("status-bar--mobile");
   });
@@ -480,9 +480,8 @@ document.addEventListener("DOMContentLoaded", () => {
       originalSelect.value = option.dataset.value; // Обновляем значение оригинального select
       optionIcon.classList.add("active");
 
-      optionsWrapper.classList.remove("options__wrapper--mobile"); //Удаляем
-
-      optionsContainer.classList.remove("open");
+      optionsWrapper.classList.remove("options__wrapper--mobile"); // Удаляем
+      optionsWrapper.classList.remove("open");
       sortChevron.classList.remove("rotate");
 
       // Сортируем и перерисовываем карточки

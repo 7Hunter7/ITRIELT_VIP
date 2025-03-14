@@ -129,7 +129,7 @@
     @include flex(column, center, center);
     transition: opacity 0.3s ease-in-out;
     background-color: transparent;
-    opacity: 1;
+    opacity: 0;
 
     &.open {
       opacity: 1;
@@ -159,11 +159,13 @@
       border-radius: 0.75rem;
       box-shadow: $box-shadow;
       background-color: $color-white;
-      @include flex(row, flex-start, center);
+      @include flex(column, flex-start, flex-start);
+      flex-wrap: nowrap;
 
       .option {
-        @include flex(row, space-between, center);
-        padding: 0.625rem $spacing-sm 0.625rem 0;
+        @include flex(row, flex-start, center);
+        flex-wrap: nowrap;
+        padding: 0.625rem $spacing-xs 0.625rem 0;
         margin-left: 2.75rem;
         font-size: $font-size-base;
         line-height: 125%;
