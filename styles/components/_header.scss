@@ -115,8 +115,9 @@
 
   .options {
     position: absolute;
-    top: 100%;
+    top: 100%; /* Располагаем под элементом header__sort */
     left: 0;
+    width: 100%;
     padding: $spacing-sm $spacing-xxxs;
     border: 0.5px solid $color-border;
     border-top: none;
@@ -131,6 +132,24 @@
 
     &.open {
       display: block;
+    }
+
+    /* Стили для обертки опций */
+    &__wrapper {
+      /* Стили, применяемые только на мобильных устройствах */
+      &.options--mobile {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0.75rem;
+        background-color: rgba(23, 23, 28, 0.4); /* Добавляем затемнение */
+        z-index: 20;
+        @include flex(column, flex-start, flex-end);
+      }
     }
   }
 
@@ -156,60 +175,17 @@
 
 // Медиа-запросы
 @media (min-width: $breakpoint-sm) {
-  .header {
-    /* 744px */
-    margin-top: $spacing-xxl;
-    flex-direction: row;
-    position: relative;
-
-    &__top {
-      flex-wrap: nowrap;
-      white-space: nowrap;
-      gap: $spacing-xs;
-
-      &__title {
-        line-height: 120%;
-        font-size: $font-size-title;
-      }
-      &__filter-button {
-        position: absolute;
-        right: 0;
-
-        &_text {
-          display: inline;
-          margin: 0 $spacing-xxs;
-          font-weight: $font-weight-semibold;
-          font-size: $font-size-item;
-          letter-spacing: 0.01em;
-          color: $color-primary;
-        }
-      }
-    }
-
-    &__sort {
-      position: absolute;
-      right: 10rem;
-      max-width: 16rem;
-
-      &_select {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis; /*  многоточие  */
-      }
-    }
-
-    &_label {
-      left: $spacing-sm;
-      overflow: hidden;
-      text-overflow: ellipsis; /*  многоточие  */
-    }
-
-    &_chevron {
-      right: $spacing-sm;
+  /* 744px */
+  .options__wrapper {
+    &.options--mobile {
+      /* Сбрасываем стили для мобильных устройств на desktop */
+      position: static;
+      background-color: transparent;
+      @include flex(
+        column,
+        flex-start,
+        center
+      ); // Возвращаем исходное выравнивание
     }
   }
-}
-
-@media (min-width: $breakpoint-md) {
-  /* 1024px */
 }
