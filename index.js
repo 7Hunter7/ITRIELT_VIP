@@ -364,6 +364,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ------------------ 6. Логика для отображения и скрытия Action Sheet ------------------
   const cardWrappers = document.querySelectorAll(".objects__card-wrapper");
   const actionSheets = document.querySelectorAll(".action-sheet");
+  const statusBar = document.querySelector(".status-bar");
 
   // Функция для определения, является ли устройство мобильным
   function isMobileDevice() {
@@ -382,7 +383,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (isMobileDevice()) {
         // Мобильное устройство: добавляем затемнение и позиционируем модально
         actionSheet.classList.add("action-sheet--active");
-        actionSheet.classList.add("action-sheet--mobile"); // Добавляем класс для мобильного стиля
+        // Добавляем класс для мобильного стиля
+        actionSheet.classList.add("action-sheet--mobile");
+        statusBar.classList.add("status-bar--mobile");
       } else {
         // Немобильное устройство: отображаем как dropdown
         actionSheet.classList.add("action-sheet--active");
@@ -392,7 +395,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Обработчик клика на кнопку отмены (только для мобильных)
     cancelButton.addEventListener("click", () => {
       actionSheet.classList.remove("action-sheet--active");
-      actionSheet.classList.remove("action-sheet--mobile"); // Убираем класс для мобильного стиля
+      // Убираем класс для мобильного стиля
+      actionSheet.classList.remove("action-sheet--mobile");
+      statusBar.classList.remove("status-bar--mobile");
     });
 
     // Закрытие Action Sheet при клике вне карточки (только если не мобильное)
