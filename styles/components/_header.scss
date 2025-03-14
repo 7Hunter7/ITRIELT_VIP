@@ -5,6 +5,7 @@
   margin-top: 3.5rem;
   display: flex;
   flex-direction: column;
+  border-bottom: 1px solid #ecedf0;
 
   &__top {
     @include flex(row, space-between, center, 0);
