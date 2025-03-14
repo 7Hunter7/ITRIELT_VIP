@@ -418,9 +418,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const originalSelect = document.getElementById("sort-select");
   const sortChevron = document.querySelector(".header__sort_chevron");
 
-  customSelect.addEventListener("click", () => {
-    optionsContainer.classList.toggle("open");
-    sortChevron.classList.toggle("rotate");
+  // Обработчик клика на header__sort
+  customSelect.addEventListener("click", (event) => {
+    event.stopPropagation(); // Предотвращаем всплытие события
+
+    if (isMobileDevice()) {
+      // Мобильное устройство: добавляем класс для модального отображения
+      optionsContainer.classList.add("options--mobile");
+      optionsContainer.classList.toggle("open"); // Открываем/закрываем
+      sortChevron.classList.toggle("rotate");
+    } else {
+      // Немобильное устройство: отображаем как dropdown
+      optionsContainer.classList.toggle("open");
+      sortChevron.classList.toggle("rotate");
+    }
   });
 
   // Функция сортировки объектов
@@ -457,6 +468,7 @@ document.addEventListener("DOMContentLoaded", () => {
       originalSelect.value = option.dataset.value; // Обновляем значение оригинального select
       optionIcon.classList.add("active");
       optionsContainer.classList.remove("open");
+      optionsContainer.classList.remove("options--mobile");
       sortChevron.classList.remove("rotate");
 
       // Сортируем и перерисовываем карточки
@@ -477,10 +489,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // Закрытие списка опций при клике вне элемента
   document.addEventListener("click", function (event) {
     if (
-      !customSelect.contains(event.target) ||
-      !selectedOption.contains(event.target)
+      !customSelect.contains(event.target) &&
+      !optionsContainer.contains(event.target)
     ) {
       optionsContainer.classList.remove("open");
+      optionsContainer.classList.remove("options--mobile");
       sortChevron.classList.remove("rotate");
     }
   });
