@@ -2,7 +2,7 @@
 @import "../mixins";
 
 .status-bar {
-  z-index: 15;
+  z-index: 10;
   position: fixed;
   top: 0;
   left: 0;
@@ -40,7 +40,7 @@
     overflow: hidden;
 
     &-level {
-      z-index: 20;
+      z-index: 15;
       position: absolute;
       overflow: hidden;
       bottom: 0;
@@ -56,8 +56,7 @@
 
   // Стили для мобильного отображения (модальное окно)
   &--mobile {
-    background-color: rgba(23, 23, 28, 0.4);
-    z-index: 10;
+    background-color: rgba(23, 23, 28, 0.01);
 
     .status-bar {
       &__time {

@@ -2,17 +2,17 @@
 @import "../mixins";
 
 .action-sheet {
+  z-index: 20;
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   width: 100%;
   height: 100%;
-  background-color: transparent; // По умолчанию прозрачный фон
-  z-index: 10;
   @include flex(column, center, center);
   opacity: 0;
   transition: opacity 0.3s;
+  background-color: transparent; // По умолчанию прозрачный фон
   pointer-events: none; /* можно кликать сквозь неактивный action sheet */
 
   &--active {
