@@ -120,9 +120,7 @@
     width: 100%;
     padding: $spacing-sm $spacing-xxxs;
     border: 0.5px solid $color-border;
-    border-top: none;
-    border-bottom-right-radius: 0.75rem; // 12px
-    border-bottom-left-radius: 0.75rem;
+    border-radius: 0.75rem;
     box-shadow: 0 0 8px 0 rgba(30, 30, 36, 0.1),
       0 8px 16px 0 rgba(23, 23, 28, 0.05);
     background-color: $color-white;
@@ -133,23 +131,26 @@
     &.open {
       display: block;
     }
+  }
 
-    /* Стили для обертки опций */
-    &__wrapper {
-      /* Стили, применяемые только на мобильных устройствах */
-      &.options--mobile {
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border-radius: 0.75rem;
-        background-color: rgba(23, 23, 28, 0.4); /* Добавляем затемнение */
-        z-index: 20;
-        @include flex(column, flex-start, flex-end);
-      }
+  /* Стили для обертки опций */
+  .options__wrapper {
+    position: static; /* По умолчанию static (для десктопа) */
+    width: auto;
+    height: auto;
+    z-index: auto; /* Сбрасываем z-index */
+
+    &.options__wrapper--mobile {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      @include flex(column, flex-end, center);
+      background-color: rgba(23, 23, 28, 0.4); /* Добавляем затемнение */
+      z-index: 20; /* Поверх всего */
     }
   }
 
@@ -177,15 +178,21 @@
 @media (min-width: $breakpoint-sm) {
   /* 744px */
   .options__wrapper {
-    &.options--mobile {
+    &.options__wrapper--mobile {
       /* Сбрасываем стили для мобильных устройств на desktop */
-      position: static;
-      background-color: transparent;
+      position: static; /* Возвращаем к исходному */
+      width: auto;
+      height: auto;
+      background-color: transparent; /* Убираем фон */
+      z-index: auto; /* Сбрасываем z-index */
+      border-bottom-right-radius: 0.75rem; // 12px
+      border-bottom-left-radius: 0.75rem;
+      border-top: none;
       @include flex(
         column,
         flex-start,
         center
-      ); // Возвращаем исходное выравнивание
+      ); /* Восстанавливаем исходное выравнивание */
     }
   }
 }

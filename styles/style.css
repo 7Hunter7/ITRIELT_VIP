@@ -87,6 +87,7 @@
   display: flex;
   flex-direction: column;
   /* Кастомный select */
+  /* Стили для обертки опций */
 }
 .header__top {
   display: flex;
@@ -219,23 +220,23 @@
   width: 100%;
   padding: 0.75rem 0.25rem;
   border: 0.5px solid #dddde3;
-  border-top: none;
-  border-bottom-right-radius: 0.75rem;
-  border-bottom-left-radius: 0.75rem;
+  border-radius: 0.75rem;
   box-shadow: 0 0 8px 0 rgba(30, 30, 36, 0.1), 0 8px 16px 0 rgba(23, 23, 28, 0.05);
   background-color: #fff;
   overflow-wrap: break-word;
   z-index: 10;
   display: none;
-  /* Стили для обертки опций */
 }
 .header .options.open {
   display: block;
 }
 .header .options__wrapper {
-  /* Стили, применяемые только на мобильных устройствах */
+  position: static; /* По умолчанию static (для десктопа) */
+  width: auto;
+  height: auto;
+  z-index: auto; /* Сбрасываем z-index */
 }
-.header .options__wrapper.options--mobile {
+.header .options__wrapper.options__wrapper--mobile {
   position: fixed;
   top: 0;
   right: 0;
@@ -243,15 +244,14 @@
   left: 0;
   width: 100%;
   height: 100%;
-  border-radius: 0.75rem;
-  background-color: rgba(23, 23, 28, 0.4); /* Добавляем затемнение */
-  z-index: 20;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: flex-end;
   gap: 0;
+  background-color: rgba(23, 23, 28, 0.4); /* Добавляем затемнение */
+  z-index: 20; /* Поверх всего */
 }
 .header .option {
   width: 12.5rem;
@@ -285,16 +285,23 @@
 
 @media (min-width: 744px) {
   /* 744px */
-  .options__wrapper.options--mobile {
+  .options__wrapper.options__wrapper--mobile {
     /* Сбрасываем стили для мобильных устройств на desktop */
-    position: static;
-    background-color: transparent;
+    position: static; /* Возвращаем к исходному */
+    width: auto;
+    height: auto;
+    background-color: transparent; /* Убираем фон */
+    z-index: auto; /* Сбрасываем z-index */
+    border-bottom-right-radius: 0.75rem;
+    border-bottom-left-radius: 0.75rem;
+    border-top: none;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
     gap: 0;
+    /* Восстанавливаем исходное выравнивание */
   }
 }
 .search {
