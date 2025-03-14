@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ------------------ 2. Status Bar - Батарея ------------------
   let currentBatteryLevel = 100; // Начальный заряд
-  const batteryDecreaseInterval = 10 * 60 * 1000; // 10 минут
+  const batteryDecreaseInterval = 60 * 1000; // 1 минута
 
   // Функция обновления уровня заряда и цвета батареи
   function updateBatteryLevel(level) {
@@ -31,6 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
     switch (true) {
       case level === 100:
         batteryLevel.style.backgroundColor = "#25a25f";
+        break;
+      case level <= 98:
+        batteryLevel.style.backgroundColor = "#3c3d48";
         break;
       case level <= 20:
         batteryLevel.style.backgroundColor = "orange";
@@ -265,7 +268,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const storedCardData = localStorage.getItem("cardData");
         if (storedCardData) {
           cardData = JSON.parse(storedCardData);
-          console.log("Используем данные из localStorage:", cardData);
         } else {
           // Если в localStorage нет данных, генерируем новые
           cardData = Array.from({ length: maxQuantityObjects }, (_, i) =>
@@ -483,6 +485,7 @@ document.addEventListener("DOMContentLoaded", () => {
       optionsWrapper.classList.remove("options__wrapper--mobile"); // Удаляем
       optionsWrapper.classList.remove("open");
       sortChevron.classList.remove("rotate");
+      statusBar.classList.remove("status-bar--mobile");
 
       // Сортируем и перерисовываем карточки
       sortCards(option.dataset.value);
@@ -509,6 +512,7 @@ document.addEventListener("DOMContentLoaded", () => {
       optionsWrapper.classList.remove("options__wrapper--mobile");
       optionsContainer.classList.remove("open");
       sortChevron.classList.remove("rotate");
+      statusBar.classList.remove("status-bar--mobile");
     }
   });
 });
