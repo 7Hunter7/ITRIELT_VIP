@@ -121,18 +121,8 @@
     }
   }
 
-  &__cancel {
-    height: $spacing-xxxs;
-    min-width: 8.7rem;
-    border-radius: 0.125rem;
-    background-color: $color-white;
-    margin-top: $spacing-xl;
-    margin-bottom: $spacing-xs;
-    cursor: pointer;
-
-    &:hover {
-      background-color: darken($color-white, 5%);
-    }
+  &_cancel {
+    @include close-options-button();
   }
 }
 

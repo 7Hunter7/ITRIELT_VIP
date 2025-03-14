@@ -139,21 +139,22 @@
     &--mobile {
       background-color: $background; // Добавляем затемнение
       @include flex(column, flex-end, center);
-      .option {
-        font-family: var(--font-family);
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 125%;
-        letter-spacing: 0em;
-        color: #1e1e24;
+
+      .header__sort_option-icon {
+        margin-top: $spacing-lg;
+      }
+      .active {
+        margin-top: $spacing-lg;
+      }
+      .options__wrapper_cancel {
+        display: block;
       }
     }
 
     .options {
       position: fixed;
-      bottom: 2.75rem;
-      margin: 0 $spacing-xs;
-      padding: $spacing-sm $spacing-xxxs;
+      margin: 0 $spacing-xs 2.75rem $spacing-xs;
+      padding: 0 $spacing-xxxs;
       border: 0.5px solid #ecedf0;
       border-radius: 0.75rem;
       box-shadow: $box-shadow;
@@ -162,8 +163,8 @@
 
       .option {
         @include flex(row, space-between, center);
-        padding: $spacing-xs $spacing-xxxs;
-        margin-left: 2.5rem;
+        padding: 0.625rem $spacing-sm 0.625rem 0;
+        margin-left: 2.75rem;
         font-size: $font-size-base;
         line-height: 125%;
         text-align: left;
@@ -176,20 +177,9 @@
         }
       }
     }
-  }
 
-  &_cancel {
-    margin-top: $spacing-xl;
-    margin-bottom: $spacing-xs;
-    height: $spacing-xxxs;
-    min-width: 8.7rem;
-    border-radius: 0.125rem;
-    background-color: $color-white;
-    cursor: pointer;
-    display: none;
-
-    &:hover {
-      background-color: darken($color-white, 5%);
+    &_cancel {
+      @include close-options-button();
     }
   }
 }

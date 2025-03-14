@@ -51,3 +51,19 @@
   transform: translateY(-50%);
   @include icon(1.25rem); // 20px
 }
+
+// Миксин для стилизации кнопки Отмены для Dropdown
+@mixin close-options-button() {
+  margin-top: $spacing-xl;
+  margin-bottom: $spacing-xs;
+  height: $spacing-xxxs;
+  min-width: 8.7rem;
+  border-radius: 0.125rem;
+  background-color: $color-white;
+  cursor: pointer;
+  display: none;
+
+  &:hover {
+    background-color: darken($color-white, 5%);
+  }
+}
