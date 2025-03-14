@@ -365,24 +365,43 @@ document.addEventListener("DOMContentLoaded", () => {
   const cardWrappers = document.querySelectorAll(".objects__card-wrapper");
   const actionSheets = document.querySelectorAll(".action-sheet");
 
+  // Функция для определения, является ли устройство мобильным
+  function isMobileDevice() {
+    return window.innerWidth < 744;
+  }
+
   cardWrappers.forEach((cardWrapper, index) => {
     const optionsButton = cardWrapper.querySelector(".objects__card-options");
     const actionSheet = cardWrapper.querySelector(".action-sheet");
     const cancelButton = actionSheet.querySelector(".action-sheet__cancel");
 
+    // Обработчик клика на кнопку опций
     optionsButton.addEventListener("click", (event) => {
       event.stopPropagation(); // Предотвращаем всплытие события
-      actionSheet.classList.add("action-sheet--active");
+
+      if (isMobileDevice()) {
+        // Мобильное устройство: добавляем затемнение и позиционируем модально
+        actionSheet.classList.add("action-sheet--active");
+        actionSheet.classList.add("action-sheet--mobile"); // Добавляем класс для мобильного стиля
+      } else {
+        // Немобильное устройство: отображаем как dropdown
+        actionSheet.classList.add("action-sheet--active");
+      }
     });
 
+    // Обработчик клика на кнопку отмены (только для мобильных)
     cancelButton.addEventListener("click", () => {
       actionSheet.classList.remove("action-sheet--active");
+      actionSheet.classList.remove("action-sheet--mobile"); // Убираем класс для мобильного стиля
     });
 
+    // Закрытие Action Sheet при клике вне карточки (только если не мобильное)
     cardWrapper.addEventListener("click", () => {
-      actionSheets.forEach((sheet) => {
-        sheet.classList.remove("action-sheet--active");
-      });
+      if (!isMobileDevice()) {
+        actionSheets.forEach((sheet) => {
+          sheet.classList.remove("action-sheet--active");
+        });
+      }
     });
   });
 
