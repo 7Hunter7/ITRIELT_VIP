@@ -46,13 +46,38 @@
     object-fit: contain;
   }
 
-  &__line {
-    height: $spacing-xxxs;
-    width: 8.5rem;
+  &__line-button {
+    padding: 0;
+    height: $spacing-xxxs; // 5px;
+    width: 8.5rem; // 136px
     border-radius: 0.125rem;
     margin: auto;
     margin-top: $spacing-xl;
     margin-bottom: $spacing-xs;
     background-color: $color-accent;
+    &:active {
+      background-color: $color-primary;
+    }
+  }
+}
+
+// Медиа-запросы
+@media (min-width: $breakpoint-sm) {
+  /* 744px */
+  .footer {
+    &__line-button {
+      width: 19.75rem; // 316px
+      margin-top: $spacing-md;
+      margin-bottom: $spacing-xs;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-lg) {
+  /* 1024px */
+  .footer {
+    &__line-button {
+      display: none;
+    }
   }
 }
