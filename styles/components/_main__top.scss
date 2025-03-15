@@ -2,6 +2,15 @@
 @import "../mixins";
 
 // Медиа-запросы
+
+@media (min-width: $breakpoint-sm) {
+  /* 744px */
+  .main__top {
+    border-bottom: $border-bottom;
+    padding-bottom: $spacing-xs;
+  }
+}
+
 @media (min-width: $breakpoint-md) {
   /* 1024px */
   .main__top {
@@ -10,7 +19,6 @@
     display: grid;
     grid-template-columns: 40% 60%;
     gap: 1rem;
-    border-bottom: $border-bottom;
 
     .builder {
       &__logo {

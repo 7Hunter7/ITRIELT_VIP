@@ -1082,6 +1082,13 @@
     display: none;
   }
 }
+@media (min-width: 744px) {
+  /* 744px */
+  .main__top {
+    border-bottom: 1px solid #ecedf0;
+    padding-bottom: 0.5rem;
+  }
+}
 @media (min-width: 1024px) {
   /* 1024px */
   .main__top {
@@ -1090,7 +1097,6 @@
     display: grid;
     grid-template-columns: 40% 60%;
     gap: 1rem;
-    border-bottom: 1px solid #ecedf0;
   }
   .main__top .builder__logo {
     flex-shrink: 0;
