@@ -52,12 +52,14 @@
 
     <header class="header container">
       <div class="header__top">
-        <h1 class="header__top__title">Каталог объектов</h1>
+        <h1 class="header__top__title">
+          VIP Объекты ITRIELT в Краснодаре: Квартиры и Коммерческая Недвижимость
+        </h1>
         <button class="header__top__filter-button">
           <img
             class="header__top_icon"
             src="/public/icons/filtr.svg"
-            alt="Фильтр"
+            alt="Открыть фильтр объектов"
           />
           <span class="header__top__filter-button_text">Фильтры</span>
           <span class="header__top_indicator">
@@ -70,29 +72,54 @@
             <img
               class="header__sort_icon"
               src="/public/icons/sort.svg"
-              alt="Сортировка"
+              alt="Сортировать объекты"
             />
           </label>
-          <div class="header__sort_select">
+          <div
+            class="header__sort_select"
+            role="combobox"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+          >
             <div class="selected-option">
               Сначала с большей площадью
               <!-- Начальное значение -->
             </div>
             <div class="options__wrapper">
-              <div class="options">
-                <div class="option" data-value="price-asc">
+              <div class="options" role="listbox">
+                <div
+                  class="option"
+                  data-value="price-asc"
+                  role="option"
+                  aria-selected="false"
+                >
                   <svg class="header__sort_option-icon"></svg>
                   Сначала дешевле
                 </div>
-                <div class="option" data-value="price-desc">
+                <div
+                  class="option"
+                  data-value="price-desc"
+                  role="option"
+                  aria-selected="false"
+                >
                   <svg class="header__sort_option-icon"></svg>
                   Сначала дороже
                 </div>
-                <div class="option" data-value="area-desc">
+                <div
+                  class="option"
+                  data-value="area-desc"
+                  role="option"
+                  aria-selected="true"
+                >
                   <svg class="header__sort_option-icon active"></svg>
                   Сначала с большей площадью
                 </div>
-                <div class="option" data-value="area-asc">
+                <div
+                  class="option"
+                  data-value="area-asc"
+                  role="option"
+                  aria-selected="false"
+                >
                   <svg class="header__sort_option-icon"></svg>
                   Сначала с меньшей площадью
                 </div>
@@ -114,7 +141,7 @@
           <img
             class="header__sort_chevron"
             src="/public/icons/sort_vector.svg"
-            alt="Развернуть"
+            alt="Развернуть список сортировки"
           />
         </div>
       </div>
