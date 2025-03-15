@@ -2,6 +2,12 @@
 @import "../mixins";
 
 .search {
+  // Полностью убирем рамку и стили fieldset
+  & fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
   padding: $spacing-md $spacing-xs;
 
   &__title {

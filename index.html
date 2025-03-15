@@ -56,9 +56,9 @@
             alt="Фильтр"
           />
           <span class="header__top__filter-button_text">Фильтры</span>
-          <div class="header__top_indicator">
+          <span class="header__top_indicator">
             <p class="header__top_indicator-value">4</p>
-          </div>
+          </span>
         </button>
 
         <div class="header__sort">
@@ -119,28 +119,30 @@
     <main>
       <section class="main__top">
         <form class="container search">
-          <legend class="search__title">Проверка уникальности</legend>
-          <label class="search__label" for="name"
-            >Имя <span class="search__label_span">*</span></label
-          >
-          <input
-            class="search__input"
-            type="text"
-            id="name"
-            placeholder="Игорь"
-            required
-          />
-          <label class="search__label" for="phone"
-            >Телефон <span class="search__label_span">*</span></label
-          >
-          <input
-            class="search__input"
-            type="tel"
-            id="phone"
-            placeholder="+7(900)000-00-00"
-            required
-          />
-          <button class="search__button">Проверить</button>
+          <fieldset>
+            <legend class="search__title">Проверка уникальности</legend>
+            <label class="search__label" for="name"
+              >Имя <span class="search__label_span">*</span></label
+            >
+            <input
+              class="search__input"
+              type="text"
+              id="name"
+              placeholder="Игорь"
+              required
+            />
+            <label class="search__label" for="phone"
+              >Телефон <span class="search__label_span">*</span></label
+            >
+            <input
+              class="search__input"
+              type="tel"
+              id="phone"
+              placeholder="+7(900)000-00-00"
+              required
+            />
+            <button class="search__button">Проверить</button>
+          </fieldset>
         </form>
 
         <div class="container builder">

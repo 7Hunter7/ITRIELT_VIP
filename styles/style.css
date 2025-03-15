@@ -395,6 +395,11 @@
 .search {
   padding: 1rem 0.5rem;
 }
+.search fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
 .search__title {
   margin-top: 0;
   font-weight: 600;
