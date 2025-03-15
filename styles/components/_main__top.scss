@@ -18,7 +18,7 @@
       }
 
       .scroll-container {
-        min-height: 10.5rem; // 168px
+        max-height: 10.5rem; // 168px
         width: 100%;
         display: flex;
         overflow-x: auto;

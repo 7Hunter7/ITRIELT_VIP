@@ -1093,7 +1093,7 @@
     flex-shrink: 0;
   }
   .main__top .builder .scroll-container {
-    min-height: 10.5rem;
+    max-height: 10.5rem;
     width: 100%;
     display: flex;
     overflow-x: auto;
