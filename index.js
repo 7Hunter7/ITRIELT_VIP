@@ -376,7 +376,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Обработчик клика для isFavorite
+  // Функция для смены текста кнопки
+  function updateFavoriteButtonText(button, isFavorite) {
+    button.textContent = isFavorite
+      ? "Убрать из избранного"
+      : "Добавить в избранное";
+  }
+
   cardWrappers.forEach((cardWrapper) => {
     const optionsButton = cardWrapper.querySelector(".objects__card-options");
     const actionSheet = cardWrapper.querySelector(".action-sheet");
