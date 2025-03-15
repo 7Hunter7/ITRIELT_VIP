@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Функция для определения, является ли устройство мобильным
   function isMobileDevice() {
-    return window.innerWidth < 744; // 320-743px: Mobile Device
+    return window.innerWidth < 744; // Mobile Device
   }
   // ------------------ 1. Status Bar - Часы ------------------
   const batteryLevel = document.querySelector(".status-bar__battery-level");
@@ -372,10 +372,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const actionSheets = document.querySelectorAll(".action-sheet");
   const statusBar = document.querySelector(".status-bar");
 
+  // Функция для позиционирования Action Sheet на десктопе
+  function positionActionSheet(actionSheet, optionsButton) {
+    // Получаем координаты и размеры кнопки опций относительно окна браузера
+    const rect = optionsButton.getBoundingClientRect();
+    actionSheet.style.top = `${rect.top + 8}px`;
+    actionSheet.style.left = `${rect.right + 8}px`; // Отступ 8px справа
+  }
+
   cardWrappers.forEach((cardWrapper, index) => {
     const optionsButton = cardWrapper.querySelector(".objects__card-options");
     const actionSheet = cardWrapper.querySelector(".action-sheet");
     const cancelButton = actionSheet.querySelector(".action-sheet__cancel");
+    const favoriteElement = cardWrapper.querySelector(
+      ".objects__card-favorite"
+    ); // Получаем element "избранное"
 
     // Обработчик клика на кнопку опций
     optionsButton.addEventListener("click", (event) => {
@@ -390,6 +401,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         // Немобильное устройство: отображаем как dropdown
         actionSheet.classList.add("action-sheet--active");
+        positionActionSheet(actionSheet, optionsButton); // Позиционируем Action Sheet
       }
     });
 
@@ -402,11 +414,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Закрытие Action Sheet при клике вне карточки (только если не мобильное)
-    cardWrapper.addEventListener("click", () => {
+    document.addEventListener("click", (event) => {
       if (!isMobileDevice()) {
-        actionSheets.forEach((sheet) => {
-          sheet.classList.remove("action-sheet--active");
-        });
+        if (!cardWrapper.contains(event.target)) {
+          // Проверяем, находится ли клик внутри cardWrapper
+          actionSheet.classList.remove("action-sheet--active");
+        }
       }
     });
   });
