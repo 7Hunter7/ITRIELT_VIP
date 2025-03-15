@@ -53,8 +53,12 @@ a {
 
 button {
   cursor: pointer;
-  border-radius: $border-radius;
   padding: $spacing-sm $spacing-lg;
+  font-weight: $font-weight-semibold;
+  letter-spacing: 0.01em;
+  text-align: center;
+  border: none;
+  border-radius: $border-radius;
   color: $color-white;
   background-color: $color-primary;
   transition: opacity 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
@@ -65,8 +69,8 @@ button {
     opacity: $enabled; // Затемнение при наведении
   }
   &:active {
-    // Добавим небольшое "утапливание" при клике
-    transform: translateY(1px);
+    transform: translateY(1px); // Небольшое "утапливание" при клике
+    transition: transform 0s; // Мгновенный отклик
   }
   &:disabled {
     background-color: $color-grey;

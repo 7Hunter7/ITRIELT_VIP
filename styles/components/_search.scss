@@ -47,26 +47,8 @@
 
   &__button {
     margin-top: $spacing-sm;
-    display: block; // Кнопка на всю ширину
     width: 100%;
-    padding: 9px;
-    background-color: $color-primary;
-    color: $color-white;
-    font-weight: $font-weight-semibold;
-    letter-spacing: 0.01em;
-    border: none;
-    border-radius: $border-radius;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-
-    &:hover {
-      background-color: opacity 0.4; // Затемнение при наведении
-    }
-
-    &:active {
-      // Добавим небольшое "утапливание" при клике
-      transform: translateY(1px);
-    }
+    display: block; // Кнопка на всю ширину
   }
 }
 
