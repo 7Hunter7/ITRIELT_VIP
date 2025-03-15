@@ -2,6 +2,7 @@
 @import "../mixins";
 
 .footer {
+  z-index: 10;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -74,10 +75,8 @@
 }
 
 @media (min-width: $breakpoint-lg) {
-  /* 1024px */
+  /* 1336px */
   .footer {
-    &__line-button {
-      display: none;
-    }
+    display: none;
   }
 }

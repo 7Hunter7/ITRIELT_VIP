@@ -1012,6 +1012,7 @@
 }
 
 .footer {
+  z-index: 10;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -1085,8 +1086,8 @@
   }
 }
 @media (min-width: 1336px) {
-  /* 1024px */
-  .footer__line-button {
+  /* 1336px */
+  .footer {
     display: none;
   }
 }
