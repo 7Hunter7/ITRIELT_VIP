@@ -409,7 +409,9 @@ document.addEventListener("DOMContentLoaded", () => {
   cardWrappers.forEach((cardWrapper, index) => {
     const optionsButton = cardWrapper.querySelector(".objects__card-options");
     const actionSheet = cardWrapper.querySelector(".action-sheet");
-    const cancelButton = actionSheet.querySelector(".action-sheet__cancel");
+    const cancelButton = actionSheet
+      ? actionSheet.querySelector(".action-sheet__cancel")
+      : null; // Проверка actionSheet
 
     // Обработчик клика на кнопку опций
     optionsButton.addEventListener("click", (event) => {
@@ -429,12 +431,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Обработчик клика на кнопку отмены (только для мобильных)
-    cancelButton.addEventListener("click", () => {
-      actionSheet.classList.remove("action-sheet--active");
-      // Убираем класс для мобильного стиля
-      actionSheet.classList.remove("action-sheet--mobile");
-      statusBar.classList.remove("status-bar--mobile");
-    });
+    if (cancelButton) {
+      //  <--- Проверяем, чтобы функция вызвалась только если объект существует
+      cancelButton.addEventListener("click", () => {
+        actionSheet.classList.remove("action-sheet--active");
+        // Убираем класс для мобильного стиля
+        actionSheet.classList.remove("action-sheet--mobile");
+        statusBar.classList.remove("status-bar--mobile");
+      });
+    }
 
     // Закрытие Action Sheet при клике вне карточки (только если не мобильное)
     document.addEventListener("click", (event) => {
