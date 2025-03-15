@@ -108,6 +108,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Функция генерации данных одной карточки
   function generateCardData(i) {
     // i - индекс карточки
+    const id =
+      Math.random().toString(36).substring(2, 15) +
+      Math.random().toString(36).substring(2, 15); // Генерируем случайный ID
     const rooms = generateRandomNumber(1, 4);
     const square = generateRandomNumber(40, 150);
     const number = `№ ${generateRandomNumber(1000, 9999)}`;
@@ -123,6 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const isFavorite = favorites[generateRandomNumber(0, 1)];
 
     return {
+      id: id,
       isFavorite: isFavorite,
       square: `${rooms}-к, ${square.toFixed(2)} м²`,
       number: number,
@@ -231,9 +235,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 <svg class="action-sheet__item_selections"></svg>
                 Множественный выбор
               </button>
-              <button class="action-sheet__item">
+              <button class="action-sheet__item action-sheet__item-favorite"    data-card-index="${
+                data.id
+              }">
                 <svg class="action-sheet__item_additions"></svg>
-                Добавить в избранное
+                ${
+                  data.isFavorite
+                    ? "Убрать из избранного"
+                    : "Добавить в избранное"
+                }
               </button>
               <button class="action-sheet__item">
                 <svg class="action-sheet__item_collections"></svg>
@@ -354,46 +364,56 @@ document.addEventListener("DOMContentLoaded", () => {
   generateAndRenderCards();
 
   // --------------------   Обработчики событий  --------------------
-  // -------------------- 5.Установка флага isFavorite из LocalStorage  --------------------
-  const cards = document.querySelectorAll(".objects__card");
+  // -------------------- 5.Установка флага isFavorite --------------------
   const cardWrappers = document.querySelectorAll(".objects__card-wrapper");
 
-  // Добавляем обработчик клика на элемент "избранное"
-  cards.forEach((card, index) => {
-    const favoriteElement = card.querySelector(".objects__card-favorite");
-
-    favoriteElement.addEventListener("click", (event) => {
-      event.stopPropagation();
-      // Изменяем состояние “избранное” для текущей карточки
-      cardData[index].isFavorite = !cardData[index].isFavorite;
-      favoriteElement.classList.toggle(
-        "objects__card-favorite--active",
-        cardData[index].isFavorite
-      );
-
-      // Сохраняем данные в LocalStorage
-      localStorage.setItem("cardData", JSON.stringify(cardData));
-      console.log(`Объект ${cardData[index]} добавлен в "Избранное"`);
-    });
-  });
-
-  // Функция обновляет отображение карточек на странице в соответствии с данными, хранящимися в localStorage
-  function updateCardsFromLocalStorage(cardData) {
-    cardWrappers.forEach((cardWrapper, index) => {
-      const favoriteElement = cardWrapper.querySelector(
-        ".objects__card-favorite"
-      );
-
-      if (cardData[index].isFavorite) {
-        favoriteElement.classList.add("objects__card-favorite--active");
-      } else {
-        favoriteElement.classList.remove("objects__card-favorite--active");
-      }
-    });
+  // Функция для добавления класса для actionSheet
+  function addIsFavoriteClass(favoriteElement, isFavorite) {
+    if (isFavorite) {
+      favoriteElement.classList.add("objects__card-favorite--active");
+    } else {
+      favoriteElement.classList.remove("objects__card-favorite--active");
+    }
   }
 
-  cardData = generateAndRenderCards();
-  updateCardsFromLocalStorage(cardData);
+  // Обработчик клика для isFavorite
+  cardWrappers.forEach((cardWrapper) => {
+    const optionsButton = cardWrapper.querySelector(".objects__card-options");
+    const actionSheet = cardWrapper.querySelector(".action-sheet");
+    const cancelButton = actionSheet
+      ? actionSheet.querySelector(".action-sheet__cancel")
+      : null;
+    const favoriteElement = cardWrapper.querySelector(
+      ".objects__card-favorite"
+    );
+    const actionSheetItemFavorite = actionSheet.querySelector(
+      ".action-sheet__item-favorite"
+    );
+    const cardId = cardWrapper.dataset.cardId; //  Получаем cardId
+
+    // Получаем индекс карточки, в cardData
+    const cardIndex = cardData.findIndex((card) => card.id === cardId);
+    if (cardIndex === -1) {
+      console.warn("Не удалось найти карточку с ID:", cardId);
+      return; // Пропускаем эту карточку
+    }
+
+    actionSheetItemFavorite?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      // Изменяем состояние "избранное" для текущей карточки
+      cardData[cardIndex].isFavorite = !cardData[cardIndex].isFavorite;
+
+      updateFavoriteButtonText(
+        actionSheetItemFavorite,
+        cardData[cardIndex].isFavorite
+      );
+
+      addIsFavoriteClass(favoriteElement, cardData[cardIndex].isFavorite);
+      // Сохраняем данные в LocalStorage
+      localStorage.setItem("cardData", JSON.stringify(cardData));
+      console.log(`Объект ${cardData[cardIndex]} добавлен в "Избранное"`);
+    });
+  });
 
   // ------------------ 6. Логика для отображения и скрытия Action Sheet ------------------
   const statusBar = document.querySelector(".status-bar");
