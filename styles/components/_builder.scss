@@ -89,3 +89,26 @@
     border: 2px solid $color-primary;
   }
 }
+
+// Медиа-запросы
+@media (min-width: $breakpoint-md) {
+  /* 1024px */
+  .builder {
+    margin-top: 1rem;
+    border-radius: $spacing-sm;
+    padding: 0 0 $spacing-xs 0;
+
+    &__title {
+      padding: 0;
+    }
+
+    &__statuses {
+      border-bottom: $border-bottom;
+    }
+
+    &__logo {
+      height: 4rem; // 48px
+      min-width: 7.5rem; // 120px
+    }
+  }
+}

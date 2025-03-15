@@ -12,33 +12,7 @@
     gap: 1rem;
     border-bottom: $border-bottom;
 
-    .search {
-      min-width: 16rem;
-      border-radius: $spacing-sm;
-      padding: 0 0 $spacing-xs 0;
-
-      &__title {
-        padding: 1.125rem $spacing-md 0.625rem 1rem;
-      }
-      &__label {
-        min-width: 256px;
-      }
-      &__button {
-        width: 100%;
-      }
-    }
     .builder {
-      margin-top: 1rem;
-      border-radius: $spacing-sm;
-      padding: 0 0 $spacing-xs 0;
-
-      &__title {
-        padding: 0;
-      }
-
-      &__statuses {
-        border-bottom: $border-bottom;
-      }
       .scroll-container {
         display: flex;
         overflow-x: auto;

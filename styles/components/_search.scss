@@ -72,8 +72,20 @@
 
 // Медиа-запросы
 @media (min-width: $breakpoint-md) {
-  /* 744px */
+  /* 1024px */
   .search {
-    max-width: 22.5rem; // 360px
+    min-width: 16rem;
+    border-radius: $spacing-sm;
+    padding: 0 0 $spacing-xs 0;
+
+    &__title {
+      padding: 1.125rem $spacing-md 0.625rem 1rem;
+    }
+    &__label {
+      min-width: 256px;
+    }
+    &__button {
+      width: 100%;
+    }
   }
 }
