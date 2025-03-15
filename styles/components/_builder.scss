@@ -94,6 +94,7 @@
 @media (min-width: $breakpoint-md) {
   /* 1024px */
   .builder {
+    max-width: 38.5rem; // 616px
     margin-top: 1rem;
     border-radius: $spacing-sm;
     padding: 0 0 $spacing-xs 0;

@@ -565,6 +565,7 @@
 @media (min-width: 1024px) {
   /* 1024px */
   .builder {
+    max-width: 38.5rem;
     margin-top: 1rem;
     border-radius: 0.75rem;
     padding: 0 0 0.5rem 0;
@@ -1089,11 +1090,42 @@
     border-bottom: 1px solid #ecedf0;
   }
   .main__top .builder .scroll-container {
-    display: flex;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
+    min-height: 10.5rem;
     width: 100%;
+    display: flex;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-snap-type: x mandatory;
+    /* Стилизация полосы прокрутки с помощью псевдоэлементов */
+    /*  Угол в месте пересечения вертикальной и горизонтальной прокруток */
+  }
+  .main__top .builder .scroll-container ::-webkit-scrollbar {
+    height: 100%;
+    width: 0.75rem;
+    padding: 0.75rem 0.375rem 0.75rem 0;
+  }
+  .main__top .builder .scroll-container ::-webkit-scrollbar-track {
+    background: #fff;
+    border-radius: 8px;
+  }
+  .main__top .builder .scroll-container ::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    width: 0.375rem;
+    height: 4.75rem;
+    background-color: rgba(183, 184, 195, 0.6);
+  }
+  .main__top .builder .scroll-container ::-webkit-scrollbar-thumb:hover {
+    box-shadow: 0 0 8px 0 rgba(30, 30, 36, 0.1), 0 8px 16px 0 rgba(23, 23, 28, 0.05);
+  }
+  .main__top .builder .scroll-container ::-webkit-scrollbar-thumb:active {
+    background-color: #6f77fe;
+    box-shadow: 0 0 8px 0 rgba(30, 30, 36, 0.1), 0 8px 16px 0 rgba(23, 23, 28, 0.05);
+  }
+  .main__top .builder .scroll-container ::-webkit-scrollbar-button {
+    display: none;
+  }
+  .main__top .builder .scroll-container ::-webkit-scrollbar-corner {
+    display: none;
   }
 }
 * {
