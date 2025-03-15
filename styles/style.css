@@ -1089,17 +1089,21 @@
     gap: 1rem;
     border-bottom: 1px solid #ecedf0;
   }
+  .main__top .builder__logo {
+    flex-shrink: 0;
+  }
   .main__top .builder .scroll-container {
     min-height: 10.5rem;
     width: 100%;
     display: flex;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
     /* Стилизация полосы прокрутки с помощью псевдоэлементов */
     /*  Угол в месте пересечения вертикальной и горизонтальной прокруток */
   }
   .main__top .builder .scroll-container ::-webkit-scrollbar {
+    margin-left: 0.25rem;
     height: 100%;
     width: 0.75rem;
     padding: 0.75rem 0.375rem 0.75rem 0;

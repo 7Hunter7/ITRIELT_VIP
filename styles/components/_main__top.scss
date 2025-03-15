@@ -13,18 +13,23 @@
     border-bottom: $border-bottom;
 
     .builder {
+      &__logo {
+        flex-shrink: 0; // Предотвращает сжатие элементов при нехватке места
+      }
+
       .scroll-container {
         min-height: 10.5rem; // 168px
         width: 100%;
         display: flex;
-        overflow-x: hidden;
-        overflow-y: auto;
-        scroll-snap-type: x mandatory;
+        overflow-x: auto;
+        overflow-y: hidden; // Отключает вертикальную прокрутку
+        scroll-snap-type: x mandatory; // Делает прокрутку удобнее
 
         /* Стилизация полосы прокрутки с помощью псевдоэлементов */
 
         // Целиком полоса прокрутки
         ::-webkit-scrollbar {
+          margin-left: $spacing-xxxs;
           height: 100%;
           width: $spacing-sm;
           padding: $spacing-sm $spacing-xxs $spacing-sm 0;
