@@ -44,6 +44,7 @@
   }
 
   &__sort {
+    width: 100%;
     @include flex(row, center, center);
     flex-wrap: nowrap;
     position: relative; // Для позиционирования select__icon и select__chevron
@@ -58,6 +59,7 @@
       transform: translateY(-50%);
     }
     &_select {
+      width: 100%;
       margin: $spacing-xxs 0;
       padding: $spacing-xs $spacing-xxxl;
       border: 0.5px solid $color-border;
