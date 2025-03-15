@@ -4,7 +4,6 @@
 .header {
   margin-top: 3.5rem;
   display: flex;
-  flex-direction: column;
   border-bottom: 1px solid #ecedf0;
 
   &__top {
@@ -193,11 +192,20 @@
 }
 
 // Медиа-запросы
+@media (min-width: $breakpoint-xs) {
+  /* 320px */
+  .header {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}
+
 @media (min-width: $breakpoint-sm) {
   /* 744px */
   .header {
     margin-top: $spacing-xxl;
     flex-direction: row;
+    flex-wrap: nowrap;
     position: relative;
 
     &__top {

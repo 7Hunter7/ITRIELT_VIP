@@ -85,7 +85,6 @@
 .header {
   margin-top: 3.5rem;
   display: flex;
-  flex-direction: column;
   border-bottom: 1px solid #ecedf0;
   /* Кастомный select */
 }
@@ -96,13 +95,11 @@
   align-items: center;
   justify-content: space-between;
   gap: 0;
-  flex-wrap: nowrap;
   padding: 0.75rem 0;
 }
 .header__top__title {
   font-weight: 600;
   font-size: 1.0625rem;
-  word-wrap: none;
 }
 .header__top__filter-button {
   padding: 0.5rem 0.75rem;
@@ -322,16 +319,65 @@
   background-color: #f2f2f2;
 }
 
+@media (min-width: 320px) {
+  /* 320px */
+  .header {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}
 @media (min-width: 744px) {
   /* 744px */
-  .header__sort {
+  .header {
+    margin-top: 2rem;
+    flex-direction: row;
+    flex-wrap: nowrap;
     position: relative;
   }
-  .header__sort .options__wrapper {
+  .header__top {
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    gap: 0.5rem;
+  }
+  .header__top__title {
+    line-height: 120%;
+    font-size: 1.25rem;
+  }
+  .header__top__filter-button {
+    position: absolute;
+    right: 0;
+  }
+  .header__top__filter-button_text {
+    display: inline;
+    margin: 0 0.375rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.01em;
+    color: #6f77fe;
+  }
+  .header__sort {
+    position: absolute;
+    right: 10rem;
+    max-width: 16rem;
+  }
+  .header__sort_select {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /*  многоточие  */
+  }
+  .header__sort_label {
+    left: 0.75rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .header__sort_chevron {
+    right: 0.75rem;
+  }
+  .header .options__wrapper {
     position: static;
     background-color: #fff;
   }
-  .header__sort .options__wrapper .options {
+  .header .options__wrapper .options {
     position: absolute;
     top: 100%; /* Располагаем под элементом header__sort */
     left: 0;
@@ -342,7 +388,7 @@
     border-bottom-left-radius: 0.75rem;
     border-top: none;
   }
-  .header__sort .options__wrapper--mobile {
+  .header .options__wrapper--mobile {
     background-color: transparent;
   }
 }
