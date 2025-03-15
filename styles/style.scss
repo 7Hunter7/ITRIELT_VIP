@@ -50,3 +50,29 @@ a {
   margin-left: $spacing-md;
   margin-right: $spacing-md;
 }
+
+button {
+  cursor: pointer;
+  border-radius: $border-radius;
+  padding: $spacing-sm $spacing-lg;
+  color: $color-white;
+  background-color: $color-primary;
+  transition: opacity 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
+    transform 0.1s ease-in-out;
+
+  &:hover {
+    box-shadow: $box-shadow;
+    opacity: $enabled; // Затемнение при наведении
+  }
+  &:active {
+    // Добавим небольшое "утапливание" при клике
+    transform: translateY(1px);
+  }
+  &:disabled {
+    background-color: $color-grey;
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+  }
+}
