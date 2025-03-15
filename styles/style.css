@@ -263,7 +263,7 @@
 .header .options__wrapper--mobile .active {
   margin-top: 1.25rem;
 }
-.header .options__wrapper--mobile .options__wrapper_cancel {
+.header .options__wrapper--mobile .options__wrapper_cancel-button {
   display: block;
 }
 .header .options__wrapper .options {
@@ -305,7 +305,7 @@
   width: 20px;
   height: 20px;
 }
-.header .options__wrapper_cancel {
+.header .options__wrapper_cancel-button {
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
   height: 0.25rem;
@@ -315,7 +315,7 @@
   cursor: pointer;
   display: none;
 }
-.header .options__wrapper_cancel:hover {
+.header .options__wrapper_cancel-button:hover {
   background-color: #f2f2f2;
 }
 
@@ -390,6 +390,9 @@
   }
   .header .options__wrapper--mobile {
     background-color: transparent;
+  }
+  .header .options__wrapper_cancel-button {
+    display: none;
   }
 }
 .search {

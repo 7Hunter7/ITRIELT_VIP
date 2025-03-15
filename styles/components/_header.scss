@@ -150,7 +150,7 @@
       .active {
         margin-top: $spacing-lg;
       }
-      .options__wrapper_cancel {
+      .options__wrapper_cancel-button {
         display: block;
       }
     }
@@ -185,7 +185,7 @@
       }
     }
 
-    &_cancel {
+    &_cancel-button {
       @include close-options-button();
     }
   }
@@ -273,6 +273,9 @@
       &--mobile {
         // Убираем стили для мобильных устройств на desktop
         background-color: transparent;
+      }
+      &_cancel-button {
+        display: none;
       }
     }
   }

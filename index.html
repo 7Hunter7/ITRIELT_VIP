@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/styles/style.css" />
   </head>
   <body>
+    <!-- UI эмуляция статус-бара -->
     <div class="status-bar">
       <div class="status-bar__time">9:41</div>
       <div class="status-bar__icons">
@@ -65,6 +66,7 @@
           </div>
         </div>
 
+        <!-- Реализация кастомного селекта -->
         <div class="header__sort">
           <label for="sort-select" class="header__sort_label">
             <img
@@ -122,7 +124,7 @@
                   Сначала с меньшей площадью
                 </div>
               </div>
-              <div class="options__wrapper_cancel"></div>
+              <button class="options__wrapper_cancel-button"></button>
 
               <!-- Скрытый оригинальный select для отправки формы -->
               <select id="sort-select" style="display: none">
