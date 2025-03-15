@@ -46,7 +46,6 @@
   &__sort {
     @include flex(row, center, center);
     flex-wrap: nowrap;
-    width: 100%;
     position: relative; // Для позиционирования select__icon и select__chevron
 
     &_label {
@@ -60,7 +59,6 @@
     }
     &_select {
       margin: $spacing-xxs 0;
-      width: 100%;
       padding: $spacing-xs $spacing-xxxl;
       border: 0.5px solid $color-border;
       border-radius: $border-radius;
@@ -242,16 +240,16 @@
         overflow: hidden;
         text-overflow: ellipsis; /*  многоточие  */
       }
+    }
 
-      &_label {
-        left: $spacing-sm;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
+    &_label {
+      left: $spacing-sm;
+      overflow: hidden;
+      text-overflow: ellipsis; /*  многоточие  */
+    }
 
-      &_chevron {
-        right: $spacing-sm;
-      }
+    &_chevron {
+      right: $spacing-sm;
     }
 
     .options__wrapper {
