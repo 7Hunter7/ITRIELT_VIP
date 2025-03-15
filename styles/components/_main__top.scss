@@ -5,11 +5,15 @@
 @media (min-width: $breakpoint-md) {
   /* 1024px */
   .main__top {
-    @include flex(row, space-around, center, $spacing-md);
-    flex-wrap: nowrap;
+    max-height: 20.875rem; // 334px
+    padding: $spacing-md;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    gap: 1rem;
+    border-bottom: $border-bottom;
 
     .search {
-      max-width: 22.5rem; // 360px
+      min-width: 16rem;
       border-radius: $spacing-sm;
       padding: 0 0 $spacing-xs 0;
 
@@ -20,6 +24,26 @@
         min-width: 256px;
       }
       &__button {
+        width: 100%;
+      }
+    }
+    .builder {
+      margin-top: 1rem;
+      border-radius: $spacing-sm;
+      padding: 0 0 $spacing-xs 0;
+
+      &__title {
+        padding: 0;
+      }
+
+      &__statuses {
+        border-bottom: $border-bottom;
+      }
+      .scroll-container {
+        display: flex;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
         width: 100%;
       }
     }
