@@ -1101,7 +1101,7 @@
 @media (min-width: 1024px) {
   /* 1024px */
   .main__top {
-    max-height: 20.875rem;
+    max-height: 18.625rem;
     padding: 1rem;
     display: grid;
     grid-template-columns: 40% 60%;
@@ -1112,8 +1112,8 @@
   }
   .main__top .builder .scroll-container {
     max-height: 10.5rem;
-    width: 100%;
-    display: flex;
+    min-width: 7.5rem;
+    padding: 1rem;
     overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
