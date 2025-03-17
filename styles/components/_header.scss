@@ -271,3 +271,11 @@
     }
   }
 }
+
+@media (min-width: $breakpoint-lg) {
+  /* 1336px */
+  .header {
+    margin-top: $spacing-xxs;
+    margin-bottom: $spacing-xxs;
+  }
+}

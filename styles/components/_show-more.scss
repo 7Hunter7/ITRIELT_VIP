@@ -19,3 +19,10 @@
     background-color: $color-primary;
   }
 }
+
+@media (min-width: $breakpoint-lg) {
+  /* 1336px */
+  .show-more {
+    padding-bottom: $spacing-xl;
+  }
+}
