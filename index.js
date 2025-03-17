@@ -508,12 +508,16 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Обработчик клика на кнопку отмены (только для мобильных)
-  closeOptionsButton.addEventListener("click", () => {
-    optionsWrapper.classList.remove("options__wrapper--mobile");
-    optionsWrapper.classList.remove("open");
-    sortChevron.classList.remove("rotate");
-    statusBar.classList.remove("status-bar--mobile");
-  });
+  if (isMobileDevice()) {
+    if (closeOptionsButton) {
+      closeOptionsButton.addEventListener("click", () => {
+        optionsWrapper.classList.remove("options__wrapper--mobile");
+        optionsWrapper.classList.remove("open");
+        sortChevron.classList.remove("rotate");
+        statusBar.classList.remove("status-bar--mobile");
+      });
+    }
+  }
 
   // Функция сортировки объектов
   function sortCards(sortBy) {
