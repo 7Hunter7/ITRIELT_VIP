@@ -107,6 +107,7 @@
   }
   /* Кастомный select */
   .selected-option {
+    max-height: 2.25rem; // 36px
     text-align: left;
     white-space: nowrap;
     overflow: hidden;
@@ -217,7 +218,6 @@
 
     &__sort {
       white-space: nowrap;
-      text-wrap: none;
       width: 16rem;
       max-height: 2.25rem; // 36px
       position: absolute;

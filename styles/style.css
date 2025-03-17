@@ -211,6 +211,7 @@
   height: 1.25rem;
 }
 .header .selected-option {
+  max-height: 2.25rem;
   text-align: left;
   white-space: nowrap;
   overflow: hidden;
@@ -346,7 +347,6 @@
   }
   .header__sort {
     white-space: nowrap;
-    text-wrap: none;
     width: 16rem;
     max-height: 2.25rem;
     position: absolute;
