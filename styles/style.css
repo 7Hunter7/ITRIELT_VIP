@@ -305,7 +305,9 @@
   width: 20px;
   height: 20px;
 }
-.header .options__wrapper_cancel-button {
+.header .options__wrapper_сancel-button {
+  padding: 0;
+  margin: 0;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
   height: 0.25rem;
@@ -315,7 +317,7 @@
   cursor: pointer;
   display: none;
 }
-.header .options__wrapper_cancel-button:hover {
+.header .options__wrapper_сancel-button:hover {
   background-color: #f2f2f2;
 }
 
@@ -391,7 +393,10 @@
   .header .options__wrapper--mobile {
     background-color: transparent;
   }
-  .header .options__wrapper_cancel-button {
+}
+@media (min-width: 1024px) {
+  /* 1024px */
+  .header .options__wrapper_сancel-button {
     display: none;
   }
 }
@@ -959,7 +964,9 @@
   width: 1.5rem;
   height: 1.5rem;
 }
-.action-sheet__cancel {
+.action-sheet__сancel-button {
+  padding: 0;
+  margin: 0;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
   height: 0.25rem;
@@ -969,7 +976,7 @@
   cursor: pointer;
   display: none;
 }
-.action-sheet__cancel:hover {
+.action-sheet__сancel-button:hover {
   background-color: #f2f2f2;
 }
 
@@ -986,6 +993,12 @@
   }
   .action-sheet--mobile {
     background-color: transparent;
+  }
+}
+@media (min-width: 1024px) {
+  /* 1024px */
+  .action-sheet__сancel-button {
+    display: none;
   }
 }
 .show-more {

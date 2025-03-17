@@ -127,7 +127,10 @@
     }
   }
 
-  &__cancel {
+  &__сancel-button {
+    // Сбрасываем отступы для button
+    padding: 0;
+    margin: 0;
     @include close-options-button();
   }
 }
@@ -148,6 +151,15 @@
     &--mobile {
       // Убираем стили для мобильных устройств на desktop
       background-color: transparent;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-md) {
+  /* 1024px */
+  .action-sheet {
+    &__сancel-button {
+      display: none;
     }
   }
 }

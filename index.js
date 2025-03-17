@@ -258,7 +258,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 Поделиться
               </button>
             </div>
-            <div class="action-sheet__cancel"></div>
+            <button class="action-sheet__сancel-button"></button>
           </div>
         </div>
     `;
@@ -553,7 +553,7 @@ document.addEventListener("DOMContentLoaded", () => {
       originalSelect.value = option.dataset.value; // Обновляем значение оригинального select
       optionIcon.classList.add("active");
 
-      optionsWrapper.classList.remove("options__wrapper--mobile"); // Удаляем
+      optionsWrapper.classList.remove("options__wrapper--mobile");
       optionsWrapper.classList.remove("open");
       sortChevron.classList.remove("rotate");
       statusBar.classList.remove("status-bar--mobile");
@@ -567,6 +567,7 @@ document.addEventListener("DOMContentLoaded", () => {
         displayedCards,
         initialCardsToShow
       );
+      //
       renderCards(initialCards);
       displayedCards += initialCardsToShow;
       updateShowMoreButton();
