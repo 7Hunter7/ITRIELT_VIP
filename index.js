@@ -330,9 +330,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Функция отображения текста на кнопке
   function updateShowMoreButton() {
     const remainingCards = cardData.length - displayedCards;
-    if (displayResolution <= 320) {
-      console.log(`display: ${window.innerWidth}`);
+    const currentResolution = window.innerWidth; // Получаем текущее значение
 
+    if (currentResolution <= 320) {
       // Если разрешение 320px, то покажем кнопку без количества оставшихся для отображения объектов
       showMoreButton.textContent = `Показать ещё ${Math.min(
         12,
@@ -347,6 +347,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // Если больше нечего показывать, скрываем кнопку
     showMoreButton.style.display = remainingCards > 0 ? "block" : "none";
   }
+
+  // Добавляем обработчик события resize
+  function handleResize() {
+    updateShowMoreButton(); // Вызываем функцию обновления кнопки при изменении размеров окна
+  }
+  window.addEventListener("resize", updateShowMoreButton);
+  handleResize(); // Вызываем функцию при загрузке страницы
 
   // Отображаем начальные карточки
   const initialCards = getCardDataForDisplay(
