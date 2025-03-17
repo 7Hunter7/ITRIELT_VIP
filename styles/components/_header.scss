@@ -52,12 +52,19 @@
     &_label {
       position: absolute;
       top: 50%;
-      left: $spacing-xxs;
+      left: $spacing-sm;
       color: $color-secondary;
       transition: all 0.3s ease;
       pointer-events: none;
       transform: translateY(-50%);
+
+      &_icon {
+        img {
+          @include icon();
+        }
+      }
     }
+
     &_select {
       width: 100%;
       margin: $spacing-xxs 0;
@@ -69,17 +76,6 @@
       cursor: pointer;
       &:hover {
         border-color: $color-primary;
-      }
-    }
-
-    &_icon {
-      position: absolute;
-      top: 50%;
-      left: $spacing-xs;
-      transform: translateY(-50%);
-      pointer-events: none; /* Чтобы иконка не мешала кликам */
-      img {
-        @include icon();
       }
     }
 
@@ -112,6 +108,7 @@
   /* Кастомный select */
   .selected-option {
     text-align: left;
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     transition: all 0.3s ease;
@@ -209,8 +206,6 @@
     position: relative;
 
     &__top {
-      flex-wrap: nowrap;
-      white-space: nowrap;
       gap: $spacing-xs;
 
       &__title {
@@ -233,12 +228,14 @@
     }
 
     &__sort {
+      white-space: nowrap;
+      text-wrap: none;
+      width: 16rem;
+      max-height: 2.25rem; // 36px
       position: absolute;
       right: 10rem;
-      max-width: 16rem;
 
       &_select {
-        white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis; /*  многоточие  */
       }
@@ -248,10 +245,6 @@
       left: $spacing-sm;
       overflow: hidden;
       text-overflow: ellipsis; /*  многоточие  */
-    }
-
-    &_chevron {
-      right: $spacing-sm;
     }
 
     .options__wrapper {
@@ -268,6 +261,10 @@
         border-bottom-right-radius: 0.75rem;
         border-bottom-left-radius: 0.75rem;
         border-top: none;
+
+        .option {
+          white-space: wrap;
+        }
       }
 
       &--mobile {
@@ -281,12 +278,6 @@
 @media (min-width: $breakpoint-md) {
   /* 1024px */
   .header {
-    .options {
-      width: 100%;
-      .option {
-        width: 100%;
-      }
-    }
     .options__wrapper_сancel-button {
       display: none;
     }
