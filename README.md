@@ -51,3 +51,24 @@
 ├── index.html # Главный HTML файл
 └── index.js # Главный JavaScript файл
 ```
+
+## Запуск проекта
+
+1.  Убедитесь, что у вас установлен веб-сервер (например, `Live Server` в VS Code, или любой другой).
+2.  Убедитесь, что у вас установлен компилятор для препроцессора `Sass (.sass only)` и `Live Sass Compiler`
+3.  Откройте `index.html` в браузере через ваш веб-сервер.
+
+## Планы по развитию
+
+- Улучшение UI/UX.
+- Поддержка PWA (Progressive Web App).
+- И другие улучшения.
+
+## Автор
+
+Ivan Kalugin
+Телеграмм: https://t.me/Ivan_Anatolievich_Kalugin
+
+## Лицензия
+
+MIT License
