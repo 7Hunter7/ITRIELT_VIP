@@ -16,17 +16,31 @@
   height: $size;
 }
 
+// Миксин для Dropdown menu
+@mixin fixed() {
+  z-index: 20;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+// Миксин для отображения элемента
+@mixin visible() {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto; // Возможность кликать по  активному слою
+}
+
 // Миксин для скрытия элемента
 @mixin visually-hidden() {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  overflow: hidden;
-  white-space: nowrap;
-  word-wrap: normal;
+  visibility: hidden;
+  background-color: transparent; // Прозрачный фон (по умолчанию)
+  pointer-events: none; // Возможность кликать сквозь неактивный слой
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 // Миксин для стилизации иконок в 'action-sheet'

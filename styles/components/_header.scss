@@ -116,24 +116,12 @@
 
   // Стили для обертки
   .options__wrapper {
-    z-index: 20;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
+    @include fixed();
+    @include visually-hidden();
     @include flex(column, center, center);
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    background-color: transparent;
-    pointer-events: none;
 
     &.open {
-      visibility: visible;
-      opacity: 1;
-      pointer-events: auto;
+      @include visible();
     }
 
     // Стили для мобильного отображения (модальное окно)
