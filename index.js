@@ -387,7 +387,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const optionsButton = cardWrapper.querySelector(".objects__card-options");
     const actionSheet = cardWrapper.querySelector(".action-sheet");
     const cancelButton = actionSheet
-      ? actionSheet.querySelector(".action-sheet__cancel")
+      ? actionSheet.querySelector(".action-sheet__сancel-button")
       : null;
     const favoriteElement = cardWrapper.querySelector(
       ".objects__card-favorite"
@@ -436,7 +436,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const optionsButton = cardWrapper.querySelector(".objects__card-options");
     const actionSheet = cardWrapper.querySelector(".action-sheet");
     const cancelButton = actionSheet
-      ? actionSheet.querySelector(".action-sheet__cancel")
+      ? actionSheet.querySelector(".action-sheet__сancel-button")
       : null; // Проверка actionSheet
 
     // Обработчик клика на кнопку опций
@@ -486,8 +486,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const options = customSelect.querySelectorAll(".option");
   const originalSelect = document.getElementById("sort-select");
   const sortChevron = customSelect.querySelector(".header__sort_chevron");
-  const closeOptionsButton = optionsWrapper.querySelector(
-    ".options__wrapper_cancel"
+  const closeOptionsButton = customSelect.querySelector(
+    ".options__wrapper_сancel-button"
   );
 
   // Обработчик клика на header__sort
@@ -508,15 +508,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Обработчик клика на кнопку отмены (только для мобильных)
-  if (isMobileDevice()) {
-    if (closeOptionsButton) {
-      closeOptionsButton.addEventListener("click", () => {
-        optionsWrapper.classList.remove("options__wrapper--mobile");
-        optionsWrapper.classList.remove("open");
-        sortChevron.classList.remove("rotate");
-        statusBar.classList.remove("status-bar--mobile");
-      });
-    }
+  if (closeOptionsButton) {
+    closeOptionsButton.addEventListener("click", () => {
+      optionsWrapper.classList.remove("options__wrapper--mobile");
+      optionsWrapper.classList.remove("open");
+      sortChevron.classList.remove("rotate");
+      statusBar.classList.remove("status-bar--mobile");
+    });
   }
 
   // Функция сортировки объектов

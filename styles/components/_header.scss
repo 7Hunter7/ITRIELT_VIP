@@ -150,9 +150,6 @@
       .active {
         margin-top: $spacing-lg;
       }
-      .options__wrapper_cancel-button {
-        display: block;
-      }
     }
 
     .options {
@@ -284,6 +281,12 @@
 @media (min-width: $breakpoint-md) {
   /* 1024px */
   .header {
+    .options {
+      width: 100%;
+      .option {
+        width: 100%;
+      }
+    }
     .options__wrapper_сancel-button {
       display: none;
     }

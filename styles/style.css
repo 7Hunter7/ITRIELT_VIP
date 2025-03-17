@@ -263,9 +263,6 @@
 .header .options__wrapper--mobile .active {
   margin-top: 1.25rem;
 }
-.header .options__wrapper--mobile .options__wrapper_cancel-button {
-  display: block;
-}
 .header .options__wrapper .options {
   position: fixed;
   margin: 0 0.5rem 2.75rem 0.5rem;
@@ -314,8 +311,6 @@
   min-width: 8.7rem;
   border-radius: 0.125rem;
   background-color: #fff;
-  cursor: pointer;
-  display: none;
 }
 .header .options__wrapper_сancel-button:hover {
   background-color: #f2f2f2;
@@ -396,6 +391,12 @@
 }
 @media (min-width: 1024px) {
   /* 1024px */
+  .header .options {
+    width: 100%;
+  }
+  .header .options .option {
+    width: 100%;
+  }
   .header .options__wrapper_сancel-button {
     display: none;
   }
@@ -824,9 +825,6 @@
   justify-content: flex-end;
   gap: 0;
 }
-.action-sheet--mobile .action-sheet__cancel {
-  display: block;
-}
 .action-sheet__content {
   display: flex;
   flex-direction: column;
@@ -973,8 +971,6 @@
   min-width: 8.7rem;
   border-radius: 0.125rem;
   background-color: #fff;
-  cursor: pointer;
-  display: none;
 }
 .action-sheet__сancel-button:hover {
   background-color: #f2f2f2;
