@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Функция для определения, является ли устройство мобильным
-  function isMobileDevice() {
-    return window.innerWidth < 744; // Mobile Device
+  const displayResolution = window.innerWidth;
+
+  function isMobileDevice(displayResolution) {
+    return displayResolution < 744; // Mobile Device
   }
   // ------------------ 1. Status Bar - Часы ------------------
   const batteryLevel = document.querySelector(".status-bar__battery-level");
@@ -328,7 +330,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Функция отображения текста на кнопке
   function updateShowMoreButton() {
     const remainingCards = cardData.length - displayedCards;
-    if (window.innerWidth <= 320) {
+    if (displayResolution <= 320) {
+      console.log(`display: ${window.innerWidth}`);
+
       // Если разрешение 320px, то покажем кнопку без количества оставшихся для отображения объектов
       showMoreButton.textContent = `Показать ещё ${Math.min(
         12,
