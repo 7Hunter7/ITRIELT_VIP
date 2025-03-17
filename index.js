@@ -328,11 +328,18 @@ document.addEventListener("DOMContentLoaded", () => {
   // Функция отображения текста на кнопке
   function updateShowMoreButton() {
     const remainingCards = cardData.length - displayedCards;
-    showMoreButton.textContent = `Показать ещё ${Math.min(
-      12,
-      remainingCards
-    )} из ${remainingCards} объектов`; // не более 12
-
+    if (window.innerWidth <= 320) {
+      // Если разрешение 320px, то покажем кнопку без количества оставшихся для отображения объектов
+      showMoreButton.textContent = `Показать ещё ${Math.min(
+        12,
+        remainingCards
+      )}`;
+    } else {
+      showMoreButton.textContent = `Показать ещё ${Math.min(
+        12,
+        remainingCards
+      )} из ${remainingCards} объектов`; // не более 12
+    }
     // Если больше нечего показывать, скрываем кнопку
     showMoreButton.style.display = remainingCards > 0 ? "block" : "none";
   }
@@ -469,11 +476,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Закрытие Action Sheet при клике вне карточки (только если не мобильное)
     document.addEventListener("click", (event) => {
-      if (!isMobileDevice()) {
-        // Проверяем, находится ли клик внутри cardWrapper
-        if (!cardWrapper.contains(event.target)) {
-          actionSheet.classList.remove("action-sheet--active");
-        }
+      // Проверяем, находится ли клик внутри cardWrapper
+      if (!actionSheet.contains(event.target)) {
+        actionSheet.classList.remove("action-sheet--active");
       }
     });
   });
