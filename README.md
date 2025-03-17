@@ -25,3 +25,29 @@
 - **CSS:** Итоговые стили.
 
 ## Структура проекта
+
+```bash
+├── public/ # Публичные ресурсы (изображения, иконки)
+│ ├── builders/ # Логотипы застройщиков
+│ ├── icons/ # Иконки
+│ ├── objects/ # Изображения объектов и планировки
+├── styles/ # Стили (SCSS)
+│ ├── components/ # Компоненты стилей (частичные SCSS файлы)
+│ │ ├── _action-sheet.scss
+│ │ ├── _builder.scss
+│ │ ├── _footer.scss
+│ │ ├── _header.scss
+│ │ ├── _main__top.scss
+│ │ ├── _objects-filter.scss
+│ │ ├── _objects.scss
+│ │ ├── _search.scss
+│ │ ├── _show-more.scss
+│ │ ├── _status-bar.scss
+│ ├── _mixins.scss # Миксины
+│ ├── _variables.scss # Переменные
+│ ├── style.css # Скомпилированный CSS
+│ ├── style.css.map # Source map для CSS
+│ └── style.scss # Главный SCSS файл
+├── index.html # Главный HTML файл
+└── index.js # Главный JavaScript файл
+```
