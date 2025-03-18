@@ -506,7 +506,6 @@ document.addEventListener("DOMContentLoaded", () => {
         actionSheet.classList.add("action-sheet--active");
         // Добавляем класс для мобильного стиля
         actionSheet.classList.add("action-sheet--mobile");
-        actionSheet.classList.add("action-sheet--mobile-active");
         statusBar.classList.add("status-bar--mobile");
       } else {
         // Отображаем как dropdown
@@ -521,7 +520,6 @@ document.addEventListener("DOMContentLoaded", () => {
         actionSheet.classList.remove("action-sheet--active");
         // Убираем класс для мобильного стиля
         actionSheet.classList.remove("action-sheet--mobile");
-        actionSheet.classList.remove("action-sheet--mobile-active");
         statusBar.classList.remove("status-bar--mobile");
       });
     }

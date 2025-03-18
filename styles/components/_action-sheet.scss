@@ -16,14 +16,6 @@
     @include flex(column, flex-end, center);
   }
 
-  &--mobile-active {
-    position: fixed;
-    top: 0; // Обнуляем top
-    left: 0; // Обнуляем left
-    right: 0;
-    bottom: 0;
-  }
-
   &__content {
     @include flex(column, flex-start, flex-start);
     padding-bottom: $spacing-xs;
