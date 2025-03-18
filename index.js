@@ -653,7 +653,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const currentResolution = window.innerWidth;
       const isMobile = isMobileDevice(currentResolution);
       if (!isMobile) {
-        desktopMenu.style.transition = "left 0.3s ease"; // Добавляем плавный переход
+        desktopMenu.style.transition = "left 0.2s ease"; // Добавляем плавный переход
         desktopMenu.style.left = "0"; // Показываем меню
       }
     });

@@ -1225,6 +1225,12 @@
   justify-content: center;
   gap: 0;
 }
+.desktop-menu__item:hover .desktop-menu__link {
+  color: #6f77fe;
+}
+.desktop-menu__item:hover .desktop-menu__link .desktop-menu__icon:not(.desktop-menu__logo) {
+  filter: invert(62%) sepia(90%) saturate(428%) hue-rotate(204deg) brightness(98%) contrast(93%);
+}
 .desktop-menu__link {
   display: flex;
   flex-direction: column;
@@ -1240,8 +1246,8 @@
 .desktop-menu__link--active {
   color: #6f77fe;
 }
-.desktop-menu__link:hover {
-  color: #6f77fe;
+.desktop-menu__link--active .desktop-menu__icon {
+  filter: invert(62%) sepia(90%) saturate(428%) hue-rotate(204deg) brightness(98%) contrast(93%);
 }
 .desktop-menu__icon {
   width: 1.75rem;
