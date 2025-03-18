@@ -828,6 +828,13 @@
   justify-content: flex-end;
   gap: 0;
 }
+.action-sheet--mobile-active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
 .action-sheet__content {
   display: flex;
   flex-direction: column;

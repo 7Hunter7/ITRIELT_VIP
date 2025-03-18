@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const displayResolution = window.innerWidth;
 
   function isMobileDevice(displayResolution) {
-    return displayResolution <= 744; // Mobile Device
+    return displayResolution < 744; // Mobile Device
   }
   // ------------------ 1. Status Bar - Часы ------------------
   const batteryLevel = document.querySelector(".status-bar__battery-level");
@@ -457,20 +457,28 @@ document.addEventListener("DOMContentLoaded", () => {
       ? actionSheet.querySelector(".action-sheet__сancel-button")
       : null; // Проверка actionSheet
 
+    // Получаем ширину экрана
+    const currentResolution = window.innerWidth;
+    const isMobile = isMobileDevice(currentResolution); // Определяем разрешение экрана
+
     // Обработчик клика на кнопку опций
     optionsButton.addEventListener("click", (event) => {
       event.stopPropagation(); // Предотвращаем всплытие события
 
-      if (isMobileDevice()) {
+      if (isMobile) {
+        console.log(`isMobileDevice?: ${isMobile}`);
         // Мобильное устройство: добавляем затемнение и позиционируем модально
         actionSheet.classList.add("action-sheet--active");
         // Добавляем класс для мобильного стиля
         actionSheet.classList.add("action-sheet--mobile");
+        actionSheet.classList.add("action-sheet--mobile-active");
         statusBar.classList.add("status-bar--mobile");
       } else {
         // Немобильное устройство: отображаем как dropdown
         actionSheet.classList.add("action-sheet--active");
-        if (!isMobileDevice()) {
+        if (!isMobile) {
+          console.log(`Условие "!isMobileDevice"`);
+          console.log(`isMobileDevice?: ${isMobile}`);
           // НЕ мобильное устройство
           positionActionSheet(actionSheet, optionsButton);
         }
@@ -479,11 +487,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Обработчик клика на кнопку отмены (только для мобильных)
     if (cancelButton) {
-      //  <--- Проверяем, чтобы функция вызвалась только если объект существует
       cancelButton.addEventListener("click", () => {
         actionSheet.classList.remove("action-sheet--active");
         // Убираем класс для мобильного стиля
         actionSheet.classList.remove("action-sheet--mobile");
+        actionSheet.classList.remove("action-sheet--mobile-active");
         statusBar.classList.remove("status-bar--mobile");
       });
     }
