@@ -641,4 +641,22 @@ document.addEventListener("DOMContentLoaded", () => {
       statusBar.classList.remove("status-bar--mobile");
     }
   });
+
+  // ------------------ 8. Desktop Menu Hover Logic ------------------
+  const desktopMenu = document.querySelector(".desktop-menu");
+  const desktopMenuWidth = 80; // Ширина меню в px
+
+  if (desktopMenu) {
+    desktopMenu.style.left = `-${desktopMenuWidth}px`; // Скрываем меню изначально
+
+    desktopMenu.addEventListener("mouseenter", () => {
+      desktopMenu.style.transition = "left 0.3s ease"; // Добавляем плавный переход
+      desktopMenu.style.left = "0"; // Показываем меню
+    });
+
+    desktopMenu.addEventListener("mouseleave", () => {
+      desktopMenu.style.transition = "left 0.3s ease"; // Добавляем плавный переход
+      desktopMenu.style.left = `-${desktopMenuWidth}px`; // Скрываем меню
+    });
+  }
 });
