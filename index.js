@@ -457,16 +457,15 @@ document.addEventListener("DOMContentLoaded", () => {
       ? actionSheet.querySelector(".action-sheet__сancel-button")
       : null; // Проверка actionSheet
 
-    // Получаем ширину экрана
+    // Определяем тип устройства
     const currentResolution = window.innerWidth;
-    const isMobile = isMobileDevice(currentResolution); // Определяем разрешение экрана
+    const isMobile = isMobileDevice(currentResolution);
 
     // Обработчик клика на кнопку опций
     optionsButton.addEventListener("click", (event) => {
       event.stopPropagation(); // Предотвращаем всплытие события
 
       if (isMobile) {
-        console.log(`isMobileDevice?: ${isMobile}`);
         // Мобильное устройство: добавляем затемнение и позиционируем модально
         actionSheet.classList.add("action-sheet--active");
         // Добавляем класс для мобильного стиля
@@ -474,12 +473,9 @@ document.addEventListener("DOMContentLoaded", () => {
         actionSheet.classList.add("action-sheet--mobile-active");
         statusBar.classList.add("status-bar--mobile");
       } else {
-        // Немобильное устройство: отображаем как dropdown
+        // Отображаем как dropdown
         actionSheet.classList.add("action-sheet--active");
         if (!isMobile) {
-          console.log(`Условие "!isMobileDevice"`);
-          console.log(`isMobileDevice?: ${isMobile}`);
-          // НЕ мобильное устройство
           positionActionSheet(actionSheet, optionsButton);
         }
       }
