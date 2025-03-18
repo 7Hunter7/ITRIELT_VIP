@@ -1053,6 +1053,12 @@
 .footer__item {
   flex: 1;
 }
+.footer__item:hover .footer__link {
+  color: #6f77fe;
+}
+.footer__item:hover .footer__link .footer__icon:not(.profile-icon) {
+  filter: invert(62%) sepia(90%) saturate(428%) hue-rotate(204deg) brightness(98%) contrast(93%);
+}
 .footer__link {
   display: flex;
   flex-direction: column;
@@ -1067,6 +1073,9 @@
 }
 .footer__link--active {
   color: #6f77fe;
+}
+.footer__link--active .footer__icon:not(.profile-icon) {
+  filter: invert(62%) sepia(90%) saturate(428%) hue-rotate(204deg) brightness(98%) contrast(93%);
 }
 .footer__icon {
   width: 1.75rem;
@@ -1228,7 +1237,7 @@
 .desktop-menu__item:hover .desktop-menu__link {
   color: #6f77fe;
 }
-.desktop-menu__item:hover .desktop-menu__link .desktop-menu__icon:not(.desktop-menu__logo) {
+.desktop-menu__item:hover .desktop-menu__link .desktop-menu__icon:not(.profile-icon) {
   filter: invert(62%) sepia(90%) saturate(428%) hue-rotate(204deg) brightness(98%) contrast(93%);
 }
 .desktop-menu__link {
@@ -1246,7 +1255,7 @@
 .desktop-menu__link--active {
   color: #6f77fe;
 }
-.desktop-menu__link--active .desktop-menu__icon {
+.desktop-menu__link--active .desktop-menu__icon:not(.profile-icon) {
   filter: invert(62%) sepia(90%) saturate(428%) hue-rotate(204deg) brightness(98%) contrast(93%);
 }
 .desktop-menu__icon {

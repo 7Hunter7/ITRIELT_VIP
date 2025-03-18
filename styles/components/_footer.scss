@@ -22,6 +22,16 @@
 
   &__item {
     flex: 1;
+
+    &:hover {
+      .footer__link {
+        color: $color-primary; // Меняем цвет текста ссылки
+        .footer__icon:not(.profile-icon) {
+          filter: invert(62%) sepia(90%) saturate(428%) hue-rotate(204deg)
+            brightness(98%) contrast(93%); // Инвертируем цвет иконки для эффекта
+        }
+      }
+    }
   }
 
   &__link {
@@ -33,6 +43,11 @@
 
     &--active {
       color: $color-primary;
+
+      .footer__icon:not(.profile-icon) {
+        filter: invert(62%) sepia(90%) saturate(428%) hue-rotate(204deg)
+          brightness(98%) contrast(93%);
+      }
     }
   }
 

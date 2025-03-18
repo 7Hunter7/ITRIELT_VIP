@@ -39,7 +39,7 @@
     &:hover {
       .desktop-menu__link {
         color: $color-primary; // Меняем цвет текста ссылки
-        .desktop-menu__icon:not(.desktop-menu__logo) {
+        .desktop-menu__icon:not(.profile-icon) {
           // Исключаем desktop-menu__logo
           filter: invert(62%) sepia(90%) saturate(428%) hue-rotate(204deg)
             brightness(98%) contrast(93%); // Инвертируем цвет иконки для эффекта
@@ -58,7 +58,7 @@
     &--active {
       color: $color-primary;
 
-      .desktop-menu__icon {
+      .desktop-menu__icon:not(.profile-icon) {
         filter: invert(62%) sepia(90%) saturate(428%) hue-rotate(204deg)
           brightness(98%) contrast(93%); // Инвертируем цвет иконки для эффекта
       }
