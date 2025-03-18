@@ -516,15 +516,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // Обработчик клика на header__sort
   customSelect.addEventListener("click", (event) => {
     event.stopPropagation(); // Предотвращаем всплытие события
+    const currentResolution = window.innerWidth; // Получаем текущее значение
+    const isMobile = isMobileDevice(currentResolution);
 
-    if (isMobileDevice()) {
+    if (isMobile) {
       // Мобильное устройство: добавляем класс для модального отображения
       optionsWrapper.classList.add("options__wrapper--mobile"); // Добавляем класс к обертке
       optionsWrapper.classList.toggle("open"); // Открываем/закрываем
       sortChevron.classList.toggle("rotate");
       statusBar.classList.add("status-bar--mobile");
     } else {
-      // Немобильное устройство: отображаем как dropdown
+      // Отображаем как dropdown
       optionsWrapper.classList.toggle("open"); // Открываем/закрываем
       sortChevron.classList.toggle("rotate");
     }
