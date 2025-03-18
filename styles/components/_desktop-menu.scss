@@ -1,0 +1,80 @@
+@import "../variables";
+@import "../mixins";
+
+.desktop-menu {
+  @include fixed();
+  // @include visually-hidden();
+  @include flex(column, center, center, 0);
+  width: 5rem; // Фиксированная ширина 80px
+  height: 48rem; // Фиксированная высота 768px
+  background-color: $color-white;
+  border-right: $border-bottom;
+
+  &--active {
+    @include visible();
+  }
+
+  &__nav {
+    padding: 0;
+    @include flex(column, space-between, center, 16rem);
+
+    &_top {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    &_bottom {
+      padding-bottom: $spacing-xxxs;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    @include flex(column, center, center, 0);
+    height: 100%;
+  }
+
+  &__item {
+    margin: 0.6875rem 0; // по 11px свурху и снизу
+    flex: 0 0 auto; // Не увеличивать элемент
+    width: 100%;
+    @include flex(column, center, center, 0);
+  }
+
+  &__link {
+    @include flex(column, center, center, 0);
+    font-weight: $font-weight-medium;
+    font-size: $font-size-link;
+    line-height: 120%;
+    color: $color-secondary;
+
+    &--active {
+      color: $color-primary;
+    }
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__icon {
+    @include icon(1.75rem); // 28px
+    display: block;
+    margin: auto;
+    margin-bottom: 0.125rem;
+  }
+
+  .profile-icon {
+    border-radius: $border-radius-circle;
+    object-fit: contain;
+  }
+}
+
+@media (min-width: $breakpoint-lg) {
+  /* 1366px */
+  .desktop-menu {
+    display: flex;
+    position: fixed;
+    box-shadow: $box-shadow;
+  }
+}
