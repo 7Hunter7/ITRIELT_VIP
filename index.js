@@ -228,7 +228,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
           <!-- Action Sheet (скрыт по умолчанию) -->
           <div class="action-sheet">
-            <div class="action-sheet__content">
+            <div class="action-sheet__content"
+              id="action-sheet-content-${data.id}">
               <div class="action-sheet__header">
               ЖК “Стартап”, ${data.number}, ${data.square}
                 <div class="action-sheet__header_price">${data.price}</div>
@@ -443,32 +444,38 @@ document.addEventListener("DOMContentLoaded", () => {
   const statusBar = document.querySelector(".status-bar");
 
   // Функция для позиционирования Action Sheet на десктопе
-  function positionActionSheet(actionSheet, optionsButtonId) {
+  function positionActionSheet(actionSheetContentId, optionsButtonId) {
     // Находим кнопку опций по ID
     const optionsButton = document.getElementById(optionsButtonId);
+    console.log(`optionsButton: ${optionsButton}`);
     if (!optionsButton) {
       console.error(`Не найдена кнопка опций с id: ${optionsButtonId}`);
       return;
     }
 
-    // Находим карточку, содержащую кнопку опций
-    const cardElement = optionsButton.closest(".objects__card");
-    if (!cardElement) {
+    // Находим action-sheet-content
+    const actionSheetContent = document.getElementById(actionSheetContentId);
+    console.log(`actionSheetContent: ${actionSheetContent}`);
+    if (!actionSheetContent) {
       console.error(
-        `Не найдена карточка для кнопки опций с id: ${optionsButtonId}`
+        "Не найден action sheet content с id:",
+        actionSheetContentId
       );
       return;
     }
 
     // Получаем координаты и размеры кнопки опций относительно окна браузера
     const rect = optionsButton.getBoundingClientRect();
-    actionSheet.style.top = `${rect.top + 8}px`;
-    actionSheet.style.left = `${rect.right - 8}px`;
+    actionSheetContent.style.top = `${rect.top + 8}px`;
+    actionSheetContent.style.left = `${rect.right - 8}px`;
   }
 
   cardWrappers.forEach((cardWrapper, index) => {
     const optionsButton = cardWrapper.querySelector(".objects__card-options");
     const actionSheet = cardWrapper.querySelector(".action-sheet");
+    const actionSheetContent = cardWrapper.querySelector(
+      ".action-sheet__content"
+    );
     const cancelButton = actionSheet
       ? actionSheet.querySelector(".action-sheet__сancel-button")
       : null; // Проверка actionSheet
@@ -476,6 +483,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // Генерируем ID для кнопки опций, если его нет
     if (!optionsButton.id) {
       optionsButton.id = `options-button-${cardWrapper.dataset.cardId}`;
+    }
+    // Генерируем ID для actionSheet, если его нет
+    if (!actionSheet.id) {
+      actionSheet.id = `action-sheet-${cardWrapper.dataset.cardId}`;
+    }
+    // Генерируем ID для actionSheetContent, если его нет
+    if (!actionSheetContent.id) {
+      actionSheetContent.id = `action-sheet-content-${cardWrapper.dataset.cardId}`;
     }
 
     // Определяем тип устройства
@@ -495,10 +510,8 @@ document.addEventListener("DOMContentLoaded", () => {
         statusBar.classList.add("status-bar--mobile");
       } else {
         // Отображаем как dropdown
-        actionSheet.classList.add("action-sheet--active");
-        if (!isMobile) {
-          positionActionSheet(actionSheet, optionsButton.id); // Передаем id
-        }
+        actionSheetContent.classList.add("action-sheet--active"); //  Добавляем класс active к контенту
+        positionActionSheet(actionSheetContent.id, optionsButton.id); // Передаем id
       }
     });
 
@@ -518,6 +531,9 @@ document.addEventListener("DOMContentLoaded", () => {
       // Проверяем, находится ли клик внутри cardWrapper
       if (!actionSheet.contains(event.target)) {
         actionSheet.classList.remove("action-sheet--active");
+      }
+      if (!actionSheetContent.contains(event.target)) {
+        actionSheetContent.classList.remove("action-sheet--active"); //  Удаляем класс active с контента
       }
     });
   });
