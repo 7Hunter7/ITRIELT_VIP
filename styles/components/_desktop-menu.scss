@@ -64,6 +64,12 @@
     margin-bottom: 0.125rem;
   }
 
+  &__logo {
+    @include icon(2.625rem); // 42px
+    display: block;
+    border-radius: $border-radius/2;
+  }
+
   .profile-icon {
     border-radius: $border-radius-circle;
     object-fit: contain;
