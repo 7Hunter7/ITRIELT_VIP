@@ -149,7 +149,7 @@
 }
 .header__sort_label {
   position: absolute;
-  top: 50%;
+  top: calc(50% + 0.125rem);
   left: 0.75rem;
   color: #9596a7;
   transition: all 0.3s ease;
@@ -264,7 +264,7 @@
   position: fixed;
   margin: 0 0.5rem 2.75rem 0.5rem;
   padding: 0 0.25rem;
-  border: 0.5px solid #ecedf0;
+  border: 0.5px solid #dddde3;
   border-radius: 0.75rem;
   box-shadow: 0 0 8px 0 rgba(30, 30, 36, 0.1), 0 8px 16px 0 rgba(23, 23, 28, 0.05);
   background-color: #fff;
@@ -275,7 +275,6 @@
   align-items: flex-start;
   justify-content: flex-start;
   gap: 0;
-  flex-wrap: nowrap;
 }
 .header .options__wrapper .options .option {
   display: flex;
@@ -360,7 +359,6 @@
     text-overflow: ellipsis; /*  многоточие  */
   }
   .header_label {
-    line-height: 100%;
     left: 0.75rem;
     overflow: hidden;
     text-overflow: ellipsis; /*  многоточие  */
@@ -377,7 +375,6 @@
     position: absolute;
     top: 100%; /* Располагаем под элементом header__sort */
     left: 0;
-    width: 98%;
     margin: 0;
     margin-top: 0.5rem;
     border-bottom-right-radius: 0.75rem;

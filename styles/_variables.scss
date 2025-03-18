@@ -23,7 +23,6 @@ $color-green: #25a25f;
 $color-red: #f25a50;
 $color-grey: #b7b8c3;
 $color-accent: #3c3d48;
-$color-border: #dddde3;
 
 // Цвета текста
 $color-text-primary: #1e1e24;
@@ -45,7 +44,8 @@ $spacing-xl: 1.5rem; // 24px
 $spacing-xxl: 2rem; // 32px
 $spacing-xxxl: 2.25rem; // 36px
 
-// Нижняя граница
+// Границы
+$border: 0.5px solid #dddde3;
 $border-bottom: 1px solid #ecedf0;
 
 // Скругления

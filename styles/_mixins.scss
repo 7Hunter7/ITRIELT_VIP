@@ -32,7 +32,7 @@
 @mixin visible() {
   opacity: 1;
   visibility: visible;
-  pointer-events: auto; // Возможность кликать по  активному слою
+  pointer-events: auto; // Возможность кликать по активному слою
 }
 
 // Миксин для скрытия элемента
