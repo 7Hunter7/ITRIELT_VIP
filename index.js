@@ -650,8 +650,12 @@ document.addEventListener("DOMContentLoaded", () => {
     desktopMenu.style.left = `-${desktopMenuWidth}px`; // Скрываем меню изначально
 
     desktopMenu.addEventListener("mouseenter", () => {
-      desktopMenu.style.transition = "left 0.3s ease"; // Добавляем плавный переход
-      desktopMenu.style.left = "0"; // Показываем меню
+      const currentResolution = window.innerWidth;
+      const isMobile = isMobileDevice(currentResolution);
+      if (!isMobile) {
+        desktopMenu.style.transition = "left 0.3s ease"; // Добавляем плавный переход
+        desktopMenu.style.left = "0"; // Показываем меню
+      }
     });
 
     desktopMenu.addEventListener("mouseleave", () => {
