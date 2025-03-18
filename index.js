@@ -180,14 +180,14 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>`;
 
     return `<div class="objects__card-wrapper">
-          <div class="objects__card">
+          <div class="objects__card" data-cardId="${data.id}">
             <!-- Содержимое карточки -->
             <div class="objects__card-header">
               <div class="objects__card-info">
                 <div class="objects__card-square">${data.square}</div>
                 <div class="objects__card-number">${data.number}</div>
               </div>
-              <button class="objects__card-options">
+              <button class="objects__card-options" data-cardId="${data.id}">
                 <svg
                   id="options-icon"
                   width="4"
@@ -443,7 +443,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const statusBar = document.querySelector(".status-bar");
 
   // Функция для позиционирования Action Sheet на десктопе
-  function positionActionSheet(actionSheet, optionsButton) {
+  function positionActionSheet(actionSheet, optionsButtonId) {
+    // Находим кнопку опций по ID
+    const optionsButton = document.getElementById(optionsButtonId);
+    if (!optionsButton) {
+      console.error(`Не найдена кнопка опций с id: ${optionsButtonId}`);
+      return;
+    }
+
+    // Находим карточку, содержащую кнопку опций
+    const cardElement = optionsButton.closest(".objects__card");
+    if (!cardElement) {
+      console.error(
+        `Не найдена карточка для кнопки опций с id: ${optionsButtonId}`
+      );
+      return;
+    }
+
     // Получаем координаты и размеры кнопки опций относительно окна браузера
     const rect = optionsButton.getBoundingClientRect();
     actionSheet.style.top = `${rect.top + 8}px`;
@@ -456,6 +472,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const cancelButton = actionSheet
       ? actionSheet.querySelector(".action-sheet__сancel-button")
       : null; // Проверка actionSheet
+
+    // Генерируем ID для кнопки опций, если его нет
+    if (!optionsButton.id) {
+      optionsButton.id = `options-button-${cardWrapper.dataset.cardId}`;
+    }
 
     // Определяем тип устройства
     const currentResolution = window.innerWidth;
@@ -476,7 +497,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Отображаем как dropdown
         actionSheet.classList.add("action-sheet--active");
         if (!isMobile) {
-          positionActionSheet(actionSheet, optionsButton);
+          positionActionSheet(actionSheet, optionsButton.id); // Передаем id
         }
       }
     });
