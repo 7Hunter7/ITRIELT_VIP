@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const displayResolution = window.innerWidth;
 
   function isMobileDevice(displayResolution) {
-    return displayResolution < 744; // Mobile Device
+    return displayResolution <= 744; // Mobile Device
   }
   // ------------------ 1. Status Bar - Часы ------------------
   const batteryLevel = document.querySelector(".status-bar__battery-level");
@@ -447,7 +447,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Получаем координаты и размеры кнопки опций относительно окна браузера
     const rect = optionsButton.getBoundingClientRect();
     actionSheet.style.top = `${rect.top + 8}px`;
-    actionSheet.style.left = `${rect.right + 8}px`;
+    actionSheet.style.left = `${rect.right - 8}px`;
   }
 
   cardWrappers.forEach((cardWrapper, index) => {
@@ -456,7 +456,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const cancelButton = actionSheet
       ? actionSheet.querySelector(".action-sheet__сancel-button")
       : null; // Проверка actionSheet
-    const cardElement = cardWrapper.querySelector(".objects__card"); // Получаем элемент карточки
 
     // Обработчик клика на кнопку опций
     optionsButton.addEventListener("click", (event) => {
@@ -472,8 +471,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // Немобильное устройство: отображаем как dropdown
         actionSheet.classList.add("action-sheet--active");
         if (!isMobileDevice()) {
-          // НЕ мобильное устройство: передаем карточку
-          positionActionSheet(actionSheet, cardElement);
+          // НЕ мобильное устройство
+          positionActionSheet(actionSheet, optionsButton);
         }
       }
     });
