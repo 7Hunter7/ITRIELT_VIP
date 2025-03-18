@@ -1185,11 +1185,8 @@
   max-width: 5rem;
   background-color: #fff;
   border-right: 1px solid #ecedf0;
-}
-.desktop-menu--active {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
+  box-shadow: 0 0 8px 0 rgba(30, 30, 36, 0.1), 0 8px 16px 0 rgba(23, 23, 28, 0.05);
+  transition: left 0.3s ease;
 }
 .desktop-menu__nav {
   padding: 0;
@@ -1265,14 +1262,6 @@
      object-fit: contain;
 }
 
-@media (min-width: 1366px) {
-  /* 1366px */
-  .desktop-menu {
-    display: flex;
-    position: fixed;
-    box-shadow: 0 0 8px 0 rgba(30, 30, 36, 0.1), 0 8px 16px 0 rgba(23, 23, 28, 0.05);
-  }
-}
 @media (min-width: 1920px) {
   /* 1920px */
   .desktop-menu__nav {

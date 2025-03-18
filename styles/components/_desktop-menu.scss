@@ -3,15 +3,12 @@
 
 .desktop-menu {
   @include fixed();
-  // @include visually-hidden();
   @include flex(column, flex-start, center, 0);
   max-width: 5rem; // 80px
   background-color: $color-white;
   border-right: $border-bottom;
-
-  &--active {
-    @include visible();
-  }
+  box-shadow: $box-shadow;
+  transition: left 0.3s ease;
 
   &__nav {
     padding: 0;
@@ -34,7 +31,7 @@
   }
 
   &__item {
-    margin: 0.6875rem 0; // по 11px свурху и снизу
+    margin: 0.6875rem 0;
     flex: 0 0 auto; // Не увеличивать элемент
     width: 100%;
     @include flex(column, center, center, 0);
@@ -72,15 +69,6 @@
   .profile-icon {
     border-radius: $border-radius-circle;
     object-fit: contain;
-  }
-}
-
-@media (min-width: $breakpoint-lg) {
-  /* 1366px */
-  .desktop-menu {
-    display: flex;
-    position: fixed;
-    box-shadow: $box-shadow;
   }
 }
 
