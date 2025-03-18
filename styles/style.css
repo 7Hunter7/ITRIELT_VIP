@@ -212,6 +212,7 @@
 }
 .header .selected-option {
   max-height: 2.25rem;
+  line-height: 100%;
   text-align: left;
   white-space: nowrap;
   overflow: hidden;
@@ -325,6 +326,7 @@
     flex-direction: row;
     flex-wrap: nowrap;
     position: relative;
+    /* Кастомный select */
   }
   .header__top {
     gap: 0.5rem;
@@ -357,9 +359,14 @@
     text-overflow: ellipsis; /*  многоточие  */
   }
   .header_label {
+    line-height: 100%;
     left: 0.75rem;
     overflow: hidden;
     text-overflow: ellipsis; /*  многоточие  */
+  }
+  .header .selected-option {
+    max-height: 2.25rem;
+    line-height: 100%;
   }
   .header .options__wrapper {
     position: static;
@@ -377,6 +384,7 @@
     border-top: none;
   }
   .header .options__wrapper .options .option {
+    line-height: 100%;
     white-space: wrap;
   }
   .header .options__wrapper--mobile {

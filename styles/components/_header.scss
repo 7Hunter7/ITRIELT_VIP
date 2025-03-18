@@ -105,9 +105,11 @@
       @include sort-option-icon("/public/icons/option_selected.svg");
     }
   }
+
   /* Кастомный select */
   .selected-option {
     max-height: 2.25rem; // 36px
+    line-height: 100%;
     text-align: left;
     white-space: nowrap;
     overflow: hidden;
@@ -230,11 +232,17 @@
     }
 
     &_label {
+      line-height: 100%;
       left: $spacing-sm;
       overflow: hidden;
       text-overflow: ellipsis; /*  многоточие  */
     }
 
+    /* Кастомный select */
+    .selected-option {
+      max-height: 2.25rem; // 36px
+      line-height: 100%;
+    }
     .options__wrapper {
       position: static;
       background-color: $color-white;
@@ -251,6 +259,7 @@
         border-top: none;
 
         .option {
+          line-height: 100%;
           white-space: wrap;
         }
       }
