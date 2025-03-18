@@ -4,9 +4,8 @@
 .desktop-menu {
   @include fixed();
   // @include visually-hidden();
-  @include flex(column, center, center, 0);
-  width: 5rem; // Фиксированная ширина 80px
-  height: 48rem; // Фиксированная высота 768px
+  @include flex(column, flex-start, center, 0);
+  max-width: 5rem; // 80px
   background-color: $color-white;
   border-right: $border-bottom;
 
@@ -16,7 +15,7 @@
 
   &__nav {
     padding: 0;
-    @include flex(column, space-between, center, 16rem);
+    @include flex(column, space-between, center, 15.75rem);
 
     &_top {
       margin-top: 0;
@@ -82,5 +81,19 @@
     display: flex;
     position: fixed;
     box-shadow: $box-shadow;
+  }
+}
+
+@media (min-width: $breakpoint-xxl) {
+  /* 1920px */
+  .desktop-menu__nav {
+    gap: 35.25rem;
+  }
+}
+
+@media (min-width: $breakpoint-xxxl) {
+  /* 2560px */
+  .desktop-menu__nav {
+    gap: 57.75rem;
   }
 }

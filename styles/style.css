@@ -1180,10 +1180,9 @@
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0;
-  width: 5rem;
-  height: 48rem;
+  max-width: 5rem;
   background-color: #fff;
   border-right: 1px solid #ecedf0;
 }
@@ -1199,7 +1198,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 16rem;
+  gap: 15.75rem;
 }
 .desktop-menu__nav_top {
   margin-top: 0;
@@ -1272,6 +1271,18 @@
     display: flex;
     position: fixed;
     box-shadow: 0 0 8px 0 rgba(30, 30, 36, 0.1), 0 8px 16px 0 rgba(23, 23, 28, 0.05);
+  }
+}
+@media (min-width: 1920px) {
+  /* 1920px */
+  .desktop-menu__nav {
+    gap: 35.25rem;
+  }
+}
+@media (min-width: 2560px) {
+  /* 2560px */
+  .desktop-menu__nav {
+    gap: 57.75rem;
   }
 }
 * {
