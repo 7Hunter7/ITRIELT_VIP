@@ -453,8 +453,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const actionSheetItemFavoriteIcon = cardWrapper.querySelector(
       ".action-sheet__button_icon-additions"
     );
+    const actionSheetSelectButton = cardWrapper.querySelector(
+      ".action-sheet__button-select"
+    );
+    const multipleSelect = document.querySelector(".multiple-select");
+    const multipleSelectCount = multipleSelect.querySelector(
+      ".multiple-select__header_count"
+    );
+    const multipleSelectCancelButton = multipleSelect.querySelector(
+      ".action-sheet__button_icon-cancel"
+    );
+
     const cardId = cardWrapper.id; //  Получаем id
-    // console.log(`cardId в ' cardWrappers.forEach': ${cardId}`);
+    let selectCounter = 0; // Счетчик выбранных объектов
+    localStorage.setItem("localSelectCounter", selectCounter);
 
     // Получаем индекс карточки, в cardData
     const cardIndex = cardData.findIndex((card) => card.id === cardId);
@@ -493,7 +505,27 @@ document.addEventListener("DOMContentLoaded", () => {
       addIsFavoriteClass(favoriteObject, cardData[cardIndex].isFavorite);
       // Сохраняем данные в LocalStorage
       localStorage.setItem("cardData", JSON.stringify(cardData));
-      console.log(`Объект ${cardData[cardIndex]} добавлен в "Избранное"`);
+    });
+
+    // Обработчики для кнопки "Множественный выбор"
+    actionSheetSelectButton?.addEventListener("click", (event) => {
+      const localStorageSelectCounter = Number(
+        localStorage.getItem("localSelectCounter")
+      );
+      event.stopPropagation();
+
+      selectCounter = localStorageSelectCounter + 1;
+      localStorage.setItem("localSelectCounter", selectCounter);
+      multipleSelect.style.display = "flex"; // Показываем элемент "Выбрано"
+      multipleSelectCount.textContent = selectCounter;
+    });
+
+    multipleSelectCancelButton?.addEventListener("click", (event) => {
+      event.stopPropagation();
+
+      selectCounter = 0;
+      localStorage.setItem("localSelectCounter", selectCounter);
+      multipleSelect.style.display = "none"; // Скрываем элемент "Выбрано"
     });
   });
 

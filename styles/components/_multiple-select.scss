@@ -4,6 +4,7 @@
 .multiple-select {
   @include flex(row, space-between, center);
   padding: $spacing-sm 0;
+  display: none;
 
   &__header {
     @include flex(row, space-between, center, $spacing-xs);
