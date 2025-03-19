@@ -919,6 +919,9 @@
   width: 1.5rem;
   height: 1.5rem;
 }
+.action-sheet__item_additions--active {
+  background-image: url("/public/icons/favorite_added.svg");
+}
 .action-sheet__item:hover .action-sheet__item_additions {
   background-image: url("/public/icons/favorite_added.svg");
 }

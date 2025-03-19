@@ -81,6 +81,10 @@
     // Стили для иконок "Добавить в избранное"
     &_additions {
       @include action-sheet-icon("/public/icons/add_favorite.svg");
+
+      &--active {
+        background-image: url("/public/icons/favorite_added.svg");
+      }
     }
     &:hover &_additions {
       background-image: url("/public/icons/favorite_added.svg");
