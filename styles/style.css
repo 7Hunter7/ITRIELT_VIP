@@ -881,8 +881,19 @@
   font-size: 16px;
   line-height: 125%;
   color: #1e1e24;
-  transition: all 0.2s ease-in;
+  transition: all 0.3s ease-in;
   cursor: pointer;
+}
+.action-sheet__item button {
+  padding: 0 0.25rem;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: #1e1e24;
+  background-color: #fff;
+}
+.action-sheet__item button:hover {
+  color: #6f77fe;
 }
 .action-sheet__item:hover {
   color: #6f77fe;

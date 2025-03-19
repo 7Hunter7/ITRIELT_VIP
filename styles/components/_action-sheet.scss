@@ -56,8 +56,21 @@
     font-size: $font-size-base;
     line-height: 125%;
     color: $color-text-primary;
-    transition: all 0.2s ease-in;
+    transition: all 0.3s ease-in;
     cursor: pointer;
+
+    & button {
+      padding: 0 $spacing-xxxs;
+      font-weight: $font-weight-medium;
+      font-size: $font-size-base;
+      line-height: 125%;
+      color: $color-text-primary;
+      background-color: $color-white;
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
 
     &:hover {
       color: $color-primary;
