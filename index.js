@@ -405,11 +405,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Функция для добавления класса для actionSheet
   function addIsFavoriteClass(favoriteElement, isFavorite) {
     if (isFavorite) {
-      if (cardData[cardIndex].isFavorite) {
-        favoriteElement.classList.add("objects__card-favorite--active");
-      } else {
-        favoriteElement.classList.remove("objects__card-favorite--active");
-      }
+      favoriteElement.classList.add("objects__card-favorite--active");
+    } else {
+      favoriteElement.classList.remove("objects__card-favorite--active");
     }
   }
 
@@ -418,6 +416,16 @@ document.addEventListener("DOMContentLoaded", () => {
     button.textContent = isFavorite
       ? "Убрать из избранного"
       : "Добавить в избранное";
+  }
+
+  // Функция для смены иконки
+  function updateFavoriteButtonIcon(button, isFavorite) {
+    const iconButton = button.querySelector(".action-sheet__item_additions");
+    if (isFavorite) {
+      iconButton.classList.add("action-sheet__item_additions--active");
+    } else {
+      iconButton.classList.remove("action-sheet__item_additions--active");
+    }
   }
 
   cardWrappers.forEach((cardWrapper) => {
@@ -438,6 +446,12 @@ document.addEventListener("DOMContentLoaded", () => {
       return; // Пропускаем эту карточку
     }
 
+    // Изначальное состояние иконки и текста при загрузке
+    if (cardData[cardIndex].isFavorite) {
+      favoriteElement.classList.add("objects__card-favorite--active");
+      updateFavoriteButtonIcon(actionSheetItemFavorite, true);
+    }
+
     actionSheetItemFavorite?.addEventListener("click", (event) => {
       event.stopPropagation();
       // Изменяем состояние "избранное" для текущей карточки
@@ -447,7 +461,10 @@ document.addEventListener("DOMContentLoaded", () => {
         actionSheetItemFavorite,
         cardData[cardIndex].isFavorite
       );
-
+      updateFavoriteButtonIcon(
+        actionSheetItemFavorite,
+        cardData[cardIndex].isFavorite
+      );
       addIsFavoriteClass(favoriteElement, cardData[cardIndex].isFavorite);
       // Сохраняем данные в LocalStorage
       localStorage.setItem("cardData", JSON.stringify(cardData));
