@@ -4,16 +4,17 @@
 @import "./mixins";
 
 @import "./components/status-bar";
+@import "./components/desktop-menu";
 @import "./components/header";
+@import "./components/multiple-select";
 @import "./components/search";
+@import "./components//main__top";
 @import "./components/builder";
 @import "./components/objects-filter";
 @import "./components/objects";
 @import "./components/action-sheet";
 @import "./components/show-more";
 @import "./components/footer";
-@import "./components//main__top";
-@import "./components/desktop-menu";
 
 * {
   margin: 0;
