@@ -188,12 +188,14 @@ document.addEventListener("DOMContentLoaded", () => {
     return `<div class="objects__card-wrapper" id="${data.id}">
           <div class="objects__card">
             <!-- Содержимое карточки -->
-            <div class="objects__card-header">
-              <div class="objects__card-info">
-                <h3 class="objects__card-square">${data.square}</h3>
-                <p class="objects__card-number">${data.number}</p>
+            <div class="objects__card__header">
+              <div class="objects__card__header_info">
+                <h3 class="objects__card__header_square">${data.square}</h3>
+                <p class="objects__card__header_number">${data.number}</p>
               </div>
-              <button class="objects__card-options">
+              <button class="objects__card__options" aria-label="Опции для объекта №${
+                data.number
+              }">
                 <svg
                   id="options-icon"
                   width="4"
@@ -208,7 +210,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </svg>
               </button>
             </div>
-            <div class="objects__card-image">
+            <div class="objects__card__image">
               <img
                 src="${data.plan}"
                 alt="Планировка квартиры"
@@ -216,14 +218,16 @@ document.addEventListener("DOMContentLoaded", () => {
               />
               ${
                 data.pagination > 0
-                  ? `<div class="objects__card-pagination">${paginationHTML}</div>`
+                  ? `<div class="objects__card__pagination">${paginationHTML}</div>`
                   : ""
               }</div>
-            <div class="objects__card-content">
-              <h2 class="objects__card-price">${data.price}</h2>
-              <p class="objects__card-price-per-meter">${data.pricePerMeter}</p>
-              <p class="objects__card-address">${data.address}</p>
-              <p class="objects__card-developer">
+            <div class="objects__card__content">
+              <h2 class="objects__card__content_price">${data.price}</h2>
+              <p class="objects__card__content_price-per-meter">${
+                data.pricePerMeter
+              }</p>
+              <p class="objects__card__content_address">${data.address}</p>
+              <p class="objects__card__content_developer">
                 <img src="${data.developerLogo}" alt="Логотип застройщика">
               </p>
             </div>
@@ -527,7 +531,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Обработчики для Action Sheet
   cardWrappers.forEach((cardWrapper, index) => {
-    const optionsButton = cardWrapper.querySelector(".objects__card-options");
+    const optionsButton = cardWrapper.querySelector(".objects__card__options");
     const actionSheet = cardWrapper.querySelector(".action-sheet");
     const actionSheetContent = cardWrapper.querySelector(
       ".action-sheet__content"
