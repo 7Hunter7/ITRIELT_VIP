@@ -10,6 +10,7 @@
   @include flex(row, space-between, center);
   padding: $spacing-lg $spacing-xxl;
   background-color: $color-white;
+  transition: background-color 0.3s ease; // Плавное изменение
 
   &__time {
     margin-left: $spacing-lg;
@@ -17,16 +18,18 @@
     font-size: $font-size-title;
     font-weight: $font-weight-semibold;
     color: $color-accent;
+    transition: color 0.3s ease;
   }
 
   &__icons {
     display: flex;
     align-items: center;
     gap: 0.3125rem; // 5px
-
     svg {
-      width: auto; // позволяет сохранять пропорции
+      width: auto; // Сохранять пропорции
       height: 0.8125rem; // 13px
+      fill: $color-accent; // Цвет иконок по умолчанию
+      transition: fill 0.3s ease;
     }
   }
 
@@ -48,9 +51,9 @@
       height: 0.5rem;
       max-width: 1.4rem;
       margin: 2.2px 4.5px 2.05px 2.1px;
-      background-color: $color-accent; /* цвет заряда */
+      background-color: $color-accent;
       border-radius: 2px;
-      transition: width 0.3s ease; /* Плавное изменение уровня */
+      transition: width 0.3s ease, background-color 0.3s ease;
     }
   }
 
@@ -63,12 +66,14 @@
         color: $color-white;
       }
 
-      svg {
-        fill: $color-white !important;
+      &__icons {
+        svg {
+          fill: $color-white;
+        }
       }
 
       &__battery-level {
-        background-color: $color-white !important;
+        background-color: $color-white;
       }
     }
   }
@@ -87,7 +92,7 @@
 }
 
 @media (min-width: $breakpoint-lg) {
-  /* 1336px */
+  /* 1366px */
   .status-bar {
     display: none;
   }
