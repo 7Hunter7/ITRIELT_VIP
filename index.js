@@ -238,19 +238,28 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="action-sheet">
             <div class="action-sheet__content"
               id="action-sheet-content-${data.id}">
-              <h4 class="action-sheet__header">
-              ЖК “Стартап”, ${data.number}, ${data.square}
+              <div class="action-sheet__header">
+                <h4 class="action-sheet__header_title">
+                  ЖК “Стартап”, ${data.number}, ${data.square}
+                </h4>
                 <p class="action-sheet__header_price">${data.price}</p>
-              </h4>
+              </div>
               <div class="action-sheet__button">
-                <svg class="action-sheet__button__icon-selections"></svg>
-                <button class="action-sheet__button-select">
+                <svg class="action-sheet__button_icon-selections"></svg>
+                <button class="action-sheet__button-select"
+                  aria-label="Выбрать несколько объектов">
                   Множественный выбор
                 </button>
               </div>
               <div class="action-sheet__button">
                 <svg class="action-sheet__button_icon-additions"></svg>
-                <button class="action-sheet__button-favorite">
+                <button class="action-sheet__button-favorite"
+                  aria-label="${
+                    data.isFavorite
+                      ? "Убрать из избранного"
+                      : "Добавить в избранное"
+                  }"
+                >
                   ${
                     data.isFavorite
                       ? "Убрать из избранного"
@@ -258,20 +267,20 @@ document.addEventListener("DOMContentLoaded", () => {
                   }
                 </button>
               </div>
-              <button class="action-sheet__button">
+              <button class="action-sheet__button" aria-label="Добавить в подборки">
                 <svg class="action-sheet__button_icon-collections"></svg>
                 Добавить в подборки
               </button>
-              <button class="action-sheet__button">
+              <button class="action-sheet__button" aria-label="Зафиксировать">
                 <svg class="action-sheet__button_icon-fixies"></svg>
                 Зафиксировать
               </button>
-              <button class="action-sheet__button">
+              <button class="action-sheet__button" aria-label="Поделиться">
                 <svg class="action-sheet__button_icon-shares"></svg>
                 Поделиться
               </button>
             </div>
-            <button class="action-sheet__сancel-button"></button>
+            <button class="action-sheet__сancel-button" aria-label="Закрыть"></button>
           </div>
         </div>
     `;
