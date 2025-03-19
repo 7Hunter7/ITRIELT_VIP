@@ -28,13 +28,15 @@
   &__header {
     margin-top: $spacing-xs;
     padding: 0.875rem $spacing-md;
-    text-align: left;
-    font-weight: $font-weight-semibold;
-    letter-spacing: 0.01em;
-    color: $color-secondary;
     width: 100%;
     box-sizing: border-box;
+    text-align: left;
 
+    &_title {
+      font-weight: $font-weight-semibold;
+      letter-spacing: 0.01em;
+      color: $color-secondary;
+    }
     &_price {
       margin-top: $spacing-xxxs;
       font-size: $font-size-tag;
@@ -44,7 +46,7 @@
     }
   }
 
-  &__item {
+  &__button {
     @include flex(row, flex-start, center, $spacing-md);
     padding: 0.875rem $spacing-md;
     position: relative;
@@ -83,48 +85,50 @@
       transition: opacity 0.2s ease-in-out;
     }
 
-    // Стили для иконок "Множественный выбор"
-    &_selections {
-      @include action-sheet-icon("/public/icons/select.svg");
-    }
-    &:hover &_selections {
-      background-image: url("/public/icons/multi-select.svg");
-    }
+    &_icon {
+      // Стили для иконок "Множественный выбор"
+      &-selections {
+        @include action-sheet-icon("/public/icons/select.svg");
+      }
+      .action-sheet__button:hover &-selections {
+        background-image: url("/public/icons/multi-select.svg");
+      }
 
-    // Стили для иконок "Добавить в избранное"
-    &_additions {
-      @include action-sheet-icon("/public/icons/add_favorite.svg");
+      // Стили для иконок "Добавить в избранное"
+      &-additions {
+        @include action-sheet-icon("/public/icons/add_favorite.svg");
 
-      &--active {
+        &--active {
+          background-image: url("/public/icons/favorite_added.svg");
+        }
+      }
+      .action-sheet__button:hover &-additions {
         background-image: url("/public/icons/favorite_added.svg");
       }
-    }
-    &:hover &_additions {
-      background-image: url("/public/icons/favorite_added.svg");
-    }
 
-    // Стили для иконок "Добавить в подборки"
-    &_collections {
-      @include action-sheet-icon("/public/icons/add_collection.svg");
-    }
-    &:hover &_collections {
-      background-image: url("/public/icons/collection_added.svg");
-    }
+      // Стили для иконок "Добавить в подборки"
+      &-collections {
+        @include action-sheet-icon("/public/icons/add_collection.svg");
+      }
+      .action-sheet__button:hover &-collections {
+        background-image: url("/public/icons/collection_added.svg");
+      }
 
-    // Стили для иконок "Зафиксировать"
-    &_fixies {
-      @include action-sheet-icon("/public/icons/unlock.png");
-    }
-    &:hover &_fixies {
-      background-image: url("/public/icons/lock.svg");
-    }
+      // Стили для иконок "Зафиксировать"
+      &-fixies {
+        @include action-sheet-icon("/public/icons/unlock.png");
+      }
+      .action-sheet__button:hover &-fixies {
+        background-image: url("/public/icons/lock.svg");
+      }
 
-    // Стили для иконок "Поделиться"
-    &_shares {
-      @include action-sheet-icon("/public/icons/share.png");
-    }
-    &:hover &_shares {
-      @include action-sheet-icon("/public/icons/shared.svg");
+      // Стили для иконок "Поделиться"
+      &-shares {
+        @include action-sheet-icon("/public/icons/share.png");
+      }
+      .action-sheet__button:hover &-shares {
+        @include action-sheet-icon("/public/icons/shared.svg");
+      }
     }
   }
 
@@ -139,7 +143,7 @@
 // Медиа-запросы
 @media (min-width: $breakpoint-sm) {
   /* 744px */
-  .objects__card-options {
+  .objects__card__options {
     position: relative;
   }
 

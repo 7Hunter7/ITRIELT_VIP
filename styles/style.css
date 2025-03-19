@@ -1039,12 +1039,14 @@
 .action-sheet__header {
   margin-top: 0.5rem;
   padding: 0.875rem 1rem;
+  width: 100%;
+  box-sizing: border-box;
   text-align: left;
+}
+.action-sheet__header_title {
   font-weight: 600;
   letter-spacing: 0.01em;
   color: #9596a7;
-  width: 100%;
-  box-sizing: border-box;
 }
 .action-sheet__header_price {
   margin-top: 0.25rem;
@@ -1053,7 +1055,7 @@
   letter-spacing: 0em;
   color: #b7b8c3;
 }
-.action-sheet__item {
+.action-sheet__button {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -1073,7 +1075,7 @@
   transition: all 0.3s ease-in;
   cursor: pointer;
 }
-.action-sheet__item button {
+.action-sheet__button button {
   padding: 0 0.25rem;
   font-weight: 500;
   font-size: 16px;
@@ -1081,19 +1083,19 @@
   color: #1e1e24;
   background-color: #fff;
 }
-.action-sheet__item button:hover {
+.action-sheet__button button:hover {
   color: #6f77fe;
 }
-.action-sheet__item:hover {
+.action-sheet__button:hover {
   color: #6f77fe;
 }
-.action-sheet__item:active {
+.action-sheet__button:active {
   color: #3c47fe;
 }
-.action-sheet__item svg {
+.action-sheet__button svg {
   transition: opacity 0.2s ease-in-out;
 }
-.action-sheet__item_selections {
+.action-sheet__button_icon-selections {
   background-image: url("/public/icons/select.svg");
   background-repeat: no-repeat;
   background-size: contain;
@@ -1104,10 +1106,10 @@
   width: 1.5rem;
   height: 1.5rem;
 }
-.action-sheet__item:hover .action-sheet__item_selections {
+.action-sheet__button:hover .action-sheet__button_icon-selections {
   background-image: url("/public/icons/multi-select.svg");
 }
-.action-sheet__item_additions {
+.action-sheet__button_icon-additions {
   background-image: url("/public/icons/add_favorite.svg");
   background-repeat: no-repeat;
   background-size: contain;
@@ -1118,13 +1120,13 @@
   width: 1.5rem;
   height: 1.5rem;
 }
-.action-sheet__item_additions--active {
+.action-sheet__button_icon-additions--active {
   background-image: url("/public/icons/favorite_added.svg");
 }
-.action-sheet__item:hover .action-sheet__item_additions {
+.action-sheet__button:hover .action-sheet__button_icon-additions {
   background-image: url("/public/icons/favorite_added.svg");
 }
-.action-sheet__item_collections {
+.action-sheet__button_icon-collections {
   background-image: url("/public/icons/add_collection.svg");
   background-repeat: no-repeat;
   background-size: contain;
@@ -1135,10 +1137,10 @@
   width: 1.5rem;
   height: 1.5rem;
 }
-.action-sheet__item:hover .action-sheet__item_collections {
+.action-sheet__button:hover .action-sheet__button_icon-collections {
   background-image: url("/public/icons/collection_added.svg");
 }
-.action-sheet__item_fixies {
+.action-sheet__button_icon-fixies {
   background-image: url("/public/icons/unlock.png");
   background-repeat: no-repeat;
   background-size: contain;
@@ -1149,10 +1151,10 @@
   width: 1.5rem;
   height: 1.5rem;
 }
-.action-sheet__item:hover .action-sheet__item_fixies {
+.action-sheet__button:hover .action-sheet__button_icon-fixies {
   background-image: url("/public/icons/lock.svg");
 }
-.action-sheet__item_shares {
+.action-sheet__button_icon-shares {
   background-image: url("/public/icons/share.png");
   background-repeat: no-repeat;
   background-size: contain;
@@ -1163,7 +1165,7 @@
   width: 1.5rem;
   height: 1.5rem;
 }
-.action-sheet__item:hover .action-sheet__item_shares {
+.action-sheet__button:hover .action-sheet__button_icon-shares {
   background-image: url("/public/icons/shared.svg");
   background-repeat: no-repeat;
   background-size: contain;
@@ -1190,7 +1192,7 @@
 
 @media (min-width: 744px) {
   /* 744px */
-  .objects__card-options {
+  .objects__card__options {
     position: relative;
   }
   .action-sheet {
