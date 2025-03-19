@@ -244,9 +244,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <svg class="action-sheet__item_selections"></svg>
                 Множественный выбор
               </button>
-              <button class="action-sheet__item action-sheet__item-favorite"    data-card-index="${
-                data.id
-              }">
+              <button class="action-sheet__item action-sheet__item-favorite">
                 <svg class="action-sheet__item_additions"></svg>
                 ${
                   data.isFavorite
