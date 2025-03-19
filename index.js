@@ -403,11 +403,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const cardWrappers = document.querySelectorAll(".objects__card-wrapper");
 
   // Функция для добавления класса для actionSheet
-  function addIsFavoriteClass(favoriteElement, isFavorite) {
+  function addIsFavoriteClass(favoriteObjectCard, isFavorite) {
     if (isFavorite) {
-      favoriteElement.classList.add("objects__card-favorite--active");
-    } else {
-      favoriteElement.classList.remove("objects__card-favorite--active");
+      if (
+        !favoriteObjectCard.classList.contains("objects__card-favorite--active")
+      ) {
+        favoriteObjectCard.classList.add("objects__card-favorite--active");
+      } else {
+        favoriteObjectCard.classList.remove("objects__card-favorite--active");
+      }
     }
   }
 
@@ -419,25 +423,30 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Функция для смены иконки
-  function updateFavoriteButtonIcon(button, isFavorite) {
-    const iconButton = button.querySelector(".action-sheet__item_additions");
+  function updateFavoriteButtonIcon(iconButton, isFavorite) {
     if (isFavorite) {
-      iconButton.classList.add("action-sheet__item_additions--active");
-    } else {
-      iconButton.classList.remove("action-sheet__item_additions--active");
+      if (
+        !iconButton.classList.contains("action-sheet__item_additions--active")
+      ) {
+        iconButton.classList.add("action-sheet__item_additions--active");
+      } else {
+        iconButton.classList.remove("action-sheet__item_additions--active");
+      }
     }
   }
 
   cardWrappers.forEach((cardWrapper) => {
     const actionSheet = cardWrapper.querySelector(".action-sheet");
-    const favoriteElement = cardWrapper.querySelector(
-      ".objects__card-favorite"
-    );
-    const actionSheetItemFavorite = actionSheet.querySelector(
+    const favoriteObject = cardWrapper.querySelector(".objects__card-favorite");
+    const actionSheetItemFavoriteButton = actionSheet.querySelector(
       ".action-sheet__item-favorite"
     );
+    const actionSheetItemFavoriteIcon =
+      actionSheetItemFavoriteButton.querySelector(
+        ".action-sheet__item_additions"
+      );
     const cardId = cardWrapper.id; //  Получаем id
-    console.log(`cardId в ' cardWrappers.forEach': ${cardId}`);
+    // console.log(`cardId в ' cardWrappers.forEach': ${cardId}`);
 
     // Получаем индекс карточки, в cardData
     const cardIndex = cardData.findIndex((card) => card.id === cardId);
@@ -448,24 +457,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Изначальное состояние иконки и текста при загрузке
     if (cardData[cardIndex].isFavorite) {
-      favoriteElement.classList.add("objects__card-favorite--active");
-      updateFavoriteButtonIcon(actionSheetItemFavorite, true);
+      favoriteObject.classList.add("objects__card-favorite--active");
+      updateFavoriteButtonIcon(
+        actionSheetItemFavoriteIcon,
+        cardData[cardIndex].isFavorite
+      );
     }
 
-    actionSheetItemFavorite?.addEventListener("click", (event) => {
+    actionSheetItemFavoriteButton?.addEventListener("click", (event) => {
       event.stopPropagation();
       // Изменяем состояние "избранное" для текущей карточки
       cardData[cardIndex].isFavorite = !cardData[cardIndex].isFavorite;
 
       updateFavoriteButtonText(
-        actionSheetItemFavorite,
+        actionSheetItemFavoriteButton,
         cardData[cardIndex].isFavorite
       );
       updateFavoriteButtonIcon(
-        actionSheetItemFavorite,
+        actionSheetItemFavoriteIcon,
         cardData[cardIndex].isFavorite
       );
-      addIsFavoriteClass(favoriteElement, cardData[cardIndex].isFavorite);
+      addIsFavoriteClass(favoriteObject, cardData[cardIndex].isFavorite);
       // Сохраняем данные в LocalStorage
       localStorage.setItem("cardData", JSON.stringify(cardData));
       console.log(`Объект ${cardData[cardIndex]} добавлен в "Избранное"`);
