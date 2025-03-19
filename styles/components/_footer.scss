@@ -22,15 +22,21 @@
 
   &__item {
     flex: 1;
+    transition: color 0.3s ease, filter 0.3s ease, transform 0.1s ease-in-out;
 
     &:hover {
       .footer__link {
-        color: $color-primary; // Меняем цвет текста ссылки
+        color: $color-primary;
         .footer__icon:not(.profile-icon) {
           filter: invert(62%) sepia(90%) saturate(428%) hue-rotate(204deg)
-            brightness(98%) contrast(93%); // Инвертируем цвет иконки для эффекта
+            brightness(98%) contrast(93%);
         }
       }
+    }
+
+    &:active {
+      transform: scale(0.95);
+      transition: transform 0s;
     }
   }
 
