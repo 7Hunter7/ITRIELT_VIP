@@ -113,6 +113,7 @@
   &__card-favorite {
     display: none;
     position: absolute;
+    z-index: 5;
     right: $spacing-md;
     bottom: $spacing-xl;
     @include flex(row, center, center);
@@ -122,6 +123,10 @@
     border: none;
     &svg {
       @include icon(1.5rem); // 24px
+    }
+
+    &--active {
+      display: block;
     }
   }
   &__card-pagination {

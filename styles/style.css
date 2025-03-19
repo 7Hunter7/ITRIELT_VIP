@@ -745,6 +745,7 @@
 .objects__card-favorite {
   display: none;
   position: absolute;
+  z-index: 5;
   right: 1rem;
   bottom: 1.5rem;
   display: flex;
@@ -762,6 +763,9 @@
 .objects__card-favoritesvg {
   width: 1.5rem;
   height: 1.5rem;
+}
+.objects__card-favorite--active {
+  display: block;
 }
 .objects__card-pagination {
   display: flex;
