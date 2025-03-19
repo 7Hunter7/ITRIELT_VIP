@@ -334,13 +334,14 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderCards(cards) {
     const cardsHTML = cards
       .map((card) => {
-        const cardHTML = createCardHTML(card);
-        return card.isFavorite
+        let cardHTML = createCardHTML(card);
+        cardHTML = card.isFavorite
           ? cardHTML.replace(
               '<div class="objects__card-favorite">',
               '<div class="objects__card-favorite objects__card-favorite--active">'
             )
           : cardHTML;
+        return cardHTML;
       })
       .join("");
     objectsGrid.insertAdjacentHTML("beforeend", cardsHTML); // Добавляем в конец
