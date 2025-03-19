@@ -405,22 +405,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // Функция для добавления класса для actionSheet
   function addIsFavoriteClass(favoriteObjectCard, isFavorite) {
     if (isFavorite) {
-      if (
-        !favoriteObjectCard.classList.contains("objects__card-favorite--active")
-      ) {
-        favoriteObjectCard.classList.add("objects__card-favorite--active");
-      } else {
-        favoriteObjectCard.classList.remove("objects__card-favorite--active");
-      }
+      favoriteObjectCard.classList.add("objects__card-favorite--active");
+    } else {
+      favoriteObjectCard.classList.remove("objects__card-favorite--active");
     }
   }
 
   // Функция для смены текста кнопки
   function updateFavoriteButtonText(button, isFavorite) {
     if (isFavorite) {
-      if (button.textContent === "Добавить в избранное") {
-        button.textContent = "Убрать из избранного";
-      }
+      button.textContent = "Убрать из избранного";
+    } else {
       button.textContent = "Добавить в избранное";
     }
   }
@@ -428,13 +423,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Функция для смены иконки
   function updateFavoriteButtonIcon(iconButton, isFavorite) {
     if (isFavorite) {
-      if (
-        !iconButton.classList.contains("action-sheet__item_additions--active")
-      ) {
-        iconButton.classList.add("action-sheet__item_additions--active");
-      } else {
-        iconButton.classList.remove("action-sheet__item_additions--active");
-      }
+      iconButton.classList.add("action-sheet__item_additions--active");
+    } else {
+      iconButton.classList.remove("action-sheet__item_additions--active");
     }
   }
 
@@ -465,6 +456,10 @@ document.addEventListener("DOMContentLoaded", () => {
         actionSheetItemFavoriteIcon,
         cardData[cardIndex].isFavorite
       );
+      updateFavoriteButtonText(
+        actionSheetItemFavoriteButton,
+        cardData[cardIndex].isFavorite
+      );
     }
 
     actionSheetItemFavoriteButton?.addEventListener("click", (event) => {
@@ -480,6 +475,7 @@ document.addEventListener("DOMContentLoaded", () => {
         actionSheetItemFavoriteIcon,
         cardData[cardIndex].isFavorite
       );
+
       addIsFavoriteClass(favoriteObject, cardData[cardIndex].isFavorite);
       // Сохраняем данные в LocalStorage
       localStorage.setItem("cardData", JSON.stringify(cardData));
