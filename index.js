@@ -541,7 +541,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!actionSheet.contains(event.target)) {
         actionSheet.classList.remove("action-sheet--active");
         actionSheet.classList.remove("action-sheet--mobile");
-        toggleStatusBarMobile();
       }
       if (!actionSheetContent.contains(event.target)) {
         actionSheetContent.classList.remove("action-sheet--active"); //  Удаляем класс active с контента
@@ -649,7 +648,6 @@ document.addEventListener("DOMContentLoaded", () => {
       optionsWrapper.classList.remove("options__wrapper--mobile");
       optionsContainer.classList.remove("open");
       sortChevron.classList.remove("rotate");
-      toggleStatusBarMobile();
     }
   });
 
