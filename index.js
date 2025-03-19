@@ -156,20 +156,8 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  // Функция генерации HTML одной карточки
-  function createCardHTML(data) {
-    const paginationHTML =
-      data.pagination > 0
-        ? Array.from(
-            { length: data.pagination },
-            (_, i) =>
-              `<span class="objects__card-pagination-dot ${
-                i === 0 ? "active" : ""
-              }"></span>`
-          ).join("")
-        : ""; // Условие пагинации
-
-    const favoriteIcon = `
+  // Глобальная переменная для хранения иконки избранного
+  const favoriteIcon = `
             <div class="objects__card-favorite">
               <svg
                 width="24"
@@ -184,7 +172,20 @@ document.addEventListener("DOMContentLoaded", () => {
               </svg>
             </div>`;
 
-    return `<div class="objects__card-wrapper" data-cardId="${data.id}">
+  // Функция генерации HTML одной карточки
+  function createCardHTML(data) {
+    const paginationHTML =
+      data.pagination > 0
+        ? Array.from(
+            { length: data.pagination },
+            (_, i) =>
+              `<span class="objects__card-pagination-dot ${
+                i === 0 ? "active" : ""
+              }"></span>`
+          ).join("")
+        : ""; // Условие пагинации
+
+    return `<div class="objects__card-wrapper" id="${data.id}">
           <div class="objects__card">
             <!-- Содержимое карточки -->
             <div class="objects__card-header">
@@ -192,7 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="objects__card-square">${data.square}</div>
                 <div class="objects__card-number">${data.number}</div>
               </div>
-              <button class="objects__card-options" data-cardId="${data.id}">
+              <button class="objects__card-options">
                 <svg
                   id="options-icon"
                   width="4"
@@ -228,7 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <img src="${data.developerLogo}" alt="Логотип застройщика">
               </div>
             </div>
-            ${data.isFavorite ? favoriteIcon : ""}
+            ${favoriteIcon}
           </div>
 
           <!-- Action Sheet (скрыт по умолчанию) -->
@@ -329,7 +330,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Функция отрисовки карточек (добавляет карточки в objectsGrid)
   function renderCards(cards) {
-    const cardsHTML = cards.map(createCardHTML).join("");
+    const cardsHTML = cards
+      .map((card) => {
+        const cardHTML = createCardHTML(card);
+        return card.isFavorite
+          ? cardHTML.replace(
+              '<div class="objects__card-favorite">',
+              '<div class="objects__card-favorite objects__card-favorite--active">'
+            )
+          : cardHTML;
+      })
+      .join("");
     objectsGrid.insertAdjacentHTML("beforeend", cardsHTML); // Добавляем в конец
   }
 
@@ -394,9 +405,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // Функция для добавления класса для actionSheet
   function addIsFavoriteClass(favoriteElement, isFavorite) {
     if (isFavorite) {
-      favoriteElement.classList.add("objects__card-favorite--active");
-    } else {
-      favoriteElement.classList.remove("objects__card-favorite--active");
+      if (cardData[cardIndex].isFavorite) {
+        favoriteElement.classList.add("objects__card-favorite--active");
+      } else {
+        favoriteElement.classList.remove("objects__card-favorite--active");
+      }
     }
   }
 
@@ -415,7 +428,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const actionSheetItemFavorite = actionSheet.querySelector(
       ".action-sheet__item-favorite"
     );
-    const cardId = cardWrapper.dataset.cardId; //  Получаем cardId
+    const cardId = cardWrapper.id; //  Получаем id
     console.log(`cardId в ' cardWrappers.forEach': ${cardId}`);
 
     // Получаем индекс карточки, в cardData
