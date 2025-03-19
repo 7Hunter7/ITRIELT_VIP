@@ -417,9 +417,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Функция для смены текста кнопки
   function updateFavoriteButtonText(button, isFavorite) {
-    button.textContent = isFavorite
-      ? "Убрать из избранного"
-      : "Добавить в избранное";
+    if (isFavorite) {
+      if (button.textContent === "Добавить в избранное") {
+        button.textContent = "Убрать из избранного";
+      }
+      button.textContent = "Добавить в избранное";
+    }
   }
 
   // Функция для смены иконки
