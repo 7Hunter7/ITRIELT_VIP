@@ -1,9 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Функция для определения, является ли устройство мобильным
   const displayResolution = window.innerWidth;
 
+  // Функция определения мобильного устройства
   function isMobileDevice(displayResolution) {
     return displayResolution < 744; // Mobile Device
+  }
+  // Определяем тип устройства как isMobile
+  function isMobile() {
+    const currentResolution = window.innerWidth;
+    return isMobileDevice(currentResolution);
   }
   // ------------------ 1. Status Bar - Часы ------------------
   const batteryLevel = document.querySelector(".status-bar__battery-level");
@@ -443,6 +448,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // ------------------ 6. Логика для отображения и скрытия Action Sheet ------------------
   const statusBar = document.querySelector(".status-bar");
 
+  // Функция для добавления/удаления класса "status-bar--mobile"
+  function toggleStatusBarMobile(isMobile) {
+    if (isMobile()) {
+      statusBar.classList.add("status-bar--mobile");
+    } else {
+      statusBar.classList.remove("status-bar--mobile");
+    }
+  }
+
   // Функция для позиционирования Action Sheet на десктопе
   function positionActionSheet(actionSheetContentId, optionsButtonId) {
     // Находим кнопку опций по ID
@@ -493,15 +507,11 @@ document.addEventListener("DOMContentLoaded", () => {
       actionSheetContent.id = `action-sheet-content-${cardWrapper.dataset.cardId}`;
     }
 
-    // Определяем тип устройства
-    const currentResolution = window.innerWidth;
-    const isMobile = isMobileDevice(currentResolution);
-
     // Обработчик клика на кнопку опций
     optionsButton.addEventListener("click", (event) => {
       event.stopPropagation(); // Предотвращаем всплытие события
 
-      if (isMobile) {
+      if (isMobile()) {
         // Мобильное устройство: добавляем затемнение и позиционируем модально
         actionSheet.classList.add("action-sheet--active");
         // Добавляем класс для мобильного стиля
@@ -529,6 +539,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // Проверяем, находится ли клик внутри cardWrapper
       if (!actionSheet.contains(event.target)) {
         actionSheet.classList.remove("action-sheet--active");
+        actionSheet.classList.remove("action-sheet--mobile");
+        statusBar.classList.remove("status-bar--mobile");
       }
       if (!actionSheetContent.contains(event.target)) {
         actionSheetContent.classList.remove("action-sheet--active"); //  Удаляем класс active с контента
@@ -551,10 +563,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Обработчик клика на header__sort
   customSelect.addEventListener("click", (event) => {
     event.stopPropagation(); // Предотвращаем всплытие события
-    const currentResolution = window.innerWidth; // Получаем текущее значение
-    const isMobile = isMobileDevice(currentResolution);
 
-    if (isMobile) {
+    if (isMobile()) {
       // Мобильное устройство: добавляем класс для модального отображения
       optionsWrapper.classList.add("options__wrapper--mobile"); // Добавляем класс к обертке
       optionsWrapper.classList.toggle("open"); // Открываем/закрываем
@@ -650,9 +660,7 @@ document.addEventListener("DOMContentLoaded", () => {
     desktopMenu.style.left = `-${desktopMenuWidth}px`; // Скрываем меню изначально
 
     desktopMenu.addEventListener("mouseenter", () => {
-      const currentResolution = window.innerWidth;
-      const isMobile = isMobileDevice(currentResolution);
-      if (!isMobile) {
+      if (!isMobile()) {
         desktopMenu.style.transition = "left 0.2s ease"; // Добавляем плавный переход
         desktopMenu.style.left = "0"; // Показываем меню
       }
