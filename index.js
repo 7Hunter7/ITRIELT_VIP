@@ -275,8 +275,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Функция генерации и обновления карточек
   function generateAndRenderCards() {
     const lastUpdateTimestamp = localStorage.getItem("lastUpdateTimestamp");
-    const objectsGrid = document.querySelector(".objects__grid");
     let cardData;
+
     if (lastUpdateTimestamp) {
       const now = new Date().getTime();
       const timeSinceLastUpdate = now - parseInt(lastUpdateTimestamp);
@@ -408,11 +408,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   cardWrappers.forEach((cardWrapper) => {
-    const optionsButton = cardWrapper.querySelector(".objects__card-options");
     const actionSheet = cardWrapper.querySelector(".action-sheet");
-    const cancelButton = actionSheet
-      ? actionSheet.querySelector(".action-sheet__сancel-button")
-      : null;
     const favoriteElement = cardWrapper.querySelector(
       ".objects__card-favorite"
     );
@@ -420,6 +416,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ".action-sheet__item-favorite"
     );
     const cardId = cardWrapper.dataset.cardId; //  Получаем cardId
+    console.log(`cardId в ' cardWrappers.forEach': ${cardId}`);
 
     // Получаем индекс карточки, в cardData
     const cardIndex = cardData.findIndex((card) => card.id === cardId);
