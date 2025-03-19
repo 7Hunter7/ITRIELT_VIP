@@ -422,7 +422,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Функция для смены иконки
+  // Функция для смены иконки кнопки
   function updateFavoriteButtonIcon(iconButton, isFavorite) {
     if (isFavorite) {
       iconButton.classList.add("action-sheet__item_additions--active");
@@ -432,15 +432,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   cardWrappers.forEach((cardWrapper) => {
-    const actionSheet = cardWrapper.querySelector(".action-sheet");
     const favoriteObject = cardWrapper.querySelector(".objects__card-favorite");
-    const actionSheetItemFavoriteButton = actionSheet.querySelector(
+    const actionSheetItemFavoriteButton = cardWrapper.querySelector(
       ".action-sheet__item-favorite"
     );
-    const actionSheetItemFavoriteIcon =
-      actionSheetItemFavoriteButton.querySelector(
-        ".action-sheet__item_additions"
-      );
+    const actionSheetItemFavoriteIcon = cardWrapper.querySelector(
+      ".action-sheet__item_additions"
+    );
     const cardId = cardWrapper.id; //  Получаем id
     // console.log(`cardId в ' cardWrappers.forEach': ${cardId}`);
 
