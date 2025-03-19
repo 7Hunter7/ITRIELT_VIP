@@ -535,15 +535,17 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // Закрытие Action Sheet при клике вне карточки (только если не мобильное)
+    // Закрытие Action Sheet при клике вне карточки
     document.addEventListener("click", (event) => {
-      // Проверяем, находится ли клик внутри cardWrapper
-      if (!actionSheet.contains(event.target)) {
+      // Проверяем, находится ли клик вне actionSheet
+      if (
+        !actionSheet.contains(event.target) ||
+        !actionSheetContent.contains(event.target)
+      ) {
         actionSheet.classList.remove("action-sheet--active");
         actionSheet.classList.remove("action-sheet--mobile");
-      }
-      if (!actionSheetContent.contains(event.target)) {
-        actionSheetContent.classList.remove("action-sheet--active"); //  Удаляем класс active с контента
+        statusBar.classList.remove("status-bar--mobile");
+        actionSheetContent.classList.remove("action-sheet--active");
       }
     });
   });
