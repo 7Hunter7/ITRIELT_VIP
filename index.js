@@ -179,7 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ? Array.from(
             { length: data.pagination },
             (_, i) =>
-              `<span class="objects__card-pagination-dot ${
+              `<span class="objects__card__pagination_dot ${
                 i === 0 ? "active" : ""
               }"></span>`
           ).join("")
