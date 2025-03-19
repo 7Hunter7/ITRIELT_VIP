@@ -184,8 +184,8 @@ document.addEventListener("DOMContentLoaded", () => {
               </svg>
             </div>`;
 
-    return `<div class="objects__card-wrapper">
-          <div class="objects__card" data-cardId="${data.id}">
+    return `<div class="objects__card-wrapper" data-cardId="${data.id}">
+          <div class="objects__card">
             <!-- Содержимое карточки -->
             <div class="objects__card-header">
               <div class="objects__card-info">
