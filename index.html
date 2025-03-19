@@ -149,24 +149,30 @@
 
     <!-- Панель множественного выбора - изначально скрыта -->
     <div class="multiple-select container">
-      <h2 class="multiple-select__title">
-        Выбрано <span class="multiple-select__select__title_count">0</span>
-      </h2>
+      <div class="multiple-select__header">
+        <h2 class="multiple-select__header_title">Выбрано</h2>
+        <span class="multiple-select__header_count">0</span>
+      </div>
       <div class="multiple-select__buttons">
-        <button class="multiple-select__button">
-          <svg class="multiple-select__button_additions"></svg>
-          Добавить в избранное
-        </button>
-        <button class="multiple-select__button">
-          <svg class="multiple-select__button_collections"></svg>
+        <div class="action-sheet__button">
+          <svg class="action-sheet__button_icon-additions"></svg>
+          <button
+            class="action-sheet__button-favorite"
+            aria-label="Добавить в избранное"
+          >
+            Добавить в избранное
+          </button>
+        </div>
+        <button class="action-sheet__button" aria-label="Добавить в подборки">
+          <svg class="action-sheet__button_icon-collections"></svg>
           Добавить в подборку
         </button>
-        <button class="multiple-select__button">
-          <svg class="multiple-select__button_shares"></svg>
+        <button class="action-sheet__button" aria-label="Поделиться">
+          <svg class="action-sheet__button_icon-shares"></svg>
           Поделиться
         </button>
-        <button class="multiple-select__button multiple-select__item-cancel">
-          <svg class="multiple-select__button_cancel"></svg>
+        <button class="action-sheet__сancel-button" aria-label="Отменить выбор">
+          <svg class="action-sheet__button_icon-cancel"></svg>
           Отменить
         </button>
       </div>
