@@ -59,21 +59,19 @@
 
   // Стили для мобильного отображения (модальное окно)
   &--mobile {
-    background-color: rgba(23, 23, 28, 0.01);
+    background-color: $background;
 
     .status-bar {
       &__time {
         color: $color-white;
       }
-
       &__icons {
         svg {
           fill: $color-white;
         }
       }
-
       &__battery-level {
-        background-color: $color-white;
+        background-color: $color-white !important;
       }
     }
   }

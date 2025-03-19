@@ -58,7 +58,7 @@
   transition: width 0.3s ease, background-color 0.3s ease;
 }
 .status-bar--mobile {
-  background-color: rgba(23, 23, 28, 0.01);
+  background-color: rgba(0, 0, 0, 0.25);
 }
 .status-bar--mobile .status-bar__time {
   color: #fff;
@@ -67,7 +67,7 @@
   fill: #fff;
 }
 .status-bar--mobile .status-bar__battery-level {
-  background-color: #fff;
+  background-color: #fff !important;
 }
 
 @media (min-width: 744px) {
@@ -250,7 +250,7 @@
   pointer-events: auto;
 }
 .header .options__wrapper--mobile {
-  background-color: rgba(23, 23, 28, 0.5);
+  background-color: rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -823,7 +823,7 @@
   pointer-events: auto;
 }
 .action-sheet--mobile {
-  background-color: rgba(23, 23, 28, 0.5);
+  background-color: rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
