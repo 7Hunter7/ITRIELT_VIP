@@ -116,7 +116,6 @@
     z-index: 5;
     right: $spacing-md;
     bottom: $spacing-xl;
-    @include flex(row, center, center);
     @include icon(3rem);
     border-radius: $border-radius-circle;
     background-color: $color-primary;
@@ -126,7 +125,7 @@
     }
 
     &--active {
-      display: block;
+      @include flex(row, center, center);
     }
   }
   &__card-pagination {
