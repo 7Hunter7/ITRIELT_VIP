@@ -449,11 +449,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const statusBar = document.querySelector(".status-bar");
 
   // Функция для добавления/удаления класса "status-bar--mobile"
-  function toggleStatusBarMobile(isMobile) {
+  function toggleStatusBarMobile() {
     if (isMobile()) {
-      statusBar.classList.add("status-bar--mobile");
-    } else {
-      statusBar.classList.remove("status-bar--mobile");
+      if (!statusBar.classList.contains("status-bar--mobile")) {
+        statusBar.classList.add("status-bar--mobile");
+      } else {
+        statusBar.classList.remove("status-bar--mobile");
+      }
     }
   }
 
@@ -484,6 +486,7 @@ document.addEventListener("DOMContentLoaded", () => {
     actionSheetContent.style.left = `${rect.right - 8}px`;
   }
 
+  // Обработчики для Action Sheet
   cardWrappers.forEach((cardWrapper, index) => {
     const optionsButton = cardWrapper.querySelector(".objects__card-options");
     const actionSheet = cardWrapper.querySelector(".action-sheet");
@@ -494,15 +497,13 @@ document.addEventListener("DOMContentLoaded", () => {
       ? actionSheet.querySelector(".action-sheet__сancel-button")
       : null; // Проверка actionSheet
 
-    // Генерируем ID для кнопки опций, если его нет
+    // Генерируем ID, если его нет
     if (!optionsButton.id) {
       optionsButton.id = `options-button-${cardWrapper.dataset.cardId}`;
     }
-    // Генерируем ID для actionSheet, если его нет
     if (!actionSheet.id) {
       actionSheet.id = `action-sheet-${cardWrapper.dataset.cardId}`;
     }
-    // Генерируем ID для actionSheetContent, если его нет
     if (!actionSheetContent.id) {
       actionSheetContent.id = `action-sheet-content-${cardWrapper.dataset.cardId}`;
     }
@@ -516,7 +517,7 @@ document.addEventListener("DOMContentLoaded", () => {
         actionSheet.classList.add("action-sheet--active");
         // Добавляем класс для мобильного стиля
         actionSheet.classList.add("action-sheet--mobile");
-        statusBar.classList.add("status-bar--mobile");
+        toggleStatusBarMobile();
       } else {
         // Отображаем как dropdown
         actionSheetContent.classList.add("action-sheet--active"); //  Добавляем класс active к контенту
@@ -530,7 +531,7 @@ document.addEventListener("DOMContentLoaded", () => {
         actionSheet.classList.remove("action-sheet--active");
         // Убираем класс для мобильного стиля
         actionSheet.classList.remove("action-sheet--mobile");
-        statusBar.classList.remove("status-bar--mobile");
+        toggleStatusBarMobile();
       });
     }
 
@@ -540,7 +541,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!actionSheet.contains(event.target)) {
         actionSheet.classList.remove("action-sheet--active");
         actionSheet.classList.remove("action-sheet--mobile");
-        statusBar.classList.remove("status-bar--mobile");
+        toggleStatusBarMobile();
       }
       if (!actionSheetContent.contains(event.target)) {
         actionSheetContent.classList.remove("action-sheet--active"); //  Удаляем класс active с контента
@@ -569,7 +570,7 @@ document.addEventListener("DOMContentLoaded", () => {
       optionsWrapper.classList.add("options__wrapper--mobile"); // Добавляем класс к обертке
       optionsWrapper.classList.toggle("open"); // Открываем/закрываем
       sortChevron.classList.toggle("rotate");
-      statusBar.classList.add("status-bar--mobile");
+      toggleStatusBarMobile();
     } else {
       // Отображаем как dropdown
       optionsWrapper.classList.toggle("open"); // Открываем/закрываем
@@ -583,7 +584,7 @@ document.addEventListener("DOMContentLoaded", () => {
       optionsWrapper.classList.remove("options__wrapper--mobile");
       optionsWrapper.classList.remove("open");
       sortChevron.classList.remove("rotate");
-      statusBar.classList.remove("status-bar--mobile");
+      toggleStatusBarMobile();
     });
   }
 
@@ -624,7 +625,7 @@ document.addEventListener("DOMContentLoaded", () => {
       optionsWrapper.classList.remove("options__wrapper--mobile");
       optionsWrapper.classList.remove("open");
       sortChevron.classList.remove("rotate");
-      statusBar.classList.remove("status-bar--mobile");
+      toggleStatusBarMobile();
 
       // Сортируем и перерисовываем карточки
       sortCards(option.dataset.value);
@@ -648,7 +649,7 @@ document.addEventListener("DOMContentLoaded", () => {
       optionsWrapper.classList.remove("options__wrapper--mobile");
       optionsContainer.classList.remove("open");
       sortChevron.classList.remove("rotate");
-      statusBar.classList.remove("status-bar--mobile");
+      toggleStatusBarMobile();
     }
   });
 
