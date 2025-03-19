@@ -1237,12 +1237,17 @@
   align-items: center;
   justify-content: center;
   gap: 0;
+  transition: color 0.3s ease, filter 0.3s ease, transform 0.1s ease-in-out;
 }
 .desktop-menu__item:hover .desktop-menu__link {
   color: #6f77fe;
 }
 .desktop-menu__item:hover .desktop-menu__link .desktop-menu__icon:not(.profile-icon) {
   filter: invert(62%) sepia(90%) saturate(428%) hue-rotate(204deg) brightness(98%) contrast(93%);
+}
+.desktop-menu__item:active {
+  transform: scale(0.95);
+  transition: transform 0s;
 }
 .desktop-menu__link {
   display: flex;

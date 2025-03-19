@@ -39,6 +39,7 @@
     margin: 0.6875rem 0;
     flex: 0 0 auto; // Не увеличивать элемент
     @include flex(column, center, center);
+    transition: color 0.3s ease, filter 0.3s ease, transform 0.1s ease-in-out; // Добавляем плавный переход
 
     &:hover {
       .desktop-menu__link {
@@ -49,6 +50,11 @@
             brightness(98%) contrast(93%); // Инвертируем цвет иконки для эффекта
         }
       }
+    }
+
+    &:active {
+      transform: scale(0.95); // Уменьшаем размер при нажатии
+      transition: transform 0s; // Убираем transition при нажатии для мгновенного эффекта
     }
   }
 
