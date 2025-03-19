@@ -151,7 +151,7 @@
     <div class="multiple-select container">
       <div class="multiple-select__header">
         <h2 class="multiple-select__header_title">Выбрано</h2>
-        <span class="multiple-select__header_count">0</span>
+        <p class="multiple-select__header_count">1</p>
       </div>
       <div class="multiple-select__buttons">
         <div class="action-sheet__button">
@@ -163,18 +163,27 @@
             Добавить в избранное
           </button>
         </div>
-        <button class="action-sheet__button" aria-label="Добавить в подборки">
+        <div class="action-sheet__button">
           <svg class="action-sheet__button_icon-collections"></svg>
-          Добавить в подборку
-        </button>
-        <button class="action-sheet__button" aria-label="Поделиться">
+          <button class="action-sheet__button" aria-label="Добавить в подборку">
+            Добавить в подборку
+          </button>
+        </div>
+        <div class="action-sheet__button">
           <svg class="action-sheet__button_icon-shares"></svg>
-          Поделиться
-        </button>
-        <button class="action-sheet__сancel-button" aria-label="Отменить выбор">
+          <button class="action-sheet__button" aria-label="Поделиться">
+            Поделиться
+          </button>
+        </div>
+        <div class="action-sheet__button">
           <svg class="action-sheet__button_icon-cancel"></svg>
-          Отменить
-        </button>
+          <button
+            class="multiple-select__сancel-button"
+            aria-label="Отменить выбор"
+          >
+            Отменить
+          </button>
+        </div>
       </div>
     </div>
 

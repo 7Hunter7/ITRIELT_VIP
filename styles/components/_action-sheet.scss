@@ -129,6 +129,11 @@
       .action-sheet__button:hover &-shares {
         @include action-sheet-icon("/public/icons/shared.svg");
       }
+
+      // Стили для иконок "Отмена"
+      &-cancel {
+        @include action-sheet-icon("/public/icons/cancel.svg");
+      }
     }
   }
 
