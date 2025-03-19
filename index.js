@@ -240,18 +240,22 @@ document.addEventListener("DOMContentLoaded", () => {
               ЖК “Стартап”, ${data.number}, ${data.square}
                 <div class="action-sheet__header_price">${data.price}</div>
               </div>
-              <button class="action-sheet__item">
+              <div class="action-sheet__item">
                 <svg class="action-sheet__item_selections"></svg>
-                Множественный выбор
-              </button>
-              <button class="action-sheet__item action-sheet__item-favorite">
+                <button class="action-sheet__item-select">
+                  Множественный выбор
+                </button>
+              </div>
+              <div class="action-sheet__item">
                 <svg class="action-sheet__item_additions"></svg>
-                ${
-                  data.isFavorite
-                    ? "Убрать из избранного"
-                    : "Добавить в избранное"
-                }
-              </button>
+                <button class="action-sheet__item-favorite">
+                  ${
+                    data.isFavorite
+                      ? "Убрать из избранного"
+                      : "Добавить в избранное"
+                  }
+                </button>
+              </div>
               <button class="action-sheet__item">
                 <svg class="action-sheet__item_collections"></svg>
                 Добавить в подборки
