@@ -34,7 +34,7 @@
       background-color: $color-primary;
     }
     &_indicator-value {
-      padding: 3px 2px;
+      padding: $spacing-xxs/2 $spacing-xxxs/2; // 3px 2px
       text-align: center;
       font-weight: $font-weight-medium;
       font-size: $font-size-tag;
