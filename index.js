@@ -190,8 +190,8 @@ document.addEventListener("DOMContentLoaded", () => {
             <!-- Содержимое карточки -->
             <div class="objects__card-header">
               <div class="objects__card-info">
-                <div class="objects__card-square">${data.square}</div>
-                <div class="objects__card-number">${data.number}</div>
+                <h3 class="objects__card-square">${data.square}</h3>
+                <p class="objects__card-number">${data.number}</p>
               </div>
               <button class="objects__card-options">
                 <svg
@@ -220,14 +220,12 @@ document.addEventListener("DOMContentLoaded", () => {
                   : ""
               }</div>
             <div class="objects__card-content">
-              <div class="objects__card-price">${data.price}</div>
-              <div class="objects__card-price-per-meter">${
-                data.pricePerMeter
-              }</div>
-              <div class="objects__card-address">${data.address}</div>
-              <div class="objects__card-developer">
+              <h2 class="objects__card-price">${data.price}</h2>
+              <p class="objects__card-price-per-meter">${data.pricePerMeter}</p>
+              <p class="objects__card-address">${data.address}</p>
+              <p class="objects__card-developer">
                 <img src="${data.developerLogo}" alt="Логотип застройщика">
-              </div>
+              </p>
             </div>
             ${favoriteIcon}
           </div>
@@ -236,19 +234,19 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="action-sheet">
             <div class="action-sheet__content"
               id="action-sheet-content-${data.id}">
-              <div class="action-sheet__header">
+              <h4 class="action-sheet__header">
               ЖК “Стартап”, ${data.number}, ${data.square}
-                <div class="action-sheet__header_price">${data.price}</div>
-              </div>
-              <div class="action-sheet__item">
-                <svg class="action-sheet__item_selections"></svg>
-                <button class="action-sheet__item-select">
+                <p class="action-sheet__header_price">${data.price}</p>
+              </h4>
+              <div class="action-sheet__button">
+                <svg class="action-sheet__button__icon-selections"></svg>
+                <button class="action-sheet__button-select">
                   Множественный выбор
                 </button>
               </div>
-              <div class="action-sheet__item">
-                <svg class="action-sheet__item_additions"></svg>
-                <button class="action-sheet__item-favorite">
+              <div class="action-sheet__button">
+                <svg class="action-sheet__button_icon-additions"></svg>
+                <button class="action-sheet__button-favorite">
                   ${
                     data.isFavorite
                       ? "Убрать из избранного"
@@ -256,16 +254,16 @@ document.addEventListener("DOMContentLoaded", () => {
                   }
                 </button>
               </div>
-              <button class="action-sheet__item">
-                <svg class="action-sheet__item_collections"></svg>
+              <button class="action-sheet__button">
+                <svg class="action-sheet__button_icon-collections"></svg>
                 Добавить в подборки
               </button>
-              <button class="action-sheet__item">
-                <svg class="action-sheet__item_fixies"></svg>
+              <button class="action-sheet__button">
+                <svg class="action-sheet__button_icon-fixies"></svg>
                 Зафиксировать
               </button>
-              <button class="action-sheet__item">
-                <svg class="action-sheet__item_shares"></svg>
+              <button class="action-sheet__button">
+                <svg class="action-sheet__button_icon-shares"></svg>
                 Поделиться
               </button>
             </div>
@@ -426,19 +424,21 @@ document.addEventListener("DOMContentLoaded", () => {
   // Функция для смены иконки кнопки
   function updateFavoriteButtonIcon(iconButton, isFavorite) {
     if (isFavorite) {
-      iconButton.classList.add("action-sheet__item_additions--active");
+      iconButton.classList.add("action-sheet__button_icon-additions--active");
     } else {
-      iconButton.classList.remove("action-sheet__item_additions--active");
+      iconButton.classList.remove(
+        "action-sheet__button_icon-additions--active"
+      );
     }
   }
 
   cardWrappers.forEach((cardWrapper) => {
     const favoriteObject = cardWrapper.querySelector(".objects__card-favorite");
     const actionSheetItemFavoriteButton = cardWrapper.querySelector(
-      ".action-sheet__item-favorite"
+      ".action-sheet__button-favorite"
     );
     const actionSheetItemFavoriteIcon = cardWrapper.querySelector(
-      ".action-sheet__item_additions"
+      ".action-sheet__button_icon-additions"
     );
     const cardId = cardWrapper.id; //  Получаем id
     // console.log(`cardId в ' cardWrappers.forEach': ${cardId}`);

@@ -2,4 +2,12 @@
 @import "../mixins";
 
 .multiple-select {
+  @include flex(row, space-between, center);
+  padding: $spacing-sm 0;
+
+  &__title {
+    @include flex(row, space-between, center, $spacing-xs);
+    font-weight: $font-weight-semibold;
+    font-size: $font-size-subtitle;
+  }
 }
