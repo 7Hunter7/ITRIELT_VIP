@@ -558,6 +558,13 @@
   height: 20px;
 }
 
+@media (min-width: 744px) {
+  /* 744px */
+  .multiple-select__header_title, .multiple-select__header_count {
+    font-size: 1.25rem;
+    line-height: 120%;
+  }
+}
 @media (min-width: 1024px) {
   /* 1024px */
   .multiple-select__buttons button {

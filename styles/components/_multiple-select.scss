@@ -33,13 +33,22 @@
 }
 
 // Медиа-запросы
+@media (min-width: $breakpoint-sm) {
+  /* 744px */
+  .multiple-select__header {
+    &_title,
+    &_count {
+      font-size: $font-size-title;
+      line-height: 120%;
+    }
+  }
+}
+
 @media (min-width: $breakpoint-md) {
   /* 1024px */
-  .multiple-select {
-    &__buttons {
-      button {
-        display: flex;
-      }
+  .multiple-select__buttons {
+    button {
+      display: flex;
     }
   }
 }
