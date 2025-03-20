@@ -63,6 +63,7 @@
   /* 1024px */
   .search {
     min-width: 16rem;
+    max-width: 22.5rem; // 360px
     border-radius: $spacing-sm;
     padding: 0 0 $spacing-xs 0;
 

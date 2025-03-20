@@ -625,6 +625,7 @@
   /* 1024px */
   .search {
     min-width: 16rem;
+    max-width: 22.5rem;
     border-radius: 0.75rem;
     padding: 0 0 0.5rem 0;
   }
