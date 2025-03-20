@@ -583,7 +583,8 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         // Отображаем как dropdown
         actionSheet.classList.remove("action-sheet--mobile");
-        actionSheetContent.classList.add("action-sheet__content--active"); //  Добавляем класс active к контенту
+        actionSheet.classList.add("action-sheet--active");
+        actionSheetContent.classList.add("action-sheet__content--active");
         positionActionSheet(actionSheetContent, cardWrapper); //  Передаем cardWrapper
       }
     });
@@ -602,8 +603,9 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("click", (event) => {
       // Проверяем, находится ли клик вне actionSheet
       if (
-        !actionSheet.contains(event.target) ||
-        !actionSheetContent.contains(event.target)
+        !actionSheet.contains(event.target) &&
+        !actionSheetContent.contains(event.target) &&
+        !optionsButton.contains(event.target)
       ) {
         actionSheet.classList.remove("action-sheet--active");
         actionSheet.classList.remove("action-sheet--mobile");
