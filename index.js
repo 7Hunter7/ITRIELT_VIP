@@ -428,9 +428,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Функция для смены текста кнопки
   function updateFavoriteButtonText(button, isFavorite) {
     if (isFavorite) {
-      button.textContent = "Убрать из&nbsp;избранного";
+      button.textContent = "Убрать из избранного";
     } else {
-      button.textContent = "Добавить в&nbsp;избранное";
+      button.textContent = "Добавить в избранное";
     }
   }
 
