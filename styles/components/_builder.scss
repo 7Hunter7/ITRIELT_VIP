@@ -58,11 +58,12 @@
   }
 
   &__logo-link {
-    display: block; /* Чтобы ссылка занимала всю площадь логотипа */
+    display: flex; /* Чтобы ссылка занимала всю площадь логотипа */
   }
   &__logo {
     max-height: 3rem; // 48px
     min-width: 5.625rem; // 90px
+    flex-shrink: 0; // Предотвращает сжатие элементов при нехватке места
     padding: $spacing-sm;
     object-fit: contain;
     box-sizing: border-box;
@@ -94,7 +95,6 @@
 @media (min-width: $breakpoint-md) {
   /* 1024px */
   .builder {
-    max-width: 38.5rem; // 616px
     margin-top: 1rem;
     border-radius: $spacing-sm;
     padding: 0 0 $spacing-xs 0;
@@ -108,8 +108,34 @@
     }
 
     &__logo {
-      height: 4rem; // 48px
+      height: 4rem; // 64px
       min-width: 7.5rem; // 120px
     }
+
+    &__container {
+      margin-top: $spacing-md;
+      max-width: 38.5rem; // 616px
+      max-height: 8rem;
+    }
+  }
+}
+
+// Медиа-запросы
+@media (min-width: $breakpoint-lg) {
+  /* 1366px */
+  .builder__container {
+    max-width: 54.875rem; // 878px
+  }
+}
+@media (min-width: $breakpoint-xxl) {
+  /* 1920px */
+  .builder__container {
+    max-width: 89.5rem; // 1432px
+  }
+}
+@media (min-width: $breakpoint-xxxl) {
+  /* 2560px */
+  .builder__container {
+    max-width: 129.5rem; //  2072px
   }
 }

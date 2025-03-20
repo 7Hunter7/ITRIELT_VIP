@@ -2,7 +2,6 @@
 @import "../mixins";
 
 // Медиа-запросы
-
 @media (min-width: $breakpoint-sm) {
   /* 744px */
   .main__top {
@@ -18,19 +17,14 @@
     @include flex(row, flex-start, flex-start, $spacing-md);
 
     .builder {
-      &__logo {
-        flex-shrink: 0; // Предотвращает сжатие элементов при нехватке места
-      }
-
       .scroll-container {
         width: 100%;
-        padding: $spacing-md;
-        overflow-x: auto;
-        overflow-y: hidden; // Отключает вертикальную прокрутку
-        scroll-snap-type: x mandatory; // Делает прокрутку удобнее
+        margin-top: $spacing-md;
+        overflow-y: auto;
+        overflow-x: hidden; // Отключает горизонтальную прокрутку
+        scroll-snap-type: y mandatory; // Делает прокрутку удобнее
 
         /* Стилизация полосы прокрутки с помощью псевдоэлементов */
-
         // Целиком полоса прокрутки
         ::-webkit-scrollbar {
           margin-left: $spacing-xxxs;

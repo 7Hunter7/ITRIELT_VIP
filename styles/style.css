@@ -657,15 +657,12 @@
     justify-content: flex-start;
     gap: 1rem;
   }
-  .main__top .builder__logo {
-    flex-shrink: 0;
-  }
   .main__top .builder .scroll-container {
     width: 100%;
-    padding: 1rem;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
+    margin-top: 1rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;
     /* Стилизация полосы прокрутки с помощью псевдоэлементов */
     /*  Угол в месте пересечения вертикальной и горизонтальной прокруток */
   }
@@ -761,11 +758,12 @@
   gap: 0.5rem;
 }
 .builder__logo-link {
-  display: block; /* Чтобы ссылка занимала всю площадь логотипа */
+  display: flex; /* Чтобы ссылка занимала всю площадь логотипа */
 }
 .builder__logo {
   max-height: 3rem;
   min-width: 5.625rem;
+  flex-shrink: 0;
   padding: 0.75rem;
   -o-object-fit: contain;
      object-fit: contain;
@@ -794,7 +792,6 @@
 @media (min-width: 1024px) {
   /* 1024px */
   .builder {
-    max-width: 38.5rem;
     margin-top: 1rem;
     border-radius: 0.75rem;
     padding: 0 0 0.5rem 0;
@@ -808,6 +805,29 @@
   .builder__logo {
     height: 4rem;
     min-width: 7.5rem;
+  }
+  .builder__container {
+    margin-top: 1rem;
+    max-width: 38.5rem;
+    max-height: 8rem;
+  }
+}
+@media (min-width: 1366px) {
+  /* 1366px */
+  .builder__container {
+    max-width: 54.875rem;
+  }
+}
+@media (min-width: 1920px) {
+  /* 1920px */
+  .builder__container {
+    max-width: 89.5rem;
+  }
+}
+@media (min-width: 2560px) {
+  /* 2560px */
+  .builder__container {
+    max-width: 129.5rem;
   }
 }
 .objects-filter {
