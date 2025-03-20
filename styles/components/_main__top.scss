@@ -14,11 +14,8 @@
 @media (min-width: $breakpoint-md) {
   /* 1024px */
   .main__top {
-    max-height: 18.625rem; // 298px
     padding: $spacing-md;
-    display: grid;
-    grid-template-columns: 40% 60%;
-    gap: 1rem;
+    @include flex(row, flex-start, flex-start, $spacing-md);
 
     .builder {
       &__logo {
@@ -26,8 +23,7 @@
       }
 
       .scroll-container {
-        max-height: 10.5rem; // 168px
-        min-width: 7.5rem; // 120px
+        width: 100%;
         padding: $spacing-md;
         overflow-x: auto;
         overflow-y: hidden; // Отключает вертикальную прокрутку
