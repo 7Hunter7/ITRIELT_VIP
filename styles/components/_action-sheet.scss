@@ -11,7 +11,7 @@
 
     .action-sheet__content {
       position: relative;
-      display: flex;
+      @include flex(column, flex-start, flex-start);
     }
   }
 
@@ -32,7 +32,6 @@
 
     &--active {
       @include flex(column, flex-start, flex-start);
-      display: flex; // отображаем action-sheet__content когда active
     }
   }
 
@@ -160,7 +159,7 @@
 @media (min-width: $breakpoint-sm) {
   /* 744px */
   .action-sheet {
-    position: absolute; // Oбертка становится absolute
+    position: absolute; // Важно: обертка  становится absolute
     top: $spacing-xs;
     right: $spacing-sm;
     background: none;
