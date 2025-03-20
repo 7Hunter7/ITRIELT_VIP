@@ -242,7 +242,8 @@
     }
     .options__wrapper {
       position: static;
-      background-color: $color-white;
+      width: 0;
+      height: 0;
 
       .options {
         position: absolute;
@@ -253,6 +254,7 @@
         border-bottom-right-radius: 0.75rem;
         border-bottom-left-radius: 0.75rem;
         border-top: none;
+        box-shadow: 0 8px 16px 0 $background;
 
         .option {
           white-space: wrap;
