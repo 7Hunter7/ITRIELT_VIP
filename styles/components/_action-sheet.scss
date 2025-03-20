@@ -173,8 +173,11 @@
 
     &--active {
       .action-sheet__content {
-        box-shadow: 0 8px 16px 0 $background;
         position: absolute;
+        top: 100%;
+        left: 0;
+        margin-top: $spacing-xs;
+        box-shadow: 0 8px 16px 0 $background;
         @include flex(column, flex-start, flex-start);
       }
     }
