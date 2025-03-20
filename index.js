@@ -142,15 +142,15 @@ document.addEventListener("DOMContentLoaded", () => {
       clearPrice: price, // Цена для сортировки
       price: `${price.toLocaleString("ru-RU")} ₽`,
       pricePerMeter: `${pricePerMeter.toLocaleString("ru-RU")} ₽/м²`,
-      address: `Краснодар · ЖК «ITRIELT» · Литер ${generateRandomNumber(
+      address: `Краснодар &middot; ЖК&nbsp;&laquo;ITRIELT&raquo;&nbsp;&middot; Литер&nbsp;${generateRandomNumber(
         1,
         5
-      )} · Подъезд ${generateRandomNumber(
+      )}&nbsp;&middot; Подъезд&nbsp;${generateRandomNumber(
         1,
         4
-      )} · Этаж ${floor} из ${totalFloors} · Жилая площадь ${square.toFixed(
+      )}&nbsp;&middot; Этаж&nbsp;${floor}&nbsp;из&nbsp;${totalFloors}&nbsp;&middot; Жилая&nbsp;площадь&nbsp;${square.toFixed(
         2
-      )} м²`,
+      )}&nbsp;м&sup2;`,
       developerLogo: currentLogo,
       area: square, // Площадь для сортировки
     };
@@ -240,7 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
               id="action-sheet-content-${data.id}">
               <div class="action-sheet__header">
                 <h4 class="action-sheet__header_title">
-                  ЖК “Стартап”, ${data.number}, ${data.square}
+                  ЖК&nbsp;&laquo;Стартап&raquo;, ${data.number}, ${data.square}
                 </h4>
                 <p class="action-sheet__header_price">${data.price}</p>
               </div>
@@ -262,14 +262,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 >
                   ${
                     data.isFavorite
-                      ? "Убрать из избранного"
-                      : "Добавить в избранное"
+                      ? "Убрать из&nbsp;избранного"
+                      : "Добавить в&nbsp;избранное"
                   }
                 </button>
               </div>
               <button class="action-sheet__button" aria-label="Добавить в подборки">
                 <svg class="action-sheet__button_icon-collections"></svg>
-                Добавить в подборки
+                Добавить в&nbsp;подборки
               </button>
               <button class="action-sheet__button" aria-label="Зафиксировать">
                 <svg class="action-sheet__button_icon-fixies"></svg>
@@ -428,9 +428,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Функция для смены текста кнопки
   function updateFavoriteButtonText(button, isFavorite) {
     if (isFavorite) {
-      button.textContent = "Убрать из избранного";
+      button.textContent = "Убрать из&nbsp;избранного";
     } else {
-      button.textContent = "Добавить в избранное";
+      button.textContent = "Добавить в&nbsp;избранное";
     }
   }
 
