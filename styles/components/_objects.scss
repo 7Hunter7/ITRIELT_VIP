@@ -18,6 +18,16 @@
       grid-template-columns: repeat(3, 1fr); /* 3 колонки */
     }
 
+    @media (min-width: $breakpoint-xl) {
+      /* 1536px */
+      grid-template-columns: repeat(4, 1fr); /* 5 колонок */
+    }
+
+    @media (min-width: $breakpoint-xxl) {
+      /* 1920px */
+      grid-template-columns: repeat(5, 1fr); /* 5 колонок */
+    }
+
     @media (min-width: $breakpoint-xxxl) {
       /* 2560px */
       grid-template-columns: repeat(7, 1fr); /* 7 колонок */

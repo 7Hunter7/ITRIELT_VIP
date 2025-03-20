@@ -875,6 +875,18 @@
     grid-template-columns: repeat(3, 1fr); /* 3 колонки */
   }
 }
+@media (min-width: 1536px) {
+  .objects__grid {
+    /* 1536px */
+    grid-template-columns: repeat(4, 1fr); /* 5 колонок */
+  }
+}
+@media (min-width: 1920px) {
+  .objects__grid {
+    /* 1920px */
+    grid-template-columns: repeat(5, 1fr); /* 5 колонок */
+  }
+}
 @media (min-width: 2560px) {
   .objects__grid {
     /* 2560px */
