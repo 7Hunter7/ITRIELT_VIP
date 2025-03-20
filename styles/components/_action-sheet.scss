@@ -8,6 +8,10 @@
 
   &--active {
     @include visible();
+    .action-sheet__content {
+      position: relative;
+      @include flex(column, flex-start, flex-start);
+    }
   }
 
   &--mobile {
@@ -17,12 +21,16 @@
   }
 
   &__content {
-    @include flex(column, flex-start, flex-start);
+    display: none;
+    position: absolute;
     padding-bottom: $spacing-xs;
     border: 0.5px solid #ecedf0;
     border-radius: $spacing-sm;
     box-shadow: $box-shadow;
     background-color: $color-white;
+    &--active {
+      @include flex(column, flex-start, flex-start);
+    }
   }
 
   &__header {
@@ -148,26 +156,19 @@
 // Медиа-запросы
 @media (min-width: $breakpoint-sm) {
   /* 744px */
-  .objects__card__options {
-    position: relative;
-  }
-
   .action-sheet {
     position: absolute;
     top: $spacing-xs;
     right: $spacing-sm;
     background: none;
+    display: block;
+    width: auto;
+    height: auto;
 
     &--mobile {
       // Убираем стили для мобильных устройств на desktop
       background-color: transparent;
     }
-  }
-}
-
-@media (min-width: $breakpoint-md) {
-  /* 1024px */
-  .action-sheet {
     &__сancel-button {
       display: none;
     }
