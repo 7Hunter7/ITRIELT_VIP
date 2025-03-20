@@ -583,7 +583,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         // Отображаем как dropdown
         actionSheet.classList.remove("action-sheet--mobile");
-        actionSheetContent.classList.add("action-sheet--active"); //  Добавляем класс active к контенту
+        actionSheetContent.classList.add("action-sheet__content--active"); //  Добавляем класс active к контенту
         positionActionSheet(actionSheetContent, cardWrapper); //  Передаем cardWrapper
       }
     });
@@ -608,7 +608,7 @@ document.addEventListener("DOMContentLoaded", () => {
         actionSheet.classList.remove("action-sheet--active");
         actionSheet.classList.remove("action-sheet--mobile");
         statusBar.classList.remove("status-bar--mobile");
-        actionSheetContent.classList.remove("action-sheet--active");
+        actionSheetContent.classList.remove("action-sheet__content--active");
       }
     });
   });

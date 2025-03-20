@@ -8,9 +8,10 @@
 
   &--active {
     @include visible();
+
     .action-sheet__content {
       position: relative;
-      @include flex(column, flex-start, flex-start);
+      display: flex;
     }
   }
 
@@ -21,15 +22,17 @@
   }
 
   &__content {
-    display: none;
+    display: none; // Изначально скрываем контент
     position: absolute;
     padding-bottom: $spacing-xs;
     border: 0.5px solid #ecedf0;
     border-radius: $spacing-sm;
     box-shadow: $box-shadow;
     background-color: $color-white;
+
     &--active {
       @include flex(column, flex-start, flex-start);
+      display: flex; // отображаем action-sheet__content когда active
     }
   }
 
@@ -157,7 +160,7 @@
 @media (min-width: $breakpoint-sm) {
   /* 744px */
   .action-sheet {
-    position: absolute;
+    position: absolute; // Oбертка становится absolute
     top: $spacing-xs;
     right: $spacing-sm;
     background: none;
