@@ -558,11 +558,11 @@ document.addEventListener("DOMContentLoaded", () => {
       document.documentElement.clientWidth
     ) {
       // Если не помещается, позиционируем слева
-      actionSheetContent.style.top = `${buttondRect.top + scrollTop}px`;
+      actionSheetContent.style.top = `${buttondRect.top + scrollTop + 20}px`;
       actionSheetContent.style.left = `${cardRect.left - 20}px`;
     } else {
       // Если помещается, позиционируем справа
-      actionSheetContent.style.top = `${buttondRect.top + scrollTop}px`;
+      actionSheetContent.style.top = `${buttondRect.top + scrollTop + 20}px`;
       actionSheetContent.style.left = `${buttondRect.right - 20}px`;
     }
   }
