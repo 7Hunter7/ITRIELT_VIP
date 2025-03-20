@@ -123,6 +123,13 @@
     - `button` (HTMLElement) - Кнопка "Добавить в избранное"/"Убрать из избранного".
     - `isFavorite` (boolean) - Текущее состояние "избранное".
 
+- **`updateFavoriteButtonIcon(iconButton, isFavorite)`:**
+
+  - Обновляет иконку кнопки "Добавить в избранное"/"Убрать из избранного" в Action Sheet.
+  - **Параметры:**
+    - `iconButton` (HTMLElement) - Иконка кнопки "Добавить в избранное"/"Убрать из избранного".
+    - `isFavorite` (boolean) - Текущее состояние "избранное".
+
 - **`positionActionSheet(actionSheet, optionsButton)`:**
   - Позиционирует Action Sheet (контекстное меню) для десктопного отображения.
   - **Параметры:**
