@@ -479,7 +479,6 @@
   }
   .header .selected-option {
     max-height: 2.25rem;
-    line-height: 100%;
   }
   .header .options__wrapper {
     position: static;
@@ -496,7 +495,6 @@
     border-top: none;
   }
   .header .options__wrapper .options .option {
-    line-height: 100%;
     white-space: wrap;
   }
   .header .options__wrapper--mobile {
@@ -1038,14 +1036,14 @@
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s ease;
+}
+.action-sheet--active {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 0;
-}
-.action-sheet--active {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
@@ -1084,6 +1082,9 @@
   align-items: flex-start;
   justify-content: flex-start;
   gap: 0;
+}
+.action-sheet__content--active .action-sheet {
+  position: absolute;
 }
 .action-sheet__header {
   margin-top: 0.5rem;

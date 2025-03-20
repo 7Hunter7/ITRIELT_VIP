@@ -4,9 +4,9 @@
 .action-sheet {
   @include fixed();
   @include visually-hidden();
-  @include flex(column, center, center);
 
   &--active {
+    @include flex(column, center, center);
     @include visible();
 
     .action-sheet__content {
@@ -32,6 +32,10 @@
 
     &--active {
       @include flex(column, flex-start, flex-start);
+
+      .action-sheet {
+        position: absolute; //  Делаем абсолютным для десктопа
+      }
     }
   }
 

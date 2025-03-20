@@ -239,7 +239,6 @@
     /* Кастомный select */
     .selected-option {
       max-height: 2.25rem; // 36px
-      line-height: 100%;
     }
     .options__wrapper {
       position: static;
@@ -256,7 +255,6 @@
         border-top: none;
 
         .option {
-          line-height: 100%;
           white-space: wrap;
         }
       }
