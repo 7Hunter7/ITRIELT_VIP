@@ -171,6 +171,14 @@
     width: auto;
     height: auto;
 
+    &--active {
+      .action-sheet__content {
+        box-shadow: 0 8px 16px 0 $background;
+        position: absolute;
+        @include flex(column, flex-start, flex-start);
+      }
+    }
+
     &--mobile {
       // Убираем стили для мобильных устройств на desktop
       background-color: transparent;
