@@ -544,30 +544,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Функция для позиционирования Action Sheet на десктопе
-  function positionActionSheet(actionSheetContentId, optionsButtonId) {
-    // Находим кнопку опций по ID
-    const optionsButton = document.getElementById(optionsButtonId);
-    console.log(`optionsButton: ${optionsButton}`);
-    if (!optionsButton) {
-      console.error(`Не найдена кнопка опций с id: ${optionsButtonId}`);
-      return;
-    }
+  function positionActionSheet(actionSheetContent, cardWrapper) {
+    // Получаем координаты карточки относительно окна браузера
+    const cardRect = cardWrapper.getBoundingClientRect();
+    console.log(`cardRect: ${cardRect}`);
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop; // Учет прокрутки
+    console.log(`scrollTop: ${scrollTop}`);
 
-    // Находим action-sheet-content
-    const actionSheetContent = document.getElementById(actionSheetContentId);
-    console.log(`actionSheetContent: ${actionSheetContent}`);
-    if (!actionSheetContent) {
-      console.error(
-        "Не найден action sheet content с id:",
-        actionSheetContentId
-      );
-      return;
-    }
+    actionSheetContent.style.top = `${cardRect.top + scrollTop}px`;
+    actionSheetContent.style.left = `${cardRect.right}px`;
 
-    // Получаем координаты и размеры кнопки опций относительно окна браузера
-    const rect = optionsButton.getBoundingClientRect();
-    actionSheetContent.style.top = `${rect.top + 8}px`;
-    actionSheetContent.style.left = `${rect.right - 8}px`;
+    console.log(
+      `top: ${actionSheetContent.style.top}, left: ${actionSheetContent.style.left}`
+    );
   }
 
   // Обработчики для Action Sheet
@@ -581,17 +570,6 @@ document.addEventListener("DOMContentLoaded", () => {
       ? actionSheet.querySelector(".action-sheet__сancel-button")
       : null; // Проверка actionSheet
 
-    // Генерируем ID, если его нет
-    if (!optionsButton.id) {
-      optionsButton.id = `options-button-${cardWrapper.dataset.cardId}`;
-    }
-    if (!actionSheet.id) {
-      actionSheet.id = `action-sheet-${cardWrapper.dataset.cardId}`;
-    }
-    if (!actionSheetContent.id) {
-      actionSheetContent.id = `action-sheet-content-${cardWrapper.dataset.cardId}`;
-    }
-
     // Обработчик клика на кнопку опций
     optionsButton.addEventListener("click", (event) => {
       event.stopPropagation(); // Предотвращаем всплытие события
@@ -604,8 +582,9 @@ document.addEventListener("DOMContentLoaded", () => {
         toggleStatusBarMobile();
       } else {
         // Отображаем как dropdown
+        actionSheet.classList.remove("action-sheet--mobile");
         actionSheetContent.classList.add("action-sheet--active"); //  Добавляем класс active к контенту
-        positionActionSheet(actionSheetContent.id, optionsButton.id); // Передаем id
+        positionActionSheet(actionSheetContent, cardWrapper); //  Передаем cardWrapper
       }
     });
 
