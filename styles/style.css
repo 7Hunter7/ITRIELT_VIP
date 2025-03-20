@@ -1434,8 +1434,7 @@
     margin-bottom: 0.5rem;
   }
 }
-@media (min-width: 1366px) {
-  /* 1336px */
+@media (min-width: 1025px) {
   .footer {
     display: none;
   }
