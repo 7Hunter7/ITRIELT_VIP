@@ -68,7 +68,8 @@
     padding: 0 0 $spacing-xs 0;
 
     &__title {
-      padding: 1.125rem $spacing-md 0.625rem 1rem;
+      padding: 1rem $spacing-md 0.625rem 0;
+      margin-bottom: 0;
     }
     &__label {
       min-width: 256px;
