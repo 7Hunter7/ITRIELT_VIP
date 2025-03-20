@@ -531,6 +531,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ------------------ 6. Логика для отображения и скрытия Action Sheet ------------------
   const statusBar = document.querySelector(".status-bar");
+  let currentOpenActionSheetContent = null; // Переменная для хранения текущего открытого actionSheetContent
 
   // Функция для добавления/удаления класса "status-bar--mobile"
   function toggleStatusBarMobile() {
@@ -572,12 +573,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Обработчик клика на кнопку опций
     optionsButton.addEventListener("click", (event) => {
-      event.stopPropagation(); // Предотвращаем всплытие события
+      event.stopPropagation();
+
+      // Если есть открытый actionSheetContent, закрываем его
+      if (
+        currentOpenActionSheetContent &&
+        currentOpenActionSheetContent !== actionSheetContent
+      ) {
+        currentOpenActionSheetContent.classList.remove(
+          "action-sheet__content--active"
+        );
+        currentOpenActionSheetContent
+          .closest(".action-sheet")
+          .classList.remove("action-sheet--active");
+      }
 
       if (isMobile()) {
         // Мобильное устройство: добавляем затемнение и позиционируем модально
         actionSheet.classList.add("action-sheet--active");
-        // Добавляем класс для мобильного стиля
         actionSheet.classList.add("action-sheet--mobile");
         toggleStatusBarMobile();
       } else {
@@ -587,30 +600,29 @@ document.addEventListener("DOMContentLoaded", () => {
         actionSheetContent.classList.add("action-sheet__content--active");
         positionActionSheet(actionSheetContent, cardWrapper); //  Передаем cardWrapper
       }
+      // Обновляем текущий открытый actionSheetContent
+      currentOpenActionSheetContent = actionSheetContent;
     });
 
     // Обработчик клика на кнопку отмены (только для мобильных)
     if (cancelButton) {
       cancelButton.addEventListener("click", () => {
         actionSheet.classList.remove("action-sheet--active");
-        // Убираем класс для мобильного стиля
         actionSheet.classList.remove("action-sheet--mobile");
         toggleStatusBarMobile();
+        currentOpenActionSheetContent = null; // Сбрасываем, когда закрываем через cancel
       });
     }
 
     // Закрытие Action Sheet при клике вне карточки
     document.addEventListener("click", (event) => {
-      // Проверяем, находится ли клик вне actionSheet
-      if (
-        !actionSheet.contains(event.target) &&
-        !actionSheetContent.contains(event.target) &&
-        !optionsButton.contains(event.target)
-      ) {
+      // Проверяем, находится ли клик вне actionSheet И вне actionSheetContent
+      if (!actionSheetContent.contains(event.target)) {
         actionSheet.classList.remove("action-sheet--active");
         actionSheet.classList.remove("action-sheet--mobile");
         statusBar.classList.remove("status-bar--mobile");
         actionSheetContent.classList.remove("action-sheet__content--active");
+        currentOpenActionSheetContent = null; // Сбрасываем при закрытии кликом вне
       }
     });
   });
