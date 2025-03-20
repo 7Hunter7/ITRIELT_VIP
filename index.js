@@ -545,19 +545,26 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Функция для позиционирования Action Sheet на десктопе
-  function positionActionSheet(actionSheetContent, cardWrapper) {
-    // Получаем координаты карточки относительно окна браузера
+  function positionActionSheet(actionSheetContent, optionsButton, cardWrapper) {
+    // Получаем координаты относительно окна браузера
     const cardRect = cardWrapper.getBoundingClientRect();
-    console.log(`cardRect: ${cardRect}`);
+    const buttondRect = optionsButton.getBoundingClientRect();
+    const actionSheetWidth = actionSheetContent.offsetWidth; // Ширина ActionSheet
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop; // Учет прокрутки
-    console.log(`scrollTop: ${scrollTop}`);
 
-    actionSheetContent.style.top = `${cardRect.top + scrollTop}px`;
-    actionSheetContent.style.left = `${cardRect.right}px`;
-
-    console.log(
-      `top: ${actionSheetContent.style.top}, left: ${actionSheetContent.style.left}`
-    );
+    // Проверяем, помещается ли ActionSheet справа
+    if (
+      buttondRect.right + actionSheetWidth >
+      document.documentElement.clientWidth
+    ) {
+      // Если не помещается, позиционируем слева
+      actionSheetContent.style.top = `${buttondRect.top + scrollTop}px`;
+      actionSheetContent.style.left = `${cardRect.left - 20}px`;
+    } else {
+      // Если помещается, позиционируем справа
+      actionSheetContent.style.top = `${buttondRect.top + scrollTop}px`;
+      actionSheetContent.style.left = `${buttondRect.right - 20}px`;
+    }
   }
 
   // Обработчики для Action Sheet
@@ -598,7 +605,7 @@ document.addEventListener("DOMContentLoaded", () => {
         actionSheet.classList.remove("action-sheet--mobile");
         actionSheet.classList.add("action-sheet--active");
         actionSheetContent.classList.add("action-sheet__content--active");
-        positionActionSheet(actionSheetContent, cardWrapper); //  Передаем cardWrapper
+        positionActionSheet(actionSheetContent, optionsButton, cardWrapper); //  Передаем cardWrapper
       }
       // Обновляем текущий открытый actionSheetContent
       currentOpenActionSheetContent = actionSheetContent;
