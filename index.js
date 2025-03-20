@@ -559,7 +559,9 @@ document.addEventListener("DOMContentLoaded", () => {
     ) {
       // Если не помещается, позиционируем слева
       actionSheetContent.style.top = `${buttondRect.top + scrollTop + 20}px`;
-      actionSheetContent.style.left = `${cardRect.left - 20}px`;
+      actionSheetContent.style.left = `${
+        cardRect.right - actionSheetWidth - 20
+      }px`;
     } else {
       // Если помещается, позиционируем справа
       actionSheetContent.style.top = `${buttondRect.top + scrollTop + 20}px`;
