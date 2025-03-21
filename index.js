@@ -124,8 +124,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const pagination = i === 0 ? 0 : 3;
     const price = generateRandomPrice();
     const pricePerMeter = (price / square).toFixed(0); // Расчет стоимости за м²
-    const floor = generateRandomNumber(1, 25);
     const totalFloors = generateRandomNumber(1, 25);
+    const floor = generateRandomNumber(1, totalFloors);
     const currentLogo = builderLogos[logoIndex]; // Изображения по порядку
     logoIndex = (logoIndex + 1) % builderLogos.length; // Циклический перебор
     const currentPlan = objectPlans[planIndex];
@@ -135,13 +135,13 @@ document.addEventListener("DOMContentLoaded", () => {
     return {
       id: id,
       isFavorite: isFavorite,
-      square: `${rooms}-к, ${square.toFixed(2)} м²`,
+      square: `${rooms}-к, ${square.toFixed(2)} м&sup2;`,
       number: number,
       plan: currentPlan,
       pagination: pagination,
       clearPrice: price, // Цена для сортировки
       price: `${price.toLocaleString("ru-RU")} ₽`,
-      pricePerMeter: `${pricePerMeter.toLocaleString("ru-RU")} ₽/м²`,
+      pricePerMeter: `${pricePerMeter.toLocaleString("ru-RU")} ₽/м&sup2;`,
       address: `Краснодар &middot; ЖК&nbsp;&laquo;ITRIELT&raquo;&nbsp;&middot; Литер&nbsp;${generateRandomNumber(
         1,
         5
