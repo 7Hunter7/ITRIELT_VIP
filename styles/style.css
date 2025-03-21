@@ -1322,7 +1322,7 @@
 }
 .show-more {
   padding: 1rem;
-  padding-bottom: 6.5rem;
+  padding-bottom: 5.875rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -1335,7 +1335,6 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 125%;
-  text-align: center;
   color: #fff;
   padding: 0.75rem 1.25rem;
   border: none;

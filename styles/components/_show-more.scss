@@ -3,7 +3,7 @@
 
 .show-more {
   padding: $spacing-md;
-  padding-bottom: 6.5rem;
+  padding-bottom: 5.875rem;
   @include flex(row, center, center);
 
   &__button {
@@ -11,7 +11,6 @@
     font-weight: $font-weight-medium;
     font-size: $font-size-base;
     line-height: 125%;
-    text-align: center;
     color: $color-white;
     padding: $spacing-sm $spacing-lg;
     border: none;
