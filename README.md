@@ -1,10 +1,11 @@
-# Каталог VIP-объектов ITRIELT в Краснодаре
+# Каталог VIP-объектов ITRIELT
 
 ## Описание
 
 Проект представляет собой веб-приложение, разработанное для демонстрации каталога VIP-объектов недвижимости, предлагаемых компанией ITRIELT в Краснодаре. Приложение позволяет пользователям просматривать, фильтровать и сортировать объекты, а также взаимодействовать с ними.
 
-- Проект развернут на Netlify: [https://itrielt-vip.ru/](https://itrielt-vip.netlify.app/)
+- Макет: [https://www.figma.com/design/ITRIELT-VIP](https://www.figma.com/design/mIAhHFt9DxsLrSO2Aa9h8x/ITRIELT-VIP?node-id=202-17556&p=f&t=H1yfnB5AdaT93OP9-0)
+- Проект развернут на Netlify: [https://itrielt-vip.netlify.app](https://itrielt-vip.netlify.app/)
 
 ## Технологии
 
