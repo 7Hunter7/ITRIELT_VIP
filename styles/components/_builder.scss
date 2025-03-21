@@ -70,24 +70,24 @@
     border: 2px solid $color-white;
     border-radius: $border-radius;
     background-color: $color-white;
-    box-shadow: 0 0 8px 0 rgba(30, 30, 36, 0.1);
     svg {
       height: 1.5rem;
       width: auto;
     }
 
     &:hover {
-      border: 2px solid #dddde3;
-      box-shadow: 0 8px 16px 0 rgba(23, 23, 28, 0.05);
+      border: $border;
+      box-shadow: $box-shadow;
     }
     &:active {
       border: 2px solid $color-primary;
-      box-shadow: 0 8px 16px 0 rgba(23, 23, 28, 0.05);
+      box-shadow: $box-shadow;
     }
   }
 
   .active {
     border: 2px solid $color-primary;
+    box-shadow: $box-shadow;
   }
 }
 
