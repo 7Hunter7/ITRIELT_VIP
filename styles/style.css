@@ -486,6 +486,7 @@
     height: 0;
   }
   .header .options__wrapper .options {
+    z-index: 10;
     position: absolute;
     top: 100%; /* Располагаем под элементом header__sort */
     left: 0;
