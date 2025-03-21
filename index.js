@@ -461,6 +461,9 @@ document.addEventListener("DOMContentLoaded", () => {
       ".multiple-select__header_count"
     );
     const multipleSelectCancelButton = multipleSelect.querySelector(
+      ".multiple-select__сancel-button"
+    );
+    const multipleSelectCancelButtonIcon = multipleSelect.querySelector(
       ".action-sheet__button_icon-cancel"
     );
 
@@ -520,12 +523,19 @@ document.addEventListener("DOMContentLoaded", () => {
       multipleSelectCount.textContent = selectCounter;
     });
 
-    multipleSelectCancelButton?.addEventListener("click", (event) => {
+    // Для мобильной версии
+    multipleSelectCancelButtonIcon?.addEventListener("click", (event) => {
       event.stopPropagation();
-
       selectCounter = 0;
       localStorage.setItem("localSelectCounter", selectCounter);
       multipleSelect.style.display = "none"; // Скрываем элемент "Выбрано"
+    });
+    // Для десктопной версии
+    multipleSelectCancelButton?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      selectCounter = 0;
+      localStorage.setItem("localSelectCounter", selectCounter);
+      multipleSelect.style.display = "none";
     });
   });
 
