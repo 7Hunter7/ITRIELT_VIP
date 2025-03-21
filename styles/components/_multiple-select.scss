@@ -3,6 +3,7 @@
 
 .multiple-select {
   @include flex(row, space-between, center);
+  flex-wrap: nowrap;
   padding: $spacing-sm 0;
   display: none;
 
@@ -20,11 +21,10 @@
     flex-wrap: nowrap;
 
     button {
-      display: none;
       margin: 0;
       padding: 0;
+      display: none;
       border-radius: $border-radius;
-      padding: $spacing-xs $spacing-sm;
     }
 
     svg {
@@ -36,11 +36,18 @@
 // Медиа-запросы
 @media (min-width: $breakpoint-sm) {
   /* 744px */
-  .multiple-select__header {
-    &_title,
-    &_count {
-      font-size: $font-size-title;
-      line-height: 120%;
+  .multiple-select {
+    &__header {
+      &_title,
+      &_count {
+        font-size: $font-size-title;
+        line-height: 120%;
+      }
+    }
+    &__buttons {
+      button {
+        padding: $spacing-xs $spacing-sm;
+      }
     }
   }
 }

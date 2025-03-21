@@ -523,6 +523,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 0;
+  flex-wrap: nowrap;
   padding: 0.75rem 0;
   display: none;
 }
@@ -548,11 +549,10 @@
   flex-wrap: nowrap;
 }
 .multiple-select__buttons button {
-  display: none;
   margin: 0;
   padding: 0;
+  display: none;
   border-radius: 8px;
-  padding: 0.5rem 0.75rem;
 }
 .multiple-select__buttons svg {
   width: 20px;
@@ -564,6 +564,9 @@
   .multiple-select__header_title, .multiple-select__header_count {
     font-size: 1.25rem;
     line-height: 120%;
+  }
+  .multiple-select__buttons button {
+    padding: 0.5rem 0.75rem;
   }
 }
 @media (min-width: 1024px) {
@@ -1160,7 +1163,6 @@
   line-height: 125%;
   color: #1e1e24;
   transition: all 0.3s ease-in;
-  cursor: pointer;
 }
 .action-sheet__button button {
   padding: 0 0.25rem;
