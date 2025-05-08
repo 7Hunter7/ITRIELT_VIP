@@ -217,8 +217,3 @@
 
 Ivan Kalugin
 Телеграмм: https://t.me/Ivan_Anatolievich_Kalugin
-
-## Лицензия
-
-**MIT License**
-Этот проект лицензирован в соответствии с условиями лицензии MIT. Смотрите файл [LICENSE](LICENSE) для получения подробной информации.
